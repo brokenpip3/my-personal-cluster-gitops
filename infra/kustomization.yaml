@@ -4,4 +4,4 @@ resources:
 - helm-metric-server.yaml
 - helm-nginxinc-ingress-controller.yaml
 - helm-certmanager.yaml
-- secret-certmanager.yaml
+#- secret-certmanager.yaml
