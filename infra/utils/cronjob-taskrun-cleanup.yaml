@@ -1,0 +1,60 @@
+#Adapted from https://gist.githubusercontent.com/ctron/4764c0c4c4ea0b22353f2a23941928ad/raw/eb5bfe315a91b7f9f74a928951b8dec60b67c2f4/tekton-cleanup.yaml
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tkn-tasks-cleaner
+  namespace: tekton-pipelines
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: tkn-tasks-cleaner-role
+  namespace: tekton-pipelines
+rules:
+  - apiGroups: ["tekton.dev"]
+    resources: ["taskruns"]
+    verbs: ["delete", "get", "watch", "list"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: tkn-tasks-cleaner-to-cleaner
+  namespace: tekton-pipelines
+roleRef:
+  kind: Role
+  name: tkn-tasks-cleaner-role
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+  - kind: ServiceAccount
+    name: tkn-tasks-cleaner
+    namespace: tekton-pipelines
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cleanup-taskruns
+  namespace: tekton-pipelines
+spec:
+  schedule: "15 * * * *"
+  successfulJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          serviceAccount: tkn-tasks-cleaner
+          containers:
+            - name: kubectl
+              image: bitnami/kubectl:latest
+              env:
+                - name: NUM_TO_KEEP
+                  value: "1"
+              command:
+                - /bin/bash
+                - -c
+                - |
+                    TO_DELETE="$(kubectl get taskrun -o jsonpath='{range .items[?(@.status.completionTime)]}{.status.completionTime}{" "}{.metadata.name}{"\n"}{end}' | sort | head -n -${NUM_TO_KEEP} | awk '{ print $2}')"
+                    test -n "$TO_DELETE" && kubectl delete taskrun ${TO_DELETE} || true
+...

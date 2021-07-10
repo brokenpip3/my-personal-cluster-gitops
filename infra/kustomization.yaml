@@ -8,3 +8,5 @@ resources:
 - k8s-tetkon-pipelines.yaml
 - k8s-tetkon-triggers.yaml
 - k8s-tetkon-interceptors.yaml
+- utils/cronjob-pipelinesrun-cleanup.yaml
+- utils/cronjob-taskrun-cleanup.yaml
