@@ -23,6 +23,7 @@ spec:
     chart:
         spec:
             chart: cert-manager
+            version: v1.3.1
             sourceRef:
                 kind: HelmRepository
                 name: jetstack
@@ -59,6 +60,8 @@ metadata:
 spec:
     interval: 10m
     releaseName: cert-manager-ovh
+    dependsOn:
+    - name: cert-manager
     chart:
         spec:
             chart: /deploy/cert-manager-webhook-ovh/
