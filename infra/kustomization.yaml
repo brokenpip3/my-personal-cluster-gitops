@@ -7,3 +7,4 @@ resources:
 - secret-certmanager.yaml
 - k8s-tetkon-pipelines.yaml
 - k8s-tetkon-triggers.yaml
+- k8s-tetkon-interceptors.yaml
