@@ -1,0 +1,54 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+    name: nfs-sc
+    namespace: kube-system
+spec:
+    interval: 10m
+    releaseName: nfs-sc
+    chart:
+        spec:
+            chart: nfs-subdir-external-provisioner
+            sourceRef:
+                kind: HelmRepository
+                name: kubernetes-sigs-nfs
+                namespace: flux-system
+            interval: 10m
+    values:
+        nfs:
+            path: /DATA/k8s/storage/gitops-nfs
+            server: ENC[AES256_GCM,data:JUGJPc8XO2stCjOaZbM=,iv:7srnjqcMEHfK5Eym24kdXrVPP6XOrdM+4A+F2VYq2DI=,tag:IzfYez8ylqP9u5USp7P0zA==,type:str]
+        storageClass:
+            defaultClass: true
+            name: nfs-sc
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2021-07-10T21:44:23Z"
+    mac: ENC[AES256_GCM,data:4cCqlBD3Bi8U+JdMfedPtuWWtmkLyd4D3CvrS+PAmxTXm8PDQBl8Sq6lBJzZl3x/Fekp8SdXZtZW2VOHmgni9P096xdX3DbOzVUT/l/EOXG7vftcAMuD5+1mSLYl8UvA3w2MspazbXAQ+up4w7esxdy4jm8BZBhY0odJbWXiILY=,iv:EVlyYqniK89yxR9VWMQMupBzOORX+oxPdJf1vS6umG8=,tag:e7RQDwZ/8qFkkjsl1hoNsA==,type:str]
+    pgp:
+        - created_at: "2021-07-10T21:44:23Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5ARAAkYd0f1I1M+Ux/e/kLO8hPARNFXM2rRTzK9DiSa/jhY+f
+            ojkK0JjDkBnczkZN4kvLISaqvo27zdNMjuj/YKzlR1epq9XyeXlrICawsGQ35KLm
+            SQ3+H87jU3qgrTgMksVRFKKqp+i8y0fmkTb+1lrecVsw7jpHkrl10t/43cC1J/NJ
+            Y5JVzREq8u1PYmmKB3wbRsk1YiHLlbRQtL4JoA6prRB/qeeXFLrgXubEfpV7M9C2
+            Fyhpp3ISDlMcgSzY7ep2UsU+S5s1JekuE5q/wBYo05h1SKbgoygWhen3uC5bFtDK
+            u4uD/tM+YTkuWLXL7hTPXFJjQB0eoty1LgwrN0Y+1JeQ8m1OBBm0l4Fq1itnawIi
+            aC8/bOlOIfMfLmbH/wzA33gmfbDm70wcuBDhgiBt5oZLcxh96zHjaBnArORVpHnl
+            fhD+D44sc12OMQgi3o94eZWJ6ahiXgTzfXSQSqtfxKeuI5ymFOclaTsEh4cQBAzO
+            OQ8/6wjTvS42DhfCHT1mXtK6FCgSa//g6ws212oplKUqnane2z9wDaPH3Z5b0JLJ
+            cFxiIqa30S5X4HbZaevRqUcRQCB5QGkoAsGr3XCYbphEku8r1/i5MJziSh5ZNHth
+            03niav7csJ5RRrf+oAzGKhQF8T3FNe1jpEQjbRGnEeTP0UGR6fwZLxnC1mD+L8rS
+            UAFJkmXUTR/q3STu0cdzz7TI2CNMD+W6esr4Y37lnpm0KpDoUxAQkoflhJfXDBWJ
+            xNXZSUppwIkHhNrjpVJYOgN16J970pslIK1BNLfddjsi
+            =k+qX
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server)$
+    version: 3.7.1
