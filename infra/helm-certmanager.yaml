@@ -1,0 +1,98 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: cert-manager
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+    name: jetstack
+    namespace: flux-system
+spec:
+    interval: 5m
+    url: https://charts.jetstack.io
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+    name: cert-manager
+    namespace: cert-manager
+spec:
+    interval: 10m
+    releaseName: cert-manager
+    chart:
+        spec:
+            chart: cert-manager
+            sourceRef:
+                kind: HelmRepository
+                name: jetstack
+                namespace: flux-system
+            interval: 10m
+    values:
+        installCRDs: true
+        resources:
+            requests:
+                cpu: 200m
+                memory: 128Mi
+        prometheus:
+            enabled: false
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+    name: cert-manager-ovh
+    namespace: flux-system
+spec:
+    interval: 1m
+    url: https://github.com/baarde/cert-manager-webhook-ovh
+    ref:
+        branch: master
+    ignore: |
+        /*
+        !/deploy/cert-manager-webhook-ovh/
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+    name: cert-manager-ovh
+    namespace: cert-manager
+spec:
+    interval: 10m
+    releaseName: cert-manager-ovh
+    chart:
+        spec:
+            chart: /deploy/cert-manager-webhook-ovh/
+            sourceRef:
+                kind: GitRepository
+                name: cert-manager-ovh
+                namespace: flux-system
+            interval: 10m
+    values:
+        groupName: acme.k8s.brokenpip3.com
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: cert-manager-webhook-ovh:secret-reader
+  namespace: cert-manager
+rules:
+- apiGroups: [""]
+  resources: ["secrets"]
+  resourceNames: ["ovh-credentials"]
+  verbs: ["get", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: cert-manager-webhook-ovh:secret-reader
+  namespace: cert-manager
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: cert-manager-webhook-ovh:secret-reader
+subjects:
+- apiGroup: ""
+  kind: ServiceAccount
+  name: cert-manager-ovh-cert-manager-webhook-ovh
+  namespace: cert-manager
+...
