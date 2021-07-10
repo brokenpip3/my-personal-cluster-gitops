@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
 - helm-metric-server.yaml
 - helm-nginxinc-ingress-controller.yaml
-- secret-certmanager.yaml
 - helm-certmanager.yaml
+- secret-certmanager.yaml
