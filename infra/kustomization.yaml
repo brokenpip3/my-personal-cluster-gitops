@@ -5,4 +5,5 @@ resources:
 - helm-nginxinc-ingress-controller.yaml
 - helm-certmanager.yaml
 - secret-certmanager.yaml
-- k8s-tetkon-pipelines.yaml 
+- k8s-tetkon-pipelines.yaml
+- k8s-tetkon-triggers.yaml
