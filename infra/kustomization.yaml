@@ -10,5 +10,5 @@ resources:
 - k8s-tetkon-interceptors.yaml
 - utils/cronjob-pipelinesrun-cleanup.yaml
 - utils/cronjob-taskrun-cleanup.yaml
-- storage/helm-nfs-storage-class.yaml
-- storage/helm-release-nfs-storage-class.yaml
+- storage/helm-nfs-storage-class-source.yaml
+- storage/helm-nfs-storage-class-release.yaml
