@@ -3,6 +3,9 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: ingress
+  labels:
+    infra.gitops: ingress-controller
+    promethues: scrape
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
@@ -37,4 +40,6 @@ spec:
       service:
         create: false
       hostNetwork: true
+    prometheus:
+      create: true
 ...
