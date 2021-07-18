@@ -28,17 +28,23 @@ spec:
       infra.gitops: prometheus
     defaultRules:
       rules:
+        alertmanager: false
         kubeApiserverAvailability: false
         kubeApiserverError: false
         kubeApiserverSlos: false
         network: true
+        kubeScheduler: false
     grafana:
       enabled: false
     kubeProxy:
       enabled: false
+    kubeControllerManager:
+      enabled: false
+    kubeScheduler:
+      enabled: false
     prometheus-node-exporter:
       extraHostVolumeMounts:
-        - name: text-file-collector
+        - name: text-file
           hostPath: /var/lib/node_exporter
           mountPath: /var/lib/node_exporter
           readOnly: true
