@@ -56,9 +56,21 @@ spec:
     prometheus:
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: true
+        serviceMonitorNamespaceSelector:
+          matchLabels:
+            prometheus: scrape
         ruleSelectorNilUsesHelmValues: true
+        ruleSelectorNamespaceSelector:
+          matchLabels:
+            prometheus: scrape
         podMonitorSelectorNilUsesHelmValues: true
+        podMonitorNamespaceSelector:
+          matchLabels:
+            prometheus: scrape
         probeSelectorNilUsesHelmValues: true
+        probeSelectorNamespaceSelector:
+          matchLabels:
+            prometheus: scrape
         retention: 7d
         storageSpec:
           volumeClaimTemplate:
