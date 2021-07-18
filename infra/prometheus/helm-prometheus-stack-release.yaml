@@ -5,6 +5,7 @@ metadata:
   name: monitoring
   labels:
     infra.gitops: prometheus
+    prometheus: scrape
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -55,19 +56,19 @@ spec:
         - --collector.filesystem.ignored-fs-types=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$
     prometheus:
       prometheusSpec:
-        serviceMonitorSelectorNilUsesHelmValues: true
+        serviceMonitorSelectorNilUsesHelmValues: false
         serviceMonitorNamespaceSelector:
           matchLabels:
             prometheus: scrape
-        ruleSelectorNilUsesHelmValues: true
+        ruleSelectorNilUsesHelmValues: false
         ruleSelectorNamespaceSelector:
           matchLabels:
             prometheus: scrape
-        podMonitorSelectorNilUsesHelmValues: true
+        podMonitorSelectorNilUsesHelmValues: false
         podMonitorNamespaceSelector:
           matchLabels:
             prometheus: scrape
-        probeSelectorNilUsesHelmValues: true
+        probeSelectorNilUsesHelmValues: false
         probeSelectorNamespaceSelector:
           matchLabels:
             prometheus: scrape
