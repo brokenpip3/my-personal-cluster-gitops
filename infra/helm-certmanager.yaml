@@ -36,7 +36,9 @@ spec:
                 cpu: 200m
                 memory: 128Mi
         prometheus:
-            enabled: false
+            enabled: true
+            servicemonitor:
+              enabled: true
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository

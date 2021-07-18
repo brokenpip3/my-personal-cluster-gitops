@@ -60,11 +60,22 @@ spec:
         podMonitorSelectorNilUsesHelmValues: true
         probeSelectorNilUsesHelmValues: true
         retention: 7d
-    prometheusOperator:
-      # namespaces:
-      #    releaseNamespace: true
-      #    additional:
-      #      - kube-system
-      #      - flux-system
-      #      - ingress
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: nfs-sc
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 10Gi
+    alertmanager:
+      alertmanagerSpec:
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: nfs-sc
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 1Gi
 ...
