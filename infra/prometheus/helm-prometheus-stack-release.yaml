@@ -1,0 +1,57 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+  labels:
+    infra.gitops: prometheus
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: promethues-stack
+  namespace: monitoring
+spec:
+  interval: 10m
+  releaseName: prom
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: '16.14.1'
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+      interval: 10m
+  values:
+    commonLabels:
+      infra.gitops: prometheus
+    defaultRules:
+      rules:
+        kubeApiserverAvailability: false
+        kubeApiserverError: false
+        kubeApiserverSlos: false
+        network: true
+    grafana:
+      enabled: false
+    kubeProxy:
+      enabled: false
+    prometheus-node-exporter:
+      extraHostVolumeMounts:
+        - name: text-file-collector
+          hostPath: /var/lib/node_exporter
+          mountPath: /var/lib/node_exporter
+          readOnly: true
+          mountPropagation: HostToContainer
+      extraArgs:
+        - --collector.textfile.directory=/var/lib/node_exporter
+        - --collector.filesystem.ignored-mount-points=^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/.+)($|/)
+        - --collector.filesystem.ignored-fs-types=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$
+    prometheusOperator:
+        namespaces:
+          releaseNamespace: true
+          additional:
+            - kube-system
+            - flux
+            - ingress
+...
