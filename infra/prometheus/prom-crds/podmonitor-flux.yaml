@@ -1,0 +1,29 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: flux2-upstream
+  namespace: flux
+spec:
+  interval: 10m
+  url: https://github.com/fluxcd/flux2
+  ref:
+    branch: main
+  ignore: |
+    /*
+    !/manifests/monitoring/monitoring-config
+    /manifests/monitoring/monitoring-config/kustomization.yaml
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: podmonitor-flux
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./manifests/monitoring/monitoring-config
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux2-upstream
+...

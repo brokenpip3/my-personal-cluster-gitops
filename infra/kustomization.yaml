@@ -15,3 +15,4 @@ resources:
 - storage/helm-nfs-storage-class-release.yaml
 - prometheus/helm-prometheus-stack-release.yaml
 - prometheus/helm-prometheus-stack-source.yaml
+- prometheus/prom-crds/
