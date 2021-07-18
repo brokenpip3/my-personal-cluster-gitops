@@ -10,9 +10,9 @@ resources:
 - k8s-tetkon-interceptors.yaml
 - utils/cronjob-pipelinesrun-cleanup.yaml
 - utils/cronjob-taskrun-cleanup.yaml
-- utils/cronjob-etcd-backup.yaml
 - storage/helm-nfs-storage-class-source.yaml
 - storage/helm-nfs-storage-class-release.yaml
+- utils/cronjob-etcd-backup.yaml
 - prometheus/helm-prometheus-stack-release.yaml
 - prometheus/helm-prometheus-stack-source.yaml
-- prometheus/prom-crds/
+- prometheus/prom-crds/*.yaml
