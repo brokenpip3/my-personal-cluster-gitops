@@ -13,6 +13,4 @@ resources:
 - storage/helm-nfs-storage-class-source.yaml
 - storage/helm-nfs-storage-class-release.yaml
 - utils/cronjob-etcd-backup.yaml
-- prometheus/helm-prometheus-stack-release.yaml
-- prometheus/helm-prometheus-stack-source.yaml
-- prometheus/prom-crds/*.yaml
+- prometheus/
