@@ -55,12 +55,16 @@ spec:
         - --collector.filesystem.ignored-fs-types=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$
     prometheus:
       prometheusSpec:
+        serviceMonitorSelectorNilUsesHelmValues: true
+        ruleSelectorNilUsesHelmValues: true
+        podMonitorSelectorNilUsesHelmValues: true
+        probeSelectorNilUsesHelmValues: true
         retention: 7d
     prometheusOperator:
-        namespaces:
-          releaseNamespace: true
-          additional:
-            - kube-system
-            - flux-system
-            - ingress
+      # namespaces:
+      #    releaseNamespace: true
+      #    additional:
+      #      - kube-system
+      #      - flux-system
+      #      - ingress
 ...
