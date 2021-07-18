@@ -61,6 +61,6 @@ spec:
           releaseNamespace: true
           additional:
             - kube-system
-            - flux
+            - flux-system
             - ingress
 ...
