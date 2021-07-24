@@ -6,5 +6,8 @@
 * nginxinc ingress-controller
 * cert-manager
 * ovh-cert-manager-webhook
+* prometheus stack
 
 ## Apps
+
+TDB

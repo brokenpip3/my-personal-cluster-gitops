@@ -10,7 +10,12 @@ spec:
   sourceRef:
     kind: GitRepository
     name: tekton-operator-raw
-  timeout: 2m0s
+  timeout: 3m0s
   validation: client
+  healthChecks:
+  - apiVersion: apps/v1
+    kind: Deployment
+    name: tekton-operator
+    namespace: tekton-operator
   dependsOn:
     - name: infra
