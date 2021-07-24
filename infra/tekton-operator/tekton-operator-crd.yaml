@@ -3,15 +3,16 @@ apiVersion: operator.tekton.dev/v1alpha1
 kind: TektonConfig
 metadata:
   name: config
+  namespace: tekton-pipelines
 spec:
   targetNamespace: tekton-pipelines
   profile: basic
-  pipeline:
-    default-service-account: "default"
-  pruner:
-    resources:
-      - taskrun
-      - pipelinerun
-    keep: 3
-    schedule: "00 10 * * *"
+#  pipeline:
+#    default-service-account: "default"
+#  pruner:
+#    resources:
+#      - taskrun
+#      - pipelinerun
+#    keep: 3
+#    schedule: "00 10 * * *"
 ...

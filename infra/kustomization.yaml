@@ -12,5 +12,5 @@ resources:
 - tekton-operator/tekton-operator-source.yaml
 - tekton-operator/tekton-operator.yaml
 - tekton-operator/tekton-operator-crd.yaml
-#- utils/cronjob-pipelinesrun-cleanup.yaml
-#- utils/cronjob-taskrun-cleanup.yaml
+- utils/cronjob-pipelinesrun-cleanup.yaml
+- utils/cronjob-taskrun-cleanup.yaml
