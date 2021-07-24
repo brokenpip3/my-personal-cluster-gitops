@@ -1,0 +1,15 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: tekton-pipelines-raw
+  namespace: flux-system
+spec:
+  interval: 10m
+  url: https://github.com/brokenpip3/tekton-pipelines-raw-manifests
+  ref:
+    tag: v0.23.0-2
+  ignore: |
+    .github/
+    hack/
+...
