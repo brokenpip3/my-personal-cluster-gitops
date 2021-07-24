@@ -7,6 +7,8 @@ metadata:
 spec:
   interval: 10m
   url: https://github.com/brokenpip3/tekton-operator-raw-manifests
+  ref:
+    tag: v0.23.0-2
   ignore: |
     .github/
     hack/
