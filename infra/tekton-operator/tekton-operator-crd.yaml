@@ -6,7 +6,7 @@ metadata:
   namespace: tekton-operator
 spec:
   targetNamespace: tekton-pipelines
-  profile: basic
+  profile: all
 #  pipeline:
 #    default-service-account: "default"
 #  pruner:
