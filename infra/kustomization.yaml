@@ -9,10 +9,7 @@ resources:
 - storage/helm-nfs-storage-class-release.yaml
 - utils/cronjob-etcd-backup.yaml
 - prometheus/
-#- tekton-operator/tekton-operator-source.yaml
-#- tekton-operator/tekton-operator.yaml
-#- tekton-operator/tekton-operator-crd.yaml
 - tekton-pipelines/tekton-pipelines-source.yaml
 - tekton-pipelines/tekton-pipelines.yaml
-- utils/cronjob-pipelinesrun-cleanup.yaml
-- utils/cronjob-taskrun-cleanup.yaml
+#- utils/cronjob-pipelinesrun-cleanup.yaml
+#- utils/cronjob-taskrun-cleanup.yaml
