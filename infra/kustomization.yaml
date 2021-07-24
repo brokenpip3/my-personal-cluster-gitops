@@ -5,9 +5,11 @@ resources:
 - helm-nginxinc-ingress-controller.yaml
 - helm-certmanager.yaml
 - secret-certmanager.yaml
-#- utils/cronjob-pipelinesrun-cleanup.yaml
-#- utils/cronjob-taskrun-cleanup.yaml
 - storage/helm-nfs-storage-class-source.yaml
 - storage/helm-nfs-storage-class-release.yaml
 - utils/cronjob-etcd-backup.yaml
 - prometheus/
+- tekton-operator/tekton-operator-source.yaml
+- tekton-operator/tekton-operator.yaml
+#- utils/cronjob-pipelinesrun-cleanup.yaml
+#- utils/cronjob-taskrun-cleanup.yaml
