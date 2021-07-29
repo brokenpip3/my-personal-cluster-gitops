@@ -13,11 +13,6 @@ spec:
     name: tekton-triggers-raw
   timeout: 3m0s
   validation: client
-#  healthChecks:
-#  - apiVersion: apps/v1
-#    kind: Deployment
-#    name: tekton-pipelines-controller
-#    namespace: tekton-pipelines
   dependsOn:
     - name: infra
 ...
