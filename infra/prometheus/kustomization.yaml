@@ -4,3 +4,4 @@ resources:
 - helm-prometheus-stack-source.yaml
 - helm-prometheus-stack-release.yaml
 - prom-crds/podmonitor-flux.yaml
+- prom-crds/podmonitor-tekton.yaml

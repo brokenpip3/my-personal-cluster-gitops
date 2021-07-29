@@ -11,8 +11,13 @@ spec:
   sourceRef:
     kind: GitRepository
     name: tekton-triggers-raw
+  healthChecks:
+    - kind: Deployment
+      name: tekton-triggers-controller
+      namespace: tekton-pipelines
   timeout: 3m0s
   validation: client
   dependsOn:
     - name: infra
+    - name: tekton-pipelines-raw
 ...
