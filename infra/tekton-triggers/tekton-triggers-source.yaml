@@ -1,0 +1,15 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: tekton-triggers-raw
+  namespace: flux-system
+spec:
+  interval: 10m
+  url: https://github.com/brokenpip3/tekton-triggers-raw-manifests
+  ref:
+    tag: v0.15.0
+  ignore: |
+    .github/
+    hack/
+...

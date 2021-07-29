@@ -11,5 +11,7 @@ resources:
 - prometheus/
 - tekton-pipelines/tekton-pipelines-source.yaml
 - tekton-pipelines/tekton-pipelines.yaml
-#- utils/cronjob-pipelinesrun-cleanup.yaml
-#- utils/cronjob-taskrun-cleanup.yaml
+- tekton-triggers/tekton-triggers-source.yaml
+- tekton-triggers/tekton-triggers.yaml
+- utils/cronjob-pipelinesrun-cleanup.yaml
+- utils/cronjob-taskrun-cleanup.yaml
