@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./overlays
+  path: ./deploy
   prune: true
   sourceRef:
     kind: GitRepository
@@ -18,6 +18,14 @@ spec:
     kind: Deployment
     name: tekton-pipelines-controller
     namespace: tekton-pipelines
+  patchesStrategicMerge:
+  - apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: tekton-pipelines
+      labels:
+        infra.gitops: tekton
+        prometheus: scrape
   dependsOn:
     - name: infra
 ...
