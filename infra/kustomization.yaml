@@ -15,3 +15,4 @@ resources:
 - tekton/tekton-triggers/tekton-triggers.yaml
 - utils/cronjob-pipelinesrun-cleanup.yaml
 - utils/cronjob-taskrun-cleanup.yaml
+- datastores/postgres-zalando-operator.yaml
