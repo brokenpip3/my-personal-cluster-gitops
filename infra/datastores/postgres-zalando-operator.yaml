@@ -30,6 +30,7 @@ spec:
     releaseName: pg-op
     dependsOn:
     - name: nfs-sc
+      namespace: kube-system
     chart:
         spec:
             chart: /charts/postgres-operator/
