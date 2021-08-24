@@ -27,7 +27,7 @@ metadata:
     namespace: postgres-operator
 spec:
     interval: 10m
-    releaseName: pg-op
+    releaseName: pg
     dependsOn:
     - name: nfs-sc
       namespace: kube-system
