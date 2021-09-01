@@ -1,0 +1,20 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: basearch-docker-build
+spec:
+  serviceAccountName: quay-io-service
+  taskRef:
+    name: build-docker-image-from-git
+  params:
+    - name: pathToDockerFile
+      value: Dockerfile
+  resources:
+    inputs:
+      - name: docker-source
+        resourceRef:
+          name: basearch-git
+    outputs:
+      - name: builtImage
+        resourceRef:
+          name: basearch-image
