@@ -1,0 +1,45 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+    name: minio-tenant-s3-cert
+    namespace: minio
+spec:
+    dnsNames:
+        - ENC[AES256_GCM,data:N1N9Fqn+5G2gwLZIvpcSWcAyGSg=,iv:RqXWYm/0pGWt02T/lLZ5c5JztZJKuSqjS9JNFvFnDzE=,tag:rUTwx3HKb/YQlsS4oYit6Q==,type:str]
+        - ENC[AES256_GCM,data:vJysQJoqHTPbFcs9lV/qdXUbbf+/sSLfIJtNNvA=,iv:MRyVKOGInuIawSBsuF023Tf3qKY8MBROliw/nLwYvMU=,tag:8H9loYlP7bYTeVYgC3slrg==,type:str]
+        - ENC[AES256_GCM,data:sLQvqVq+yYVRATv3rvFHxby8Ggf/UIyhnJuGCg==,iv:Hee+cuNVynDkw+JlCvdML6dnFPoGZGVRnOdV83EGa7s=,tag:00hBCOOabUwX57Q7I34YGQ==,type:str]
+    issuerRef:
+        name: letsencrypt-ovh
+        kind: ClusterIssuer
+    secretName: minio-tenant-s3-cert
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2021-09-03T20:41:07Z"
+    mac: ENC[AES256_GCM,data:XwCUEyiZqCukWG53aXfIVqg//tgw+CuapO1RftG0QwH2mlkVSoBHIKX7OoVV0aPpVaJRnnNp01RNTbBkheRlleAk9NQXLrtBGbLqlGu3GWq1KR8tTyXR9q91G1fh1P2SNwDLbBLuffA67p/sKX61lOV4bAdbAIeJoUnh0U+dzcc=,iv:GIzifJ7Of4YiZ7tREtivxTzOBWhOlcYN9+GAyJxQeLw=,tag:wYWus/ttySCDe6y2hLo2dw==,type:str]
+    pgp:
+        - created_at: "2021-09-03T20:41:07Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5ARAAkRk09LQ62uBkQpI0UsxEYVRt3x+i1/EucyqS02mfIOiW
+            D7tS/frA4BMEwdm95SQyBso8bJ0cg8Gwmbi+y/VCpDaqhyduleJVmx1S20X5A4kv
+            1XjxynJMVQ/Q2m7YAqaxt5CoI7ViFJn03FyH2XaQ80+8Pd+HfchNCBlShfdZFz07
+            b3Tl1udz1TYeUZjCIrbf4InFeyJvgnG4H/6rdl/lO8jI1wlC6f6fHzGB1p2uSuCN
+            n64FGcBD76c7pUA5WrnHVZCxclQu4ZDPGI1s83LGjPjx43zvg+pqCpNHicPQD6Sj
+            UEF9xe5FoYJgJ7hf0Pl9fJRWPizSoOP9q2TwCQuKTl+5HCU0EdX58GQQwfe7tlxS
+            cXIQFNJQeNNTTM1NXmiipfy0y3XsiNZOxllUKFhDb4X6fVjLcQV4EFxgFBT3Glm8
+            LzuQnAGX365PWAlyDE8zAlPxKkPg4D1hSWX4TzwiMLg/cH0Cq97IVVN2q6GfaQ4T
+            pvI0T6aDL+Ey3BnRFyXhdOXdwKPdFai2jvS6D38UMMz6fEP/1CScA61GzMsAwMwX
+            ZNcZifndAdrqEqQamt65Rp0LcCpLAFQ4IoQsnglpHNRd21IVLkh24oO5XyA0ONgq
+            TTXoZ0XYyv/jYXqBfvfTR3sBsJQEcqjwUQjp1SIaB7SXzZUYxLdALwA3tMoljZvS
+            UAGJ6NM6/iWrmiC21JsvUDF0yH5JmrgbLPPhWynobWP5dnmsisYszQeNe2DwwOGD
+            9fKVR5C2g9dYtF7BN6hh6UOtaMSkGHrL28TLGpWg+sms
+            =q+se
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|dnsNames)$
+    version: 3.7.1

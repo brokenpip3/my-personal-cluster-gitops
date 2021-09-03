@@ -1,0 +1,59 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: ingress-minio
+    namespace: minio
+    annotations:
+        kubernetes.io/ingress.class: nginx
+        nginx.org/ssl-services: minio
+        nginx.org/client-max-body-size: 0m
+        nginx.org/rewrites: serviceName=minio rewrite=/
+        nginx.org/server-snippets: |
+            chunked_transfer_encoding off;
+spec:
+    tls:
+        - hosts:
+            - ENC[AES256_GCM,data:toYRbCVFK+w864hm4RLJnVuqIfY=,iv:fyWRkSxnOjRDgW5H0QHJ2K0kAlusTNqg8OWAaTkvY40=,tag:IepdQQcf9RqUkMtGzAS13w==,type:str]
+          secretName: minio-tenant-s3-cert
+    rules:
+        - host: ENC[AES256_GCM,data:sWubYLR3h2DuwDAWBt6xCSvIsoI=,iv:NUkb/xUvUIEUsRmEH71dHc1poH2WjdWKmLEiizpNfEI=,tag:AI0TSxZYFbdNLyhash3ElA==,type:str]
+          http:
+            paths:
+                - path: /
+                  pathType: Prefix
+                  backend:
+                    service:
+                        name: minio
+                        port:
+                            number: 443
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2021-09-03T20:42:00Z"
+    mac: ENC[AES256_GCM,data:OLwio/WnUO+YseRAQmI4veKnyope/wxQcfgSYEAL/Sh4uFIrbGPCT1FgO/ntK0XUS8jPO7rsOjEgHvvIMrorX0C6NbNPGWqT8Ec9AVZ5EHm3mavIJjBzCdwRs8Wbgoc+fpS1S12MoK6521B1i/bC/rDQrY7bv88Gno86FZwqZ84=,iv:DVg+R6JHpxz7lzNjCKiDylbTcnIJTPi/DXuEpUdEMWw=,tag:JGRjfosUn0zHqtowMhmlZw==,type:str]
+    pgp:
+        - created_at: "2021-09-03T20:42:00Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5AQ/9Hu9vl+EGz1DSYU4p8dLXlJ1yDQJSGbZ2/YXJXctl6uQN
+            Gak2/o9dEVG2uyR177TK3QGzxo/dZPu6jMlX9QovuXqFpDdHKjrGj+P7hsL1Bx6P
+            fe3qxmGsxuTu8uE1dV1+42iuBuV7qFBo41aO/oTGL9jXGnw/ejtecULyFrew1xl6
+            fkLIJDreSfS57ijtXlzonw3mbrR2fd+WgUKbC6W9RWmEAhzXC6OqQR+lCzNydmB4
+            G4QTohSbpdFQlG6zSdfIfRqONjNJ6DI1oQTOnd1ewBHGqTH6/4GMvcWXU9mtQe/w
+            JLjnUTullLYOUfAJz/MkHImGtZ4p/aJtBtGt72Sn/dNCR5LXwmjnYoaD/xTQoQkJ
+            JpzGhyZQVf3oG4/+CGjxbL+scl+28cAjYVkLAgJ0XlaUG9utcH80WHpDE9hHdeXT
+            6pUvZRoPIvttLQrhpoNkYnGoVn2RaB9cCUIAh302m0AGf24lAuolfR8JHEmz4R0t
+            pkRetdgZcWNGnJqktDNhom6wyp9q3FAnXVmctn51v6cOqlmlfJtjcpuLYgbk9Qip
+            J7XjUWhv1eJ4ubOt3pc6ohPMRAwf//kVja/rHz2bYTqOPkdi1cCO0PagtVQSTMrH
+            3s8Iv2vb5Xh+j+4zgzgZb+OcXxrjA423eIcRaMOvz/KkhyNRaa/QrpOVYjrmwdjS
+            UAFbLbtPgGCkJs0hTjABhyTR9ltxgHzroeVEYXVTUgUBPuoT/sutocwn25NexpZ8
+            3nReMWJdU1ttPM25nv30i5w9IrocN3WrcHAb+ApgHRFk
+            =8ZG1
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|dnsNames)$
+    version: 3.7.1
