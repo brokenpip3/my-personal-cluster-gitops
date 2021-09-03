@@ -1,0 +1,55 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    annotations:
+        kubernetes.io/ingress.class: nginx
+        cert-manager.io/cluster-issuer: letsencrypt-ovh
+    name: gitea
+    namespace: gitea
+spec:
+    rules:
+        - host: ENC[AES256_GCM,data:b6+xG9jBIFP4SGC9Svkz0fI68Yw=,iv:oJr+tqCfN4ZKtHEWxPiS4BKpeiKznPjU4KvsrFe90bA=,tag:JW/p2dOhlk4fv9szeutAAw==,type:str]
+          http:
+            paths:
+                - backend:
+                    service:
+                        name: gitea-service
+                        port:
+                            number: 3000
+                  path: /
+                  pathType: ImplementationSpecific
+    tls:
+        - hosts:
+            - ENC[AES256_GCM,data:XFB01bqn3uMDrbffmjt+ZN0vcz0=,iv:P1psnHdsIM84/d1NpyBr51NKjzLePFb9/KmyCaIRfxI=,tag:TxRuxIExJd33KPgFBTAVTg==,type:str]
+          secretName: gitea-ingress-tls
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2021-09-03T21:10:44Z"
+    mac: ENC[AES256_GCM,data:VPmpw9xGZxyud5NK9ljMHrJLIL8OtyEqKxevowLSy6+MDk9u94heL7T2EgX5oisI2NBUCwS3CjHBBnWhUoH4egeCVl0zKkau4O8hxXqbdIHrP+SuEtLolMR35YeJofZnF9rsJ6JoQYwlt7gf+3Fn95rjVO0JrIvD22ZOCJ4PgSE=,iv:OqCUPRg03ihZbhN5NdpDhHXrluhxPQFuuW88oZRyOpc=,tag:t0wvo4EH1dmXA3Qh3p+3iQ==,type:str]
+    pgp:
+        - created_at: "2021-09-03T21:10:44Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5AQ/9GEpxSK2l478bIBPxJdunFNxjHbtVRa4242eR5PK1LfQA
+            BsGL1d22+gS5kSgWZouPl3X5+KTK0Hn2UdYslQGgdMVCH+AQWFNu/PK1kXIBX57h
+            +PhKy3X7bt1DIsD3JP/CFgUqWluxGV4VDITHfP2NNmi0u+I6JzKR2bObwVleGj+D
+            pjKJTdvdwkEcAs4hYyAD8n3IsfFtrQNuG2ouPuiNeTfvQqb/qxn+4MlbUkxduUw7
+            SaI/hoI2r/T6vlf7FG66WwXJjx71TGbGfstGzeRdjsWanPcwEzUbWalawUiHFvr/
+            96WJfbh+yRq0tlSyWGuKvYrgSeQ/aKni3BfuOPeCJzPDVAbxEZMoPep92UZizBSL
+            uZCPIhZ9gybnrSECv1oyeXIE150a6X3L4yySdK++qkAl4slw30PHtbugQdax5rEX
+            f6Y/mELYUuWDSM0HAmxaHy7akbxxpueTO7D8yzHrOa7mWlr+wgwVxS/Mpigq/f52
+            ITaxXLgS/a51drAwYAcfTVDFyk3vxcyfD7kM1AuJDvFhMQ1VRJYimA1EgmnmvSUE
+            ytIYJclabBNJTML3Swjm7a4dtp9mKi1VX47NckPk9aJaoJmlvY0Ax7lZcd2wUrJG
+            fIvHLERpZ3m/t0gmvrzGWyJwckVjA4WFU+Oj2uwYPJ0dlRJWA/5GpnuKhdv+fV3S
+            UAG63qS6zMRwZ5SIcw2uCo59+INR12a9SEmYRUsZwmKBGjaDccvKEY619lHBrjLa
+            f58IBVWLJXfjnwIaATOVGXvzE1uAJb0VmyBl0x1N4Jo7
+            =YKE7
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|dnsNames)$
+    version: 3.7.1

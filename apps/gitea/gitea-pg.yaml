@@ -1,0 +1,19 @@
+apiVersion: acid.zalan.do/v1
+kind: postgresql
+metadata:
+  name: gitea-gitea
+  namespace: gitea
+spec:
+  databases:
+    giteadb: gitea
+  enableLogicalBackup: false
+  numberOfInstances: 1
+  postgresql:
+    version: "10"
+  teamId: gitea
+  users:
+    gitea:
+    - superuser
+    - createdb
+  volume:
+    size: 5Gi
