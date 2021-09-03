@@ -7,7 +7,17 @@ metadata:
     namespace: gitea
 spec:
     rules:
-        - host: ENC[AES256_GCM,data:ybP1GDWf6NTjipErq2/iY0D/s3Gx,iv:PSFYVGN4+UvGdFhhwN7kYJmFuLn+2sFt2MUgeFyURaI=,tag:mRJipQmhBPw1hi9ZM78Dww==,type:str]
+        - host: ENC[AES256_GCM,data:4nM8qclh/9YAn2Bh6RC0NQZwSP7U,iv:7k4FXYkb93foaHahvPo5uFzG86XLrUgzBhDKmHEGmuI=,tag:0LuSLtzg3IEx+qh351/mOw==,type:str]
+          http:
+            paths:
+                - backend:
+                    service:
+                        name: gitea-service
+                        port:
+                            number: 3000
+                  path: /
+                  pathType: ImplementationSpecific
+        - host: ENC[AES256_GCM,data:oYpH0lfcgtFGCAuZgIWN2U3Om9Q=,iv:QBPwxwceEM0LByY8SOSYSKR2EF9erYAH6qMZ4VVZlaU=,tag:nFPqqYQWo5oRcYxakYM85w==,type:str]
           http:
             paths:
                 - backend:
@@ -19,7 +29,10 @@ spec:
                   pathType: ImplementationSpecific
     tls:
         - hosts:
-            - ENC[AES256_GCM,data:IIAWUa7g7TiOPB4YrvRAdiGGGzE3,iv:PVUZRzISncuANjDFo4lA3RSvx7qVMAqbmVcUhdGNeUU=,tag:A5brbkV8d8BNflabGiNAXw==,type:str]
+            - ENC[AES256_GCM,data:BpQpY4sLAjlfZ5Z/gYkFCCR4ERkx,iv:XwlJEzTZTngEwZEFrQ1Fx+4kI9J06Qk8KQrtvxWp7Uc=,tag:JaDYOko3+M6Z60cX3bYJcA==,type:str]
+          secretName: gitea-ingress-tls-cert
+        - hosts:
+            - ENC[AES256_GCM,data:xWjk5YcU1KrdpeSS1t6QyetNmU0=,iv:ZXlYQyXb/8vT/MHjmxa59S/4uZJgoGO1NOJbaqwtRXQ=,tag:Ry9w8DXvXvgafGoqZvtOyg==,type:str]
           secretName: gitea-ingress-tls-cert
 sops:
     kms: []
@@ -27,27 +40,27 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2021-09-03T21:21:29Z"
-    mac: ENC[AES256_GCM,data:INuvDksuzU8mladqG1gR6zRYHsQQotH9M+aaJnHTB010wAW+4PAt3tDfJe6JfdteBiYNKFVWsh70nr361SqxQhMcVNakI8PiYzJv+3YV6U+nJ7RbqPwW4DxBwPVagbt3O+j4VuxB2BEWkLVo97mQb2E0gVIW8X5GwGWXjfAoy3c=,iv:A7Hb+WwBtCIMKs6a/WFx87g83tGDQfaWqEt366Fm/m4=,tag:eOuhwJ1xaAg+5fax/Wl6dA==,type:str]
+    lastmodified: "2021-09-03T22:04:11Z"
+    mac: ENC[AES256_GCM,data:Bma5O2e8Yr6M33FMilIVP2J5v14TJ+dI26/eKdkkn/7eV7WBhIpI/cREfOplQrYg6SNi3T63GBV4N7gvZSqduI20fE7Vx+N6Ycg/YvsGB3uiHi/YBZuGTT5BtvAkWAnwqj+CtEbf4LLD008FKPhRZxeKgDm4ZnVbm28njEuPKkk=,iv:WTiqeN9jHJc+q9iWKX33dYGAtjABzTbbXhT9HCvSu3Y=,tag:qL8dyF9ZE3s7AXmuzUexPA==,type:str]
     pgp:
-        - created_at: "2021-09-03T21:21:29Z"
+        - created_at: "2021-09-03T22:04:07Z"
           enc: |
             -----BEGIN PGP MESSAGE-----
 
-            hQILAwP8FxNnerN5AQ/2Pw/EP0q/xqaZ4TMmLXJ42aHvN33rYns3UKPTjD7xB1zl
-            8szQZ3R5AukoEK2blI+j4rOebX6ai7OEvgGF77hLNkxI5R/zXNmBT3m87lCq8bUC
-            /tsKgoHmftoxmFpDv6gR5+WhcYbkOxIyJyiRv88N9hCXQQZpMUmcFYwPfDrk4p9S
-            Ninn+9ScfN/9LmtYhuzdDkHFnwbNxW4wPMC+X9Pl0tb0JlYIY8sSwMst/qIxDDdK
-            ki/pj8TtvBVyamNXOGzrN4ddrbkMgAXO635bY+d1/NHWHymtk/XOw6s0QTaQREss
-            t1HxFLULI9O6EyMkhOwfiTZBqJ3dgil5hAJxxu4w+ZW/H+iacppKMEzgXnTPJm4D
-            r0c8KewC2ZBeggy2ZsbDQQ1LAULUtDmKTV+TetHAh5s1c+1XAPWRF1YK8M5AG6CX
-            OHZXH+eGsbVoakztgItsFwAcdMEVFUtnbC6g9dPFJIgPzLdjPsr4ZuyBJvvWNz1o
-            TvVdj0UnN5+2m0lNOHnrRGoF14n3TKGUJ0FnvI3ajVEuAxagG1hMIKkU5LQfLIhR
-            0iadgDbX36/eqxjfcDHsMXV08PfBU9aABUE+eUCDTKvIup9sT/JLcuFkZ/ZIBVe2
-            JjSfPEo50aoyGOLhsMwyeRL9KoSvbq9QV9/D9blA1g7v5ywvrA8eGOiH7K+J4dJQ
-            AS5wv8D4Crm9NFWM/q+RrZYW1LQf8V15bNsR0a8aPJdZcaDkIKI516ILnvERc0mm
-            WU69sdEBFtpS2QpZMdnBEaAjVtFZ6Mtf4TJ9n/DwmHU=
-            =0XgA
+            hQIMAwP8FxNnerN5AQ/+Nemc2qi3IZSpIjA94wbdMMJTIdI419HtiahGBAeBSv+K
+            ker8wbi6j/ju2hz4JWzfoKUTIjoG2EA49Yxp53IhFVZwKXoyk99qrPAGxN0rJVQS
+            DvsusDYeJ/KypeqLRRSc5QujZ3zDlqwdvf68Bi+qhHsOHeT5uMNmWzuhhz7FqJ1l
+            AxO1zW+KKIW6e+hgZsXTHI/v7BvtKWHYHQZFMDuJw2h8ftBfDSyGW38b5L7DZU0u
+            rkfMIDNbxpn5sUvan0O29DwP6Ht84zd3HgVH9NDhCYi91TGQT9e1JJYQy470WA7d
+            KpVciNmU5tBAHRHJKEA3jDjgR/GamULwG9a9kYipLE18tF1/wl0ICKTobM23B/lb
+            y4Z2AYBSWdII2+VNsv1o1eIOF0oJrNnQSzX3BvIqjpWl/9+4oKHL/e7WPUPxLeIL
+            k+ItxVjHAXYUZS4ayo222YIPtTtwMECUV4D2z1DgbzDD80e1jvn3tb7sWtZb6WrU
+            2iBD8Fq3qmnxnImjOx2lQ/38L78kC2n+U1bXFn5wqGgcaWw/MYDBh5kqYNX4s72V
+            4rqE4F7xnwLEtXCOYqQqxybYNc3H16K1+d0bZx2RcrG2kT6pHiFDLuH5Y0geid5r
+            tskCJECGfBASvxhOTL0E0jRXjL5RW4a4KUaBY+utCllL7BbuNZ7mR0FVlMHFkHDS
+            UAHuppBEpFCudP5K/a3JH44Zg5akAnNz/cFzQLzeEo6fnOxv3n28JIApQp25yPLy
+            YcvhfcAls1vUGlZO1NDc7+6xQ6KJFrhtMxZmUWWNlP7H
+            =45Cv
             -----END PGP MESSAGE-----
           fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
     encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|dnsNames)$
