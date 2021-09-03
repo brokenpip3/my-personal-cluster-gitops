@@ -37,17 +37,6 @@ spec:
             interval: 10m
     values:
       console:
-        replicaCount: 1
-      tenants:
-        - name: pg-backup
-          namespace: minio
-          pools:
-            - servers: 1
-              volumesPerServer: 1
-              size: 10Gi
-              storageClassName: nfs-sc
-              secrets:
-                enabled: true
-              metrics:
-                enabled: true
+        replicaCount: 0
+      tenants: []
 ...
