@@ -14,6 +14,11 @@ metadata:
   namespace: gitea
 spec:
   storageClassName: nfs-sc
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
