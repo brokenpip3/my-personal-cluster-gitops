@@ -3,6 +3,7 @@ apiVersion: minio.min.io/v2
 kind: Tenant
 metadata:
   name: minio-s3
+  namespace: minio
   labels:
     app: minio
     tenant-scope: s3
