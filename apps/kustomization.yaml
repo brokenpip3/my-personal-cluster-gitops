@@ -5,7 +5,8 @@ resources:
 - minio/minio-tenant-s3-ingress.yaml
 - minio/minio-tenant-s3-secrets.yaml
 - minio/minio-tenant-s3.yaml
+- gitea/gitea-cert.yaml
 - gitea/gitea-cm.yaml
-- gitea/gitea-deploy.yaml
 - gitea/gitea-ingress.yaml
 - gitea/gitea-pg.yaml
+- gitea/gitea-deploy.yaml

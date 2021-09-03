@@ -1,0 +1,44 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+    name: gitea-ingress
+    namespace: gitea
+spec:
+    dnsNames:
+        - ENC[AES256_GCM,data:wW0VbSct59G0xvL+YQBenL3ExzW7,iv:HXDk/VJXnbV4m+32IzPlhXIlZHsiqXV3xmSN+QVMV+A=,tag:XOiYz0M2JfT5l1y0HaBX/g==,type:str]
+        - ENC[AES256_GCM,data:ZveN8rYyFpBQBoCRKb0xf4FzBcY=,iv:/dsAxAs3jgxnUu9OTq0tkv+bTz3uPbKJ9YgOA3OeeXM=,tag:sm5qLdvl1ZYF4+Nlto0/5w==,type:str]
+    issuerRef:
+        name: letsencrypt-ovh
+        kind: ClusterIssuer
+    secretName: gitea-ingress-tls-cert
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2021-09-03T21:21:23Z"
+    mac: ENC[AES256_GCM,data:NBR2zeCiWSVqiw5OSFp19LjZZYWsJ2bwaYt/T3B3HupT8fYTOljDGen5OdF10REVXtKKHbKG3AA5SYvJZyf43jnYkf0u4giVrO3UlrHgPwZFoC31FRNZpRe2Twx8EDbfnWU4weUZtR0c7IkRrbc4ghU2mJgEYlUsAVTrpg3XJd0=,iv:jwkP5yyuMBILfi8x1mWGytjO1QskgNnyeW+NLHxiKGc=,tag:AGKZcI7ZHB/uxFr5+VBVZQ==,type:str]
+    pgp:
+        - created_at: "2021-09-03T21:21:23Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5ARAAkgQ3TBEChett8ZpnmpQtY+ru0cfoXzhaw37teVooZufW
+            mjhLh/UfSiZNVCf/FKuhMzDBqYY4H0Hnwbv5YX+OyW2rUUkGa0iyY9qJulqY6thN
+            KbiSS+eKwpeGk2NfnP55rbbp9X98gimWLWPtjsmehkMH3C7aNg4cauU0FsdcqoNr
+            ZaNaVMft2OR+PVwp3IdXTc1lw8MH4EfuG9d3l49P7AZYTMKZhDdlO/XMhNDCv7+0
+            7a1JsMXWSjPv6ndV2tv4gQQegB+hcYAbQJT9bR7YQw1CFYi5S0MxzRGjx9YcgSx7
+            8atJtzQlNL0UDEqf3yhvahIMSFbTkzAb/XX4ElH6ItABI6InQVaDx9t7pkkc0MHf
+            8a41eWoqLYE/ZYGpy00ucGWW6R/DbLWOCXeoF4EcgY89k4kaHfp59yzPHNDCvED8
+            XKAs0U8QXkQnEdp9I3x24RfJYUygLISKViAq90oJojZZyzNvdc5LpPQOPkAmnFE3
+            QNanJfpJeFQljYNvR8x4sxs5CKYXXC0YIsJE6ruJX3XtuJY+vOZ31a4fSbMkJaF0
+            Viutgbs4JK1imBL1/IS9OkbKCtFUkLbFQsZAr+Z2o5SD4bdGrekhVqJY+QU470rz
+            6Wrk+dj9TKNxNCS5pZbIdRfCgDEvphCrTEeVw2QewHWQ2hMxYOWCaLsja1N9NXfS
+            UAHPFtilotF5cTOWfJF8LMwwOSLG3E+Dm3NGs345pUcC0LoJRTQUQQQBh+ua6K+E
+            KUXIG58mCcsWlLm+pXDGZItaQtpa5/baBuaLgrPzxoFK
+            =qwM8
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|dnsNames)$
+    version: 3.7.1
