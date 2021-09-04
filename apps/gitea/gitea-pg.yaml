@@ -7,6 +7,9 @@ spec:
   databases:
     giteadb: gitea
   enableLogicalBackup: false
+  spiloRunAsGroup: 103
+  spiloRunAsUser: 101
+  spiloFSGroup: 103
   numberOfInstances: 1
   postgresql:
     version: "10"
@@ -17,3 +20,34 @@ spec:
     - createdb
   volume:
     size: 5Gi
+  resources:
+    limits:
+      cpu: 500m
+      memory: 1Gi
+    requests:
+      cpu: 200m
+      memory: 500Mi
+  podAnnotations:
+      prometheus.io/port: "9187"
+      prometheus.io/scrape: "true"
+  sidecars:
+  - env:
+    - name: DATA_SOURCE_URI
+      value: localhost:5432/postgres?sslmode=disable
+    - name: DATA_SOURCE_USER
+      value: $(POSTGRES_USER)
+    - name: DATA_SOURCE_PASS
+      value: $(POSTGRES_PASSWORD)
+    image: quay.io/prometheuscommunity/postgres-exporter
+    name: exporter
+    ports:
+    - containerPort: 9187
+      name: exporter
+      protocol: TCP
+    resources:
+      limits:
+        cpu: 250m
+        memory: 256M
+      requests:
+        cpu: 100m
+        memory: 200M

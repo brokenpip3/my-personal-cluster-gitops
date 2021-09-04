@@ -62,7 +62,13 @@ spec:
         - containerPort: 22
           name: git-ssh
           protocol: TCP
-        resources: {}
+        resources:
+          limits:
+            cpu: 500m
+            memory: 500Mi
+          requests:
+            cpu: 250m
+            memory: 250Mi
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
