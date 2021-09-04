@@ -44,6 +44,8 @@ spec:
       enabled: false
     kubeScheduler:
       enabled: false
+    kubeEtcd:
+      enabled: false
     prometheus-node-exporter:
       extraHostVolumeMounts:
         - name: text-file
