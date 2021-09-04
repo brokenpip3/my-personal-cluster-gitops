@@ -10,3 +10,4 @@ resources:
 - gitea/gitea-ingress.yaml
 - gitea/gitea-pg.yaml
 - gitea/gitea-deploy.yaml
+- gitea/gitea-servicemonitor.yaml
