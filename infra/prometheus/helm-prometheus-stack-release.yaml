@@ -18,7 +18,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: '16.14.1'
+      version: '18.0.4'
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
@@ -35,6 +35,7 @@ spec:
         kubeApiserverSlos: false
         network: true
         kubeScheduler: false
+        etcd: false
     grafana:
       enabled: false
     kubeProxy:
