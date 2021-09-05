@@ -5,3 +5,5 @@ resources:
 - helm-prometheus-stack-release.yaml
 - prom-crds/podmonitor-flux.yaml
 - prom-crds/servicemonitor-tekton.yaml
+- telegram/tg-prom-secret.yaml
+- telegram/tg-prom-bot.yaml
