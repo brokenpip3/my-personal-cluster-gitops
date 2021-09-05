@@ -72,14 +72,14 @@ spec:
       volumes:
       - name: data
         persistentVolumeClaim:
-          claimName: data
+          claimName: data-alertmanager-bot-0
   volumeClaimTemplates:
   - apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
       labels:
         app.kubernetes.io/name: alertmanager-bot
-      name: alertmanager-bot
+      name: data
       namespace: monitoring
     spec:
       accessModes:
