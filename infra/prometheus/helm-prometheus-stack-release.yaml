@@ -89,6 +89,7 @@ spec:
         route:
           receiver: 'alertmanager-bot'
         receivers:
+        - name: 'null'
         - name: 'alertmanager-bot'
           webhook_configs:
           - send_resolved: true
