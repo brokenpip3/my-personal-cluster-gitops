@@ -8,5 +8,6 @@ resources:
 - prom-crds/servicemonitor-tekton.yaml
 - prom-crds/rules-pacman.yaml
 - prom-crds/rules-postgres.yaml
+- prom-crds/rules-certmanager.yaml
 - telegram/tg-prom-secret.yaml
 - telegram/tg-prom-bot.yaml
