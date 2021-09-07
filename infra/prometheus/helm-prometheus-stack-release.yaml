@@ -86,6 +86,8 @@ spec:
                   storage: 10Gi
     alertmanager:
       config:
+        route:
+          receiver: 'alertmanager-bot'
         receivers:
         - name: 'alertmanager-bot'
           webhook_configs:
