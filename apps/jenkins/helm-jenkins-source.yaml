@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: jenkins
+    labels:
+      prometheus: scrape
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+    name: jenkins-k8s-operator
+    namespace: flux-system
+spec:
+    interval: 10m
+    url: https://github.com/jenkinsci/kubernetes-operator
+    ref:
+        branch: master
+    ignore: |
+        /*
+        !/chart/jenkins-operator
+...
