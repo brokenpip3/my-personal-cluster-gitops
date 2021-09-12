@@ -11,3 +11,5 @@ resources:
 - gitea/gitea-pg.yaml
 - gitea/gitea-deploy.yaml
 - gitea/gitea-servicemonitor.yaml
+- jenkins/helm-jenkins-source.yaml
+- jenkins/helm-jenkins-release.yaml
