@@ -25,6 +25,7 @@ spec:
         image: jenkins/jenkins:lts
         plugins:
         - name: github-branch-source
+          version: 2.11.2
         backup:
           pvc:
             enabled: true
