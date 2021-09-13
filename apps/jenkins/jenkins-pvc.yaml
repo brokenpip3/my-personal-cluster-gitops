@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: jenkins-aur-packages
+  name: jenkins-aur-packages
+  namespace: jenkins
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: nfs-sc
+  volumeMode: Filesystem
