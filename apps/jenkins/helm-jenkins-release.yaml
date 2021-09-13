@@ -27,7 +27,7 @@ spec:
         - name: github-branch-source
           version: 2.11.2
         backup:
-          enabled: false
+          enabled: true
           pvc:
             enabled: true
             className: nfs-sc
