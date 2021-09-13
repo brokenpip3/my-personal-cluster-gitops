@@ -30,4 +30,11 @@ spec:
           pvc:
             enabled: true
             className: nfs-sc 
+        livenessProbe:
+          failureThreshold: 12
+          initialDelaySeconds: 120
+        readinessProbe:
+          initialDelaySeconds: 60
+        webhook:
+          enabled: true
 ...
