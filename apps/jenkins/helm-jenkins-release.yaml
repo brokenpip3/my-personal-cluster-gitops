@@ -45,4 +45,10 @@ spec:
           requests:
             cpu: 1
             memory: 4Gi
+        seedJobs:
+          - id: testing-job
+            targets: "jobs/*.jenkins"
+            description: "Testing Job"
+            repositoryBranch: main
+            repositoryUrl: https://github.com/brokenpip3/jenkins-iac-seed-jobs
 ...
