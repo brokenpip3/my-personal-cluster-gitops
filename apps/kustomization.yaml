@@ -13,4 +13,4 @@ resources:
 - gitea/gitea-servicemonitor.yaml
 - jenkins/helm-jenkins-source.yaml
 - jenkins/helm-jenkins-release.yaml
-- jenkins/jenkins-pvcyaml
+- jenkins/jenkins-pvc.yaml
