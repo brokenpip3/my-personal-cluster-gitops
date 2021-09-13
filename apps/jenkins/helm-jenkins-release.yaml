@@ -2,20 +2,20 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-    name: jenkins-k8s-operator 
+    name: jenkins-k8s-operator
     namespace: jenkins
 spec:
     interval: 10m
     releaseName: jenkins
     dependsOn:
     - name: cert-manager
-      namespace: cert-manager 
+      namespace: cert-manager
     chart:
         spec:
             chart: /chart/jenkins-operator
             sourceRef:
                 kind: GitRepository
-                name: jenkins-k8s-operator 
+                name: jenkins-k8s-operator
                 namespace: flux-system
             interval: 10m
     values:
@@ -27,9 +27,10 @@ spec:
         - name: github-branch-source
           version: 2.11.2
         backup:
+          enabled: false
           pvc:
             enabled: true
-            className: nfs-sc 
+            className: nfs-sc
         livenessProbe:
           failureThreshold: 12
           initialDelaySeconds: 120
@@ -37,4 +38,11 @@ spec:
           initialDelaySeconds: 60
         webhook:
           enabled: true
+        resources:
+          limits:
+            cpu: 2
+            memory: 3Gi
+          requests:
+            cpu: 1
+            memory: 3Gi
 ...
