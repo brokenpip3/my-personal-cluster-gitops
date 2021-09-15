@@ -32,5 +32,5 @@ spec:
       kubelet-insecure-tls: true
       kubelet-preferred-address-types: InternalDNS,InternalIP,ExternalDNS,ExternalIP,Hostname
       logtostderr: ""
-      v: 5
+      v: 2
 ...
