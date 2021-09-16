@@ -29,6 +29,18 @@ spec:
         basePlugins:
         - name: kubernetes
           version: 1.30.1
+        - name: workflow-job
+          version: "2.41"
+        - name: workflow-aggregator
+          version: "2.6"
+        - name: git
+          version: 4.8.2
+        - name: job-dsl
+          version: "1.77"
+        - name: configuration-as-code
+          version: "1.52"
+        - name: kubernetes-credentials-provider
+          version: "0.20"
         backup:
           enabled: true
           pvc:
@@ -51,7 +63,7 @@ spec:
         seedJobs:
           - id: testing-job
             targets: "jobs/*.jenkins"
-            description: "Testing Job"
+            description: "jobs-from-iac"
             repositoryBranch: main
             repositoryUrl: https://github.com/brokenpip3/jenkins-iac-seed-jobs
 ...
