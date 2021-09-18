@@ -1,13 +1,26 @@
-# Gitops repo for my personal clusters
+# Gitops repo for my personal cluster
+
+TDB
 
 ## Components installed
 
-* metrics-server
-* nginxinc ingress-controller
-* cert-manager
-* ovh-cert-manager-webhook
-* prometheus stack
+### Infra
 
-## Apps
+* [metrics-server](infra/helm-metric-server.yaml)
+* [nginxinc ingress-controller](infra/helm-nginxinc-ingress-controller.yaml)
+* [cert-manager](infra/helm-certmanager.yaml)
+* [ovh-cert-manager-webhook](infra/helm-certmanager.yaml)
+* [prometheus stack/operator](infra/prometheus)
 
-TDB
+#### Datastores
+
+* [zalando-postgres-operator](infra/datastores/postgres-zalando-operator.yaml)
+
+### Promethues CRDs
+
+*
+
+### Apps
+
+* [gitea](apps/gitea)
+* [minio](apps/minio)

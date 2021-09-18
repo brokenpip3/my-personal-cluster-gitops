@@ -14,3 +14,5 @@ resources:
 - jenkins/helm-jenkins-source.yaml
 - jenkins/helm-jenkins-release.yaml
 - jenkins/jenkins-pvc.yaml
+- zulip/namespace.yaml
+- zulip/zulip-redis.yaml
