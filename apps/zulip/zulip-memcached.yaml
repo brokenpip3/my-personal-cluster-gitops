@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: metric-server
+  name: zulip-memcached
   namespace: zulip
 spec:
   interval: 10m
@@ -20,7 +20,7 @@ spec:
     resources:
       limits:
         cpu: 300m
-        memory: 3508Mi
+        memory: 350Mi
       requests:
         cpu: 100m
         memory: 156Mi

@@ -15,5 +15,7 @@ resources:
 - jenkins/helm-jenkins-release.yaml
 - jenkins/jenkins-pvc.yaml
 - zulip/namespace.yaml
+- zulip/zulip-secrets.yaml
 - zulip/zulip-redis.yaml
 - zulip/zulip-memcached.yaml
+- zulip/zulip-rabbitmq.yaml
