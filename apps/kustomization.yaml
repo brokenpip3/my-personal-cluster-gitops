@@ -16,3 +16,4 @@ resources:
 - jenkins/jenkins-pvc.yaml
 - zulip/namespace.yaml
 - zulip/zulip-redis.yaml
+- zulip/zulip-memcached.yaml
