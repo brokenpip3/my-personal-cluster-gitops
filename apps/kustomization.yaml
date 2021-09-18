@@ -19,3 +19,4 @@ resources:
 - zulip/zulip-redis.yaml
 - zulip/zulip-memcached.yaml
 - zulip/zulip-rabbitmq.yaml
+- zulip/zulip-postgresql.yaml
