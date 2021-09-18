@@ -63,7 +63,7 @@ spec:
           requests:
             cpu: 100m
             memory: 100Mi
-          imits:
+          limits:
             cpu: 300m
             memory: 300Mi
         ports:
