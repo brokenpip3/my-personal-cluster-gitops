@@ -27,6 +27,8 @@ spec:
   replicas: 0
   selector:
     matchLabels:
+      app: zulip
+      component: zulip
   template:
     metadata:
       labels:
