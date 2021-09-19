@@ -10,7 +10,7 @@ spec:
       app: zulip
       component: redis
   serviceName: redis
-  replicas: 1
+  replicas: 0
   template:
     metadata:
       annotations:

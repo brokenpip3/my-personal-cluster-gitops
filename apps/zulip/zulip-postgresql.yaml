@@ -10,7 +10,7 @@ spec:
       app: zulip
       component: postgres
   serviceName: postgres
-  replicas: 1
+  replicas: 0
   template:
     metadata:
       annotations:

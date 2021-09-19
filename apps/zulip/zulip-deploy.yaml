@@ -94,7 +94,7 @@ spec:
           protocol: TCP
         resources:
           requests:
-            cpu: "2"
+            cpu: "3"
             memory: 4Gi
         volumeMounts:
         - mountPath: /data
