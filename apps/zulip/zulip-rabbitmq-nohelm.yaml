@@ -1,0 +1,187 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: zulip-rabbitmq
+  namespace: zulip
+spec:
+  selector:
+    matchLabels:
+      app: zulip
+      component: rabbitmq
+  serviceName: rabbitmq
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "15692"
+      labels:
+        app: zulip
+        component: rabbitmq
+    spec:
+      containers:
+        - name: rabbitmq
+          image: rabbitmq:3
+          env:
+          - name: RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS
+            value: "+S 1:1"
+          - name: RABBITMQ_NODENAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: RABBITMQ_DEFAULT_USER
+            value: "zulip"
+          - name: RABBITMQ_DEFAULT_PASS
+            valueFrom:
+              secretKeyRef:
+                name: zulip-secrets
+                key: SECRETS_rabbitmq_password
+          readinessProbe:
+            exec:
+              command:
+                - runuser
+                - rabbitmq
+                - -c
+                - 'rabbitmq-diagnostics -q check_running'
+            initialDelaySeconds: 120
+            periodSeconds: 30
+            timeoutSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          livenessProbe:
+            exec:
+              command:
+                - runuser
+                - rabbitmq
+                - -c
+                - 'rabbitmq-diagnostics -q ping'
+            initialDelaySeconds: 120
+            periodSeconds: 30
+            timeoutSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          ports:
+          - containerPort: 5672
+            name: rabbitmq
+          resources:
+            requests:
+              cpu: 200m
+              memory: 1624Mi
+            limits:
+              cpu: 500m
+          volumeMounts:
+          - mountPath: /var/lib/rabbitmq
+            name: rabbitmq-data
+          - mountPath: /etc/rabbitmq/conf.d/11-memory.conf
+            subPath: 11-memory.conf
+            name: rabbitmq-config-memory
+      volumes:
+        - name: rabbitmq-config-memory
+          configMap:
+            name: zulip-rabbitmq-memory
+  volumeClaimTemplates:
+  - metadata:
+      name: rabbitmq-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: nfs-sc
+      resources:
+        requests:
+          storage: 3Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zulip-rabbitmq
+  namespace: zulip
+spec:
+  selector:
+    app: zulip
+    component: rabbitmq
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379
+      name: rabbitmq
+    - protocol: TCP
+      port: 15692
+      targetPort: 15692
+      name: metrics
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zulip-rabbitmq-memory
+  labels:
+    app: zulip
+    component: rabbitmq
+data:
+  11-memory.conf: |
+    #vm_memory_high_watermark.absolute = 1024MiB
+    vm_memory_high_watermark.relative = 0.2
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: zulip
+    component: rabbitmq
+  name: zulip-rabbitmq
+  namespace: zulip
+spec:
+  endpoints:
+  - interval: 30s
+    port: metrics
+  namespaceSelector:
+    matchNames:
+    - zulip
+  selector:
+    matchLabels:
+      app: zulip
+      component: rabbitmq
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: zulip
+    component: rabbitmq
+  name: zulip-rabbitmq
+  namespace: zulip
+spec:
+  groups:
+  - name: rabbitmq
+    rules:
+    - alert: RabbitmqDown
+      annotations:
+        description: RabbitMQ node down
+        summary: Rabbitmq down (instance {{ $labels.instance }})
+      expr: rabbitmq_up{service="zulip-rabbit-rabbitmq"} == 0
+      for: 5m
+      labels:
+        severity: error
+    - alert: OutOfMemory
+      annotations:
+        description: |
+          Memory available for RabbmitMQ is low (< 10%)\n  VALUE = {{ $value }}
+          LABELS: {{ $labels }}
+        summary: Out of memory (instance {{ $labels.instance }})
+      expr: |
+        rabbitmq_node_mem_used{service="zulip-rabbit-rabbitmq"}
+        / rabbitmq_node_mem_limit{service="zulip-rabbit-rabbitmq"}
+        * 100 > 90
+      for: 5m
+      labels:
+        severity: warning
+    - alert: TooManyConnections
+      annotations:
+        description: |
+          RabbitMQ instance has too many connections (> 1000)
+          VALUE = {{ $value }}\n  LABELS: {{ $labels }}
+        summary: Too many connections (instance {{ $labels.instance }})
+      expr: rabbitmq_connectionsTotal{service="zulip-rabbit-rabbitmq"} > 1000
+      for: 5m
+      labels:
+        severity: warning
+...
