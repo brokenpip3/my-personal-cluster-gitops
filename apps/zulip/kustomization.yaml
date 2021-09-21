@@ -7,4 +7,6 @@ resources:
 - zulip-postgresql.yaml
 - zulip-rabbitmq-nohelm.yaml
 - zulip-redis.yaml
+- zulip-cert.yaml
+- zulip-ingress.yaml
 - zulip-deploy.yaml
