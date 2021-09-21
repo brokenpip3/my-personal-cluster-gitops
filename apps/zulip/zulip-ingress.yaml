@@ -1,0 +1,67 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    annotations:
+        kubernetes.io/ingress.class: nginx
+    name: zulip
+    namespace: zulip
+spec:
+    rules:
+        - host: ENC[AES256_GCM,data:JbEG38FBkgXO25oNM4I31fF9DMj996I=,iv:JLGOyqVTjjYkE0WZGyeR3C9FJHY2e3FtUsMj70cb99o=,tag:vWMq4CsArgI+gzMdD2YovA==,type:str]
+          http:
+            paths:
+                - backend:
+                    service:
+                        name: zulip
+                        port:
+                            number: 80
+                  path: /
+                  pathType: ImplementationSpecific
+        - host: ENC[AES256_GCM,data:y6IhqaCUnSghKbz2ZCPQDbV9Ywgr+g==,iv:0MTlhjKHn2+VDAL1iNFg6SXLs8m97Qm/QTh52cu4RD8=,tag:hemmUwGjmeCbIAf27PMvBA==,type:str]
+          http:
+            paths:
+                - backend:
+                    service:
+                        name: zulip
+                        port:
+                            number: 80
+                  path: /
+                  pathType: ImplementationSpecific
+    tls:
+        - hosts:
+            - ENC[AES256_GCM,data:PTrEeNDMf2/BiZ0AxU0QKzykn9XIpTc=,iv:dZiWA4uihPaomgdiToVx/kiHrfjVCwPXaRUw0pUwuoM=,tag:SToC+9DlIL3fPwAakhA/0Q==,type:str]
+          secretName: zulip-ingress-tls-cert
+        - hosts:
+            - ENC[AES256_GCM,data:yGI260EB/BQBcgm9Dqt3H6C9zPl9+A==,iv:c+4Eoshud85H0OyqR6kbg/h7DguIGI63CBerWDeU8QU=,tag:U02MdBMtVR+RrAItKNKgVA==,type:str]
+          secretName: zulip-ingress-tls-cert
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2021-09-21T22:49:51Z"
+    mac: ENC[AES256_GCM,data:Cp6DXQz54OiWstpTjlO/PkxnJNen4KFgtTVeK40fQwPJW8lzJTjIkVGHiXrGXqUupPvQa/5UP4fELeDGFtya7cSPXyDy253s+eNIp6pGplwKX47ebKdkgBJByryOge6MNkDImIpR96Asy7bLiRlGwZni4xkG4WZYB8ict5Bsnjc=,iv:3cUEuk0uXUQ8sDMca2+nezwvEZLyG2MIR87RoNLFqWY=,tag:Qe4AqWD5JB8z0NoGhAgstw==,type:str]
+    pgp:
+        - created_at: "2021-09-21T22:49:51Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5AQ/+IejaaHND8irs0VUY+Ip56NQtbMFCRHX3KJhx0R7m+nKD
+            Z0B/vXWP8u/3CIPX6r9rsP8rlhJyJmwPS4p5qtXIUPR37KFHGC6ENXhCrgDMjG5Q
+            AJ3Ogx2+9co9zvi2I3pnl4HujVgDLxIrqlWgPg+W53XjD4HWTosrEhlhtyWFAyUg
+            duxpgtDB9RVpJvEY4i6z4WXBNnyDsSG+hSIiaObtRrOFfADBWVLlk84mYtWe0KM4
+            fkgTd+zqFSuc7LlQG5PGQx8TyanHnNdA/fPHzLJtXjsr1FRjr91Pfiv+NQ0K2BG2
+            gqNYOoN5ri356ddg/p8BQwTzvQnaWqpuxerCj5KomVVmcZug6f4q+2/kKaL63Eo7
+            Kk0Nm76rkhs6A48iy5p/rau+B/C76oWVyOvt84UiQNld/hFbi7hBI2JCpJ4mRSKJ
+            Ljb1egnEeQ3agwIqibyc3Cbn/6aRB/KbwJcMEG7EawiSb2DX5WI6MYvEIx6PMy3x
+            c0MFGb1d25aXAF2RRiuApbtFIQRFwpA6y5pekpwwFlSA/2eWbGPU3kEh8SiEnqvN
+            NQh++jcjm1E77KGP06Y/m0feonLF0cW5Wr6o8K6a/6rhNoRBkYfDNVTBhA8A9CMu
+            HiOAolGEMY8EiITb29c4f4svKPXZ+dbglzXiCi2XGKatP3YNIFVdX9l1wZcwCt/S
+            UAEPepYrDOIxGbQee6hId8PdM48fccCHivMCt+XJDpAxLYdS7jeO57n83c+7EqVY
+            UTUtHuXRyOHQcX0qsii5d3cJQfnGndNQvrfsEGdimjXM
+            =7XOu
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|dnsNames)$
+    version: 3.7.1

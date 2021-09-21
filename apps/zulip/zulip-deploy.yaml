@@ -103,4 +103,22 @@ spec:
       - name: data
         persistentVolumeClaim:
           claimName: zulip-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zulip
+  namespace: zulip
+  labels:
+    app: zulip
+    component: zulip
+spec:
+  selector:
+    app: zulip
+    component: zulip
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+    protocol: TCP
 ...
