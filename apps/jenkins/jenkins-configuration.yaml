@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jenkins-configuration
+data:
+  1-create-credentials-telegram-token.groovy: |
+    #!/usr/bin/env groovy
+
+    import jenkins.model.Jenkins
+    import com.cloudbees.plugins.credentials.domains.Domain
+    import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl
+    import com.cloudbees.plugins.credentials.CredentialsScope
+    import hudson.util.Secret
+
+    instance = Jenkins.instance
+    domain = Domain.global()
+    store = instance.getExtensionList(
+      "com.cloudbees.plugins.credentials.SystemCredentialsProvider")[0].getStore()
+
+    secretText = new StringCredentialsImpl(
+      CredentialsScope.GLOBAL,
+      "TELEGRAM_BOT_TOKEN",
+      "Telegram bot token",
+      Secret.fromString(secrets["TELEGRAM_BOT_TOKEN"])
+    )
+
+    store.addCredentials(domain, secretText)
