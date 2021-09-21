@@ -24,7 +24,7 @@ metadata:
   name: zulip
   namespace: zulip
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: zulip
@@ -94,7 +94,7 @@ spec:
           protocol: TCP
         resources:
           requests:
-            cpu: "3"
+            cpu: "2.5"
             memory: 4Gi
         volumeMounts:
         - mountPath: /data
