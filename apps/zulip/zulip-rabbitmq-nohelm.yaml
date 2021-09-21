@@ -10,7 +10,7 @@ spec:
       app: zulip
       component: rabbitmq
   serviceName: rabbitmq
-  replicas: 0
+  replicas: 1
   template:
     metadata:
       annotations:
