@@ -60,4 +60,3 @@ spec:
         annotations:
           description: 'host {{ $labels.instance }} btrfs corruption errors'
           summary: '{{ $labels.instance }} has {{ $value }} btrfs_corruption_errs'
-

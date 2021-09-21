@@ -58,4 +58,3 @@ spec:
           - name: backup
             persistentVolumeClaim:
               claimName: etcd-backup
-

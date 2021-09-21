@@ -28,7 +28,7 @@ spec:
   values:
     apiService:
       create: true
-    extraArgs: 
+    extraArgs:
       kubelet-insecure-tls: true
       kubelet-preferred-address-types: InternalDNS,InternalIP,ExternalDNS,ExternalIP,Hostname
       logtostderr: ""

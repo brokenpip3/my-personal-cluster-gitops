@@ -2,7 +2,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: tekton-pipelines 
+  name: tekton-pipelines
   namespace: tekton-pipelines
   labels:
     app.kubernetes.io/part-of: tekton-pipelines
