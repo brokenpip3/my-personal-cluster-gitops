@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- gitea-cert.yaml
+- gitea-cm.yaml
+- gitea-ingress.yaml
+- gitea-pg.yaml
+- gitea-deploy.yaml
+- gitea-servicemonitor.yaml
