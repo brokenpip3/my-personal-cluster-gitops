@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: jenkins-configuration
+  namespace: jenkins
 data:
   1-create-credentials-telegram-token.groovy: |
     #!/usr/bin/env groovy
