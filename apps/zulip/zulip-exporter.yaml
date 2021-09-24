@@ -8,7 +8,7 @@ spec:
   interval: 10m
   url: https://github.com/brokenpip3/zulip-exporter
   ref:
-    branch: main
+    branch: master
   ignore: |
     /*
     !/kubernetes

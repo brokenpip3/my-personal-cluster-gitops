@@ -3,8 +3,8 @@ kind: Kustomization
 resources:
 - helm-metric-server.yaml
 - helm-nginxinc-ingress-controller.yaml
-- helm-certmanager.yaml
-- secret-certmanager.yaml
+- certmanager/helm-certmanager.yaml
+- certmanager/secret-certmanager.yaml
 - storage/helm-nfs-storage-class-source.yaml
 - storage/helm-nfs-storage-class-release.yaml
 - utils/cronjob-etcd-backup.yaml

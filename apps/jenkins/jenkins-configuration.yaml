@@ -5,8 +5,6 @@ metadata:
   namespace: jenkins
 data:
   1-create-credentials-telegram-token.groovy: |
-    #!/usr/bin/env groovy
-
     import jenkins.model.Jenkins
     import com.cloudbees.plugins.credentials.domains.Domain
     import org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl

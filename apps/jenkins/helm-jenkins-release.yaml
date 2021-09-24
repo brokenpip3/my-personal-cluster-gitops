@@ -20,7 +20,7 @@ spec:
             interval: 10m
     values:
       operator:
-        replicaCount: 0
+        replicaCount: 1
       jenkins:
         enabled: true
         namespace: jenkins

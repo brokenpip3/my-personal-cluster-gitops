@@ -7,4 +7,4 @@ spec:
   type: image
   params:
     - name: url
-      value: quay.io/brokenpip3/basearch
+      value: quay.io/brokenpip3/k8s-fake-smtp
