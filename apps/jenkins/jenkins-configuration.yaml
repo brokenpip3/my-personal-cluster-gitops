@@ -16,11 +16,19 @@ data:
     store = instance.getExtensionList(
       "com.cloudbees.plugins.credentials.SystemCredentialsProvider")[0].getStore()
 
-    secretText = new StringCredentialsImpl(
+    secretTextTgBotToken = new StringCredentialsImpl(
       CredentialsScope.GLOBAL,
       "TELEGRAM_BOT_TOKEN",
       "Telegram bot token",
       Secret.fromString(secrets["TELEGRAM_BOT_TOKEN"])
     )
 
-    store.addCredentials(domain, secretText)
+    secretTextTgBotChat = new StringCredentialsImpl(
+      CredentialsScope.GLOBAL,
+      "TELEGRAM_CHAT_ID",
+      "Telegram chat id",
+      Secret.fromString(secrets["TELEGRAM_CHAT_ID"])
+    )
+
+    store.addCredentials(domain, secretTextTgBotToken)
+    store.addCredentials(domain, secretTextTgBotChat)
