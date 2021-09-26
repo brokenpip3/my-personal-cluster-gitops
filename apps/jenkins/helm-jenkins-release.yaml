@@ -62,7 +62,7 @@ spec:
         resources:
           limits:
             cpu: 2
-            memory: 5Gi
+            memory: 5500Mi
           requests:
             cpu: 1
             memory: 4Gi
