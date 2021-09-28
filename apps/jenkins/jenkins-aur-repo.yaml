@@ -1,0 +1,59 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: my-repo
+  name: my-repo
+  namespace: jenkins
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-repo
+  template:
+    metadata:
+      labels:
+        app: my-repo
+    spec:
+      containers:
+      - name: my-repo
+        image: nginx
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: config
+          mountPath: /etc/nginx/conf.d
+        - name: repo-pvc
+          mountPath: /srv/repo
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 9080
+          initialDelaySeconds: 3
+          periodSeconds: 3
+      volumes:
+        - name: config
+          configMap:
+            name: nginx-repo-config
+        - name: repo-pvc
+          persistentVolumeClaim:
+            claimName: repo-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: my-repo
+  name: my-repo-svc
+  namespace: jenkins
+spec:
+  ports:
+  - name: my-repo
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: my-repo
+  type: ClusterIP
+...

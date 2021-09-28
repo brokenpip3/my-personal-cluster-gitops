@@ -7,3 +7,5 @@ resources:
 - jenkins-credentials.yaml
 - helm-jenkins-release.yaml
 - jenkins-ingress.yaml
+- jenkins-aur-secret.yaml
+- jenkins-aur-repo.yaml
