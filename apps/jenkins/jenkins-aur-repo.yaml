@@ -30,7 +30,7 @@ spec:
           limits:
             cpu: 1
             memory: 500Mi
-          request:
+          requests:
             cpu: 500m
             memory: 500Mi
         livenessProbe:
