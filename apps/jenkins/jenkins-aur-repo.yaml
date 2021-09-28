@@ -7,7 +7,7 @@ metadata:
   name: my-repo
   namespace: jenkins
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: my-repo
@@ -26,6 +26,13 @@ spec:
           mountPath: /etc/nginx/conf.d
         - name: repo-pvc
           mountPath: /srv/repo
+        resources:
+          limits:
+            cpu: 1
+            memory: 500Mi
+          request:
+            cpu: 500m
+            memory: 500Mi
         livenessProbe:
           httpGet:
             path: /healthz
