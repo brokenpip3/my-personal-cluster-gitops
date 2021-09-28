@@ -38,7 +38,7 @@ spec:
             name: nginx-repo-config
         - name: repo-pvc
           persistentVolumeClaim:
-            claimName: repo-pvc
+            claimName: jenkins-aur-packages
 ---
 apiVersion: v1
 kind: Service
