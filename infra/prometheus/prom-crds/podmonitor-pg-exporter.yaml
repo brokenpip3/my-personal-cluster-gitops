@@ -12,7 +12,6 @@ spec:
         operator: In
         values:
           - spilo
-    matchExpressions:
       - key: spilo-role
         operator: In
         values:
