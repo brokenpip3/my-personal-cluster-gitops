@@ -32,3 +32,17 @@ data:
 
     store.addCredentials(domain, secretTextTgBotToken)
     store.addCredentials(domain, secretTextTgBotChat)
+  1-prom-configuration.yaml: |
+    unclassified:
+       prometheusConfiguration:
+         collectDiskUsage: false
+         collectingMetricsPeriodInSeconds: 600
+         countAbortedBuilds: true
+         countFailedBuilds: true
+         countNotBuiltBuilds: true
+         countSuccessfulBuilds: true
+         countUnstableBuilds: true
+         defaultNamespace: ""
+         fetchTestResults: true
+         jobAttributeName: "jenkins_job"
+         path: "prometheus"

@@ -59,7 +59,8 @@ spec:
             enabled: true
             className: nfs-sc
         configuration:
-          configurationAsCode: {}
+          configurationAsCode:
+            - configMapName: jenkins-configuration
           groovyScripts:
             - configMapName: jenkins-configuration
           secretRefName: jenkins-credentials
