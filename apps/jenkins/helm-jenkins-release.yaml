@@ -30,6 +30,8 @@ spec:
           version: 2.11.2
         - name: build-name-setter
           version: 2.2.0
+        - name: ws-cleanup
+          version: "0.39"
         basePlugins:
         - name: kubernetes
           version: 1.30.1

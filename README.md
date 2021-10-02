@@ -1,6 +1,6 @@
 # Gitops repo for my personal cluster
 
-TDB
+This is my "fleet" repo that describe my entire k8s cluster.
 
 ## Components installed
 
@@ -12,7 +12,7 @@ TDB
 * [ovh-cert-manager-webhook](infra/helm-certmanager.yaml)
 * [prometheus stack/operator](infra/prometheus)
 
-#### Datastores
+#### Datastores Operator
 
 * [zalando-postgres-operator](infra/datastores/postgres-zalando-operator.yaml)
 
@@ -24,3 +24,6 @@ TDB
 
 * [gitea](apps/gitea)
 * [minio](apps/minio)
+* [jenkins](apps/jenkins)
+* [zulip](apps/zulio)
+  * [Zulop exporter](apps/zulip/zulip-exporter.yaml)
