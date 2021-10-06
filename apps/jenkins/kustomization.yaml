@@ -9,3 +9,4 @@ resources:
 - jenkins-ingress.yaml
 - jenkins-aur-secret.yaml
 - jenkins-aur-repo.yaml
+- jenkins-prometheus.yaml

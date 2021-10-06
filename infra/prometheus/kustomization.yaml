@@ -9,5 +9,6 @@ resources:
 - prom-crds/rules-pacman.yaml
 - prom-crds/rules-postgres.yaml
 - prom-crds/rules-certmanager.yaml
+- prom-crds/rules-other-datastores.yaml
 - telegram/tg-prom-secret.yaml
 - telegram/tg-prom-bot.yaml
