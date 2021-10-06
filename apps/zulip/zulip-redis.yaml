@@ -45,6 +45,9 @@ spec:
             name: redis-data
         - name: redis-exporter
           image: oliver006/redis_exporter:latest
+          env:
+          - name: REDIS_EXPORTER_INCL_SYSTEM_METRICS
+            value: "true"
           resources:
             requests:
               cpu: 100m
@@ -83,4 +86,20 @@ spec:
       port: 9121
       targetPort: 9121
       name: metrics
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: zulip-redis
+  name: zulip-redis
+  namespace: zulip
+spec:
+  endpoints:
+  - honorLabels: true
+    port: metrics
+  selector:
+    matchLabels:
+      app: zulip
+      component: redis
 ...
