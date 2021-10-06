@@ -5,7 +5,7 @@ metadata:
   name: ingress
   labels:
     infra.gitops: ingress-controller
-    promethues: scrape
+    prometheus: scrape
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository

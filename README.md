@@ -15,8 +15,9 @@ This is my "fleet" repo that describe my entire k8s cluster.
 #### Datastores Operator
 
 * [zalando-postgres-operator](infra/datastores/postgres-zalando-operator.yaml)
+* [minio]
 
-### Promethues CRDs
+### Prometheus CRDs
 
 *
 
@@ -25,5 +26,7 @@ This is my "fleet" repo that describe my entire k8s cluster.
 * [gitea](apps/gitea)
 * [minio](apps/minio)
 * [jenkins](apps/jenkins)
-* [zulip](apps/zulio)
-  * [Zulop exporter](apps/zulip/zulip-exporter.yaml)
+* [zulip](apps/zulip)
+  * [memcached]
+  * [redis]
+  * [Zulip exporter](apps/zulip/zulip-exporter.yaml)
