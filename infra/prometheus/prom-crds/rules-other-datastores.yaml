@@ -10,8 +10,8 @@ spec:
   - name: memcached
     rules:
     - alert: MemcachedDown
-      description: Memcached is down
       annotations:
+        description: Memcached is down
         message: |
           Memcached Instance {{ $labels.job }} / {{ $labels.instance }} is down for more than 15mins.
       expr: |
