@@ -40,17 +40,17 @@ spec:
           version: "4.0.2.8"
         basePlugins:
         - name: kubernetes
-          version: 1.30.2
+          version: 1.30.3
         - name: workflow-job
           version: "2.41"
         - name: workflow-aggregator
           version: "2.6"
         - name: git
-          version: 4.8.2
+          version: 4.8.3
         - name: job-dsl
           version: "1.77"
         - name: configuration-as-code
-          version: "1.53"
+          version: "1.54"
         - name: kubernetes-credentials-provider
           version: "0.20"
         backup:
