@@ -1,0 +1,57 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: jenkins-rules
+  namespace: monitoring
+spec:
+  groups:
+  - name: jenkins
+    interval: 5m
+    rules:
+      # https://joostvdg.github.io/blogs/monitor-jenkins-on-k8s/alerts/
+      - alert: JenkinsTooManyJobsQueued
+        expr: sum(jenkins_queue_size_value) > 20
+        for: 60m
+        labels:
+          severity: notify
+        annotations:
+          summary: " {{ $labels.app_kubernetes_io_instance }} too many jobs queued"
+          description: "{{ $labels.app_kubernetes_io_instance }} has {{ $value }} jobs stuck in the queue"
+
+      - alert: JenkinsTooManyJobsStuckInQueue
+        expr: sum(jenkins_queue_stuck_value) by (app_kubernetes_io_instance) > 5
+        for: 120m
+        labels:
+          severity: notify
+        annotations:
+          summary: " {{ $labels.app_kubernetes_io_instance }} too many jobs queued"
+          description: " {{ $labels.app_kubernetes_io_instance }} has {{ $value }} jobs in queue"
+
+      - alert: JenkinsHealthScoreToLow
+        expr: sum(jenkins_health_check_score) by (app_kubernetes_io_instance) < 1
+        for: 10m
+        labels:
+          severity: notify
+        annotations:
+          summary: " {{ $labels.app_kubernetes_io_instance }} has a to low health score"
+          description: " {{ $labels.app_kubernetes_io_instance }} a health score lower than 100%"
+
+      - alert: JenkinsTooManyPluginsNeedUpate
+        expr: sum(jenkins_plugins_withUpdate) by (app_kubernetes_io_instance) > 8
+        for: 10m
+        labels:
+          severity: notify
+        annotations:
+          summary: " {{ $labels.app_kubernetes_io_instance }} too many plugins updates"
+          description: " {{ $labels.app_kubernetes_io_instance }} has {{ $value }} plugins that require an update"
+
+      - alert: JenkinsVMMemoryRationTooHigh
+        expr: sum(vm_memory_heap_usage) by (app_kubernetes_io_instance) > 0.70
+        for: 3m
+        labels:
+          severity: notify
+        annotations:
+          summary: "{{$labels.app_kubernetes_io_instance}} too high memory ration"
+          description: "{{$labels.app_kubernetes_io_instance}} has a too high VM memory ration"
+...
