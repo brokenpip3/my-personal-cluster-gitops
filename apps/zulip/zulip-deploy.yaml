@@ -82,7 +82,7 @@ spec:
         envFrom:
         - secretRef:
             name: zulip-secrets
-        image: zulip/docker-zulip:3.1-0
+        image: zulip/docker-zulip:4.7-0
         imagePullPolicy: IfNotPresent
         name: zulip
         ports:
