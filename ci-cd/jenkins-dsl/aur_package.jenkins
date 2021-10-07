@@ -1,0 +1,106 @@
+#!/usr/bin/env groovy
+
+// https://stackoverflow.com/a/52887479
+static void DisableConcurrentBuilds(context) {
+    context.with {
+        configure {
+            def jobPropertyDescriptors = it / 'actions' / 'org.jenkinsci.plugins.workflow.multibranch.JobPropertyTrackerAction' / 'jobPropertyDescriptors'
+            jobPropertyDescriptors << {
+                string('org.jenkinsci.plugins.workflow.job.properties.DisableConcurrentBuildsJobProperty')
+            }
+            def properties = it / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.DisableConcurrentBuildsJobProperty' {}
+        }
+    }
+}
+
+// Create folder
+
+folder('aur-repo') {
+    displayName('aur-repo')
+    description('My aur repository')
+    views {
+        listView('failed-pkg') {
+            description('All failed pkg build job')
+            filterBuildQueue()
+            filterExecutors()
+            jobs {
+                regex(/aur-job-.+/)
+            }
+            jobFilters {
+            status {
+                    status(Status.FAILED)
+                }
+            }
+            columns {
+                status()
+                weather()
+                name()
+                lastSuccess()
+                lastFailure()
+                lastDuration()
+                buildButton()
+            }
+        }
+    }
+}
+
+// Create Jobs
+
+pipelineJob('aur-repo/aur-package-build') {
+    displayName('aur-package-build')
+
+    logRotator {
+        numToKeep(10)
+        daysToKeep(30)
+    }
+
+    // https://stackoverflow.com/a/52887479
+    DisableConcurrentBuilds(delegate)
+
+    definition {
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        url('https://github.com/brokenpip3/cicd-build-aurpkg')
+                    }
+                    branches('*/main')
+                }
+            }
+            scriptPath('build-package/Jenkinsfile')
+        }
+    }
+}
+
+pipelineJob('aur-repo/aur-package-trigger') {
+    displayName('aur-package-trigger')
+
+    logRotator {
+        numToKeep(10)
+        daysToKeep(30)
+    }
+
+    properties {
+        pipelineTriggers {
+            triggers {
+               cron{
+                   spec("TZ=Europe/Rome\n10 3 * * *")
+               }
+            }
+        }
+    }
+
+    definition {
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        url('https://github.com/brokenpip3/cicd-build-aurpkg')
+                    }
+                    branches('*/main')
+                }
+            }
+            scriptPath('check-dep-and-trigger/Jenkinsfile')
+        }
+    }
+}

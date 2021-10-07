@@ -79,8 +79,8 @@ spec:
             cpu: 1
             memory: 4Gi
         seedJobs:
-          - id: testing-job
-            targets: "jobs/*.jenkins"
+          - id: seed-job
+            targets: "ci-cd/jenkins-dsl/*.jenkins"
             description: "jobs-from-iac"
             repositoryBranch: main
             repositoryUrl: https://github.com/brokenpip3/jenkins-iac-seed-jobs
