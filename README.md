@@ -20,14 +20,14 @@ This is my "fleet" repo that describe my entire k8s cluster, made with :heart: u
 * [Tekton pipelines](infra/tekton/tekton-pipelines)
 * [Tekton triggers](infra/tekton/tekton-triggers)
 
-#### Datastores Operator
+### Datastores Operator
 
 * [zalando-postgres-operator](infra/datastores/postgres-zalando-operator.yaml)
 * [minio](apps/minio)
 
 ### Prometheus CRDs
 
-* [Pacman and brtfs rules](infra/prometheus/prom-crds/rules-other-datastores.yaml)
+* [Pacman and brtfs rules](infra/prometheus/prom-crds/rules-pacman.yaml)
 * [Postgres rules](infra/prometheus/prom-crds/rules-postgres.yaml)
 * [Jenkins rules](infra/prometheus/prom-crds/rules-jenkins.yaml)
 * [Redis-memcached-rabbit rules](infra/prometheus/prom-crds/rules-other-datastores.yaml)
