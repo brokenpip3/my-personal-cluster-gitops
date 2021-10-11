@@ -5,7 +5,7 @@ metadata:
     namespace: flux-system
 spec:
     type: telegram
-    channel: ENC[AES256_GCM,data:Jf2aoIOD8lPgwiT7ROc=,iv:zn5/KpxXbB15CSlqtIrpEPxNpTWcV3s8dy8WFDUN99g=,tag:2WET6DDb8dQxgEqB336AIg==,type:int]
+    channel: ENC[AES256_GCM,data:VtIEIAgLux80lCFUVAg=,iv:XBDPAqBYFnXXc7oMCOeV3aL/eZ+7WxjtLO/9DT4lNpo=,tag:kNe+AbwIzEEuutZ9bbhOMg==,type:str]
     secretRef:
         name: telegram-notification-provider-cfg
 sops:
@@ -14,8 +14,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2021-10-11T22:19:25Z"
-    mac: ENC[AES256_GCM,data:BzodQs+nF2tc3EWbt7ydCXl/Ud2q5+YYy7ZPahfRSQNnaLQoImaljkNvjhs5XJrk1+cXqjYAKlLWf+ZDspguDV52Hp6d7Ox2nbLrzgvHzMq96iy5rqzX5af2gQ9mNc4SphmTcthobigxl1+Y1MOlVwVqoKQZazcMsbHkoA7uwFI=,iv:s7BFzEE3bzY8pTGnzmIllEpG+DiAZB0voqZuWj7BYo8=,tag:+/pbK6+NMt4rZ6tIqqpqnQ==,type:str]
+    lastmodified: "2021-10-11T22:24:28Z"
+    mac: ENC[AES256_GCM,data:jj2i3HnDErebHlTIeXVEDi3OFZj/ew2C+UqiQj1csH1duiI7U1PhmeYOtgRw/F+A6ZXWIkIiQbe5oF74TzXKT8uCm8g7nL6ZXGzrJsBCHS6ss36trMJHT6MU5uyXrKC+IqR13gzGgiFOxkUATNpR8PmXksumW5oD6HtwjG7Xk54=,iv:Nsidj4mMIt7F1H/oBQavB7YqKRnpkxtYf3Nce37fKMs=,tag:ecmqNCNXWU6+Natxyhj9AQ==,type:str]
     pgp:
         - created_at: "2021-10-11T21:26:13Z"
           enc: |
@@ -54,8 +54,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2021-10-11T22:19:25Z"
-    mac: ENC[AES256_GCM,data:BzodQs+nF2tc3EWbt7ydCXl/Ud2q5+YYy7ZPahfRSQNnaLQoImaljkNvjhs5XJrk1+cXqjYAKlLWf+ZDspguDV52Hp6d7Ox2nbLrzgvHzMq96iy5rqzX5af2gQ9mNc4SphmTcthobigxl1+Y1MOlVwVqoKQZazcMsbHkoA7uwFI=,iv:s7BFzEE3bzY8pTGnzmIllEpG+DiAZB0voqZuWj7BYo8=,tag:+/pbK6+NMt4rZ6tIqqpqnQ==,type:str]
+    lastmodified: "2021-10-11T22:24:28Z"
+    mac: ENC[AES256_GCM,data:jj2i3HnDErebHlTIeXVEDi3OFZj/ew2C+UqiQj1csH1duiI7U1PhmeYOtgRw/F+A6ZXWIkIiQbe5oF74TzXKT8uCm8g7nL6ZXGzrJsBCHS6ss36trMJHT6MU5uyXrKC+IqR13gzGgiFOxkUATNpR8PmXksumW5oD6HtwjG7Xk54=,iv:Nsidj4mMIt7F1H/oBQavB7YqKRnpkxtYf3Nce37fKMs=,tag:ecmqNCNXWU6+Natxyhj9AQ==,type:str]
     pgp:
         - created_at: "2021-10-11T21:26:13Z"
           enc: |
