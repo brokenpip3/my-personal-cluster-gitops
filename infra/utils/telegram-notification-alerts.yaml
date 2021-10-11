@@ -7,7 +7,6 @@ metadata:
 spec:
   providerRef:
     name: telegram-notification-provider
-    namespace: flux-system
   eventSeverity: error
   eventSources:
     - kind: GitRepository
