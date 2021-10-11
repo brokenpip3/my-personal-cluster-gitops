@@ -5,7 +5,7 @@ metadata:
     namespace: flux-system
 spec:
     type: telegram
-    channel: ENC[AES256_GCM,data:5+3aFyJhHaNccnezr6WpVAl9Y3Jg9nvt,iv:5eXByukl08A2XYUJJ8Ceaiqd0wSN6+j6wSJSuLi6QcI=,tag:n7DA/ksLgTusOV47N97r+w==,type:str]
+    channel: ENC[AES256_GCM,data:Jf2aoIOD8lPgwiT7ROc=,iv:zn5/KpxXbB15CSlqtIrpEPxNpTWcV3s8dy8WFDUN99g=,tag:2WET6DDb8dQxgEqB336AIg==,type:int]
     secretRef:
         name: telegram-notification-provider-cfg
 sops:
@@ -14,8 +14,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2021-10-11T21:35:52Z"
-    mac: ENC[AES256_GCM,data:ESs4DB6pfuUe0nP2boYqv1IZocNZfghvZ9BuO6FNzwGWmiJpT1R1eeEUrP4GJdB6XNurvoNo7weTJXZTEZEZU+qEr9axwYCFb4/auy8+ECxUTdYLPm6iSzUs7JG+0lrBhh9NshWSbXcO8Mm0U9njzMVXNWefgVNCsi7B+OS+RMQ=,iv:6DXVZnjMXRHmJm+4F4AjuC9WHXWOkC0P8q8POF5sLW0=,tag:eBZYLkS81wLsKQifcxChmA==,type:str]
+    lastmodified: "2021-10-11T22:19:25Z"
+    mac: ENC[AES256_GCM,data:BzodQs+nF2tc3EWbt7ydCXl/Ud2q5+YYy7ZPahfRSQNnaLQoImaljkNvjhs5XJrk1+cXqjYAKlLWf+ZDspguDV52Hp6d7Ox2nbLrzgvHzMq96iy5rqzX5af2gQ9mNc4SphmTcthobigxl1+Y1MOlVwVqoKQZazcMsbHkoA7uwFI=,iv:s7BFzEE3bzY8pTGnzmIllEpG+DiAZB0voqZuWj7BYo8=,tag:+/pbK6+NMt4rZ6tIqqpqnQ==,type:str]
     pgp:
         - created_at: "2021-10-11T21:26:13Z"
           enc: |
@@ -54,8 +54,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2021-10-11T21:35:52Z"
-    mac: ENC[AES256_GCM,data:ESs4DB6pfuUe0nP2boYqv1IZocNZfghvZ9BuO6FNzwGWmiJpT1R1eeEUrP4GJdB6XNurvoNo7weTJXZTEZEZU+qEr9axwYCFb4/auy8+ECxUTdYLPm6iSzUs7JG+0lrBhh9NshWSbXcO8Mm0U9njzMVXNWefgVNCsi7B+OS+RMQ=,iv:6DXVZnjMXRHmJm+4F4AjuC9WHXWOkC0P8q8POF5sLW0=,tag:eBZYLkS81wLsKQifcxChmA==,type:str]
+    lastmodified: "2021-10-11T22:19:25Z"
+    mac: ENC[AES256_GCM,data:BzodQs+nF2tc3EWbt7ydCXl/Ud2q5+YYy7ZPahfRSQNnaLQoImaljkNvjhs5XJrk1+cXqjYAKlLWf+ZDspguDV52Hp6d7Ox2nbLrzgvHzMq96iy5rqzX5af2gQ9mNc4SphmTcthobigxl1+Y1MOlVwVqoKQZazcMsbHkoA7uwFI=,iv:s7BFzEE3bzY8pTGnzmIllEpG+DiAZB0voqZuWj7BYo8=,tag:+/pbK6+NMt4rZ6tIqqpqnQ==,type:str]
     pgp:
         - created_at: "2021-10-11T21:26:13Z"
           enc: |
