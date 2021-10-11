@@ -1,0 +1,81 @@
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Provider
+metadata:
+    name: telegram-notification-provider
+    namespace: flux-system
+spec:
+    type: telegram
+    channel: ENC[AES256_GCM,data:QJhjPNxS8TeO37e+idplPtpTrbHZjTKT,iv:CSYIvtxNDPYtxetyNTy41uhBAFOFqCTJD0qRVhqXLpE=,tag:JzzVEKxvsTOfcScIuIqNlQ==,type:str]
+    secretRef:
+        name: telegram-notification-provider-cfg
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2021-10-11T21:26:13Z"
+    mac: ENC[AES256_GCM,data:0kLx6Ce7snl/C2pZqRvUzbsNDuaDVZMbhlO5UJkElSM4tCEvA35eKOO1UdG1byJ0OGU1ryU40J5AYX3EkXmntUDKe8j5UhzJo/2MzI50Vj+6E/oSeSMYBreB8nbWQL3BFxTqoktPFeGP+JPb+2P7GrV43y8/rsnNjaS8b5Qgy5I=,iv:BzmaLLyvH0t0dZly27d6MtyeQOfMApg1lpm9mp2AL/4=,tag:67WG/UrT2U/0AL/s04FkvA==,type:str]
+    pgp:
+        - created_at: "2021-10-11T21:26:13Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5AQ//WU/QNapfOVMjLDmwRuI2i9PoDvHQHELeL6TAVoiGgdsP
+            GlaDgKkIyWeWeZoV6Xm3PzFdPHu6HjOK6r+1fH2QTX+QoI+CPXytvK0I/hzyDvjy
+            jt6ENoFrxhrnlAb4lYYOHFZzTLwSSxPO0vK1Bttp9Xk4i4TJ6QwtcFg6jeAmdP8r
+            mrbhowmXyWWvohCtBZrmi3elGt/4vBtKwX2ZYvcsZwOu8EdcjLh2ddgPKIiViViq
+            PvQDd8r6ihx8ypOM5mFmjM7vZhNhznBfWf7J70bHbt9Tdcl1knhf6yNX1OT5kOFR
+            xQ/9qUrGQV4K/3S0FGHoNmTNJ+3wAhzNdzq5A9/rRszTBy8D52K4xmj4+zK48fgF
+            /N2cG3F1iQTpxlB41RSKXuSAG1q/hgako8HPNvPemYm/ZwD5Ad0W+muZaRCY9WPD
+            xpUUE/CzRQF1gWfSWxS8aPPGlwTXYvkcPOWpQ+giDAuS1ZcEGjdWYSMb7/h6lIBj
+            JQy/ECp0waYrQ7sMG6lOCQaChfY+cmZ7T/zhpTUKdRjvpJQG9HSPMiWQHMSaPsmG
+            Gx5j/5f//rJKOUPFEH/gBIvDZUU9uWElQSLd75jborikNaydH1deDxsq/1MpxWrb
+            H+QoTRxrTFDZeAeI119jl3cus642nLfbimyb147zC6QWUIWoVtPNVdIBuabDIEvS
+            UAEAfHQXRgS6iRdGNz6nNBQK/j+F1yvP9foLmvvNrU7mLeB4pyAI7WYYYQaRt9TB
+            mBf4/cYu1UDOZNpamXXSmY9CVodZFEoTF/qkcIGgKM0o
+            =RWqv
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|channel)$
+    version: 3.7.1
+---
+apiVersion: v1
+stringData:
+    address: ENC[AES256_GCM,data:Ys4PAcbKL/8PuO8ELBA61DzNpns0ycsY,iv:QxDKw2ph/PAgBP8OPYd6SyCn5cB4+TkBSgQzFcpA1XM=,tag:qEuPHONDYHzWg89IPuAELw==,type:str]
+    token: ENC[AES256_GCM,data:EMTOCtx8/5bPzOHEIPplM70mHbyftyqPr1ss94beRcIHH/dlRLZFjeV39nDUGQ==,iv:HVWkbGFAuBBqXdaKvblZk8lwnLTY9gmuFOvB/OhsNHY=,tag:oEeiCUo1GyY6YwE8p+mmsA==,type:str]
+kind: Secret
+metadata:
+    name: telegram-notification-provider-cfg
+    namespace: flux-system
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2021-10-11T21:26:13Z"
+    mac: ENC[AES256_GCM,data:0kLx6Ce7snl/C2pZqRvUzbsNDuaDVZMbhlO5UJkElSM4tCEvA35eKOO1UdG1byJ0OGU1ryU40J5AYX3EkXmntUDKe8j5UhzJo/2MzI50Vj+6E/oSeSMYBreB8nbWQL3BFxTqoktPFeGP+JPb+2P7GrV43y8/rsnNjaS8b5Qgy5I=,iv:BzmaLLyvH0t0dZly27d6MtyeQOfMApg1lpm9mp2AL/4=,tag:67WG/UrT2U/0AL/s04FkvA==,type:str]
+    pgp:
+        - created_at: "2021-10-11T21:26:13Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5AQ//WU/QNapfOVMjLDmwRuI2i9PoDvHQHELeL6TAVoiGgdsP
+            GlaDgKkIyWeWeZoV6Xm3PzFdPHu6HjOK6r+1fH2QTX+QoI+CPXytvK0I/hzyDvjy
+            jt6ENoFrxhrnlAb4lYYOHFZzTLwSSxPO0vK1Bttp9Xk4i4TJ6QwtcFg6jeAmdP8r
+            mrbhowmXyWWvohCtBZrmi3elGt/4vBtKwX2ZYvcsZwOu8EdcjLh2ddgPKIiViViq
+            PvQDd8r6ihx8ypOM5mFmjM7vZhNhznBfWf7J70bHbt9Tdcl1knhf6yNX1OT5kOFR
+            xQ/9qUrGQV4K/3S0FGHoNmTNJ+3wAhzNdzq5A9/rRszTBy8D52K4xmj4+zK48fgF
+            /N2cG3F1iQTpxlB41RSKXuSAG1q/hgako8HPNvPemYm/ZwD5Ad0W+muZaRCY9WPD
+            xpUUE/CzRQF1gWfSWxS8aPPGlwTXYvkcPOWpQ+giDAuS1ZcEGjdWYSMb7/h6lIBj
+            JQy/ECp0waYrQ7sMG6lOCQaChfY+cmZ7T/zhpTUKdRjvpJQG9HSPMiWQHMSaPsmG
+            Gx5j/5f//rJKOUPFEH/gBIvDZUU9uWElQSLd75jborikNaydH1deDxsq/1MpxWrb
+            H+QoTRxrTFDZeAeI119jl3cus642nLfbimyb147zC6QWUIWoVtPNVdIBuabDIEvS
+            UAEAfHQXRgS6iRdGNz6nNBQK/j+F1yvP9foLmvvNrU7mLeB4pyAI7WYYYQaRt9TB
+            mBf4/cYu1UDOZNpamXXSmY9CVodZFEoTF/qkcIGgKM0o
+            =RWqv
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|channel)$
+    version: 3.7.1
