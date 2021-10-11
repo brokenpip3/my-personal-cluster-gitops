@@ -114,6 +114,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: zulip-rabbitmq-memory
+  namespace: zulip
   labels:
     app: zulip
     component: rabbitmq
