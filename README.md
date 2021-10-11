@@ -1,6 +1,6 @@
 # Gitops repo for my personal cluster
 
-This is my "fleet" repo that describe my entire k8s cluster, made with :heart: using [Flux](https://github.com/fluxcd/flux)
+This is my "fleet" repo that describe my entire k8s cluster, made with :heart: using [Flux](https://github.com/fluxcd/flux2)
 
 ## Components installed
 
