@@ -5,7 +5,7 @@ metadata:
     namespace: flux-system
 spec:
     type: telegram
-    channel: ENC[AES256_GCM,data:QJhjPNxS8TeO37e+idplPtpTrbHZjTKT,iv:CSYIvtxNDPYtxetyNTy41uhBAFOFqCTJD0qRVhqXLpE=,tag:JzzVEKxvsTOfcScIuIqNlQ==,type:str]
+    channel: ENC[AES256_GCM,data:5+3aFyJhHaNccnezr6WpVAl9Y3Jg9nvt,iv:5eXByukl08A2XYUJJ8Ceaiqd0wSN6+j6wSJSuLi6QcI=,tag:n7DA/ksLgTusOV47N97r+w==,type:str]
     secretRef:
         name: telegram-notification-provider-cfg
 sops:
@@ -14,8 +14,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2021-10-11T21:26:13Z"
-    mac: ENC[AES256_GCM,data:0kLx6Ce7snl/C2pZqRvUzbsNDuaDVZMbhlO5UJkElSM4tCEvA35eKOO1UdG1byJ0OGU1ryU40J5AYX3EkXmntUDKe8j5UhzJo/2MzI50Vj+6E/oSeSMYBreB8nbWQL3BFxTqoktPFeGP+JPb+2P7GrV43y8/rsnNjaS8b5Qgy5I=,iv:BzmaLLyvH0t0dZly27d6MtyeQOfMApg1lpm9mp2AL/4=,tag:67WG/UrT2U/0AL/s04FkvA==,type:str]
+    lastmodified: "2021-10-11T21:35:52Z"
+    mac: ENC[AES256_GCM,data:ESs4DB6pfuUe0nP2boYqv1IZocNZfghvZ9BuO6FNzwGWmiJpT1R1eeEUrP4GJdB6XNurvoNo7weTJXZTEZEZU+qEr9axwYCFb4/auy8+ECxUTdYLPm6iSzUs7JG+0lrBhh9NshWSbXcO8Mm0U9njzMVXNWefgVNCsi7B+OS+RMQ=,iv:6DXVZnjMXRHmJm+4F4AjuC9WHXWOkC0P8q8POF5sLW0=,tag:eBZYLkS81wLsKQifcxChmA==,type:str]
     pgp:
         - created_at: "2021-10-11T21:26:13Z"
           enc: |
@@ -54,8 +54,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2021-10-11T21:26:13Z"
-    mac: ENC[AES256_GCM,data:0kLx6Ce7snl/C2pZqRvUzbsNDuaDVZMbhlO5UJkElSM4tCEvA35eKOO1UdG1byJ0OGU1ryU40J5AYX3EkXmntUDKe8j5UhzJo/2MzI50Vj+6E/oSeSMYBreB8nbWQL3BFxTqoktPFeGP+JPb+2P7GrV43y8/rsnNjaS8b5Qgy5I=,iv:BzmaLLyvH0t0dZly27d6MtyeQOfMApg1lpm9mp2AL/4=,tag:67WG/UrT2U/0AL/s04FkvA==,type:str]
+    lastmodified: "2021-10-11T21:35:52Z"
+    mac: ENC[AES256_GCM,data:ESs4DB6pfuUe0nP2boYqv1IZocNZfghvZ9BuO6FNzwGWmiJpT1R1eeEUrP4GJdB6XNurvoNo7weTJXZTEZEZU+qEr9axwYCFb4/auy8+ECxUTdYLPm6iSzUs7JG+0lrBhh9NshWSbXcO8Mm0U9njzMVXNWefgVNCsi7B+OS+RMQ=,iv:6DXVZnjMXRHmJm+4F4AjuC9WHXWOkC0P8q8POF5sLW0=,tag:eBZYLkS81wLsKQifcxChmA==,type:str]
     pgp:
         - created_at: "2021-10-11T21:26:13Z"
           enc: |
