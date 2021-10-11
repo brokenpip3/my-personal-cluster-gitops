@@ -18,16 +18,17 @@ spec:
     name: tekton-pipelines-controller
     namespace: tekton-pipelines
   patches:
-  - patch: |-
-      apiVersion: v1
-      kind: Namespace
-      metadata:
-        labels:
-          infra.gitops: tekton
-          prometheus: scrape
-    target:
-      kind: Namespace
-      name: tekton-pipelines
+    - patch: |-
+        apiVersion: v1
+        kind: Namespace
+        metadata:
+          name: tekton-pipelines
+          labels:
+            infra.gitops: tekton
+            prometheus: scrape
+      target:
+        kind: Namespace
+        name: tekton-pipelines
   dependsOn:
     - name: infra
 ...
