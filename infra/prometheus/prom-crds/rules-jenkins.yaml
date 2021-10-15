@@ -11,7 +11,7 @@ spec:
     rules:
       # https://joostvdg.github.io/blogs/monitor-jenkins-on-k8s/alerts/
       - alert: JenkinsTooManyJobsQueued
-        expr: sum(jenkins_queue_size_value) > 20
+        expr: jenkins_queue_size_value{service="jenkins-operator-http-jenkins"} > 20
         for: 60m
         labels:
           severity: notify
@@ -20,7 +20,7 @@ spec:
           description: "{{ $labels.app_kubernetes_io_instance }} has {{ $value }} jobs stuck in the queue"
 
       - alert: JenkinsTooManyJobsStuckInQueue
-        expr: sum(jenkins_queue_stuck_value) by (app_kubernetes_io_instance) > 5
+        expr: jenkins_queue_stuck_value{service="jenkins-operator-http-jenkins"} > 5
         for: 120m
         labels:
           severity: notify
@@ -29,7 +29,7 @@ spec:
           description: " {{ $labels.app_kubernetes_io_instance }} has {{ $value }} jobs in queue"
 
       - alert: JenkinsHealthScoreToLow
-        expr: sum(jenkins_health_check_score) by (app_kubernetes_io_instance) < 1
+        expr: jenkins_health_check_score{service="jenkins-operator-http-jenkins"} < 1
         for: 10m
         labels:
           severity: notify
@@ -38,7 +38,7 @@ spec:
           description: " {{ $labels.app_kubernetes_io_instance }} a health score lower than 100%"
 
       - alert: JenkinsTooManyPluginsNeedUpate
-        expr: sum(jenkins_plugins_withUpdate) by (app_kubernetes_io_instance) > 8
+        expr: jenkins_plugins_withUpdate{service="jenkins-operator-http-jenkins"} > 8
         for: 10m
         labels:
           severity: notify
@@ -47,7 +47,7 @@ spec:
           description: " {{ $labels.app_kubernetes_io_instance }} has {{ $value }} plugins that require an update"
 
       - alert: JenkinsVMMemoryRationTooHigh
-        expr: sum(vm_memory_heap_usage) by (app_kubernetes_io_instance) > 0.70
+        expr: vm_memory_heap_usage{service="jenkins-operator-http-jenkins"} > 0.70
         for: 3m
         labels:
           severity: notify
