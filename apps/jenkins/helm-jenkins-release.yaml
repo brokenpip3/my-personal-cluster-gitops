@@ -42,11 +42,11 @@ spec:
         - name: kubernetes
           version: 1.30.3
         - name: workflow-job
-          version: "2.41"
+          version: "2.42"
         - name: workflow-aggregator
           version: "2.6"
         - name: git
-          version: 4.8.3
+          version: 4.9.0
         - name: job-dsl
           version: "1.77"
         - name: configuration-as-code
