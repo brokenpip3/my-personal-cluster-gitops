@@ -18,7 +18,7 @@ spec:
     name: image-repo-etcd
   policy:
     semver:
-      range: '>=3.4.13-0 <3.5.0-0'
+      range: '>=3.4 <3.5'
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
@@ -40,19 +40,24 @@ spec:
         name: flux
       messageTemplate: |
         Automated image update by Flux
+
         Automation name: {{ .AutomationObject }}
+
         Files:
         {{ range $filename, $_ := .Updated.Files -}}
         - {{ $filename }}
         {{ end -}}
+
         Objects:
         {{ range $resource, $_ := .Updated.Objects -}}
         - {{ $resource.Kind }} {{ $resource.Name }}
         {{ end -}}
+
         Images:
         {{ range .Updated.Images -}}
         - {{.}}
         {{ end -}}
+
     push:
       branch: images-update
   update:
