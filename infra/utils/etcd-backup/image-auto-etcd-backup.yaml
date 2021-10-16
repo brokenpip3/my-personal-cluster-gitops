@@ -5,7 +5,7 @@ metadata:
   name: image-repo-etcd
   namespace: flux-system
 spec:
-  image: k8s.gcr.io/etcd
+  image: 'k8s.gcr.io/etcd'
   interval: 10m0s
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1

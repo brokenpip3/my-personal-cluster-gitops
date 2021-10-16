@@ -22,7 +22,7 @@ metadata:
   name: nginxinc-ingress
   namespace: ingress
 spec:
-  interval: 5m
+  interval: 10m
   releaseName: inc
   chart:
     spec:

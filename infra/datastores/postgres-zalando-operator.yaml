@@ -12,7 +12,7 @@ metadata:
     name: postgres-operator
     namespace: flux-system
 spec:
-    interval: 5m
+    interval: 10m
     url: https://github.com/zalando/postgres-operator
     ref:
         branch: master
