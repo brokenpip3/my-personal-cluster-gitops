@@ -1,0 +1,61 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: image-repo-etcd
+  namespace: flux-system
+spec:
+  image: k8s.gcr.io/etcd
+  interval: 10m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: image-policy-etcd
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: image-repo-etcd
+  policy:
+    semver:
+      range: '>=3.4.13 <3.5'
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: flux-system-image-automation
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: fluxbot@users.noreply.github.com
+        name: flux
+    messageTemplate: |
+      Automated image update by Flux
+      Automation name: {{ .AutomationObject }}
+      Files:
+      {{ range $filename, $_ := .Updated.Files -}}
+      - {{ $filename }}
+      {{ end -}}
+      Objects:
+      {{ range $resource, $_ := .Updated.Objects -}}
+      - {{ $resource.Kind }} {{ $resource.Name }}
+      {{ end -}}
+      Images:
+      {{ range .Updated.Images -}}
+      - {{.}}
+      {{ end -}}
+    push:
+      branch: images-update
+  update:
+    path: ./clusters/private-contabo
+    strategy: Setters
+...
