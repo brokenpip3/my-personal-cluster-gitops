@@ -7,7 +7,6 @@ resources:
 - certmanager/secret-certmanager.yaml
 - storage/helm-nfs-storage-class-source.yaml
 - storage/helm-nfs-storage-class-release.yaml
-- utils/cronjob-etcd-backup.yaml
 - prometheus/
 - tekton/tekton-pipelines/tekton-pipelines-source.yaml
 - tekton/tekton-pipelines/tekton-pipelines.yaml
