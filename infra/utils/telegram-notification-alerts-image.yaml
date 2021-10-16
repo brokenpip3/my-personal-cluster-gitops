@@ -1,0 +1,14 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Alert
+metadata:
+  name: flux-system-image-all
+  namespace: flux-system
+spec:
+  providerRef:
+    name: telegram-notification-provider
+  eventSeverity: info
+  eventSources:
+    - kind: ImagePolicy
+      name: '*'
+...
