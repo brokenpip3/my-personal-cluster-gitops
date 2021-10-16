@@ -18,7 +18,7 @@ spec:
     name: image-repo-etcd
   policy:
     semver:
-      range: '>=3.4.13 <3.5'
+      range: '>=3.4.13-0 <3.5.0-0'
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
