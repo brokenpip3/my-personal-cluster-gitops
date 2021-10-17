@@ -76,6 +76,12 @@ spec:
           matchLabels:
             prometheus: scrape
         retention: 7d
+        additionalScrapeConfigs:
+         - job_name: 'bastion-host'
+           scrape_interval: 1m
+           scheme: https
+           static_configs:
+             - targets: ['172.26.10.100:9100']
         storageSpec:
           volumeClaimTemplate:
             spec:
