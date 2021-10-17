@@ -1,0 +1,10 @@
+# From: https://github.com/fluxcd/flux2-kustomize-helm-example/tree/main/.github
+name: 'kustomize'
+description: 'A GitHub Action with Kubernetes tools'
+author: 'Stefan Prodan'
+branding:
+  icon: 'command'
+  color: 'blue'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
