@@ -1,0 +1,14 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: flux-system-upstream-github
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  ref:
+    branch: main
+  secretRef:
+    name: flux-system-upstream-github
+  url: https://github.com/brokenpip3/my-personal-cluster-gitops.git
+...

@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   image: gcr.io/etcd-development/etcd
-  interval: 10m0s
+  interval: 1d
   accessFrom:
     namespaceSelectors:
       - matchLabels: {}
@@ -32,7 +32,7 @@ spec:
   interval: 10m0s
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: flux-system-upstream-github
   git:
     checkout:
       ref:
