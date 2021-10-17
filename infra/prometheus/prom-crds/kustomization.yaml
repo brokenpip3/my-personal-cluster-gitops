@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- podmonitor-flux.yaml
+- podmonitor-pg-exporter.yaml
+- rules-borgbackup.yaml
+- rules-certmanager.yaml
+- rules-jenkins.yaml
+- rules-other-datastores.yaml
+- rules-pacman.yaml
+- rules-postgres.yaml
+- servicemonitor-tekton.yaml

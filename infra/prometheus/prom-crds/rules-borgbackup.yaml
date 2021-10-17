@@ -1,0 +1,26 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: borg-backup-rules
+  namespace: monitoring
+spec:
+  groups:
+  - name: borg
+    interval: 60s
+    rules:
+      - alert: BorgFrankaMissingBackup
+        expr: time() - borg_franka_last_archive_timestamp > 86400 * 1.5
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'Borg Franka missing backup (instance {{ $labels.instance }})'
+          description: 'Borg has not backuped for more than 24 hours. Last backup was made {{ $value | humanizeDuration }} ago'
+      - alert: BorgFrankaBackupSize
+        expr: borg_franka_repo_size_bytes > 53687091200
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: 'Borg Franka backup size is more than 50GB (instance {{ $labels.instance }})'
+          description: 'Borg backup has exceeded 50GB. Current size: {{ $value | humanize1024 }}'
