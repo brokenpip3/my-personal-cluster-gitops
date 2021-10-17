@@ -7,6 +7,9 @@ metadata:
 spec:
   image: k8s.gcr.io/etcd
   interval: 10m0s
+  accessFrom:
+    namespaceSelectors:
+      - matchLabels: {}
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
@@ -61,6 +64,6 @@ spec:
     push:
       branch: images-update
   update:
-    path: .infra/utils/etcd-backup
+    path: ./infra/utils/etcd-backup
     strategy: Setters
 ...
