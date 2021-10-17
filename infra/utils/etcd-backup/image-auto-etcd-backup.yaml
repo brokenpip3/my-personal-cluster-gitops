@@ -5,7 +5,7 @@ metadata:
   name: image-repo-etcd
   namespace: flux-system
 spec:
-  image: k8s.gcr.io/etcd
+  image: gcr.io/etcd-development/etcd
   interval: 10m0s
   accessFrom:
     namespaceSelectors:
@@ -21,7 +21,7 @@ spec:
     name: image-repo-etcd
   policy:
     semver:
-      range: '~3.4.x'
+      range: '~v3.4.x'
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
