@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   image: gcr.io/etcd-development/etcd
-  interval: 1d
+  interval: 100m0s
   accessFrom:
     namespaceSelectors:
       - matchLabels: {}
