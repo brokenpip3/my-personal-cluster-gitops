@@ -61,6 +61,6 @@ spec:
     push:
       branch: images-update
   update:
-    path: ./clusters/private-contabo
+    path: .infra/utils/etcd-backup
     strategy: Setters
 ...
