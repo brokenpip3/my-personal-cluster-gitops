@@ -79,9 +79,9 @@ spec:
         additionalScrapeConfigs:
          - job_name: 'bastion-host'
            scrape_interval: 1m
-           scheme: https
+           scheme: http
            static_configs:
-             - targets: ['172.26.10.100:9100']
+             - targets: ['zelinda:9100']
         storageSpec:
           volumeClaimTemplate:
             spec:
