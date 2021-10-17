@@ -12,7 +12,7 @@ This is my "fleet" repo that describe my entire k8s cluster, made with :heart: u
 * [ovh-cert-manager-webhook](infra/certmanager)
 * [prometheus stack/operator](infra/prometheus)
 * [prometheus-alertmanager-telegram-bot](infra/prometheus/telegram)
-* [etcd-backup](infra/utils/cronjob-etcd-backup.yaml)
+* [etcd-backup](infra/utils/etcd-backup)
 * [nfs-storage](infra/storage)
 
 ### Ci
