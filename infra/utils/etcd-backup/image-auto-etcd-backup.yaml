@@ -32,7 +32,7 @@ spec:
   interval: 10m0s
   sourceRef:
     kind: GitRepository
-    name: flux-system-upstream-github
+    name: flux-system
   git:
     checkout:
       ref:
