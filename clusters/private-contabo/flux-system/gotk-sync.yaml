@@ -9,8 +9,8 @@ spec:
   ref:
     branch: main
   secretRef:
-    name: flux-system
-  url: https://gitlab.com/brokenpip3/my-personal-cluster-gitops.git
+    name: flux-system-upstream-github
+  url: https://github.com/brokenpip3/my-personal-cluster-gitops.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
