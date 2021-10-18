@@ -1,0 +1,23 @@
+name: Image-update Auto-PR
+on:
+  push:
+    branches: ['images-update']
+
+jobs:
+  pull-request:
+    name: Open PR to main
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      name: checkout
+
+    - uses: repo-sync/pull-request@v2
+      name: pull-request
+      with:
+        destination_branch: "main"
+        pr_title: "Pulling ${{ github.ref }} into main"
+        pr_body: "👑 *An automated PR*"
+        pr_reviewer: "brokenpip3"
+        pr_label: "auto-image-update"
+        pr_draft: false
+        github_token: ${{ secrets.GITHUB_TOKEN }}

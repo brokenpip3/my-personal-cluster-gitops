@@ -39,7 +39,7 @@ spec:
         branch: main
     commit:
       author:
-        email: fluxbot@users.noreply.github.com
+        email: fluxbot-brokenpip3@users.noreply.github.com
         name: flux
       messageTemplate: |
         Automated image update by Flux
