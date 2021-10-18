@@ -1,5 +1,6 @@
-name: Image-update Auto-PR
+name: image-update-auto-pr
 on:
+  workflow_dispatch:
   push:
     branches: ['images-update']
 
