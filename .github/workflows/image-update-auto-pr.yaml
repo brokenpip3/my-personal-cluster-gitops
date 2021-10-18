@@ -1,7 +1,6 @@
 name: image-update-auto-pr
 on:
   workflow_dispatch:
-    branches: [images-update]
   push:
     branches: [images-update]
 
@@ -17,8 +16,8 @@ jobs:
       name: pull-request
       with:
         destination_branch: "main"
-        pr_title: "Pulling ${{ github.ref }} into main"
-        pr_body: "👑 *An automated PR*"
+        pr_title: "Pulling image-update into main"
+        pr_body: "Automated image PR*"
         pr_reviewer: "brokenpip3"
         pr_label: "auto-image-update"
         pr_draft: false

@@ -31,6 +31,7 @@ This is my "fleet" repo that describe my entire k8s cluster, made with :heart: u
 * [Postgres rules](infra/prometheus/prom-crds/rules-postgres.yaml)
 * [Jenkins rules](infra/prometheus/prom-crds/rules-jenkins.yaml)
 * [Redis-memcached-rabbit rules](infra/prometheus/prom-crds/rules-other-datastores.yaml)
+* [borg-backup](infra/prometheus/prom-crds/rules-borgbackup.yaml)
 * [Others](infra/prometheus/prom-crds)
 
 ### Apps
