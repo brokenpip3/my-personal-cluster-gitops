@@ -83,5 +83,5 @@ spec:
             targets: "ci-cd/jenkins-dsl/*.jenkins"
             description: "jobs-from-iac"
             repositoryBranch: main
-            repositoryUrl: https://gitlab.com/brokenpip3/my-personal-cluster-gitops
+            repositoryUrl: https://github.com/brokenpip3/my-personal-cluster-gitops
 ...

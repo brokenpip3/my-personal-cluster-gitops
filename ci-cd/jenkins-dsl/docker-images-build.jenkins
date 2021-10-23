@@ -1,0 +1,49 @@
+#!/usr/bin/env groovy
+
+// https://stackoverflow.com/a/52887479
+static void DisableConcurrentBuilds(context) {
+		context.with {
+				configure {
+						def jobPropertyDescriptors = it / 'actions' / 'org.jenkinsci.plugins.workflow.multibranch.JobPropertyTrackerAction' / 'jobPropertyDescriptors'
+						jobPropertyDescriptors << {
+								string('org.jenkinsci.plugins.workflow.job.properties.DisableConcurrentBuildsJobProperty')
+						}
+						def properties = it / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.DisableConcurrentBuildsJobProperty' {}
+				}
+		}
+}
+
+// Create folder
+
+folder('docker-images') {
+		displayName('docker-images')
+		description('Docker images build with Kaniko')
+}
+
+// Create Jobs
+
+pipelineJob('docker-images/kaniko-generic-docker-build') {
+		displayName('aur-package-build')
+
+		logRotator {
+				numToKeep(10)
+				daysToKeep(30)
+		}
+
+		// https://stackoverflow.com/a/52887479
+		DisableConcurrentBuilds(delegate)
+
+		definition {
+				cpsScm {
+						scm {
+								git {
+										remote {
+												url('https://github.com/brokenpip3/my-personal-cluster-gitops')
+										}
+										branches('*/main')
+								}
+						}
+						scriptPath('ci-cd/jenkins-general-jobs-collection/kaniko-universal-docker-build.groovy')
+				}
+		}
+}
