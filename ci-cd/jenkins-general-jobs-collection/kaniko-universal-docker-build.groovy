@@ -9,32 +9,36 @@ metadata:
   name: kaniko-build
 spec:
   containers:
-  - name: jnlp
-    workingDir: /tmp/jenkins
   - name: kaniko
     workingDir: /tmp/jenkins
     image: gcr.io/kaniko-project/executor:debug
     imagePullPolicy: Always
     command:
-    - /busybox/cat
+    - sleep
+	args:
+	- infinity
     tty: true
-  volumeMounts:
-  - name: jenkins-docker-cfg
-    mountPath: /kaniko/.docker
+    volumeMounts:
+    - name: jenkins-docker-cfg
+      mountPath: /kaniko/.docker
   volumes:
   - name: jenkins-docker-cfg
-  projected:
-    sources:
-     - secret:
-       name: brokenpip3-jenkins-pull-secret
-       items:
-       - key: .dockerconfigjson
-         path: config.json
+    projected:
+      sources:
+      - secret:
+        name: brokenpip3-jenkins-pull-secret
+        items:
+		  - key: .dockerconfigjson
+            path: config.json
 '''
 				}
 		}
+		// https://github.com/GoogleContainerTools/kaniko/issues/1542
+		environment {
+				container = 'docker'
+		}
 
-		options { disableConcurrentBuilds()
+		options { skipDefaultCheckout true
 		timeout(time: 15, unit: 'MINUTES')
 		}
 
