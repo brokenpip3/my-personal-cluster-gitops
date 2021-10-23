@@ -28,7 +28,7 @@ spec:
       - secret:
         name: brokenpip3-jenkins-pull-secret
         items:
-		  - key: .dockerconfigjson
+          - key: .dockerconfigjson
             path: config.json
 '''
 				}
@@ -66,13 +66,11 @@ spec:
 				}
 				stage('Make Image') {
 						steps {
-								withFolderProperties {
-										container(name: 'kaniko', shell: '/busybox/sh') {
-												sh """#!/busybox/sh
-												/kaniko/executor -f ${IMAGE_DOCKERFILE_PATH} -c ${IMAGE_DOCKERFILE_DIR} --cache=false \
-												  --destination=${IMAGE_REGISTRY}/${IMAGE_ORG}/${IMAGE_NAME}:${IMAGE_TAG}
-												"""
-										}
+								container(name: 'kaniko', shell: '/busybox/sh') {
+										sh """#!/busybox/sh
+										   /kaniko/executor -f ${IMAGE_DOCKERFILE_PATH} -c ${IMAGE_DOCKERFILE_DIR} --cache=false \
+										     --destination=${IMAGE_REGISTRY}/${IMAGE_ORG}/${IMAGE_NAME}:${IMAGE_TAG}
+										"""
 								}
 						}
 				}
