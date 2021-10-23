@@ -11,16 +11,16 @@ spec:
   containers:
   - name: kaniko
     workingDir: /tmp/jenkins
-    image: gcr.io/kaniko-project/executor:debug
-    imagePullPolicy: Always
-    command:
-    - sleep
+	image: gcr.io/kaniko-project/executor:debug
+	imagePullPolicy: Always
+	command:
+	- sleep
 	args:
 	- infinity
-    tty: true
-    volumeMounts:
-    - name: jenkins-docker-cfg
-      mountPath: /kaniko/.docker
+	tty: true
+	volumeMounts:
+	- name: jenkins-docker-cfg
+	  mountPath: /kaniko/.docker
   volumes:
   - name: jenkins-docker-cfg
     projected:
