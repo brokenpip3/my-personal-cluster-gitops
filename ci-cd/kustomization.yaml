@@ -4,3 +4,4 @@ resources:
 - pipelineresource/k8s-fake-smtp-image.yaml
 - pipelineresource/k8s-fake-smtp-url.yaml
 - task/kaniko.yaml
+- shared-credentials/quay-io-docker-registry-secret.yaml
