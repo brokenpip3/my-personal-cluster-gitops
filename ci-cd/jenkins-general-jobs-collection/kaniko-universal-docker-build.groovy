@@ -23,13 +23,11 @@ spec:
       mountPath: /kaniko/.docker
   volumes:
   - name: jenkins-docker-cfg
-    projected:
-      sources:
-      - secret:
-        name: brokenpip3-jenkins-pull-secret
-        items:
-          - key: .dockerconfigjson
-            path: config.json
+    secret:
+      secretName: brokenpip3-jenkins-pull-secret
+      items:
+      - key: .dockerconfigjson
+        path: config.json
 '''
 				}
 		}

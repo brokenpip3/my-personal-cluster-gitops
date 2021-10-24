@@ -38,6 +38,8 @@ spec:
           version: "2.0.10"
         - name: metrics
           version: "4.0.2.8"
+        - name: ansicolor
+          version: "1.0.0"
         basePlugins:
         - name: kubernetes
           version: 1.30.3
