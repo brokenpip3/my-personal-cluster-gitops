@@ -34,6 +34,8 @@ data:
     store.addCredentials(domain, secretTextTgBotChat)
   1-prom-configuration.yaml: |
     unclassified:
+       ansiColorBuildWrapper:
+         globalColorMapName: "xterm"
        prometheusConfiguration:
          collectDiskUsage: false
          collectingMetricsPeriodInSeconds: 600

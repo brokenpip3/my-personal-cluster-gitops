@@ -1,7 +1,6 @@
 pipeline {
 		agent {
 				kubernetes {
-						label 'kaniko-build'
 						yaml '''
 kind: Pod
 apiVersion: v1
@@ -54,12 +53,25 @@ spec:
 
 		stages {
 				stage('Checkout') {
-					steps {
-						checkout([
-						$class: 'GitSCM',
-						branches: [[name: "refs/heads/${GIT_BRANCH}"]],
-						userRemoteConfigs: [[ url: "${GIT_URL}"]]
-						])
+						steps {
+						        // If git tag is specified checkout tag and the same docker img tag
+								// otherwise use branch and "latest" as docker img tag
+								script {
+										if (params.GIT_TAG.getPlainText().isEmpty()) {
+												checkout([
+												$class: 'GitSCM',
+												branches: [[name: "refs/heads/${GIT_BRANCH}"]],
+												userRemoteConfigs: [[ url: "${GIT_URL}"]]
+												])
+												env.IMAGE_TAG = "latest"
+										} else {
+												checkout([
+												$class: 'GitSCM',
+												branches: [[name: "refs/heads/${GIT_TAG}"]],
+												userRemoteConfigs: [[ url: "${GIT_URL}"]]
+												])
+										}
+								}
 						}
 				}
 				stage('Make Image') {
