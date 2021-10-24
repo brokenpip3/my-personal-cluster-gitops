@@ -32,9 +32,14 @@ data:
 
     store.addCredentials(domain, secretTextTgBotToken)
     store.addCredentials(domain, secretTextTgBotChat)
-  2-timezone.groovy: |
-    System.setProperty('org.apache.commons.jelly.tags.fmt.timeZone', 'Europe/Rome')
   1-casc-configuration.yaml: |
+    jenkins:
+      globalNodeProperties:
+      - envVars:
+          env:
+          - key: "TZ"
+            value: "Europe/Rome"
+      systemMessage: "CI as code"
     unclassified:
        ansiColorBuildWrapper:
          globalColorMapName: "xterm"
