@@ -5,7 +5,7 @@ metadata:
     name: jenkins-k8s-operator
     namespace: jenkins
 spec:
-    interval: 10m
+    interval: 15m
     releaseName: jenkins
     dependsOn:
     - name: cert-manager
