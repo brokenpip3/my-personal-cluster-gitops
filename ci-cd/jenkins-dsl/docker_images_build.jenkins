@@ -23,11 +23,11 @@ folder('docker-images') {
 // Create Jobs
 
 pipelineJob('docker-images/kaniko-generic-docker-build') {
-		displayName('aur-package-build')
+		displayName('kaniko-generic-manual-trigger')
 
 		logRotator {
 				numToKeep(10)
-				daysToKeep(30)
+				daysToKeep(10)
 		}
 
 		// https://stackoverflow.com/a/52887479

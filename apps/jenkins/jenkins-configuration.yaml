@@ -32,7 +32,9 @@ data:
 
     store.addCredentials(domain, secretTextTgBotToken)
     store.addCredentials(domain, secretTextTgBotChat)
-  1-prom-configuration.yaml: |
+  2-timezone.groovy: |
+    System.setProperty('org.apache.commons.jelly.tags.fmt.timeZone', 'Europe/Rome')
+  1-casc-configuration.yaml: |
     unclassified:
        ansiColorBuildWrapper:
          globalColorMapName: "xterm"

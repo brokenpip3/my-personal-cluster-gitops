@@ -57,7 +57,7 @@ spec:
 						        // If git tag is specified checkout tag and the same docker img tag
 								// otherwise use branch and "latest" as docker img tag
 								script {
-										if (params.GIT_TAG.getPlainText().isEmpty()) {
+										if (params.GIT_TAG.isEmpty()) {
 												checkout([
 												$class: 'GitSCM',
 												branches: [[name: "refs/heads/${GIT_BRANCH}"]],
