@@ -64,8 +64,29 @@ spec:
 		}
 
 		stages {
+                stage('validation') {
+                    steps {
+                        // Check if some optional params are empty and fill them with git info
+                        script {
+                            // If image name is not procided set it from repo name
+                            // Example https://github.com/foo/bar will set image name = bar
+                            if (params.IMAGE_NAME.isEmpty()) {
+                                env.IMAGE_NAME = params.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
+                            }
+                            // If image tag is empty but git tag is provided
+                            // set image tag equals to git tag
+                            if (params.IMAGE_TAG.isEmpty() && env.GIT_BRANCH.isEmpty()) {
+                                env.IMAGE_TAG = params.GIT_TAG
+                            }
+                        }
+                    }}
 				stage('Check if tag exist') {
-                    when {  expression { return ( params.GIT_BRANCH == null && params.GIT_TAG != null ) }}
+                    when {
+                        allOf {
+                            expression { return params.GIT_BRANCH.isEmpty() }
+                            expression { return params.GIT_TAG != null }
+                        }
+                    }
                     steps {
                             script {
                                 container(name: 'utils') {
@@ -111,19 +132,6 @@ spec:
                                     ])
                                 }
                             }
-                            // Check if some optional params are empty and fill them with git info
-                            script {
-                                // If image name is not procided set it from repo name
-                                // Example https://github.com/foo/bar will set image name = bar
-                                if (params.IMAGE_NAME.isEmpty()) {
-                                    env.IMAGE_NAME = params.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
-                                }
-                                // If image tag is empty but git tag is provided
-                                // set image tag equals to git tag
-                                if (params.IMAGE_TAG.isEmpty() && env.GIT_BRANCH == null) {
-                                    env.IMAGE_TAG = params.GIT_TAG
-                                }
-                            }
 						}
 				}
 				stage('Make Image') {
@@ -142,5 +150,11 @@ spec:
                         }
                     }
                 }
+        }
+
+        post {
+            always {
+                cleanWs()
+            }
         }
 }
