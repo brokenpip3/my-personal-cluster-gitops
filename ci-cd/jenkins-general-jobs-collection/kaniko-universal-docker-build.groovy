@@ -59,10 +59,9 @@ spec:
 				string(name: 'IMAGE_DOCKERFILE_DIR', defaultValue: '.', description: 'Image dockerfile path')
 		}
 
-        //curl -s https://quay.io/api/v1/repository/brokenpip3/tg2| jq -e -r '.tags[] | select(.name=="0.0.2")| any'  > /dev/null
 		stages {
 				stage('Check if tag exist') {
-                    when {  expression { params.GIT_BRANCH.isEmpty() }}
+                    when {  expression { return ( params.GIT_BRANCH == null && params.GIT_TAG != null ) }}
                     steps {
                             script {
                                 container(name: 'utils') {
@@ -81,9 +80,15 @@ spec:
                             }
                         }
                     }
+                //sh(returnStdout: true, script: "git describe --tags --abbrev=0").trim()
 				stage('Checkout') {
-                    when { expression { return env.IMAGE_EXIST == 'false'} }
-					steps {
+                    when {
+                        anyOf {
+                            expression { return env.IMAGE_EXIST == 'false'}
+                            expression { return env.GIT_BRANCH !='null'}
+                        }
+                    }
+                    steps {
 						    // If git tag is specified checkout tag and the same docker img tag
 							// otherwise use branch and "latest" as docker img tag
 							script {
@@ -105,15 +110,20 @@ spec:
 						}
 				}
 				stage('Make Image') {
-                    when { expression { return env.IMAGE_EXIST == 'false'} }
+                    when {
+                        anyOf {
+                            expression { return env.IMAGE_EXIST == 'false'}
+                            expression { return env.GIT_BRANCH !='null'}
+                        }
+                    }
                     steps {
-                            container(name: 'kaniko', shell: '/busybox/sh') {
-										sh """#!/busybox/sh
-										   /kaniko/executor -f ${IMAGE_DOCKERFILE_PATH} -c ${IMAGE_DOCKERFILE_DIR} --cache=false \
-										     --destination=${IMAGE_REGISTRY}/${IMAGE_ORG}/${IMAGE_NAME}:${IMAGE_TAG}
-										"""
-								}
-						}
-				}
-		}
+                        container(name: 'kaniko', shell: '/busybox/sh') {
+                            sh """#!/busybox/sh
+                                  /kaniko/executor -f ${IMAGE_DOCKERFILE_PATH} -c ${IMAGE_DOCKERFILE_DIR} --cache=false \
+                                    --destination=${IMAGE_REGISTRY}/${IMAGE_ORG}/${IMAGE_NAME}:${IMAGE_TAG}
+                            """
+                        }
+                    }
+                }
+        }
 }
