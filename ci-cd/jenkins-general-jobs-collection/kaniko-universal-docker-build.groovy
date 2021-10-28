@@ -89,31 +89,39 @@ spec:
                     when {
                         anyOf {
                             expression { return env.IMAGE_EXIST == 'false'}
-                            expression { return env.GIT_BRANCH !='null'}
+                            expression { return env.GIT_BRANCH != null}
                         }
                     }
                     steps {
-						    // If git tag is specified checkout tag and the same docker img tag
-							// otherwise use branch and "latest" as docker img tag
+						    // If git tag is specified checkout tag and set docker img tag
+							// otherwise use branch and set "latest" as docker img tag
 							script {
                                 if (params.GIT_TAG.isEmpty()) {
                                     checkout([
                                     $class: 'GitSCM',
-                                    branches: [[name: "refs/heads/${GIT_BRANCH}"]],
-                                    userRemoteConfigs: [[ url: "${GIT_URL}"]]
+                                    branches: [[name: "refs/heads/${params.GIT_BRANCH}"]],
+                                    userRemoteConfigs: [[ url: "${params.GIT_URL}"]]
                                     ])
                                     env.IMAGE_TAG = "latest"
                                 } else {
 									checkout([
 									$class: 'GitSCM',
-									branches: [[name: "refs/tags/${GIT_TAG}"]],
-									userRemoteConfigs: [[ url: "${GIT_URL}"]]
+									branches: [[name: "refs/tags/${params.GIT_TAG}"]],
+									userRemoteConfigs: [[ url: "${params.GIT_URL}"]]
                                     ])
                                 }
                             }
+                            // Check if some optional params are empty and fill them with git info
                             script {
+                                // If image name is not procided set it from repo name
+                                // Example https://github.com/foo/bar will set image name = bar
                                 if (params.IMAGE_NAME.isEmpty()) {
-                                    env.IMAGE_NAME = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
+                                    env.IMAGE_NAME = params.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
+                                }
+                                // If image tag is empty but git tag is provided
+                                // set image tag equals to git tag
+                                if (params.IMAGE_TAG.isEmpty() && env.GIT_BRANCH == null) {
+                                    env.IMAGE_TAG = params.GIT_TAG
                                 }
                             }
 						}
@@ -122,7 +130,7 @@ spec:
                     when {
                         anyOf {
                             expression { return env.IMAGE_EXIST == 'false'}
-                            expression { return env.GIT_BRANCH !='null'}
+                            expression { return env.GIT_BRANCH != null}
                         }
                     }
                     steps {
