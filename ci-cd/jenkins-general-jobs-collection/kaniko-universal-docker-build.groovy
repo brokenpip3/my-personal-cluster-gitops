@@ -1,3 +1,7 @@
+// Universal docker image build ci with Kanikp
+//
+// TDB
+
 pipeline {
 		agent {
 				kubernetes {
@@ -102,9 +106,14 @@ spec:
                                 } else {
 									checkout([
 									$class: 'GitSCM',
-									branches: [[name: "refs/heads/${GIT_TAG}"]],
+									branches: [[name: "refs/tags/${GIT_TAG}"]],
 									userRemoteConfigs: [[ url: "${GIT_URL}"]]
                                     ])
+                                }
+                            }
+                            script {
+                                if (params.IMAGE_NAME.isEmpty()) {
+                                    env.IMAGE_NAME = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
                                 }
                             }
 						}
