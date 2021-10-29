@@ -84,7 +84,9 @@ spec:
                     when {
                         allOf {
                             expression { return params.GIT_BRANCH.isEmpty() }
-                            expression { return params.GIT_TAG != null }
+                            not {
+                                expression { return params.GIT_TAG.isEmpty() }
+                            }
                         }
                     }
                     steps {
@@ -110,7 +112,9 @@ spec:
                     when {
                         anyOf {
                             expression { return env.IMAGE_EXIST == 'false'}
-                            expression { return env.GIT_BRANCH != null}
+                            not {
+                                expression { return params.GIT_BRANCH.isEmpty()}
+                            }
                         }
                     }
                     steps {
@@ -138,7 +142,9 @@ spec:
                     when {
                         anyOf {
                             expression { return env.IMAGE_EXIST == 'false'}
-                            expression { return env.GIT_BRANCH != null}
+                            not {
+                                expression { return params.GIT_BRANCH.isEmpty()}
+                            }
                         }
                     }
                     steps {
