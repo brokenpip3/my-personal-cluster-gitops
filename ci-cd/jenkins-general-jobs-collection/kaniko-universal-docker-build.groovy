@@ -27,7 +27,7 @@ spec:
       mountPath: /kaniko/.docker
   - name: utils
     workingDir: /tmp/jenkins
-    image: brokenpip3/ubuntu-curl-jq
+    image: brokenpip3/ubuntu-toolbox
     command:
     - sleep
     args:
@@ -52,15 +52,16 @@ spec:
 		}
 
 		parameters {
-				string(name: 'GIT_URL', defaultValue: '', description: 'Git url')
+				string(name: 'GIT_URL', defaultValue: '', description: 'Git url, must end with canonical .git')
 				string(name: 'GIT_BRANCH', defaultValue: '', description: 'Git branch')
 				string(name: 'GIT_TAG', defaultValue: '', description: 'Git tag')
 				string(name: 'IMAGE_NAME', defaultValue: '', description: 'Image name')
 				string(name: 'IMAGE_REGISTRY', defaultValue: 'quay.io', description: 'Image name')
-				string(name: 'IMAGE_ORG', defaultValue: 'brokenpip3', description: 'Image organization/username')
+				string(name: 'IMAGE_ORG', defaultValue: 'brokenpip3', description: 'Image organization or username')
 				string(name: 'IMAGE_TAG', defaultValue: '', description: 'Image tag')
 				string(name: 'IMAGE_DOCKERFILE_PATH', defaultValue: 'Dockerfile', description: 'Image dockerfile name')
 				string(name: 'IMAGE_DOCKERFILE_DIR', defaultValue: '.', description: 'Image dockerfile path')
+                booleanParam(name: 'GIT_FORCE_LAST_TAG', defaultValue: false, description: 'Force build last tag from GIT_BRANCH')
 		}
 
 		stages {
@@ -79,7 +80,8 @@ spec:
                                 env.IMAGE_TAG = params.GIT_TAG
                             }
                         }
-                    }}
+                    }
+                }
 				stage('Check if tag exist') {
                     when {
                         allOf {
@@ -107,7 +109,6 @@ spec:
                             }
                         }
                     }
-                //sh(returnStdout: true, script: "git describe --tags --abbrev=0").trim()
 				stage('Checkout') {
                     when {
                         anyOf {
@@ -127,7 +128,12 @@ spec:
                                     branches: [[name: "refs/heads/${params.GIT_BRANCH}"]],
                                     userRemoteConfigs: [[ url: "${params.GIT_URL}"]]
                                     ])
-                                    env.IMAGE_TAG = "latest"
+                                    if (params.GIT_FORCE_LAST_TAG) {
+                                        final def LASTTAG = sh(returnStdout: true, script: "git describe --tags --abbrev=0").trim()
+                                        env.IMAGE_TAG = LASTTAG
+                                    } else {
+                                        env.IMAGE_TAG = "latest"
+                                    }
                                 } else {
 									checkout([
 									$class: 'GitSCM',
