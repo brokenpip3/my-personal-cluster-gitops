@@ -40,6 +40,8 @@ spec:
           version: "4.0.2.8"
         - name: ansicolor
           version: "1.0.0"
+        - name: "sidebar-link"
+          version: "1.12.1"
         basePlugins:
         - name: kubernetes
           version: "1.30.5"
