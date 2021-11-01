@@ -2,48 +2,122 @@
 
 // https://stackoverflow.com/a/52887479
 static void DisableConcurrentBuilds(context) {
-		context.with {
-				configure {
-						def jobPropertyDescriptors = it / 'actions' / 'org.jenkinsci.plugins.workflow.multibranch.JobPropertyTrackerAction' / 'jobPropertyDescriptors'
-						jobPropertyDescriptors << {
-								string('org.jenkinsci.plugins.workflow.job.properties.DisableConcurrentBuildsJobProperty')
-						}
-						def properties = it / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.DisableConcurrentBuildsJobProperty' {}
-				}
-		}
+    context.with {
+        configure {
+            def jobPropertyDescriptors = it / 'actions' / 'org.jenkinsci.plugins.workflow.multibranch.JobPropertyTrackerAction' / 'jobPropertyDescriptors'
+            jobPropertyDescriptors << {
+                string('org.jenkinsci.plugins.workflow.job.properties.DisableConcurrentBuildsJobProperty')
+            }
+            def properties = it / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.DisableConcurrentBuildsJobProperty' {}
+        }
+    }
 }
 
-// Create folder
 
-folder('docker-images') {
-		displayName('docker-images')
-		description('Docker images build with Kaniko')
+// Create folder
+def foldername = "docker-images"
+folder(foldername) {
+    displayName('docker-images')
+    description('Docker images build with Kaniko')
 }
 
 // Create Jobs
 
-pipelineJob('docker-images/kaniko-generic-docker-build') {
-		displayName('kaniko-generic-manual-trigger')
+/// Manual Job
 
-		logRotator {
-				numToKeep(10)
-				daysToKeep(10)
-		}
+pipelineJob("${foldername}/kaniko-generic-docker-build") {
+    displayName('kaniko-generic-manual-trigger')
 
-		// https://stackoverflow.com/a/52887479
-		DisableConcurrentBuilds(delegate)
+    logRotator {
+        numToKeep(10)
+        daysToKeep(10)
+    }
 
-		definition {
-				cpsScm {
-						scm {
-								git {
-										remote {
-												url('https://github.com/brokenpip3/my-personal-cluster-gitops')
-										}
-										branches('*/main')
-								}
-						}
-						scriptPath('ci-cd/jenkins-general-jobs-collection/kaniko-universal-docker-build.groovy')
-				}
-		}
+    // https://stackoverflow.com/a/52887479
+	DisableConcurrentBuilds(delegate)
+
+    definition {
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        url('https://github.com/brokenpip3/my-personal-cluster-gitops')
+                    }
+                    branches('*/main')
+                }
+            }
+            scriptPath('ci-cd/jenkins-general-jobs-collection/kaniko-universal-docker-build.groovy')
+        }
+    }
+}
+
+/// Generate kaniko jobs based on "kaniko_build_jobs" map
+/// and avoid to repet the same code x where x is the number of jobs
+
+//// Fixed values
+def kaniko_universal_job_url = "https://github.com/brokenpip3/my-personal-cluster-gitops"
+def kaniko_universal_job_dir = "ci-cd/jenkins-general-jobs-collection/kaniko-universal-docker-build.groovy"
+def kaniko_universal_job_branch = "*/main"
+
+//// Map
+//// For each item in list create a job
+def kaniko_build_jobs = [
+   [
+    name: "zulip-exporter",
+    description: "Zulip Prometheus exporter",
+    upstream_url: "https://github.com/brokenpip3/zulip-exporter.git",
+    upstream_branch: "",
+    upstream_tag: "0.0.1",
+    image_name: "",
+    image_registry: "quay.io",
+    image_org: "brokenpip3",
+    image_tag: "",
+    image_dockerfile_path: "Dockerfile",
+    image_dockerfile_dir: ".",
+    image_force_last_tag: false,
+   ],
+]
+
+kaniko_build_jobs.each { i ->
+    pipelineJob("${foldername}/${i.name}") {
+        displayName(i.name)
+        description("${i.description}\nurl: ${i.upstreamurl}")
+
+        // https://stackoverflow.com/a/52887479
+        DisableConcurrentBuilds(delegate)
+
+        logRotator {
+            numToKeep(10)
+            daysToKeep(10)
+        }
+
+        parameters {
+            stringParam('GIT_URL', i.upstream_url, 'Git url, must end with canonical .git')
+            stringParam('GIT_BRANCH', i.upstream_branch, 'Git branch')
+            stringParam('GIT_TAG', i.upstream_tag, 'Git tag')
+            stringParam('IMAGE_NAME', i.image_name, 'Image name')
+            stringParam('IMAGE_REGISTRY', i.image_registry, 'Image name')
+            stringParam('IMAGE_ORG', i.image_org, 'Image organization or username')
+            stringParam('IMAGE_TAG', , i.image_tag, 'Image tag')
+            stringParam('IMAGE_DOCKERFILE_PATH', i.image_dockerfile_path, 'Image dockerfile name')
+            stringParam('IMAGE_DOCKERFILE_DIR', i.image_dockerfile_dir, 'Image dockerfile path')
+            booleanParam('GIT_FORCE_LAST_TAG', i.image_force_last_tag, 'Force build last tag from GIT_BRANCH')
+        }
+
+        }
+
+        definition {
+            cpsScm {
+                scm {
+                    git {
+                        remote {
+                            url(kaniko_universal_job_url)
+                        }
+                        branch(kaniko_universal_job_branch)
+                    }
+                    scriptPath(kaniko_universal_job_dir)
+                }
+            }
+        }
+    }
 }
