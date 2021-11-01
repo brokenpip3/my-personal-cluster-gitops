@@ -65,6 +65,7 @@ def kaniko_build_jobs = [
    [
     name: "zulip-exporter",
     description: "Zulip Prometheus exporter",
+    cron: "10 1 * * *"
     upstream_url: "https://github.com/brokenpip3/zulip-exporter.git",
     upstream_branch: "",
     upstream_tag: "0.0.1",
@@ -81,7 +82,7 @@ def kaniko_build_jobs = [
 kaniko_build_jobs.each { i ->
     pipelineJob("${foldername}/${i.name}") {
         displayName(i.name)
-        description("${i.description}\nurl: ${i.upstreamurl}")
+        description("${i.description}\nurl: ${i.upstream_url}")
 
         // https://stackoverflow.com/a/52887479
         DisableConcurrentBuilds(delegate)
@@ -89,6 +90,19 @@ kaniko_build_jobs.each { i ->
         logRotator {
             numToKeep(10)
             daysToKeep(10)
+        }
+
+        properties {
+            pipelineTriggers {
+                triggers {
+                    cron{
+                        spec("TZ=Europe/Rome\n${i.cron}")
+                    }
+                }
+            }
+            sidebarLinks {
+                link(i.upstream_url, 'Upstream url')
+            }
         }
 
         parameters {
