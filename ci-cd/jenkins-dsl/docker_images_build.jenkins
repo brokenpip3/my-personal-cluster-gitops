@@ -65,7 +65,7 @@ def kaniko_build_jobs = [
    [
     name: "zulip-exporter",
     description: "Zulip Prometheus exporter",
-    cron: "10 1 * * *"
+    cron: "10 1 * * *",
     upstream_url: "https://github.com/brokenpip3/zulip-exporter.git",
     upstream_branch: "",
     upstream_tag: "0.0.1",
@@ -76,6 +76,21 @@ def kaniko_build_jobs = [
     image_dockerfile_path: "Dockerfile",
     image_dockerfile_dir: ".",
     image_force_last_tag: false,
+   ],
+   [
+    name: "rtt",
+    description: "Simple Rss feed reader for telegram",
+    cron: "10 5 * * *",
+    upstream_url: "https://github.com/brokenpip3/rtt.git",
+    upstream_branch: "master",
+    upstream_tag: "",
+    image_name: "",
+    image_registry: "quay.io",
+    image_org: "brokenpip3",
+    image_tag: "",
+    image_dockerfile_path: "Dockerfile",
+    image_dockerfile_dir: ".",
+    image_force_last_tag: true,
    ],
 ]
 
