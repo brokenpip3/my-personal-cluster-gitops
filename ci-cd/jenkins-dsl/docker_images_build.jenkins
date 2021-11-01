@@ -104,8 +104,6 @@ kaniko_build_jobs.each { i ->
             booleanParam('GIT_FORCE_LAST_TAG', i.image_force_last_tag, 'Force build last tag from GIT_BRANCH')
         }
 
-        }
-
         definition {
             cpsScm {
                 scm {
