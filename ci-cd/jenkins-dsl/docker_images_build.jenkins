@@ -92,6 +92,21 @@ def kaniko_build_jobs = [
     image_dockerfile_dir: ".",
     image_force_last_tag: true,
    ],
+   [
+    name: "fake-smtp",
+    description: " Afake smtp server for kubernetes",
+    cron: "10 4 * * *",
+    upstream_url: "https://github.com/brokenpip3/k8s-fake-smtp.git",
+    upstream_branch: "",
+    upstream_tag: "0.0.1",
+    image_name: "",
+    image_registry: "quay.io",
+    image_org: "brokenpip3",
+    image_tag: "",
+    image_dockerfile_path: "Dockerfile",
+    image_dockerfile_dir: ".",
+    image_force_last_tag: false,
+   ],
 ]
 
 kaniko_build_jobs.each { i ->
@@ -116,7 +131,7 @@ kaniko_build_jobs.each { i ->
                 }
             }
             sidebarLinks {
-                link(i.upstream_url, 'Upstream url')
+                link(i.upstream_url, 'Upstream repo Url', 'up.png')
             }
         }
 
