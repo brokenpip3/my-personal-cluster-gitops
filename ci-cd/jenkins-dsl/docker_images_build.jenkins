@@ -99,7 +99,7 @@ def kaniko_build_jobs = [
     upstream_url: "https://github.com/brokenpip3/k8s-fake-smtp.git",
     upstream_branch: "",
     upstream_tag: "0.0.1",
-    image_name: "",
+    image_name: "fake-smtp",
     image_registry: "quay.io",
     image_org: "brokenpip3",
     image_tag: "",
