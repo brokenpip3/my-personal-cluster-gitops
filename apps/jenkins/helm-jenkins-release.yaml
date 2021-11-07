@@ -88,5 +88,5 @@ spec:
             description: "jobs-from-iac"
             repositoryBranch: main
             repositoryUrl: https://github.com/brokenpip3/my-personal-cluster-gitops
-            pollSCM: 'H/10 * * * *'
+            pollSCM: '*/10 * * * *'
 ...
