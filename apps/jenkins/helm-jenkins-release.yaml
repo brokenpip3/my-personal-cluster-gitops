@@ -39,18 +39,18 @@ spec:
         - name: metrics
           version: "4.0.2.8"
         - name: ansicolor
-          version: "1.0.0"
+          version: "1.0.1"
         - name: "sidebar-link"
           version: "1.12.1"
         basePlugins:
         - name: kubernetes
-          version: "1.30.5"
+          version: "1.30.8"
         - name: workflow-job
           version: "2.42"
         - name: workflow-aggregator
           version: "2.6"
         - name: git
-          version: 4.9.0
+          version: "4.10.0"
         - name: job-dsl
           version: "1.77"
         - name: configuration-as-code
@@ -89,4 +89,5 @@ spec:
             repositoryBranch: main
             repositoryUrl: https://github.com/brokenpip3/my-personal-cluster-gitops
             pollSCM: '*/10 * * * *'
+            buildPeriodically: '* */1 * * *'
 ...
