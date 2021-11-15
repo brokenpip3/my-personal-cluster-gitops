@@ -107,6 +107,21 @@ def kaniko_build_jobs = [
     image_dockerfile_dir: ".",
     image_force_last_tag: false,
    ],
+   [
+    name: "fake-smtp",
+    description: " Aur private repo with Jenkins",
+    cron: "10 0 * * *",
+    upstream_url: "https://github.com/brokenpip3/aur-private-repo-jenkins.git",
+    upstream_branch: "main",
+    upstream_tag: "",
+    image_name: "basearch",
+    image_registry: "quay.io",
+    image_org: "brokenpip3",
+    image_tag: "",
+    image_dockerfile_path: "Dockerfile",
+    image_dockerfile_dir: "docker-image",
+    image_force_last_tag: false,
+   ],
 ]
 
 kaniko_build_jobs.each { i ->
