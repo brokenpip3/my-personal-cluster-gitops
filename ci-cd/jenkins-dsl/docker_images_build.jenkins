@@ -108,7 +108,7 @@ def kaniko_build_jobs = [
     image_force_last_tag: false,
    ],
    [
-    name: "fake-smtp",
+    name: "basearch-ci",
     description: " Aur private repo with Jenkins",
     cron: "10 0 * * *",
     upstream_url: "https://github.com/brokenpip3/aur-private-repo-jenkins.git",
