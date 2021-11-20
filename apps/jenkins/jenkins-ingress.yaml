@@ -4,33 +4,40 @@ metadata:
     annotations:
         kubernetes.io/ingress.class: nginx
         cert-manager.io/cluster-issuer: letsencrypt-ovh
-    labels: null
-    name: jenkins
-    namespace: jenkins
+        labels: null
+        name: jenkins
+        namespace: jenkins
 spec:
     rules:
         - host: ENC[AES256_GCM,data:Cefn6m3FZdimm0m/ZmBfJjoSq30viw==,iv:IMboaim6VgenPj7T00LcFPmnTCfggiBQXm18UQTZHg8=,tag:Rg/BS6tiwdG0dfHgjOhASg==,type:str]
           http:
             paths:
-                - backend:
-                    service:
-                        name: jenkins-operator-http-jenkins
-                        port:
-                            number: 8080
-                  path: /
-                  pathType: Prefix
-    tls:
-        - hosts:
-            - ENC[AES256_GCM,data:HMnFy840DkCc0a1HFb0JKrpgvIlD5g==,iv:Kysj8tuMtrYbsTSucASjdujDrqwP/fv5Ol3mn4RztkY=,tag:8KowmMUgk5es5FRKPsPt2A==,type:str]
-          secretName: jenkins-tls
+                - backend: null
+                  service:
+                    name: jenkins-operator-http-jenkins
+                    port:
+                        number: 8080
+                        path: /
+                        pathType: Prefix
+                - backend: null
+                  service:
+                    name: not-exist
+                    port:
+                        number: 8080
+                        path: /prometheus/
+                        pathType: Prefix
+          tls:
+            - hosts:
+                - ENC[AES256_GCM,data:Dg4HfEldLhepeyfrXdbQcnlixRwieQ==,iv:qi3XkqSYmbYv4qKkzSJKCUPgWVWPHDHgYhMEbqf+jPY=,tag:dFv+z+sWGw78HvIN6qN1Ug==,type:str]
+              secretName: jenkins-tls
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2021-09-13T20:58:33Z"
-    mac: ENC[AES256_GCM,data:HRop2QNJ/gnqxCpmuqVpuNGplFLWtm0V1EM5zy7WHyXbULab3MJh9H9gkIcR2ZmFDoeV6c2rINagHzCW94BEp5FdcVLLLDPoc/cNzpLHjeGFYqvhi8zXuDyCLuXYCQKHDnfVXOVvCFPVh8bmKSQZ6abI0ecPcYxRpmWCihLiw3E=,iv:/ll2i/lNQ6/4wJNcr4oSt2mz9mCla6vyd4scIymJyws=,tag:mRqdFJqNh5OSRin6C3dtpQ==,type:str]
+    lastmodified: "2021-11-20T16:50:45Z"
+    mac: ENC[AES256_GCM,data:5ZH56b0DM1CfVnBmX+bCa0SO5pY16QOeLjgMBEJquIRSIBiBEyY77A+A5ITBUjaodsBS8y898N4c0HyEQviv5Voc1AjjU0gj4cK14WmQyAsgG5ecljrGzJRg81M141hAc+wYuq+T6+g7TYilLhtvmYDXuHy34kuC6Joezr7ap9s=,iv:Vqvs2nHl0Axiq4YDJZzDmDbfDOc1zv5NQQB3pRaXCI4=,tag:8FCSqMjSToMtZfFdBxUYSw==,type:str]
     pgp:
         - created_at: "2021-09-13T20:58:33Z"
           enc: |
