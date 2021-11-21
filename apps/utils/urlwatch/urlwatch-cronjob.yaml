@@ -26,7 +26,7 @@ spec:
             name: urlwatch
             args: ["--urls", "/home/urlwatch/.config/urlwatch/urls.yaml", "--config", "/home/urlwatch/.config/urlwatch/urlwatch.yaml", "--cache", "/home/urlwatch/cache/cache.db"]
             resources:
-              request:
+              requests:
                 cpu: 300m
                 memory: 500m
               limits:
