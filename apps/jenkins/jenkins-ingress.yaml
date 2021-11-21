@@ -10,54 +10,54 @@ metadata:
         app: jenkins
 spec:
     rules:
-        - host: ENC[AES256_GCM,data:Cefn6m3FZdimm0m/ZmBfJjoSq30viw==,iv:IMboaim6VgenPj7T00LcFPmnTCfggiBQXm18UQTZHg8=,tag:Rg/BS6tiwdG0dfHgjOhASg==,type:str]
+        - host: ENC[AES256_GCM,data:/YO/4FiAAt3Wptlszp+E8I6gfzDZfQ==,iv:jTKnga7B/EU6TiZ4vTVqT2xKLbH1VgOmBtqLeyW/w0Y=,tag:nbh0a6u2Oie5ohRQriV1Dg==,type:str]
           http:
             paths:
-                - backend: null
-                  service:
-                    name: jenkins-operator-http-jenkins
-                    port:
-                        number: 8080
-                        path: /
-                        pathType: Prefix
-                - backend: null
-                  service:
-                    name: not-exist
-                    port:
-                        number: 8080
-                        path: /prometheus/
-                        pathType: Prefix
-          tls:
-            - hosts:
-                - ENC[AES256_GCM,data:Dg4HfEldLhepeyfrXdbQcnlixRwieQ==,iv:qi3XkqSYmbYv4qKkzSJKCUPgWVWPHDHgYhMEbqf+jPY=,tag:dFv+z+sWGw78HvIN6qN1Ug==,type:str]
-              secretName: jenkins-tls
+                - backend:
+                    service:
+                        name: jenkins-operator-http-jenkins
+                        port:
+                            number: 8080
+                  path: /
+                  pathType: Prefix
+                - backend:
+                    service:
+                        name: not-exist
+                        port:
+                            number: 8080
+                  path: /prometheus/
+                  pathType: Prefix
+    tls:
+        - hosts:
+            - ENC[AES256_GCM,data:1vYp9il7r71Z5ad0/ufNVJtiRntASw==,iv:V+cCDUfA1un5tBW4yZ8+FNyB3TXVL9Zpw0a6MTiDIdE=,tag:Er3H6JcbQTKhy4hEKqmKwA==,type:str]
+          secretName: jenkins-tls
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2021-11-21T10:41:46Z"
-    mac: ENC[AES256_GCM,data:eVn3bOPCtEFEaaTWkjn97iM0fm1+E92uhfRXAKaFWPXPDUxY5yRPrUukBdTK0cmbVz7TNMbkQfyIuS/KlhuyqSznu6QauHwhPUDSVNBFpTU7gGBqP22G6O78oMEjuvktU+ozZLr1EBhWtGYziqQXhDdvdSe6xBQEpzNljIt2RXk=,iv:VWc8Qhf2n1dZMyXzLJFY6zwMcpK70XrGJECVOPikCuc=,tag:zA0WT5wGOJ2Ohr+zXRUyEg==,type:str]
+    lastmodified: "2021-11-21T10:53:30Z"
+    mac: ENC[AES256_GCM,data:O6GSsm5Y8iYoRe1q43280PqrHG/ODHgzHim+USGZyCaqRJMwqpiwt5T/Idf0hKFEAEN6e1QbFrnTl4gnDMWedWMv3ipJgptlVHukTuwdfvFiakUZW8l7GqMEI/6RlI+bKK6nMUWqM7uFs6F4JuS7HJIU7j+TyRLtjMbFJzPO5FE=,iv:Kpi1H1LStBw2UVfn8LSolURud9RaMb2jT+81H8ly6Lc=,tag:0sVJahcWltTVzjx1XkVepw==,type:str]
     pgp:
-        - created_at: "2021-09-13T20:58:33Z"
+        - created_at: "2021-11-21T10:53:29Z"
           enc: |
             -----BEGIN PGP MESSAGE-----
 
-            hQIMAwP8FxNnerN5AQ/8CuVj/9VB6C9tpY5tX+mizaSH72R0aOey5m8ibsFCnUFP
-            RZB/dI18a8WRD7psc8QqLa5NaTr3Ah1cbCgcCchMlj9FZKZdMy/gCkiuy9WyCcxb
-            bzUvQIjhkpVYnyRN+KLKIJuXXXrqapBVi9+erXiz7lKF8t885SaoK3X5ahen2p4r
-            98sJwrJJNe0MlWjokzRJGuyDg5h227R5G3jZkYnIhE5td0mbvGz/YAR2EVp4eQpq
-            4MOvEhkPxIKK/cWEEBcb4TL2HWiSrIq7AKEzC6JdPAr0jXJbdVfuxvlwHZrNsQQn
-            RkKryVimoB58yjkAf/MCOg9b9sW4ZW90mnUaKnvhgaLU45FV3r7bqsr21oOCyHEX
-            E7DcE2RkkW4Of/Dn3f2uWhPoNyU4KI35nwE0+l6cHqT53zC1NlU2uxjbDwst/XLu
-            vkfcBe5jDBY6Uac8EKsi6r3VEMbZcYz2e7P5rXvtPFTqVFFn5c4ngh2vQcJpLuze
-            fyz5dTb1nHOvLNJA7XiPTWgfhIH184cWiA/c8boUWdHD3e9eRs9TnPhrUEocuYf4
-            +iQsoqcyq6bt9If2kH7Cd0H7GWTA6MAL4wPyGS7cmb8YxCSyWII3p5io95HkZJpd
-            N+03V+aamvLqDW/TC2poec+wiK8o42t+o+nOQ+30s+gNsmavgOph9vVocHo6PkTS
-            TgFaTfkXn9dbTe9sAvCRBOsvqXmiCCmAomzW3HnFRx4/gnwlrKggLlhw2koppf2Z
-            ks4nIZVSGEeBNQzlFqSqWQYsadpkxbTY8pRHgDcI2w==
-            =2ixP
+            hQIMAwP8FxNnerN5AQ/+PAb06fQ4cnLEn8bCfxMPN+6F7GSQEVShpxxlWmyooOne
+            EUwMwv3neS+mlNK+rkbJm/FQIgUAbg82mDb//DYSpxZHiutXwj10RPt2L1luFiQ2
+            kczgCRx9df4wQxQGLWr/GYdY15o9XbkVX0hLWFjulEHySoWnkItKREQOa+65oV53
+            ymftnVJvqr+w0v1TUUQgeJQ764+x1Zxtvw/GWA+zxAVzrstvF8qN0NdJqbMa8eg2
+            +9ZvM5SbSNzNM/w7TNGB9B1XKmVvmjw5SockjECEB9CvrNcZpBV9L+omQBqVm5bJ
+            JkE+Iq3Os0vxyCnAWeD2CNPKZ/iM6WUlpPLRkCPIDoOC0kPDNnPq8IDrKegvWiZ7
+            iYX0SHZBtOfa7xEk3F7EOcmDjf3/T94BvJ+hgwaTO3KfMF6GHzaeJ/z+mCOWRsSj
+            6ZkeEhH/bA+1GwqArtCtTmlKLbx11RyPVApffT6iP1eGcxTa5BZY1gLCL7i1vMmu
+            TLor3cgdYOWW4SV6pz0vfbnD+Q5ibJEY+ES/f5/1kF2MC8NRI+lwDd73jl6OLxp7
+            +/5HNe/2gboDQnpWZIMls5bTIfk8lYwUlOsX9aiZAUFiMwVpLc48C4Sxio7I+xll
+            brxtg2HgNSkrwXvTJDCLtDjT7PX8VtGCcavTpWAaWumG+WoZkt3nu6GIwqgkRvPS
+            UAE3oxgRVJT97mEQ+thcL1teB63vvBIbVK79OrP1erm3uI5deOHuRi5QaVByH9lr
+            RP7vnl6wiu/e29Ep/Hvpws9JCUPXBOxPy97JlqQaeIa9
+            =Qp6/
             -----END PGP MESSAGE-----
           fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
     encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|dnsNames)$
