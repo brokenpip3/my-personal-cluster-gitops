@@ -17,8 +17,8 @@ spec:
     spec:
       template:
         metadata:
-        labels:
-          app: urlwatch
+          labels:
+            app: urlwatch
         spec:
           restartPolicy: OnFailure
           containers:
