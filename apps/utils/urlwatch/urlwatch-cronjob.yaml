@@ -17,9 +17,10 @@ spec:
     spec:
       template:
         metadata:
-          labels:
-            app: urlwatch
+        labels:
+          app: urlwatch
         spec:
+          restartPolicy: OnFailure
           containers:
           - image: quay.io/brokenpip3/urlwatch:latest
             name: urlwatch
@@ -39,15 +40,15 @@ spec:
             - mountPath: /home/urlwatch/.config/urlwatch/urls.yaml
               name: urlwatch-urls
               subPath: urls.yam
-      volumes:
-      - name: urlwatch-cache
-        persistentVolumeClaim:
-          claimName: urlwatch-cache
-      - name: urlwatch-urls
-        configMap:
-          name: urlwatch-urls
-      - name: urlwatch-config
-        secret:
-          name: urlwatch-config
+          volumes:
+          - name: urlwatch-cache
+            persistentVolumeClaim:
+              claimName: urlwatch-cache
+          - name: urlwatch-urls
+            configMap:
+              name: urlwatch-urls
+          - name: urlwatch-config
+            secret:
+              secretName: urlwatch-config
   schedule: '*/20 * * * *'
 ...
