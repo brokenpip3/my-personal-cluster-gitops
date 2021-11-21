@@ -24,4 +24,62 @@ data:
       - strip
     max_tries: 5
     ---
+    # My Pkgbuilds
+    name: "k2tf"
+    url: "https://github.com/sl1pm4t/k2tf/releases/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    name: "loki"
+    url: "https://github.com/grafana/loki/releases/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    name: "apacheconfig"
+    url: "https://github.com/etingof/apacheconfig/releases/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    name: "bats-detik"
+    url: "https://github.com/bats-core/bats-detik/releases/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    # Bats framework
+    name: "bats-core"
+    url: "https://github.com/bats-core/bats-core/releases/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    name: "bats-assert"
+    url: "https://github.com/bats-core/bats-assert/releases/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    name: "bats-support"
+    url: "https://github.com/bats-core/bats-support/releases/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    name: "bats-file"
+    url: "https://github.com/bats-core/bats-file/releases/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
 ...
