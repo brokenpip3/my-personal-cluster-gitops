@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: urlwatch-config
+    namespace: urlwatch
+    labels:
+        app: urlwatch
+data:
+    config.yaml: ENC[AES256_GCM,data:3+cT7+LQ/Bij8sYWfv+xwDon1X+3XAlHrPYmMCmh5gjq3lvFBozkbMX40gcdL+ClCoPrWIr18pTfSw0AFbruLMrmej+6vh6i/kMa14e2PeOzwPM4zNSX1eUIz6OBDFJBiFofHuZT6zbW1RGXyfF3oJbRzp26QInQ7kpgmCIjgRMLbuoGbtM4SS32HW8P2QI1YI9Lg8krpycrNvevLUUueLqerevPmR9EQh4nPt9JCw395oXOHizY6tymXAjxpHBKYY52fVqGFu9UiNu33+MUfkB7Px4yEN5umXMdt0rIX43V+DCB7Q77gdVcGhC4/NRWUin7+thFYL1XKgy/eTzW0jPLy7cp6HKlWUdyut+V46NTcgtnHVzpbdd4GOaj0rfRLfhSEJ/0VK/UDVsfVtfVoFcIHcjsu4kZdQ8IINqcp8dJ+N31YNYRJGKKceI=,iv:vZvwrB3SaTcG3Xu50jhAcCf/lmBU5wVXrvYNMeuJK1M=,tag:bRZvxysu80IB6R6WPCF3Og==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2021-11-21T15:41:48Z"
+    mac: ENC[AES256_GCM,data:LF+E8MShP23KmKqr9fk4uvwI1NfWf0rBG9pYtceMo2SJlhsOs8JUDgMIYNJLPW9wTolDsXyGeNFDo23mMa53oCh3oI4FtArRY1x7ZhxfwB11mLz+ACMUAkKs3BuOjpUF2ycR0ATsuyIQpYZrE+gy8Ivui0zEM0Y3vwDv6jDhzQY=,iv:wjJ/V2MSfjbSsK9VuAd96lEWHBftpUnUYPhjCYLUdcw=,tag:XKTk7vI8XuLnt0AKB94n0Q==,type:str]
+    pgp:
+        - created_at: "2021-11-21T15:11:15Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5AQ/7BERN4k54aip9jncZQDERp3qGGrEglNUj58a1ob6/rd1p
+            KHxFoIIYTl5nJWSDU5gWzeB/dW2MrHDzGHglQmZdtdBXhhGyN2jToSm59wsKKqUK
+            GAsZPos8FG8WCnD/J3fnuALX+K1O/WySOCmKueUpiuLgbrQBNppb6sgfogGw33DI
+            0nd/4b8X7Ay7WWJKVFK841MX36IBPqcjgUZWe215JY7v4pB//IjR54zq5LgGp2Y1
+            nfM72Q9TfSJDyCkAoOzHREmzcmJXnmqxgy/P6ldnigpj26lII1YaXuUIHNus8UPL
+            7s1XyT7GW9r8wF4HpPuK87jcTHsevftmoPlMOpcBLCRn1G2hxu+e7BhsJL9FX5be
+            JrawKhJ5/B5C/jIkXnrdvPxrO02Yje9SNFAF87YIjl7+fJhl4MoZk0QKJQ6jknPY
+            2znkPH77FayarsqNOjPaIABE6bnSDO+6PBTRYcYRKHRved2NOGzVh0U1e9MFHafL
+            gTgILER4Mv3VoNN3SOZ8+GMIss2KBFihm/hU5Y2isJssCuJoP+2aI3Y3gtuco59W
+            nX5zITT29Vfh6XI+MO+3T2waLG1MUZxk5AS6q79MaCNCzkemyMzinyY+TsEQu8n/
+            SyAGJtCD3ttvZLr5cdER0y2EaC/r67RsNE1Cm5VsAo1ovLRk9TF1SVnot+xFrwrS
+            UAG8OTRdA/pVbaiC2QCf8RecrxL+WEmgQvBJ4SUu6vpSMDA7kddtU7asm2dUG1zg
+            NJeax2puKacOXnIJ5ZFYtUvokLcsBjAZb4JlzwmO0rIh
+            =GPZS
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|dnsNames)$
+    version: 3.7.1

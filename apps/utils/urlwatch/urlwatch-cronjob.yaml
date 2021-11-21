@@ -1,0 +1,53 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: urlwatch
+  namespace: urlwatch
+  labels:
+    app: urlwatch
+spec:
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 2
+  jobTemplate:
+    metadata:
+      name: urlwatch
+      labels:
+        app: urlwatch
+    spec:
+      template:
+        metadata:
+          labels:
+            app: urlwatch
+        spec:
+          containers:
+          - image: quay.io/brokenpip3/urlwatch:latest
+            name: urlwatch
+            args: ["--urls", "/home/urlwatch/.config/urlwatch/urls.yaml", "--config", "/home/urlwatch/.config/urlwatch/urlwatch.yaml", "--cache", "/home/urlwatch/cache/cache.db"]
+            resources:
+              request:
+                cpu: 300m
+                memory: 500m
+              limits:
+                cpu: 300m
+                memory: 500m
+            volumeMounts:
+            - mountPath: /home/urlwatch/cache
+              name: urlwatch-cache
+            - mountPath: /home/urlwatch/.config/urlwatch/urlwatch.yaml
+              name: urlwatch-config
+            - mountPath: /home/urlwatch/.config/urlwatch/urls.yaml
+              name: urlwatch-urls
+              subPath: urls.yam
+      volumes:
+      - name: urlwatch-cache
+        persistentVolumeClaim:
+          claimName: urlwatch-cache
+      - name: urlwatch-urls
+        configMap:
+          name: urlwatch-urls
+      - name: urlwatch-config
+        secret:
+          name: urlwatch-config
+  schedule: '*/20 * * * *'
+...

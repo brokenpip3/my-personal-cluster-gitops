@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- urlwatch-config.yaml
+- urlwatch-cronjob.yaml
+- urlwatch-namespace.yaml
+- urlwatch-pvc.yaml
+- urlwatch-urls.yaml
