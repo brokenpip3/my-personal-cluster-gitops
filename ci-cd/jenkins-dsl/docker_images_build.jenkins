@@ -182,6 +182,21 @@ def kaniko_build_jobs = [
     image_dockerfile_dir: "images/urlwatch",
     image_force_last_tag: false,
    ],
+   [
+    name: "taskd",
+    description: "Taskserver docker img: https://github.com/GothenburgBitFactory/taskserver",
+    cron: "40 7 * * *",
+    upstream_url: "https://github.com/brokenpip3/my-dockerfiles.git",
+    upstream_branch: "main",
+    upstream_tag: "",
+    image_name: "taskd",
+    image_registry: "quay.io",
+    image_org: "brokenpip3",
+    image_tag: "",
+    image_dockerfile_path: "Dockerfile",
+    image_dockerfile_dir: "images/taskd",
+    image_force_last_tag: true,
+   ],
 ]
 
 kaniko_build_jobs.each { i ->
