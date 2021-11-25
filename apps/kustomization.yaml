@@ -5,3 +5,4 @@ resources:
 - gitea
 - jenkins
 - zulip
+- taskd

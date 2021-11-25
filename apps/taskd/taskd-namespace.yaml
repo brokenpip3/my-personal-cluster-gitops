@@ -1,0 +1,8 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: taskd
+  labels:
+    apps.gitops: taskd
+...
