@@ -35,6 +35,8 @@ spec:
   values:
     controller:
       kind: daemonset
+      globalConfiguration:
+        create: true
       appprotect:
         enable: false
       service:
