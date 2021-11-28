@@ -82,4 +82,45 @@ data:
       - html2text
     max_tries: 5
     ---
+    # Taskwarrior and similar
+    name: "taskopen"
+    url: "https://github.com/jschlatow/taskopen/releases/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    name: "taskserver"
+    url: "https://github.com/GothenburgBitFactory/taskserver/releases/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    name: "taskserver-changelog"
+    url: "https://raw.githubusercontent.com/GothenburgBitFactory/taskserver/master/ChangeLog"
+    max_tries: 5
+    ---
+    name: "timewarrior"
+    url: "https://github.com/GothenburgBitFactory/timewarrior/releases/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    name: "timewarrior-changelog"
+    url: "https://raw.githubusercontent.com/GothenburgBitFactory/timewarrior/dev/ChangeLog"
+    max_tries: 5
+    ---
+    name: "taskwarrior"
+    url: "https://github.com/GothenburgBitFactory/taskwarrior/releases/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    name: "taskwarrior-changelog"
+    url: "https://raw.githubusercontent.com/GothenburgBitFactory/taskwarrior/develop/ChangeLog"
+    max_tries: 5
+    ---
 ...
