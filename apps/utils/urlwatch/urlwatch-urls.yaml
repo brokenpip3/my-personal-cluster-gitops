@@ -53,6 +53,20 @@ data:
       - html2text
     max_tries: 5
     ---
+    name: "pdh"
+    url: "https://github.com/mbovo/pdh/releases/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    name: "pagerduty-pyras"
+    url: "https://github.com/PagerDuty/pdpyras/releases/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
     # Bats framework
     name: "bats-core"
     url: "https://github.com/bats-core/bats-core/releases/latest"

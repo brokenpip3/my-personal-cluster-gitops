@@ -42,3 +42,8 @@ This is my "fleet" repo that describe my entire k8s cluster, made with :heart: u
   * [Jenkins Groovy and Casc configuration](apps/jenkins/jenkins-configuration.yaml)
 * [Zulip](apps/zulip)
   * [Zulip exporter](apps/zulip/zulip-exporter.yaml)
+* [Taskd](apps/taskd)
+
+### Utils
+
+* [urlwatch](apps/utils/urlwatch)
