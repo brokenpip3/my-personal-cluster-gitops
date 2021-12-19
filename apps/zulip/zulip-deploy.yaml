@@ -52,7 +52,7 @@ spec:
           value: zulip-rabbitmq
         # Email/Domain/Notification
         - name: SETTING_EMAIL_HOST
-          value: fake-smtp
+          value: fake-smtp.fake-smtp.svc.cluster.local
         - name: SETTING_EMAIL_USE_TLS
           value: "False"
         - name: SETTING_EMAIL_PORT
