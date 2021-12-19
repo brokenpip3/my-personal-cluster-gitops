@@ -88,5 +88,5 @@ spec:
             description: "jobs-from-iac"
             repositoryBranch: main
             repositoryUrl: https://github.com/brokenpip3/my-personal-cluster-gitops
-            buildPeriodically: '* */1 * * *'
+            buildPeriodically: '10 */1 * * *'
 ...
