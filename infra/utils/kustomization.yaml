@@ -8,3 +8,4 @@ resources:
 - telegram-notification-alerts-error.yaml
 - telegram-notification-alerts-image.yaml
 - telegram-notification-provider.yaml
+- fake-smtp.yaml
