@@ -10,6 +10,10 @@ spec:
     dependsOn:
     - name: cert-manager
       namespace: cert-manager
+    upgrade:
+      crds: CreateReplace
+    install:
+      crds: CreateReplace
     chart:
         spec:
             chart: /chart/jenkins-operator
