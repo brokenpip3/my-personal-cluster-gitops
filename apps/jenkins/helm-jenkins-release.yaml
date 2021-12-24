@@ -50,7 +50,7 @@ spec:
         - name: kubernetes
           version: "1.31.1"
         - name: workflow-job
-          version: "2.42"
+          version: "1145.v7f2433caa07f"
         - name: workflow-aggregator
           version: "2.6"
         - name: git
