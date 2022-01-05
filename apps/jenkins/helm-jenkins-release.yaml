@@ -35,7 +35,7 @@ spec:
         - name: build-name-setter
           version: 2.2.0
         - name: ws-cleanup
-          version: "0.39"
+          version: "0.40"
         - name: view-job-filters
           version: "2.3"
         - name: prometheus
@@ -48,7 +48,7 @@ spec:
           version: "1.12.1"
         basePlugins:
         - name: kubernetes
-          version: "1.31.1"
+          version: "1.31.2"
         - name: workflow-job
           version: "1145.v7f2433caa07f"
         - name: workflow-aggregator
