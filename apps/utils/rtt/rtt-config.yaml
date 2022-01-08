@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rtt-setting
+  namespace: rtt
+data:
+  settings.yaml: |
+    feed:
+      PlanetArch: https://planet.archlinux.org/rss20.xml
+      Drew: https://drewdevault.com/feed.xml
+      Scott-Weblog: http://feeds.scottlowe.org/slowe/content/feed/
+      Flux: https://fluxcd.io/blog/index.xml
+      Filippo.io: https://blog.filippo.io/rss/

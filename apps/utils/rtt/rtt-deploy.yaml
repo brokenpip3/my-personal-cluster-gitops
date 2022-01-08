@@ -1,0 +1,57 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: rtt
+  name: rtt
+  namespace: rtt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rtt
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: rtt
+    spec:
+      containers:
+        - image: brokenpip3/rtt:0.0.2
+          name: rtt
+          env:
+          - name: TGTOKEN
+            valueFrom:
+              secretKeyRef:
+                name: rtt-secret
+                key: TGTOKEN
+          - name: TGCHATID
+            valueFrom:
+              secretKeyRef:
+                name: rtt-secret
+                key: TGCHATID
+          resources:
+            requests:
+              memory: 50Mi
+              cpu: 50m
+            limits:
+              memory: 150Mi
+              cpu: 100m
+          volumeMounts:
+          - name: storage
+            mountPath: /tmp
+          - name: rtt-setting
+            mountPath: /usr/src/app/settings.yaml
+            readOnly: true
+            subPath: settings.yaml
+      volumes:
+      - name: rtt-setting
+        configMap:
+          defaultMode: 0444
+          name: rtt-setting
+      - name: storage
+        persistentVolumeClaim:
+          claimName: rtt-pvc
+...
