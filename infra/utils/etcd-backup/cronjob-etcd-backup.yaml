@@ -26,7 +26,7 @@ spec:
         spec:
           containers:
             - name: backup
-              image: gcr.io/etcd-development/etcd:v3.4.18 # {"$imagepolicy": "flux-system:image-policy-etcd"}
+              image: gcr.io/etcd-development/etcd:v3.5.1 # {"$imagepolicy": "flux-system:image-policy-etcd"}
               env:
                 - name: ETCDCTL_API
                   value: "3"
