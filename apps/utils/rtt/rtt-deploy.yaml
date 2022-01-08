@@ -19,7 +19,7 @@ spec:
         app: rtt
     spec:
       containers:
-        - image: brokenpip3/rtt:0.0.2
+        - image: quay.io/brokenpip3/rtt:0.0.2
           name: rtt
           env:
           - name: TGTOKEN
