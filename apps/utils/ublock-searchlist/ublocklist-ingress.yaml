@@ -7,7 +7,7 @@ metadata:
     labels:
         app: ublock-list
     name: ublock-list-ingress
-    namespace: jenkins
+    namespace: ublock-list
 spec:
     rules:
         - host: ENC[AES256_GCM,data:ag9OTvRwl0pA2X5mdLBlF3rkw0aRtONR2UDs,iv:nQcYI7wCL1tnh0f2NAFOXsPWXIyYvxm2FRb0nGOTaSw=,tag:E27CHVxVRjGqPGQS8OT1Tw==,type:str]
@@ -30,8 +30,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-01-09T14:39:08Z"
-    mac: ENC[AES256_GCM,data:P5CmxsyVziM1WURP/1Zc31lQN9WkJBYuzfBn424ZWCE11GbmYjGSu7kgPtln3Oz/UA4gLXzt5JwKi1hXj/VGY5eanp6wRoF6bWg3Wwqu8ko4kA26yVd3aV3gR7W3GXQWBNzKzVfbzh173k0a4jtzwuxNQCvb3jTmbVkLudfTxF0=,iv:9nKo7eVYwmSO6hErutN06dbAlV8App9fADv8CK4/tHI=,tag:N7oQ7kCD9YVJA0n7WIprfA==,type:str]
+    lastmodified: "2022-01-09T15:20:37Z"
+    mac: ENC[AES256_GCM,data:AAEwQTtsgkhyO0+qubd3AYHL0KRvc5eUkjIBBaCzEeQkYsSVw3IjwhI/v05tV0ZIaS+WI3nBQw5PqiwDy0dXH9A/G5N+VPYmM7EB60jwxIN2DwCkUEdnaSjSGGufpo6xyoXTBZEyRBSs6V6JCSrb2H1zma9r4yIrpaav8MdBQmI=,iv:ixhJufbrFJAY2r5rr9vrRk6UTkusHy50ig70W3RyrAQ=,tag:g6CD/q2Nu5ZsDv4a6lHCow==,type:str]
     pgp:
         - created_at: "2022-01-09T14:39:07Z"
           enc: |
