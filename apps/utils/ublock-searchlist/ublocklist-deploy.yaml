@@ -1,0 +1,68 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ublock-list
+  name: ublock-list
+  namespace: ublock-list
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ublock-list
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ublock-list
+    spec:
+      containers:
+        - image: nginxinc/nginx-unprivileged:stable
+          name: ublock-list
+          resources:
+            requests:
+              memory: 50Mi
+              cpu: 50m
+            limits:
+              memory: 150Mi
+              cpu: 100m
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+          - name: ublock-list
+            mountPath: /tmp/ublock/list.txt
+            readOnly: true
+            subPath: list.txt
+          - name: nginx-conf
+            mountPath: /etc/nginx/conf.d/default.conf
+            readOnly: true
+            subPath: default.conf
+      volumes:
+      - name: ublock-list
+        configMap:
+          defaultMode: 0444
+          name: ublock-list
+      - name: nginx-conf
+        configMap:
+          defaultMode: 0444
+          name: ublock-list-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ublock-list
+  name: ublock-list
+  namespace: ublock-list
+spec:
+  ports:
+  - name: ublock-list
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: ublock-list
+  type: ClusterIP
+...

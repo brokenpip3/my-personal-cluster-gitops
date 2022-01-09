@@ -1,0 +1,37 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ublock-list-config
+  namespace: ublock-list
+data:
+  default.conf: |+
+    server {
+        listen       8080;
+        server_name  localhost;
+
+        location / {
+            root /tmp/ublock;
+            index list.txt;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   /usr/share/nginx/html;
+        }
+    }
+---
+kind: ConfigMap
+metadata:
+  name: ublock-list
+  namespace: ublock-list
+apiVersion: v1
+data:
+  list.txt: |+
+    ! Google
+
+    ! Spam
+    google.*##.g:has(a[href*="noviello.it"])
+    google.*##.g:has(a[href*="geeksforgeeks.org"])
+
+...
