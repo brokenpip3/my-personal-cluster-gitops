@@ -31,7 +31,7 @@ spec:
         image: jenkins/jenkins:lts
         plugins:
         - name: github-branch-source
-          version: 2.11.3
+          version: 2.11.4
         - name: build-name-setter
           version: 2.2.0
         - name: ws-cleanup
@@ -41,14 +41,14 @@ spec:
         - name: prometheus
           version: "2.0.10"
         - name: metrics
-          version: "4.0.2.8"
+          version: "4.0.2.8.1"
         - name: ansicolor
           version: "1.0.1"
         - name: "sidebar-link"
           version: "1.12.1"
         basePlugins:
         - name: kubernetes
-          version: "1.31.2"
+          version: "1.31.3"
         - name: workflow-job
           version: "1145.v7f2433caa07f"
         - name: workflow-aggregator
@@ -58,7 +58,7 @@ spec:
         - name: job-dsl
           version: "1.77"
         - name: configuration-as-code
-          version: "1.55"
+          version: "1.55.1"
         - name: kubernetes-credentials-provider
           version: "0.20"
         backup:
