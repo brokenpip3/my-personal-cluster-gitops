@@ -9,5 +9,5 @@ data:
       PlanetArch: https://planet.archlinux.org/rss20.xml
       Drew: https://drewdevault.com/feed.xml
       Flux: https://fluxcd.io/blog/index.xml
-      Filippo.io: https://blog.filippo.io/rss/
-      mbovo.me: https://mbovo.me/posts/index.xml
+      Filippo: https://blog.filippo.io/rss/
+      mbovo: https://mbovo.me/posts/index.xml

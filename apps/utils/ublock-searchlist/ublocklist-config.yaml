@@ -34,5 +34,6 @@ data:
     google.*##.g:has(a[href*="noviello.it"])
     google.*##.g:has(a[href*="geeksforgeeks.org"])
     google.*##.g:has(a[href*="issueexplorer.com"])
+    google.*##.g:has(a[href*="qastack.it"])
 
 ...
