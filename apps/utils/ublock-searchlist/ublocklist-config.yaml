@@ -35,5 +35,10 @@ data:
     google.*##.g:has(a[href*="geeksforgeeks.org"])
     google.*##.g:has(a[href*="issueexplorer.com"])
     google.*##.g:has(a[href*="qastack.it"])
+    google.*##.g:has(a[href*="giters.com"])
+    google.*##.g:has(a[href*="githubplus.com"])
+    google.*##.g:has(a[href*="bestofccp.com"])
+    google.*##.g:has(a[href*="golangerepo.com"])
+    google.*##.g:has(a[href*="gitmetadata.com"])
 
 ...
