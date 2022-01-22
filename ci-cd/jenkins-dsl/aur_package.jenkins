@@ -48,6 +48,7 @@ folder('aur-repo') {
 
 pipelineJob('aur-repo/aur-package-build') {
     displayName('aur-package-build')
+    description('Build aur package')
 
     logRotator {
         numToKeep(10)
@@ -74,6 +75,7 @@ pipelineJob('aur-repo/aur-package-build') {
 
 pipelineJob('aur-repo/aur-package-trigger') {
     displayName('aur-package-trigger')
+    description('Compute dependencies and trigger all repo packages build')
 
     logRotator {
         numToKeep(10)

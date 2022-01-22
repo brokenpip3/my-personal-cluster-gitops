@@ -169,7 +169,7 @@ def kaniko_build_jobs = [
    ],
    [
     name: "urlwatch",
-    description: "Urlwatch docker img: https://github.com/thp/urlwatch",
+    description: "Urlwatch docker img",
     cron: "40 6 * * *",
     upstream_url: "https://github.com/brokenpip3/my-dockerfiles.git",
     upstream_branch: "main",
@@ -184,7 +184,7 @@ def kaniko_build_jobs = [
    ],
    [
     name: "taskd",
-    description: "Taskserver docker img: https://github.com/GothenburgBitFactory/taskserver",
+    description: "Taskserver docker img",
     cron: "40 7 * * *",
     upstream_url: "https://github.com/brokenpip3/my-dockerfiles.git",
     upstream_branch: "main",
@@ -202,7 +202,7 @@ def kaniko_build_jobs = [
 kaniko_build_jobs.each { i ->
     pipelineJob("${foldername}/${i.name}") {
         displayName(i.name)
-        description("${i.description}\nurl: ${i.upstream_url}")
+        description("${i.description}")
 
         // https://stackoverflow.com/a/52887479
         DisableConcurrentBuilds(delegate)
