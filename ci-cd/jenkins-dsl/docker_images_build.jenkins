@@ -27,6 +27,7 @@ folder(foldername) {
 
 pipelineJob("${foldername}/kaniko-generic-docker-build") {
     displayName('kaniko-generic-manual-trigger')
+    description('Generic kaniko build job manually triggered')
 
     logRotator {
         numToKeep(10)
@@ -109,7 +110,7 @@ def kaniko_build_jobs = [
    ],
    [
     name: "basearch-ci",
-    description: " Aur private repo with Jenkins",
+    description: "Aur private repo with Jenkins",
     cron: "10 0 * * *",
     upstream_url: "https://github.com/brokenpip3/aur-private-repo-jenkins.git",
     upstream_branch: "main",
