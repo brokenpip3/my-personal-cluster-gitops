@@ -178,7 +178,7 @@ spec:
                         container(name: 'kaniko', shell: '/busybox/sh') {
                             sh """#!/busybox/sh
                                   /kaniko/executor -f ${IMAGE_DOCKERFILE_PATH} -c ${IMAGE_DOCKERFILE_DIR} --cache=false \
-                                    --destination=${IMAGE_REGISTRY}/${IMAGE_ORG}/${IMAGE_NAME}:${IMAGE_TAG}
+                                    --destination=${IMAGE_REGISTRY}/${IMAGE_ORG}/${IMAGE_NAME}:${IMAGE_TAG} --log-format=text
                             """
                         }
                     }
