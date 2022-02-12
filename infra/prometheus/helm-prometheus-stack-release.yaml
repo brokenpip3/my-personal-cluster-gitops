@@ -18,7 +18,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: "23.x.x"
+      version: "32.x.x"
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
@@ -55,8 +55,8 @@ spec:
           mountPropagation: HostToContainer
       extraArgs:
         - --collector.textfile.directory=/var/lib/node_exporter
-        - --collector.filesystem.ignored-mount-points=^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/.+)($|/)
-        - --collector.filesystem.ignored-fs-types=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$
+        - --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/.+)($|/)
+        - --collector.filesystem.fs-types-exclude=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$
     prometheus:
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false
