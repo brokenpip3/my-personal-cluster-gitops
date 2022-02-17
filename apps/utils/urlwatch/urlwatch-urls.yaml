@@ -137,4 +137,25 @@ data:
     url: "https://raw.githubusercontent.com/GothenburgBitFactory/taskwarrior/develop/ChangeLog"
     max_tries: 5
     ---
+    # Misc
+    name: "Aegis"
+    url: "https://github.com/beemdevelopment/Aegis/releases/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    name: "notes"
+    url: "https://github.com/pimterry/notes/releases/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    name: "logseq/logseq"
+    url: "https://github.com/logseq/logseq/releases/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
 ...

@@ -40,5 +40,6 @@ data:
     google.*##.g:has(a[href*="bestofccp.com"])
     google.*##.g:has(a[href*="golangerepo.com"])
     google.*##.g:has(a[href*="gitmetadata.com"])
+    google.*##.g:has(a[href*="findbestopensource.com"])
 
 ...
