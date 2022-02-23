@@ -1,0 +1,102 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: wallabag
+  namespace: wallabag
+  labels:
+    app: wallabag
+    component: wallabag
+spec:
+  replicas: 1
+  serviceName: wallabag
+  selector:
+    matchLabels:
+      app: wallabag
+      component: wallabag
+  template:
+    metadata:
+      labels:
+        app: wallabag
+        component: wallabag
+    spec:
+      containers:
+        - name: wallabag
+          image: wallabag/wallabag:latest
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+          - secretRef:
+              name: wallabag-secret
+          resources:
+            limits:
+              memory: 1Gi
+              cpu: 1
+            requests:
+              memory: 1Gi
+              cpu: 500m
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            # The initial ansible playbook
+            # it's mess, it's always run
+            # especially on fist run and after
+            # an image update so we need to
+            # give to it 2-3 min to
+            # creat/update the db schema
+            # The wallabag community is trying
+            # to revampe the docker image, see:
+            # https://github.com/wallabag/docker/pull/256
+            initialDelaySeconds: 180
+            periodSeconds: 10
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 150
+            periodSeconds: 10
+            timeoutSeconds: 5
+          volumeMounts:
+          - mountPath: /var/www/wallabag/web/assets/images
+            name: wallabag-images
+          - mountPath: /var/www/wallabag/data
+            name: wallabag-data
+  volumeClaimTemplates:
+  - metadata:
+      name: wallabag-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: nfs-sc
+      resources:
+        requests:
+          storage: 1Gi
+  - metadata:
+      name: wallabag-images
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: nfs-sc
+      resources:
+        requests:
+          storage: 2Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: wallabag
+    component: wallabag
+  name: wallabag
+  namespace: wallabag
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: wallabag
+    component: wallabag
+...

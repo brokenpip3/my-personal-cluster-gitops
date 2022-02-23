@@ -43,7 +43,10 @@ This is my "fleet" repo that describe my entire k8s cluster, made with :heart: u
 * [Zulip](apps/zulip)
   * [Zulip exporter](apps/zulip/zulip-exporter.yaml)
 * [Taskd](apps/taskd)
+* [Wallabag](apps/wallabag)
 
 ### Utils
 
 * [urlwatch](apps/utils/urlwatch)
+* [rtt](apps/utils/rtt)
+* [ublock-searchlist](apps/utils/ublock-searchlist)
