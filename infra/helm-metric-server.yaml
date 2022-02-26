@@ -8,6 +8,15 @@ spec:
   interval: 10m
   url: https://charts.bitnami.com/bitnami
 ---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: kube-sigs-metric-server
+  namespace: flux-system
+spec:
+  interval: 10m
+  url: https://kubernetes-sigs.github.io/metrics-server/
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -19,18 +28,17 @@ spec:
   chart:
     spec:
       chart: metrics-server
-      version: '>=5.10.4 <5.12.0'
+      version: '>=3.8.2 <4.0.0'
       sourceRef:
         kind: HelmRepository
-        name: bitnami
+        name: kube-sigs-metric-server
         namespace: flux-system
       interval: 10m
   values:
     apiService:
       create: true
-    extraArgs:
-      kubelet-insecure-tls: true
-      kubelet-preferred-address-types: InternalDNS,InternalIP,ExternalDNS,ExternalIP,Hostname
-      logtostderr: ""
-      v: 2
+    metrics:
+      enabled: true
+    serviceMonitor:
+      enabled: true
 ...
