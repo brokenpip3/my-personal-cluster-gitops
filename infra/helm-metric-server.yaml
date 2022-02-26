@@ -25,6 +25,10 @@ metadata:
 spec:
   interval: 10m
   releaseName: metrics-server
+  upgrade:
+    crds: CreateReplace
+  install:
+    crds: CreateReplace
   chart:
     spec:
       chart: metrics-server
