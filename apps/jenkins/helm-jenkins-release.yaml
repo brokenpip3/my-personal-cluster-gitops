@@ -22,6 +22,7 @@ spec:
                 name: jenkins-k8s-operator
                 namespace: flux-system
             interval: 10m
+            version: '0.6.x'
     values:
       operator:
         replicaCount: 1
@@ -41,7 +42,7 @@ spec:
         - name: prometheus
           version: "2.0.10"
         - name: metrics
-          version: "4.0.2.8.1"
+          version: "4.1.6.1"
         - name: ansicolor
           version: "1.0.1"
         - name: "sidebar-link"
@@ -54,7 +55,7 @@ spec:
         - name: workflow-aggregator
           version: "2.6"
         - name: git
-          version: "4.10.1"
+          version: "4.10.3"
         - name: job-dsl
           version: "1.77"
         - name: configuration-as-code
