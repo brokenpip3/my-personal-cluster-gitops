@@ -152,10 +152,47 @@ data:
       - html2text
     max_tries: 5
     ---
-    name: "logseq/logseq"
+    name: "logseq"
     url: "https://github.com/logseq/logseq/releases/latest"
     filter:
       - css: "#repo-content-pjax-container h1"
       - html2text
+    max_tries: 5
+    ---
+    name: "api4jenkins"
+    url: "https://github.com/logseq/joelee2012/api4jenkins/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    name: "api4jenkins-changelog"
+    url: "https://raw.githubusercontent.com/joelee2012/api4jenkins/master/HISTORY.md"
+    max_tries: 5
+    ---
+    name: "go-task-changelog"
+    url: "https://raw.githubusercontent.com/go-task/task/master/CHANGELOG.md"
+    max_tries: 5
+    ---
+    name: "go-task"
+    url: "https://github.com/logseq/go-task/task/latest"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    name: "act"
+    url: "https://github.com/nektos/act/releases"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    name: "flit"
+    url: "https://github.com/pypa/flit/tags"
+    filter:
+      - css: ".Box-row:first-child h4 a"
+      - html2text
+      - strip
     max_tries: 5
 ...
