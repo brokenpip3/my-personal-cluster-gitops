@@ -47,7 +47,6 @@ spec:
     kubeEtcd:
       enabled: false
     prometheus-node-exporter:
-      hostNetwork: false
       extraHostVolumeMounts:
         - name: text-file
           hostPath: /var/lib/node_exporter
