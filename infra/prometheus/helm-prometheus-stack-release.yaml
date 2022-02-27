@@ -18,7 +18,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: "32.x.x"
+      version: "33.x.x"
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
@@ -47,6 +47,7 @@ spec:
     kubeEtcd:
       enabled: false
     prometheus-node-exporter:
+      hostNetwork: false
       extraHostVolumeMounts:
         - name: text-file
           hostPath: /var/lib/node_exporter
