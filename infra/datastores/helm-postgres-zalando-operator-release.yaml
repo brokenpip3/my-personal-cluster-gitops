@@ -18,6 +18,11 @@ spec:
                 namespace: flux-system
             interval: 10m
             version: 1.7.1
+            reconcileStrategy: Revision
+    upgrade:
+        crds: CreateReplace
+    install:
+        crds: CreateReplace
     values:
         resources:
             limits:
@@ -46,8 +51,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-03-01T22:43:37Z"
-    mac: ENC[AES256_GCM,data:jJTfo+PZdCFPL299iFSrfxexFZXJTCYJIhPEHeTgNf9GRlXSkx/K9z8dlFanPv7fwNqR8pAFTa0g9z6+6ycGe1NfmfJzzFIuNV6yqsWxU2rYKKhrvwMWUxPEucHyOpxYM6Cmh1/HoL0nvNs4gX5kW+DcZ8FmywutKGtJQfF47uA=,iv:nGzpvfWK48fAIgk1rNi6PD1T47n6aK2Y0IcXrCMwjPY=,tag:bu17gmLRqfbSUjJRn2caEA==,type:str]
+    lastmodified: "2022-03-01T23:04:36Z"
+    mac: ENC[AES256_GCM,data:RWnX2cGfyosxi2fN4Otz92hS6c96oxYsVUNxVNKAFyxByzqtj0HdNeb11a5zvI1vBNxn4n39elP2Ce5EZJyYPEmriGQb0bXLTdxUWer/haM9SIYoGc8rRMgppd5g0fuOVdFEtBkISRFDmjN0Wu8s33sJUDdis6dO0fFzWnHJY+g=,iv:LUcoNtFy5bLQ/Gcly19AQqJ1/w2yX6AEypKAKWJUuVE=,tag:UG31XYbK0Wjg06wHPl1KYg==,type:str]
     pgp:
         - created_at: "2022-03-01T22:14:23Z"
           enc: |
