@@ -12,5 +12,6 @@ resources:
 - tekton/tekton-pipelines/tekton-pipelines.yaml
 - tekton/tekton-triggers/tekton-triggers-source.yaml
 - tekton/tekton-triggers/tekton-triggers.yaml
-- datastores/postgres-zalando-operator.yaml
+- datastores/helm-postgres-zalando-operator-release.yaml
+- datastores/helm-postgres-zalando-operator-source.yaml
 - utils/

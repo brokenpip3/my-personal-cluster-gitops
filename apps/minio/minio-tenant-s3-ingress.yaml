@@ -4,7 +4,6 @@ metadata:
     name: ingress-minio
     namespace: minio
     annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-ovh
         kubernetes.io/ingress.class: nginx
         nginx.org/ssl-services: minio
         nginx.org/client-max-body-size: 0m
@@ -31,8 +30,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-03-01T13:30:29Z"
-    mac: ENC[AES256_GCM,data:3D8At8Jb+jzSxCjc524n+t7HiR+YwsXKS7uAhkBDq9QWVUmLNdOs9kYvnGbRzYzYO87P3+bQAPKgn5scSmtZKjh6o6mdoM9ijgK4fT4c2D8pR9ma4b77SxhpJe0FGmDUjDFZ7NYHvOslM62/SnBu0Fx6f9NysCAi1wGVAEOu17Y=,iv:fIUX+YKcMLFH+zy3h7kKtAvQeu6WQmJ4Q8SADhYzAco=,tag:jn4IaRf6NdjQ1UtXbm2aWQ==,type:str]
+    lastmodified: "2022-03-01T21:46:08Z"
+    mac: ENC[AES256_GCM,data:yosAykzbF9gPL+V6wIgG3v2oycbbclZ3nIVUBa/ogxUGiFQrlRm34eqGqT17ObnDmmpdCC5IMO+htHqHTHBgWUabuEHabnJnf6QUQxyTKRL+R9rvv1ssjerjcc80I+77Oc9QTVqNX0CbK49jHY3apTvUqpj4ddDOOj3bVvFrHFA=,iv:pr76EQFj+3LG1wGOCBMl97a3uwyOTROrf1fNR/OWvT4=,tag:6Xnwfsr36WgWXB01pWj6Iw==,type:str]
     pgp:
         - created_at: "2021-09-03T20:42:00Z"
           enc: |

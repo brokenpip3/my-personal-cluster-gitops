@@ -1,0 +1,72 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+    name: postgres-operator
+    namespace: postgres-operator
+spec:
+    interval: 10m
+    releaseName: pg
+    dependsOn:
+        - name: nfs-sc
+          namespace: kube-system
+    chart:
+        spec:
+            chart: /charts/postgres-operator/
+            sourceRef:
+                kind: GitRepository
+                name: postgres-operator
+                namespace: flux-system
+            interval: 10m
+    values:
+        resources:
+            limits:
+                cpu: 400m
+                memory: 400Mi
+            requests:
+                cpu: 400m
+                memory: 400Mi
+        configPostgresPodResources:
+            default_cpu_limit: "1"
+            default_cpu_request: 200m
+            default_memory_limit: 600Mi
+            default_memory_request: 300Mi
+            min_cpu_limit: 250m
+            min_memory_limit: 250Mi
+        configLogicalBackup:
+            logical_backup_s3_access_key_id: ENC[AES256_GCM,data:hPsmSNIaTqlOAjky/pCy,iv:18/KrVl1QxJ+fZ5L3aOxEcY+pHjb7IR3/yNdgn74va4=,tag:4sR1xV/Wpt1XONnCdDOgKw==,type:str]
+            logical_backup_s3_secret_access_key: ENC[AES256_GCM,data:Kvso/JHHQddlGNp9k2lMvwQ5,iv:GvGlklR2TI6u+Fp/68R4lGGsxASlpBaKwc3oJxnaKSM=,tag:TVDe7sZCuJLXzZMkZK/CaA==,type:str]
+            logical_backup_s3_bucket: ENC[AES256_GCM,data:yXAW9AXa/rIh,iv:hcc63vY73nOohjOo3EC60eNKopKKv0xCH8pzSPxFFe4=,tag:Fopvb35JmKU/nkmwYiNDdA==,type:str]
+            #ENC[AES256_GCM,data:C1fXOkYhJ6r9K2ArpiRp39HdCL6F+u2MWfFzCQ==,iv:icQ4dEmWXmJIUeqUJV4Pal9a/h3v9bZjFbE7GSzYv1c=,tag:aY0ldofAHvSepLm38oyQDg==,type:comment]
+            logical_backup_s3_endpoint: ENC[AES256_GCM,data:5sgOYlPf83Q1qQakEtrOkrQdPOa0IEdWwVwZMA==,iv:hrg3KWZOdsELi0NInNtv0KV4ObdezmCnSg6Ot/CUIvc=,tag:fIZVSuVLklh6TVKfTbAerw==,type:str]
+            logical_backup_schedule: ENC[AES256_GCM,data:+lp9Xp3n5dDGO7k=,iv:3P26r9ShaB3neihx7H3hdr206w422PvGLEGtrX7C868=,tag:KQA1VvqImJ0FxGXkFOaiCw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2022-03-01T22:14:23Z"
+    mac: ENC[AES256_GCM,data:vLgSOhReZyw77x88keSVf/RH3LLIC3qcsOxqlUOS+dbo1Ns4wa+j+32u8KnRwo2R4Ard9bEILOsKgFgB4varHV+XW0g3KbQVVtm6kDnQvftzzt1j0cNQT0aQYCgSowsE5Xaf7dF2qAZUrlqSj72+l/+M4J8vn7fEFL8EVyBqhI8=,iv:o9AbXAz6zIX4K4htgaCydimECRXYD61z9zio7yWu940=,tag:7no0FQelI1VRiUszxcbEjQ==,type:str]
+    pgp:
+        - created_at: "2022-03-01T22:14:23Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5AQ//dB5hOxov0O1m+6cZIgty0+uOy7arpfapawL//j09h5kp
+            /3UieiBgoPwmyXDpYUksBNohGZl/9mzC+90TRSF7ADNMIJxrlaBXM7f1Abnr6RxZ
+            jhSqlGyfj6ypYe6IUa1Fx0q0JRhH2GPBcEfWfLaFlcqWQfS5lxtJ2yIvN0Ip5P7p
+            3kQfmS362G1w82FiAnH0HPzN+ohUlXQtbTKb2T+3bC663sIG9gPQSgq+BbYpFToD
+            onG3QfpkLkTysUTD3roCbJAft8Oke44NxOfLxIO2wdxBw3iaocV58Wr1Ar0KPZAO
+            6NVkGMG0iem/MGKHwUo0GrF1AYBjmxWJtOZsS0DXxoTUwQgENEdANGBDAYMT+Q6l
+            11XdSzopW0nJLe6rNrvzyHWK9d4UDIbDdOFFvVakh25wDKsmyZPQPL2ey5dgZphN
+            zc5vmmeO7anoztXuTcj4e6CLH3K/HeTaEbmcfJLRw3YeTRx4y3TR2mghoQu9IYQp
+            hTlP8oCtydZkgC8AbByt008CwUHwftHx3s7lNRFEYYB0JuWxgdE5roK89+s6HGcF
+            gK1cjXM0zaW7OYS8C6ByMuMyNBy1gtLCvM/WwTGgyn0Okp2FGCXD/UmGtRHhBOkF
+            Jxb0hRRJyqs3wyzGxorXWl7BLF70jjqJ7qLXwXwVld0xNY8mBF857EIBhUJJOHzS
+            TgF7tEcUK8A1ho8L1H8N4C/P1lQTfJf4kNJYD7dMLitKWuQZxa3eDKNbq5vWvbRJ
+            zPl6jzZ3jWYuxQtv3mcUkqCHpJhN/pJTLcvbXQcpNA==
+            =F7Vo
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|configLogicalBackup)$
+    version: 3.7.1
