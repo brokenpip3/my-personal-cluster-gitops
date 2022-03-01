@@ -1,0 +1,72 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: image-repo-minio
+  namespace: flux-system
+spec:
+  image: minio/minio
+  interval: 100m0s
+  accessFrom:
+    namespaceSelectors:
+      - matchLabels: {}
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: image-policy-minio
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: image-repo-minio
+  filterTags:
+    pattern: '^RELEASE\.(?P<timestamp>.*)Z$'
+    extract: '$timestamp'
+  policy:
+    alphabetical:
+      order: asc
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: minio-image-automation
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: fluxbot-brokenpip3@users.noreply.github.com
+        name: flux
+      messageTemplate: |
+        Automated image update by Flux
+
+        Automation name: {{ .AutomationObject }}
+
+        Files:
+        {{ range $filename, $_ := .Updated.Files -}}
+        - {{ $filename }}
+        {{ end -}}
+
+        Objects:
+        {{ range $resource, $_ := .Updated.Objects -}}
+        - {{ $resource.Kind }} {{ $resource.Name }}
+        {{ end -}}
+
+        Images:
+        {{ range .Updated.Images -}}
+        - {{.}}
+        {{ end -}}
+
+    push:
+      branch: images-update
+  update:
+    path: ./apps/minio
+    strategy: Setters
+...
