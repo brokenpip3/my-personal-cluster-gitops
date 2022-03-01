@@ -17,6 +17,7 @@ spec:
                 name: postgres-operator
                 namespace: flux-system
             interval: 10m
+            version: 1.7.1
     values:
         resources:
             limits:
@@ -45,8 +46,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-03-01T22:14:23Z"
-    mac: ENC[AES256_GCM,data:vLgSOhReZyw77x88keSVf/RH3LLIC3qcsOxqlUOS+dbo1Ns4wa+j+32u8KnRwo2R4Ard9bEILOsKgFgB4varHV+XW0g3KbQVVtm6kDnQvftzzt1j0cNQT0aQYCgSowsE5Xaf7dF2qAZUrlqSj72+l/+M4J8vn7fEFL8EVyBqhI8=,iv:o9AbXAz6zIX4K4htgaCydimECRXYD61z9zio7yWu940=,tag:7no0FQelI1VRiUszxcbEjQ==,type:str]
+    lastmodified: "2022-03-01T22:43:37Z"
+    mac: ENC[AES256_GCM,data:jJTfo+PZdCFPL299iFSrfxexFZXJTCYJIhPEHeTgNf9GRlXSkx/K9z8dlFanPv7fwNqR8pAFTa0g9z6+6ycGe1NfmfJzzFIuNV6yqsWxU2rYKKhrvwMWUxPEucHyOpxYM6Cmh1/HoL0nvNs4gX5kW+DcZ8FmywutKGtJQfF47uA=,iv:nGzpvfWK48fAIgk1rNi6PD1T47n6aK2Y0IcXrCMwjPY=,tag:bu17gmLRqfbSUjJRn2caEA==,type:str]
     pgp:
         - created_at: "2022-03-01T22:14:23Z"
           enc: |
