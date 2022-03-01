@@ -17,7 +17,7 @@ spec:
                 name: postgres-operator
                 namespace: flux-system
             interval: 10m
-            version: 1.7.1
+            version: 1.7.x
             reconcileStrategy: ChartVersion
     upgrade:
         crds: CreateReplace
