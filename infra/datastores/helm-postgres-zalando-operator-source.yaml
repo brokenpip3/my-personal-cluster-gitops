@@ -16,7 +16,7 @@ spec:
     interval: 10m
     url: https://github.com/zalando/postgres-operator
     ref:
-        branch: master
+        tag: v1.7.1
     ignore: |
         /*
         !/charts/postgres-operator/
