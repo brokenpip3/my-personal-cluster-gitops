@@ -6,3 +6,4 @@ resources:
 - minio-tenant-s3-cert.yaml
 - minio-tenant-s3-ingress.yaml
 - minio-tenant-s3.yaml
+- minio-image-automation.yaml
