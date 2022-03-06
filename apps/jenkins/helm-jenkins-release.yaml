@@ -47,8 +47,8 @@ spec:
           version: "1.0.1"
         - name: sidebar-link
           version: "1.12.1"
-        - name: cloudbees-disk-usage-simple
-          version: "1.10"
+        #- name: cloudbees-disk-usage-simple
+        #  version: "1.10"
         basePlugins:
         - name: kubernetes
           version: "3546.v6103d89542d6"
