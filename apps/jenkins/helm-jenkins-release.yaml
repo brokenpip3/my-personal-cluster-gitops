@@ -45,11 +45,13 @@ spec:
           version: "4.1.6.1"
         - name: ansicolor
           version: "1.0.1"
-        - name: "sidebar-link"
+        - name: sidebar-link
           version: "1.12.1"
+        - name: cloudbees-disk-usage-simple
+          version: "1.10"
         basePlugins:
         - name: kubernetes
-          version: "1.31.3"
+          version: "3546.v6103d89542d6"
         - name: workflow-job
           version: "1145.v7f2433caa07f"
         - name: workflow-aggregator
@@ -59,7 +61,7 @@ spec:
         - name: job-dsl
           version: "1.77"
         - name: configuration-as-code
-          version: "1.55.1"
+          version: "1414.v878271fc496f"
         - name: kubernetes-credentials-provider
           version: "0.20"
         backup:
