@@ -32,7 +32,7 @@ metadata:
   name: minio-image-automation
   namespace: flux-system
 spec:
-  interval: 10m0s
+  interval: 15m
   sourceRef:
     kind: GitRepository
     name: flux-system
