@@ -15,3 +15,5 @@ data:
       DanielStenberg: https://daniel.haxx.se/blog/feed
       ircv3: https://ircv3.net/feed.xml
       mullvad: https://mullvad.net/en/blog/feed/atom/
+      JuliaEvans: https://jvns.ca/atom.xml
+      weechat: https://blog.weechat.org/feed/atom
