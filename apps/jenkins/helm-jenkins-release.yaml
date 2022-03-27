@@ -32,15 +32,15 @@ spec:
         image: jenkins/jenkins:lts
         plugins:
         - name: github-branch-source
-          version: 2.11.4
+          version: "2.11.4"
         - name: build-name-setter
-          version: 2.2.0
+          version: "2.2.0"
         - name: ws-cleanup
           version: "0.40"
         - name: view-job-filters
           version: "2.3"
         - name: prometheus
-          version: "2.0.10"
+          version: "2.0.11"
         - name: metrics
           version: "4.1.6.1"
         - name: ansicolor
@@ -57,7 +57,7 @@ spec:
         - name: workflow-aggregator
           version: "2.6"
         - name: git
-          version: "4.10.3"
+          version: "4.11.0"
         - name: job-dsl
           version: "1.77"
         - name: configuration-as-code
