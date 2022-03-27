@@ -195,4 +195,19 @@ data:
       - html2text
       - strip
     max_tries: 5
+    ---
+    # Borg and similar
+    name: "borg"
+    url: "https://github.com/borgbackup/borg/releases"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    name: "vorta"
+    url: "https://github.com/borgbase/vorta/releases"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
 ...
