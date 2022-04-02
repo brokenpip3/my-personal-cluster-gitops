@@ -6,7 +6,7 @@ metadata:
       infra.gitops: cert-manager
       prometheus: scrape
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta1
+apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
     name: jetstack
@@ -43,7 +43,7 @@ spec:
             servicemonitor:
               enabled: true
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta1
+apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
 metadata:
     name: cert-manager-ovh
