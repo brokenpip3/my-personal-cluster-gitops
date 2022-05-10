@@ -16,3 +16,12 @@ spec:
   prune: true
   dependsOn:
     - name: infra
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: zulip
+      namespace: zulip
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: gitea
+      namespace: gitea
