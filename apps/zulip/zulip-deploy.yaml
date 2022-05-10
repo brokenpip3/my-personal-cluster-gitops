@@ -25,6 +25,8 @@ metadata:
   namespace: zulip
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: zulip
@@ -82,7 +84,7 @@ spec:
         envFrom:
         - secretRef:
             name: zulip-secrets
-        image: zulip/docker-zulip:4.10-0
+        image: zulip/docker-zulip:5.2-0
         imagePullPolicy: IfNotPresent
         name: zulip
         ports:
