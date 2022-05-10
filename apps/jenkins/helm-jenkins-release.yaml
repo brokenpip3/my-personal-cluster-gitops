@@ -26,6 +26,7 @@ spec:
     values:
       operator:
         replicaCount: 1
+        image: virtuslab/jenkins-operator:13f871b
       jenkins:
         enabled: true
         namespace: jenkins
