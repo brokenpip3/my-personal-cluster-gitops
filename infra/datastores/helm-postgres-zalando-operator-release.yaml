@@ -11,7 +11,7 @@ spec:
           namespace: kube-system
     chart:
         spec:
-            chart: /charts/postgres-operator/
+            chart: charts/postgres-operator/
             sourceRef:
                 kind: GitRepository
                 name: postgres-operator

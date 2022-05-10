@@ -69,7 +69,7 @@ spec:
     - name: cert-manager
     chart:
         spec:
-            chart: /deploy/cert-manager-webhook-ovh/
+            chart: deploy/cert-manager-webhook-ovh/
             sourceRef:
                 kind: GitRepository
                 name: cert-manager-ovh
