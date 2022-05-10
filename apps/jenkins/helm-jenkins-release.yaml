@@ -16,7 +16,7 @@ spec:
       crds: CreateReplace
     chart:
         spec:
-            chart: /chart/jenkins-operator
+            chart: chart/jenkins-operator
             sourceRef:
                 kind: GitRepository
                 name: jenkins-k8s-operator
