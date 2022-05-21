@@ -1,8 +1,9 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: HelmRepository
+---
+apiVersion: v1
+kind: Namespace
 metadata:
-    name: grafana
-    namespace: flux-system
-spec:
-    interval: 10m
-    url: https://grafana.github.io/helm-charts
+    name: loki
+    labels:
+      infra.gitops: loki
+      prometheus: scrape
+...
