@@ -18,7 +18,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: "32.x.x"
+      version: "35.x.x"
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
@@ -59,6 +59,7 @@ spec:
         - --collector.filesystem.fs-types-exclude=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$
     prometheus:
       prometheusSpec:
+        enableRemoteWriteReceiver: true
         serviceMonitorSelectorNilUsesHelmValues: false
         serviceMonitorNamespaceSelector:
           matchLabels:
