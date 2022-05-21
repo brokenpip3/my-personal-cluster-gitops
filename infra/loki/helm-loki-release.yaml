@@ -29,3 +29,22 @@ spec:
           memory: 128Mi
       serviceMonitor:
         enabled: true
+      config:
+        table_manager:
+          retention_deletes_enabled: true
+          retention_period: 36h
+        ruler:
+          storage:
+            type: local
+            local:
+              directory: /rules
+          rule_path: /tmp/scratch
+          alertmanager_url: http://prom-kube-prometheus-stack-alertmanager.monitoring.svc.cluster.local:9093
+          ring:
+            kvstore:
+              store: inmemory
+          enable_api: true
+          remote_write:
+            enabled: true
+            client:
+              url: http://prom-kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9093
