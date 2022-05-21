@@ -1,0 +1,42 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: loki
+  namespace: monitoring
+spec:
+  groups:
+  - name: loki
+    interval: 60s
+    rules:
+      - alert: LokiProcessTooManyRestarts
+        expr: changes(process_start_time_seconds{job=~"loki"}[15m]) > 2
+        for: 0m
+        labels:
+          severity: warning
+        annotations:
+          summary: Loki process too many restarts (instance {{ $labels.instance }})
+          description: "A loki process had too many restarts (target {{ $labels.instance }})\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+      - alert: LokiRequestErrors
+        expr: 100 * sum(rate(loki_request_duration_seconds_count{status_code=~"5.."}[1m])) by (namespace, job, route) / sum(rate(loki_request_duration_seconds_count[1m])) by (namespace, job, route) > 10
+        for: 15m
+        labels:
+          severity: critical
+        annotations:
+          summary: Loki request errors (instance {{ $labels.instance }})
+          description: "The {{ $labels.job }} and {{ $labels.route }} are experiencing errors\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+      - alert: LokiRequestPanic
+        expr: sum(increase(loki_panic_total[10m])) by (namespace, job) > 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: Loki request panic (instance {{ $labels.instance }})
+          description: "The {{ $labels.job }} is experiencing {{ printf \"%.2f\" $value }}% increase of panics\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+      - alert: PromtailRequestErrors
+        expr: 100 * sum(rate(promtail_request_duration_seconds_count{status_code=~"5..|failed"}[1m])) by (namespace, job, route, instance) / sum(rate(promtail_request_duration_seconds_count[1m])) by (namespace, job, route, instance) > 10
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: Promtail request errors (instance {{ $labels.instance }})
+          description: "The {{ $labels.job }} {{ $labels.route }} is experiencing {{ printf \"%.2f\" $value }}% errors.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"

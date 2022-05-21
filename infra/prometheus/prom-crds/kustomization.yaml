@@ -6,6 +6,7 @@ resources:
 - rules-borgbackup.yaml
 - rules-certmanager.yaml
 - rules-jenkins.yaml
+- rules-loki_promtail.yaml
 - rules-other-datastores.yaml
 - rules-pacman.yaml
 - rules-postgres.yaml
