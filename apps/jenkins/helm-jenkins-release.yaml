@@ -33,36 +33,60 @@ spec:
         image: jenkins/jenkins:lts
         plugins:
         - name: github-branch-source
-          version: "2.11.4"
+          version: 1628.vb_2f51293cb_78
         - name: build-name-setter
-          version: "2.2.0"
+          version: 2.2.0
         - name: ws-cleanup
-          version: "0.40"
+          version: "0.42"
         - name: view-job-filters
           version: "2.3"
         - name: prometheus
-          version: "2.0.11"
+          version: 2.0.11
         - name: metrics
-          version: "4.1.6.1"
+          version: 4.1.6.2
         - name: ansicolor
-          version: "1.0.1"
+          version: 1.0.1
         - name: sidebar-link
-          version: "1.12.1"
-        #- name: cloudbees-disk-usage-simple
-        #  version: "1.10"
+          version: 1.12.1
+        - name: display-url-api
+          version: 2.3.6
+        - name: junit
+          version: "1.63"
+        - name: workflow-basic-steps
+          version: 948.v2c72a_091b_b_68
+        - name: pipeline-model-definition
+          version: 2.2081.v3919681ffc1e
+        - name: pipeline-model-extensions
+          version: 2.2081.v3919681ffc1e
+        - name: workflow-cps
+          version: 2692.v76b_089ccd026
+        - name: pipeline-model-api
+          version: 2.2081.v3919681ffc1e
+        - name: pipeline-stage-tags-metadata
+          version: 2.2081.v3919681ffc1e
+        - name: workflow-support
+          version: 820.vd1a_6cc65ef33
+        - name: script-security
+          version: 1172.v35f6a_0b_8207e
+        - name: command-launcher
+          version: 81.v9c2cb_cb_db_392
+        - name: jdk-tool
+          version: "1.5"
+        - name: cloudbees-disk-usage-simple
+          version: "0.10"
         basePlugins:
         - name: kubernetes
-          version: "3546.v6103d89542d6"
+          version: 3580.v78271e5631dc
         - name: workflow-job
-          version: "1145.v7f2433caa07f"
+          version: 1181.va_25d15548158
         - name: workflow-aggregator
-          version: "2.6"
+          version: 578.vf9a_f99755f4a_
         - name: git
-          version: "4.11.0"
+          version: 4.11.3
         - name: job-dsl
           version: "1.77"
         - name: configuration-as-code
-          version: "1414.v878271fc496f"
+          version: 1429.v09b_044a_c93de
         - name: kubernetes-credentials-provider
           version: "0.20"
         backup:
