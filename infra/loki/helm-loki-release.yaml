@@ -37,7 +37,7 @@ spec:
           storage:
             type: local
             local:
-              directory: /rules
+              directory: /tmp/rules
           rule_path: /tmp/scratch
           alertmanager_url: http://prom-kube-prometheus-stack-alertmanager.monitoring.svc.cluster.local:9093
           ring:

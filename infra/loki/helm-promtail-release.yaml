@@ -16,6 +16,66 @@ spec:
                 namespace: flux-system
             interval: 10m
     values:
+      config:
+        lokiAddress: http://loki:3100/loki/api/v1/push
+        snippets:
+          extraScrapeConfigs: |
+            - job_name: journal
+              journal:
+                json: false
+                labels:
+                  job: systemd-journal
+                max_age: 2h
+                path: /var/log/journal
+              relabel_configs:
+              - source_labels:
+                - __journal__systemd_unit
+                target_label: unit
+              - source_labels:
+                - __journal__hostname
+                target_label: nodename
+              - source_labels:
+                - __journal_syslog_identifier
+                target_label: syslog_identifier
+            - job_name: pacmanlog
+              static_configs:
+                - targets:
+                  - localhost
+                  labels:
+                    job: pacman
+                    __path__: /var/log/pacman.log
+              pipeline_stages:
+              - match:
+                  selector: '{job="pacman"}'
+                  stages:
+                  - regex:
+                      expression: '^\[(?P<timestamp>.*?)\]'
+                  - timestamp:
+                      format: RFC3339
+                      source: timestamp
+      defaultVolumeMounts:
+      - mountPath: /var/log/pods
+        name: pods
+        readOnly: true
+      - mountPath: /var/log/journal
+        name: journal
+        readOnly: true
+      - mountPath: /var/log
+        name: log
+        readOnly: true
+      defaultVolumes:
+      - hostPath:
+          path: /var/log/pods
+        name: pods
+      - hostPath:
+          path: /var/log/journal
+        name: journal
+      - hostPath:
+          path: /var/log
+        name: log
+      podAnnotations:
+        prometheus.io/port: http-metrics
+        prometheus.io/scrape: "true"
       resources:
         limits:
           cpu: 200m
@@ -23,15 +83,5 @@ spec:
         requests:
           cpu: 100m
           memory: 128Mi
-      defaultVolumes:
-        - name: pods
-          hostPath:
-            path: /var/log/pods
-      defaultVolumeMounts:
-        - name: pods
-          mountPath: /var/log/pods
-          readOnly: true
       serviceMonitor:
         enabled: true
-      config:
-        lokiAddress: http://loki:3100/loki/api/v1/push
