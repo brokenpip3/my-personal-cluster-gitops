@@ -32,7 +32,7 @@ spec:
       config:
         table_manager:
           retention_deletes_enabled: true
-          retention_period: 36h
+          retention_period: 12h
         ruler:
           storage:
             type: local
