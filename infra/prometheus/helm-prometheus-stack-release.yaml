@@ -13,6 +13,10 @@ metadata:
   name: prometheus-stack
   namespace: monitoring
 spec:
+  upgrade:
+    crds: CreateReplace
+  install:
+    crds: CreateReplace
   interval: 10m
   releaseName: prom
   chart:
