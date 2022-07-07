@@ -10,4 +10,5 @@ resources:
 - rules-other-datastores.yaml
 - rules-pacman.yaml
 - rules-postgres.yaml
+- rules-flux-system.yaml
 - servicemonitor-tekton.yaml
