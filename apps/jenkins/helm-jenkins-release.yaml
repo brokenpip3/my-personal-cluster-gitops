@@ -22,15 +22,15 @@ spec:
                 name: jenkins-k8s-operator
                 namespace: flux-system
             interval: 10m
-            version: '0.6.x'
+            version: '0.6.2'
     values:
       operator:
         replicaCount: 1
-        image: virtuslab/jenkins-operator:13f871b
+        #image: virtuslab/jenkins-operator:13f871b
       jenkins:
         enabled: true
         namespace: jenkins
-        image: jenkins/jenkins:lts
+        image: jenkins/jenkins:2.332.3
         plugins:
         - name: github-branch-source
           version: 1628.vb_2f51293cb_78
