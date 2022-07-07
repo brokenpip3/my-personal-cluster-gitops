@@ -65,7 +65,7 @@ spec:
         {{ end -}}
 
     push:
-      branch: images-update
+      branch: images-update-minio
   update:
     path: ./apps/minio
     strategy: Setters
