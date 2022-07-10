@@ -52,7 +52,7 @@ spec:
         envFrom:
         - configMapRef:
             name: gitea-values
-        image: gitea/gitea:latest
+        image: docker.io/gitea/gitea:latest
         imagePullPolicy: Always
         name: gitea
         ports:

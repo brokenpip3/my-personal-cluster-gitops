@@ -34,6 +34,8 @@ spec:
       interval: 10m
   values:
     controller:
+      image:
+        repository: docker.io/nginx/nginx-ingress
       kind: daemonset
       globalConfiguration:
         create: true

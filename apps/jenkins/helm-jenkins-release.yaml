@@ -26,11 +26,11 @@ spec:
     values:
       operator:
         replicaCount: 1
-        #image: virtuslab/jenkins-operator:13f871b
+        image: docker.io/virtuslab/jenkins-operator:v0.7.1
       jenkins:
         enabled: true
         namespace: jenkins
-        image: jenkins/jenkins:2.332.3
+        image: docker.io/jenkins/jenkins:2.332.3
         plugins:
         - name: github-branch-source
           version: 1628.vb_2f51293cb_78
@@ -114,6 +114,7 @@ spec:
           requests:
             cpu: 1
             memory: 4Gi
+        seedJobAgentImage: docker.io/jenkins/inbound-agent:4.9-1
         seedJobs:
           - id: seed-job
             targets: "ci-cd/jenkins-dsl/*.jenkins"
