@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: rabbitmq
-          image: rabbitmq:3
+          image: docker.io/rabbitmq:3
           env:
           - name: RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS
             value: "+S 1:1"

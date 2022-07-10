@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: wallabag
-          image: wallabag/wallabag:latest
+          image: docker.io/wallabag/wallabag:latest
           ports:
             - name: http
               containerPort: 80
