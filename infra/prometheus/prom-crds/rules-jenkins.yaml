@@ -38,7 +38,7 @@ spec:
           description: " {{ $labels.app_kubernetes_io_instance }} a health score lower than 100%"
 
       - alert: JenkinsTooManyPluginsNeedUpate
-        expr: jenkins_plugins_withUpdate{service="jenkins-operator-http-jenkins"} > 8
+        expr: jenkins_plugins_withUpdate{service="jenkins-operator-http-jenkins"} > 18
         for: 10m
         labels:
           severity: notify
