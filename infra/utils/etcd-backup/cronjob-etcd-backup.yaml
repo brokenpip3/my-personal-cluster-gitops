@@ -6,7 +6,7 @@ metadata:
 spec:
   storageClassName: nfs-sc
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   resources:
     requests:
       storage: 5Gi
@@ -25,31 +25,31 @@ spec:
       template:
         spec:
           containers:
-            - name: backup
-              image: gcr.io/etcd-development/etcd:v3.5.2 # {"$imagepolicy": "flux-system:image-policy-etcd"}
-              env:
-                - name: ETCDCTL_API
-                  value: "3"
-              command: ["/bin/sh"]
-              args: ["-c", "etcdctl --endpoints=https://127.0.0.1:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/healthcheck-client.crt --key=/etc/kubernetes/pki/etcd/healthcheck-client.key snapshot save /backup/etcd-snapshot-$(printf '%(%Y-%m-%d_%H:%M:%S_%Z)T\n')"]
-              volumeMounts:
-                - mountPath: /etc/kubernetes/pki/etcd
-                  name: etcd-certs
-                  readOnly: true
-                - mountPath: /backup
-                  name: backup
+          - name: backup
+            image: gcr.io/etcd-development/etcd:v3.5.4 # {"$imagepolicy": "flux-system:image-policy-etcd"}
+            env:
+            - name: ETCDCTL_API
+              value: "3"
+            command: ["/bin/sh"]
+            args: ["-c", "etcdctl --endpoints=https://127.0.0.1:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/healthcheck-client.crt --key=/etc/kubernetes/pki/etcd/healthcheck-client.key snapshot save /backup/etcd-snapshot-$(printf '%(%Y-%m-%d_%H:%M:%S_%Z)T\n')"]
+            volumeMounts:
+            - mountPath: /etc/kubernetes/pki/etcd
+              name: etcd-certs
+              readOnly: true
+            - mountPath: /backup
+              name: backup
           restartPolicy: OnFailure
           nodeSelector:
             node-role.kubernetes.io/control-plane: ""
           tolerations:
-            - effect: NoSchedule
-              operator: Exists
+          - effect: NoSchedule
+            operator: Exists
           hostNetwork: true
           volumes:
-            - name: etcd-certs
-              hostPath:
-                path: /etc/kubernetes/pki/etcd
-                type: DirectoryOrCreate
-            - name: backup
-              persistentVolumeClaim:
-                claimName: etcd-backup
+          - name: etcd-certs
+            hostPath:
+              path: /etc/kubernetes/pki/etcd
+              type: DirectoryOrCreate
+          - name: backup
+            persistentVolumeClaim:
+              claimName: etcd-backup
