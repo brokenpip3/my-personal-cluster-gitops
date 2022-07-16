@@ -69,7 +69,7 @@ spec:
         - name: workflow-api
           version: 1188.v0016b_4f29881
         - name: workflow-durable-task-step
-          value: 1174.v73a_9a_17edce0
+          version: 1174.v73a_9a_17edce0
         - name: script-security
           version: 1175.v4b_d517d6db_f0
         - name: command-launcher
