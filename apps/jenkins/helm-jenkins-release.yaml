@@ -65,7 +65,7 @@ spec:
         - name: workflow-cps
           version: 2746.v0da_83a_332669
         - name: workflow-support
-          version: 833.va_1c71061486b
+          version: 833.va_1c71061486b_
         - name: workflow-api
           version: 1188.v0016b_4f29881
         - name: workflow-durable-task-step
