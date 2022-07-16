@@ -26,11 +26,11 @@ spec:
     values:
       operator:
         replicaCount: 1
-        image: docker.io/virtuslab/jenkins-operator:v0.7.1
+        image: docker.io/virtuslab/jenkins-operator:bef796a
       jenkins:
         enabled: true
         namespace: jenkins
-        image: docker.io/jenkins/jenkins:2.332.3
+        image: docker.io/jenkins/jenkins:lts
         plugins:
         - name: github-branch-source
           version: 1656.v77eddb_b_e95df
@@ -84,7 +84,7 @@ spec:
         - name: kubernetes
           version: 3663.v1c1e0ec5b_650
         - name: workflow-job
-          version: 1226.v44f718dcfe1f
+          version: 1189.va_d37a_e9e4eda_
         - name: workflow-aggregator
           version: 590.v6a_d052e5a_a_b_5
         - name: git
