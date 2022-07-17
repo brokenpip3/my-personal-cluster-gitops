@@ -76,6 +76,8 @@ spec:
           version: 84.v4a_97f2027398
         - name: ssh-credentials
           version: 291.v8211e4f8efb_c
+        - name: sshd
+          version: 3.242.va_db_9da_b_26a_c3
         - name: jdk-tool
           version: "1.5"
         - name: cloudbees-disk-usage-simple
@@ -84,7 +86,7 @@ spec:
         - name: kubernetes
           version: 3663.v1c1e0ec5b_650
         - name: workflow-job
-          version: 1189.va_d37a_e9e4eda_
+          version: 1207.ve6191ff089f8
         - name: workflow-aggregator
           version: 590.v6a_d052e5a_a_b_5
         - name: git
@@ -94,7 +96,7 @@ spec:
         - name: configuration-as-code
           version: 1466.v2d4119502006
         - name: kubernetes-credentials-provider
-          version: "0.21"
+          version: "0.22"
         backup:
           enabled: true
           pvc:
