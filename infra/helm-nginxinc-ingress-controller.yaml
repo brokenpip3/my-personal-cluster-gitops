@@ -37,6 +37,7 @@ spec:
       image:
         repository: docker.io/nginx/nginx-ingress
       kind: daemonset
+      enableSnippets: true
       globalConfiguration:
         create: true
         spec:
