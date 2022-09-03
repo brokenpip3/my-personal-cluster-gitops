@@ -33,7 +33,7 @@ spec:
         image: docker.io/jenkins/jenkins:lts
         plugins:
         - name: github-branch-source
-          version: 1656.v77eddb_b_e95df
+          version: 1687.v7618247e672d
         - name: build-name-setter
           version: 2.2.0
         - name: ws-cleanup
@@ -43,9 +43,11 @@ spec:
         - name: prometheus
           version: 2.0.11
         - name: metrics
-          version: 4.1.6.2
+          version: 4.2.10-389.v93143621b_050
         - name: ansicolor
-          version: 1.0.1
+          version: 1.0.2
+        - name: bootstrap5-api
+          version: 5.2.0-3
         - name: sidebar-link
           version: 1.12.1
         - name: display-url-api
@@ -53,50 +55,50 @@ spec:
         - name: junit
           version: 1119.1121.vc43d0fc45561
         - name: pipeline-model-definition
-          version: 2.2097.v33db_b_de764b_e
+          version: 2.2114.v2654ca_721309
         - name: pipeline-model-extensions
-          version: 2.2097.v33db_b_de764b_e
+          version: 2.2114.v2654ca_721309
         - name: pipeline-model-api
-          version: 2.2097.v33db_b_de764b_e
+          version: 2.2114.v2654ca_721309
         - name: pipeline-stage-tags-metadata
-          version: 2.2097.v33db_b_de764b_e
+          version: 2.2114.v2654ca_721309
         - name: workflow-basic-steps
-          version: 969.vc4ec3e4854b_f
+          version: 994.vd57e3ca_46d24
         - name: workflow-cps
-          version: 2746.v0da_83a_332669
+          version: 2759.v87459c4eea_ca_
         - name: workflow-support
-          version: 833.va_1c71061486b_
+          version: 838.va_3a_087b_4055b
         - name: workflow-api
-          version: 1188.v0016b_4f29881
+          version: 1192.v2d0deb_19d212
         - name: workflow-durable-task-step
-          version: 1174.v73a_9a_17edce0
+          version: 1199.v02b_9244f8064
         - name: script-security
           version: 1175.v4b_d517d6db_f0
         - name: command-launcher
           version: 84.v4a_97f2027398
         - name: ssh-credentials
-          version: 291.v8211e4f8efb_c
+          version: 305.v8f4381501156
         - name: sshd
           version: 3.242.va_db_9da_b_26a_c3
         - name: jdk-tool
-          version: "1.5"
+          version: 55.v1b_32b_6ca_f9ca
         - name: cloudbees-disk-usage-simple
-          version: "0.10"
+          version: "170.va_fd5b_4ee6858"
         basePlugins:
         - name: kubernetes
-          version: 3663.v1c1e0ec5b_650
+          version: 3704.va_08f0206b_95e
         - name: workflow-job
           version: 1207.ve6191ff089f8
         - name: workflow-aggregator
           version: 590.v6a_d052e5a_a_b_5
         - name: git
-          version: 4.11.3
+          version: 4.11.5
         - name: job-dsl
           version: "1.77"
         - name: configuration-as-code
-          version: 1466.v2d4119502006
+          version: 1512.vb_79d418d5fc8
         - name: kubernetes-credentials-provider
-          version: "0.22"
+          version: 1.196.va_55f5e31e3c2
         backup:
           enabled: true
           pvc:
