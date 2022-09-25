@@ -22,7 +22,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: "39.x.x"
+      version: "40.x.x"
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
