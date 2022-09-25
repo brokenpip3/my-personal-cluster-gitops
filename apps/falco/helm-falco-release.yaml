@@ -31,6 +31,30 @@ spec:
           enabled: false
         containerd:
           enabled: false
+      customRules:
+        except-jenkins.yaml: |-
+          - rule: Launch Ingress Remote File Copy Tools in Container
+            exceptions:
+            - name: jenkins_pod
+              fields: [container.image.repository]
+              comps: [=]
+              values:
+              - [docker.io/jenkins/jenkins]
+          - rule: Contact K8S API Server From Container
+            exceptions:
+            - name: jenkins_pod
+              fields: [container.image.repository, k8s.ns.name, proc.cmdline]
+              comps: [=, =, =]
+              values:
+              - [docker.io/virtuslab/jenkins-operator,jenkins,manager]
+        except-sshd.yaml: |-
+          - rule: Write below root
+            exceptions:
+            - name: sshd
+              fields: [user.name, proc.name, proc.cmdline]
+              comps: [=, =, =]
+              values:
+              - [root, sshd, sshd -D -R]
       falcosidekick:
         replicaCount: 1
         enabled: true
