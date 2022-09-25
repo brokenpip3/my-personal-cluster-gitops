@@ -30,14 +30,16 @@ spec:
       jenkins:
         enabled: true
         namespace: jenkins
-        image: docker.io/jenkins/jenkins:lts
+        image: docker.io/jenkins/jenkins:2.346.3
         plugins:
         - name: github-branch-source
-          version: 1687.v7618247e672d
+          version: 1695.v88de84e9f6b_9
+        - name: pipeline-stage-view
+          version: "2.24"
         - name: build-name-setter
           version: 2.2.0
         - name: ws-cleanup
-          version: "0.42"
+          version: "0.43"
         - name: view-job-filters
           version: "2.3"
         - name: prometheus
@@ -47,13 +49,13 @@ spec:
         - name: ansicolor
           version: 1.0.2
         - name: bootstrap5-api
-          version: 5.2.0-3
+          version: 5.2.1-2
         - name: sidebar-link
           version: 1.12.1
         - name: display-url-api
           version: 2.3.6
         - name: junit
-          version: 1119.1121.vc43d0fc45561
+          version: 1143.v8d9a_e3355270
         - name: pipeline-model-definition
           version: 2.2114.v2654ca_721309
         - name: pipeline-model-extensions
@@ -65,7 +67,7 @@ spec:
         - name: workflow-basic-steps
           version: 994.vd57e3ca_46d24
         - name: workflow-cps
-          version: 2759.v87459c4eea_ca_
+          version: 2801.vf82a_b_b_e3e8a_5
         - name: workflow-support
           version: 838.va_3a_087b_4055b
         - name: workflow-api
@@ -73,9 +75,9 @@ spec:
         - name: workflow-durable-task-step
           version: 1199.v02b_9244f8064
         - name: script-security
-          version: 1175.v4b_d517d6db_f0
+          version: 1183.v774b_0b_0a_a_451
         - name: command-launcher
-          version: 84.v4a_97f2027398
+          version: 90.v669d7ccb_7c31
         - name: ssh-credentials
           version: 305.v8f4381501156
         - name: sshd
@@ -86,13 +88,13 @@ spec:
           version: "170.va_fd5b_4ee6858"
         basePlugins:
         - name: kubernetes
-          version: 3704.va_08f0206b_95e
+          version: 3706.vdfb_d599579f3
         - name: workflow-job
           version: 1207.ve6191ff089f8
         - name: workflow-aggregator
           version: 590.v6a_d052e5a_a_b_5
         - name: git
-          version: 4.11.5
+          version: 4.12.1
         - name: job-dsl
           version: "1.77"
         - name: configuration-as-code
