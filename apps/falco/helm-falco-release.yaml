@@ -16,11 +16,6 @@ spec:
                 namespace: flux-system
             interval: 10m
             version: 2.x.x
-    healthChecks:
-      - apiVersion: apps/v1
-        kind: DaemonSet
-        name: falco
-        namespace: falco
     values:
       scc:
         create: false
