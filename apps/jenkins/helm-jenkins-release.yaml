@@ -49,13 +49,13 @@ spec:
         - name: ansicolor
           version: 1.0.2
         - name: bootstrap5-api
-          version: 5.2.1-2
+          version: 5.2.0-3
         - name: sidebar-link
           version: 1.12.1
         - name: display-url-api
           version: 2.3.6
         - name: junit
-          version: 1143.v8d9a_e3355270
+          version: 1119.1121.vc43d0fc45561
         - name: pipeline-model-definition
           version: 2.2114.v2654ca_721309
         - name: pipeline-model-extensions
@@ -67,7 +67,7 @@ spec:
         - name: workflow-basic-steps
           version: 994.vd57e3ca_46d24
         - name: workflow-cps
-          version: 2801.vf82a_b_b_e3e8a_5
+          version: 2759.v87459c4eea_ca_
         - name: workflow-support
           version: 838.va_3a_087b_4055b
         - name: workflow-api
