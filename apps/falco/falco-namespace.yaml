@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: falco
+  labels:
+    apps.gitops: falco
+    prometheus: scrape
+...

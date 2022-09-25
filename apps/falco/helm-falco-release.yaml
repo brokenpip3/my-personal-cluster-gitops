@@ -1,0 +1,55 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+    name: falco
+    namespace: falco
+spec:
+    interval: 15m
+    releaseName: falco
+    chart:
+        spec:
+            chart: falco
+            sourceRef:
+                kind: HelmRepository
+                name: falco
+                namespace: flux-system
+            interval: 10m
+            version: 2.x.x
+    healthChecks:
+      - apiVersion: apps/v1
+        kind: DaemonSet
+        name: falco
+        namespace: falco
+    values:
+      scc:
+        create: false
+      driver:
+        kind: ebpf
+        loader:
+          enabled: true
+          initContainer:
+            env:
+              DRIVERS_REPO: http://my-repo-svc.jenkins.svc.cluster.local:8080/needrelax
+      collectors:
+        docker:
+          enabled: false
+        containerd:
+          enabled: false
+      falcosidekick:
+        replicaCount: 1
+        enabled: true
+        config:
+          alertmanager:
+            hostport: http://prom-kube-prometheus-stack-alertmanager.monitoring.svc.cluster.local:9093
+        webui:
+          enabled: true
+          replicaCount: 1
+          redis:
+            storageEnabled: false
+      falco:
+        json_output: true
+        grpc:
+          enabled: true
+          grpc_output.enabled: true
+...
