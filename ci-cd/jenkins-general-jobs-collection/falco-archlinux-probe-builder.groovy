@@ -39,16 +39,13 @@ spec:
 """
         }
     }
-    options {
-        timeout(time: 15, unit: 'MINUTES')
-    }
     parameters {
         string(name: 'arch', defaultValue: 'amd64', description: 'The architecture to build for')
         string(name: 'driverversion', defaultValue: '2.0.0+driver', description: 'The version of the driver to build')
         string(name: 'kernelrelease', defaultValue: '5.15.64-1-lts', description: 'The kernel release to build for')
         string(name: 'kernelversion', defaultValue: '1', description: 'The kernel version to build for')
-        string(name: 'output-module', defaultValue: '/tmp/falco-arch.ko', description: 'The output module path')
-        string(name: 'output-probe', defaultValue: '/tmp/falco-arch.o', description: 'The output probe path')
+        string(name: 'outputmodule', defaultValue: '/tmp/falco-arch.ko', description: 'The output module path')
+        string(name: 'outputprobe', defaultValue: '/tmp/falco-arch.o', description: 'The output probe path')
     }
     stages {
         stage("setname") {
@@ -76,12 +73,12 @@ spec:
             steps {
                 container('falco-builder') {
                     sh """
-                    #!/bin/bash
+                    #!/usr/bin/env bash
                     cd driverkit
                     _output/bin/driverkit kubernetes-in-cluster --target=arch  \
-                      --kernelrelease=${params.kernelrelease} --kernelversion=${params.kernelversion} \
-                      --driverversion=${params.driverversion} --output-module=${params.output-module} \
-                      --output-probe=${params.output-probe}
+                      --kernelrelease=\$kernelrelease --kernelversion=\$kernelversion \
+                      --driverversion=\$driverversion --output-module=\$outputmodule \
+                      --output-probe=\$outputprobe --namespace=jenkins
                     """
                 }
             }
