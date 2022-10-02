@@ -7,6 +7,7 @@ kind: Pod
 metadata:
   name: falco-builder
 spec:
+  serviceAccount: falco-ci
   containers:
   - name: falco-builder
     workingDir: /tmp/jenkins
@@ -78,7 +79,7 @@ spec:
                     _output/bin/driverkit kubernetes-in-cluster --target=arch  \
                       --kernelrelease=\$kernelrelease --kernelversion=\$kernelversion \
                       --driverversion=\$driverversion --output-module=\$outputmodule \
-                      --output-probe=\$outputprobe --namespace=jenkins
+                      --output-probe=\$outputprobe --namespace=jenkins -l debug
                     """
                 }
             }
