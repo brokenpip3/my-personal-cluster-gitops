@@ -11,7 +11,7 @@ metadata:
     prometheus.io/port: "9000"
     prometheus.io/scrape: "true"
 spec:
-  image: minio/minio:RELEASE.2022-10-15T19-57-03Z #{"$imagepolicy": "flux-system:image-policy-minio"}
+  image: minio/minio:RELEASE.2022-10-20T00-55-09Z #{"$imagepolicy": "flux-system:image-policy-minio"}
   imagePullPolicy: IfNotPresent
   credsSecret:
     name: minio-tenant-s3
