@@ -34,7 +34,10 @@ spec:
       interval: 10m
   values:
     controller:
+      image:
+        repository: docker.io/nginx/nginx-ingress
       kind: daemonset
+      enableSnippets: true
       globalConfiguration:
         create: true
         spec:

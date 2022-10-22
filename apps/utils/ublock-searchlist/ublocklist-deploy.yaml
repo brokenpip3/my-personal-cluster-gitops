@@ -19,7 +19,7 @@ spec:
         app: ublock-list
     spec:
       containers:
-        - image: nginxinc/nginx-unprivileged:stable
+        - image: docker.io/nginxinc/nginx-unprivileged:stable
           name: ublock-list
           resources:
             requests:

@@ -47,7 +47,7 @@ spec:
           serviceAccount: tkn-pipelines-cleaner
           containers:
             - name: kubectl
-              image: bitnami/kubectl:latest
+              image: docker.io/bitnami/kubectl:latest
               env:
                 - name: NUM_TO_KEEP
                   value: "1"

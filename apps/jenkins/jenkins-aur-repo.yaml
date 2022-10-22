@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: my-repo
-        image: nginxinc/nginx-unprivileged:stable
+        image: docker.io/nginxinc/nginx-unprivileged:stable
         ports:
         - containerPort: 8080
         volumeMounts:

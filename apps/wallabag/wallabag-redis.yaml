@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: redis
-          image: redis:6
+          image: docker.io/redis:6
           args: ["--requirepass", "$(REDIS_PASSWORD)", "--appendonly", "yes", "--save", "30", "100"]
           env:
           - name: REDIS_PASSWORD
@@ -44,7 +44,7 @@ spec:
           - mountPath: "/data"
             name: redis-data
         - name: redis-exporter
-          image: oliver006/redis_exporter:latest
+          image: docker.io/oliver006/redis_exporter:latest
           env:
           - name: REDIS_EXPORTER_INCL_SYSTEM_METRICS
             value: "true"

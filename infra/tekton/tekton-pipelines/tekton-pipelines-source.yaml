@@ -8,7 +8,7 @@ spec:
   interval: 10m
   url: https://github.com/brokenpip3/tekton-pipelines-raw-manifests
   ref:
-    tag: v0.34.1
+    tag: v0.39.0
   ignore: |
     .github/
     hack/

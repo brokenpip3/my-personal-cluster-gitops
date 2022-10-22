@@ -80,6 +80,12 @@ spec:
 		options {
             skipDefaultCheckout true
             timeout(time: 15, unit: 'MINUTES')
+            // https://plugins.jenkins.io/throttle-concurrents/
+            throttleJobProperty(
+                categories: ['docker-images'],
+                throttleEnabled: true,
+                throttleOption: 'category',
+                )
 		}
 
 		parameters {

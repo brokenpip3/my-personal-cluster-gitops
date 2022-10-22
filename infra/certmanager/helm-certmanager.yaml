@@ -77,6 +77,8 @@ spec:
             interval: 10m
     values:
         groupName: acme.k8s.brokenpip3.com
+        image:
+          repository: docker.io/baarde/cert-manager-webhook-ovh
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role

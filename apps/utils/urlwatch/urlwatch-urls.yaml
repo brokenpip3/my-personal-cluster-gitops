@@ -210,4 +210,12 @@ data:
       - css: "#repo-content-pjax-container h1"
       - html2text
     max_tries: 5
+    ---
+    # Falco
+    name: "driverkit"
+    url: "https://github.com/falcosecurity/driverkit/releases"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
 ...

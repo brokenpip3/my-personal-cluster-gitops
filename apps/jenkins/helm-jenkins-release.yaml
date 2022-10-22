@@ -26,69 +26,83 @@ spec:
     values:
       operator:
         replicaCount: 1
-        #image: virtuslab/jenkins-operator:13f871b
+        image: docker.io/virtuslab/jenkins-operator:bef796a
       jenkins:
         enabled: true
         namespace: jenkins
-        image: jenkins/jenkins:2.332.3
+        image: docker.io/jenkins/jenkins:2.346.3
         plugins:
         - name: github-branch-source
-          version: 1628.vb_2f51293cb_78
+          version: 1695.v88de84e9f6b_9
+        - name: pipeline-stage-view
+          version: "2.24"
         - name: build-name-setter
           version: 2.2.0
         - name: ws-cleanup
-          version: "0.42"
+          version: "0.43"
         - name: view-job-filters
           version: "2.3"
         - name: prometheus
           version: 2.0.11
         - name: metrics
-          version: 4.1.6.2
+          version: 4.2.10-389.v93143621b_050
         - name: ansicolor
-          version: 1.0.1
+          version: 1.0.2
+        - name: bootstrap5-api
+          version: 5.2.0-3
         - name: sidebar-link
           version: 1.12.1
         - name: display-url-api
           version: 2.3.6
         - name: junit
-          version: "1.63"
-        - name: workflow-basic-steps
-          version: 948.v2c72a_091b_b_68
+          version: 1119.1121.vc43d0fc45561
         - name: pipeline-model-definition
-          version: 2.2081.v3919681ffc1e
+          version: 2.2114.v2654ca_721309
         - name: pipeline-model-extensions
-          version: 2.2081.v3919681ffc1e
-        - name: workflow-cps
-          version: 2692.v76b_089ccd026
+          version: 2.2114.v2654ca_721309
         - name: pipeline-model-api
-          version: 2.2081.v3919681ffc1e
+          version: 2.2114.v2654ca_721309
         - name: pipeline-stage-tags-metadata
-          version: 2.2081.v3919681ffc1e
+          version: 2.2114.v2654ca_721309
+        - name: workflow-basic-steps
+          version: 994.vd57e3ca_46d24
+        - name: workflow-cps
+          version: 2759.v87459c4eea_ca_
         - name: workflow-support
-          version: 820.vd1a_6cc65ef33
+          version: 838.va_3a_087b_4055b
+        - name: workflow-api
+          version: 1192.v2d0deb_19d212
+        - name: workflow-durable-task-step
+          version: 1199.v02b_9244f8064
         - name: script-security
-          version: 1172.v35f6a_0b_8207e
+          version: 1183.v774b_0b_0a_a_451
         - name: command-launcher
-          version: 81.v9c2cb_cb_db_392
+          version: 90.v669d7ccb_7c31
+        - name: ssh-credentials
+          version: 305.v8f4381501156
+        - name: sshd
+          version: 3.242.va_db_9da_b_26a_c3
         - name: jdk-tool
-          version: "1.5"
+          version: 55.v1b_32b_6ca_f9ca
         - name: cloudbees-disk-usage-simple
-          version: "0.10"
+          version: "170.va_fd5b_4ee6858"
+        - name: throttle-concurrents
+          version: "2.9"
         basePlugins:
         - name: kubernetes
-          version: 3580.v78271e5631dc
+          version: 3706.vdfb_d599579f3
         - name: workflow-job
-          version: 1181.va_25d15548158
+          version: 1207.ve6191ff089f8
         - name: workflow-aggregator
-          version: 578.vf9a_f99755f4a_
+          version: 590.v6a_d052e5a_a_b_5
         - name: git
-          version: 4.11.3
+          version: 4.12.1
         - name: job-dsl
           version: "1.77"
         - name: configuration-as-code
-          version: 1429.v09b_044a_c93de
+          version: 1512.vb_79d418d5fc8
         - name: kubernetes-credentials-provider
-          version: "0.20"
+          version: 1.196.va_55f5e31e3c2
         backup:
           enabled: true
           pvc:
@@ -114,11 +128,12 @@ spec:
           requests:
             cpu: 1
             memory: 4Gi
+        seedJobAgentImage: docker.io/jenkins/inbound-agent:4.9-1
         seedJobs:
           - id: seed-job
             targets: "ci-cd/jenkins-dsl/*.jenkins"
             description: "jobs-from-iac"
             repositoryBranch: main
             repositoryUrl: https://github.com/brokenpip3/my-personal-cluster-gitops
-            buildPeriodically: "10 10 * * 1"
+            buildPeriodically: "10 * * * *"
 ...
