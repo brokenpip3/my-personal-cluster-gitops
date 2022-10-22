@@ -1,4 +1,3 @@
----
 apiVersion: minio.min.io/v2
 kind: Tenant
 metadata:
@@ -12,7 +11,7 @@ metadata:
     prometheus.io/port: "9000"
     prometheus.io/scrape: "true"
 spec:
-  image: docker.io/minio/minio:RELEASE.2022-07-06T20-29-49Z #{"$imagepolicy": "flux-system:image-policy-minio"}
+  image: docker.io/minio/minio:RELEASE.2022-10-21T22-37-48Z #{"$imagepolicy": "flux-system:image-policy-minio"}
   imagePullPolicy: IfNotPresent
   credsSecret:
     name: minio-tenant-s3
@@ -45,8 +44,8 @@ spec:
         fsGroup: 1000
   mountPath: /export
   externalCertSecret:
-     - name: minio-tenant-s3-cert
-       type: kubernetes.io/tls
+    - name: minio-tenant-s3-cert
+      type: kubernetes.io/tls
   requestAutoCert: false
   prometheusOperator:
     labels:
