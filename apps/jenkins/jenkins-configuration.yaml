@@ -55,3 +55,8 @@ data:
          fetchTestResults: true
          jobAttributeName: "jenkins_job"
          path: "prometheus"
+       throttleJobProperty:
+         categories:
+          - categoryName: "docker-images"
+            maxConcurrentPerNode: 1
+            maxConcurrentTotal: 1

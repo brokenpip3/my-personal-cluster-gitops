@@ -43,7 +43,7 @@ spec:
     parameters {
         string(name: 'arch', defaultValue: 'amd64', description: 'The architecture to build for')
         string(name: 'driverversion', defaultValue: '2.0.0+driver', description: 'The version of the driver to build')
-        string(name: 'kernelrelease', defaultValue: '5.15.64-1-lts', description: 'The kernel release to build for')
+        string(name: 'kernelrelease', defaultValue: '5.15.74-1-lts', description: 'The kernel release to build for')
         string(name: 'kernelversion', defaultValue: '1', description: 'The kernel version to build for')
         string(name: 'outputmodule', defaultValue: '/tmp/falco-arch.ko', description: 'The output module path')
         string(name: 'outputprobe', defaultValue: '/tmp/falco-arch.o', description: 'The output probe path')
@@ -75,11 +75,10 @@ spec:
                 container('falco-builder') {
                     sh """
                     #!/usr/bin/env bash
-                    cd driverkit
-                    _output/bin/driverkit kubernetes-in-cluster --target=arch  \
-                      --kernelrelease=${kernelrelease} --kernelversion=\$kernelversion \
-                      --driverversion=\$driverversion --output-module=\$outputmodule \
-                      --output-probe=\$outputprobe --namespace=jenkins -l debug
+                    driverkit kubernetes-in-cluster --target=arch  \
+                      --kernelrelease=${kernelrelease} --kernelversion=${kernelversion} \
+                      --driverversion=${driverversion} --output-module=${outputmodule} \
+                      --output-probe=${outputprobe} --namespace=jenkins -l debug --builderimage=quay.io/brokenpip3/arch-driverkit
                     """
                 }
             }
@@ -87,8 +86,8 @@ spec:
         stage("move probe to the repo") {
             steps {
                 container('falco-builder') {
-                    sh "mv ${outputprobe} /srv/repo/${driverversion}/x86_64/falco_arch_${kernelrelease}_${kernelversion}.o"
-                    sh "mv ${outputmodule} /srv/repo/${driverversion}/x86_64/falco_arch_${kernelrelease}_${kernelversion}.ko"
+                    sh "cp ${outputprobe} /srv/repo/${driverversion}/x86_64/falco_arch_${kernelrelease}_${kernelversion}.o"
+                    sh "cp ${outputmodule} /srv/repo/${driverversion}/x86_64/falco_arch_${kernelrelease}_${kernelversion}.ko"
                 }
             }
         }

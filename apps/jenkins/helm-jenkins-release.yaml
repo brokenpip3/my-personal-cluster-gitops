@@ -86,6 +86,8 @@ spec:
           version: 55.v1b_32b_6ca_f9ca
         - name: cloudbees-disk-usage-simple
           version: "170.va_fd5b_4ee6858"
+        - name: throttle-concurrents
+          version: "2.9"
         basePlugins:
         - name: kubernetes
           version: 3706.vdfb_d599579f3
@@ -133,5 +135,5 @@ spec:
             description: "jobs-from-iac"
             repositoryBranch: main
             repositoryUrl: https://github.com/brokenpip3/my-personal-cluster-gitops
-            buildPeriodically: "10 10 * * 1"
+            buildPeriodically: "10 * * * *"
 ...
