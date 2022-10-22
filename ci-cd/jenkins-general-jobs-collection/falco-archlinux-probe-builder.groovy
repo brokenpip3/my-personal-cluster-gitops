@@ -55,7 +55,7 @@ spec:
                 buildDescription "${BUILD_NUMBER}"
             }
         }
-        stage('pacman') {
+        stage('pacman prereq') {
             steps {
                 container('falco-builder') {
                     sh 'sudo pacman -Sy go git --noconfirm'
@@ -65,22 +65,30 @@ spec:
         stage("install driverkit") {
             steps {
                 container('falco-builder') {
-                    sh "git clone https://github.com/falcosecurity/driverkit.git"
-                    sh "cd driverkit; make build"
+                    sh "sudo pacman -S driverkit --noconfirm"
+                    sh "driverkit --version"
                 }
             }
         }
-        stage('install dep') {
+        stage('build probe') {
             steps {
                 container('falco-builder') {
                     sh """
                     #!/usr/bin/env bash
                     cd driverkit
                     _output/bin/driverkit kubernetes-in-cluster --target=arch  \
-                      --kernelrelease=\$kernelrelease --kernelversion=\$kernelversion \
+                      --kernelrelease=${kernelrelease} --kernelversion=\$kernelversion \
                       --driverversion=\$driverversion --output-module=\$outputmodule \
                       --output-probe=\$outputprobe --namespace=jenkins -l debug
                     """
+                }
+            }
+        }
+        stage("move probe to the repo") {
+            steps {
+                container('falco-builder') {
+                    sh "mv ${outputprobe} /srv/repo/${driverversion}/x86_64/falco_arch_${kernelrelease}_${kernelversion}.o"
+                    sh "mv ${outputmodule} /srv/repo/${driverversion}/x86_64/falco_arch_${kernelrelease}_${kernelversion}.ko"
                 }
             }
         }
