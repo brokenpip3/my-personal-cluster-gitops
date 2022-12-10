@@ -4,3 +4,4 @@ resources:
 - falco-namespace.yaml
 - helm-falco-release.yaml
 - helm-falco-source.yaml
+- falco-ci-rbac.yaml

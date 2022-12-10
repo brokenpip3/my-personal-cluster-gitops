@@ -107,9 +107,6 @@ spec:
       falcosidekick:
         replicaCount: 1
         enabled: true
-        config:
-          alertmanager:
-            hostport: http://prom-kube-prometheus-stack-alertmanager.monitoring.svc.cluster.local:9093
         webui:
           enabled: true
           replicaCount: 1
