@@ -58,7 +58,7 @@ spec:
         stage('pacman prereq') {
             steps {
                 container('falco-builder') {
-                    sh 'sudo pacman -Sy go git --noconfirm'
+                    sh 'sudo pacman -Syu git --noconfirm --needed'
                 }
             }
         }

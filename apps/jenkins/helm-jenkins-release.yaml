@@ -26,83 +26,55 @@ spec:
     values:
       operator:
         replicaCount: 1
-        image: docker.io/virtuslab/jenkins-operator:bef796a
+        image: quay.io/brokenpip3/jenkins-operator:7
       jenkins:
         enabled: true
         namespace: jenkins
-        image: docker.io/jenkins/jenkins:2.346.3
+        image: docker.io/jenkins/jenkins:lts
         plugins:
         - name: github-branch-source
-          version: 1695.v88de84e9f6b_9
+          version: 1696.v3a_7603564d04
         - name: pipeline-stage-view
-          version: "2.24"
+          version: "2.28"
         - name: build-name-setter
           version: 2.2.0
         - name: ws-cleanup
-          version: "0.43"
+          version: "0.44"
         - name: view-job-filters
           version: "2.3"
         - name: prometheus
           version: 2.0.11
-        - name: metrics
-          version: 4.2.10-389.v93143621b_050
         - name: ansicolor
           version: 1.0.2
         - name: bootstrap5-api
           version: 5.2.0-3
         - name: sidebar-link
-          version: 1.12.1
-        - name: display-url-api
-          version: 2.3.6
-        - name: junit
-          version: 1119.1121.vc43d0fc45561
-        - name: pipeline-model-definition
-          version: 2.2114.v2654ca_721309
-        - name: pipeline-model-extensions
-          version: 2.2114.v2654ca_721309
-        - name: pipeline-model-api
-          version: 2.2114.v2654ca_721309
-        - name: pipeline-stage-tags-metadata
-          version: 2.2114.v2654ca_721309
-        - name: workflow-basic-steps
-          version: 994.vd57e3ca_46d24
-        - name: workflow-cps
-          version: 2759.v87459c4eea_ca_
-        - name: workflow-support
-          version: 838.va_3a_087b_4055b
-        - name: workflow-api
-          version: 1192.v2d0deb_19d212
-        - name: workflow-durable-task-step
-          version: 1199.v02b_9244f8064
-        - name: script-security
-          version: 1183.v774b_0b_0a_a_451
+          version: 2.2.0
         - name: command-launcher
           version: 90.v669d7ccb_7c31
-        - name: ssh-credentials
-          version: 305.v8f4381501156
         - name: sshd
-          version: 3.242.va_db_9da_b_26a_c3
+          version: 3.270.vb_a_e71e64c287
         - name: jdk-tool
-          version: 55.v1b_32b_6ca_f9ca
+          version: 63.v62d2fd4b_4793
         - name: cloudbees-disk-usage-simple
-          version: "170.va_fd5b_4ee6858"
+          version: "178.v1a_4d2f6359a_8"
         - name: throttle-concurrents
-          version: "2.9"
+          version: "2.10"
         basePlugins:
         - name: kubernetes
-          version: 3706.vdfb_d599579f3
+          version: 3734.v562b_b_a_627ea_c
         - name: workflow-job
-          version: 1207.ve6191ff089f8
+          version: 1254.v3f64639b_11dd
         - name: workflow-aggregator
           version: 590.v6a_d052e5a_a_b_5
         - name: git
-          version: 4.12.1
+          version: 4.14.2
         - name: job-dsl
-          version: "1.77"
+          version: "1.81"
         - name: configuration-as-code
-          version: 1512.vb_79d418d5fc8
+          version: 1569.vb_72405b_80249
         - name: kubernetes-credentials-provider
-          version: 1.196.va_55f5e31e3c2
+          version: 1.206.v7ce2cf7b_0c8b
         backup:
           enabled: true
           pvc:
@@ -128,7 +100,7 @@ spec:
           requests:
             cpu: 1
             memory: 4Gi
-        seedJobAgentImage: docker.io/jenkins/inbound-agent:4.9-1
+        seedJobAgentImage: docker.io/jenkins/inbound-agent:4.10-3
         seedJobs:
           - id: seed-job
             targets: "ci-cd/jenkins-dsl/*.jenkins"
