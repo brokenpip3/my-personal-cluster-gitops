@@ -1,4 +1,4 @@
-apiVersion: notification.toolkit.fluxcd.io/v1beta1
+apiVersion: notification.toolkit.fluxcd.io/v1beta2
 kind: Provider
 metadata:
     name: telegram-notification-provider
@@ -14,8 +14,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2021-10-11T22:24:28Z"
-    mac: ENC[AES256_GCM,data:jj2i3HnDErebHlTIeXVEDi3OFZj/ew2C+UqiQj1csH1duiI7U1PhmeYOtgRw/F+A6ZXWIkIiQbe5oF74TzXKT8uCm8g7nL6ZXGzrJsBCHS6ss36trMJHT6MU5uyXrKC+IqR13gzGgiFOxkUATNpR8PmXksumW5oD6HtwjG7Xk54=,iv:Nsidj4mMIt7F1H/oBQavB7YqKRnpkxtYf3Nce37fKMs=,tag:ecmqNCNXWU6+Natxyhj9AQ==,type:str]
+    lastmodified: "2023-01-22T16:55:59Z"
+    mac: ENC[AES256_GCM,data:9cADOfnqca34xqNKUME1jF4GIFtXZ1eeaOm00dF0kp3O1Nlw/Cv0x3v6bThn0gth1BWjavVzfFMyaYQkcJUjXkndl7Uh+NqLihmNEbpLoFFmZl64f1q0eKdC9vpJOuPSYDQu0xtHQDl266hC6VldZlGE+OmUdLGdAJS83XcxDHk=,iv:m/ANonzrr+DuzdmtkFKZ1w//mq5FZ4Ok0V/0YwIHiRU=,tag:6tzzAw1hXCL8EZ2wrMQgtQ==,type:str]
     pgp:
         - created_at: "2021-10-11T21:26:13Z"
           enc: |
@@ -38,7 +38,7 @@ sops:
             -----END PGP MESSAGE-----
           fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
     encrypted_regex: ^(data|stringData|channel)$
-    version: 3.7.1
+    version: 3.7.3
 ---
 apiVersion: v1
 stringData:
@@ -54,8 +54,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2021-10-11T22:24:28Z"
-    mac: ENC[AES256_GCM,data:jj2i3HnDErebHlTIeXVEDi3OFZj/ew2C+UqiQj1csH1duiI7U1PhmeYOtgRw/F+A6ZXWIkIiQbe5oF74TzXKT8uCm8g7nL6ZXGzrJsBCHS6ss36trMJHT6MU5uyXrKC+IqR13gzGgiFOxkUATNpR8PmXksumW5oD6HtwjG7Xk54=,iv:Nsidj4mMIt7F1H/oBQavB7YqKRnpkxtYf3Nce37fKMs=,tag:ecmqNCNXWU6+Natxyhj9AQ==,type:str]
+    lastmodified: "2023-01-22T16:55:59Z"
+    mac: ENC[AES256_GCM,data:9cADOfnqca34xqNKUME1jF4GIFtXZ1eeaOm00dF0kp3O1Nlw/Cv0x3v6bThn0gth1BWjavVzfFMyaYQkcJUjXkndl7Uh+NqLihmNEbpLoFFmZl64f1q0eKdC9vpJOuPSYDQu0xtHQDl266hC6VldZlGE+OmUdLGdAJS83XcxDHk=,iv:m/ANonzrr+DuzdmtkFKZ1w//mq5FZ4Ok0V/0YwIHiRU=,tag:6tzzAw1hXCL8EZ2wrMQgtQ==,type:str]
     pgp:
         - created_at: "2021-10-11T21:26:13Z"
           enc: |
@@ -78,4 +78,4 @@ sops:
             -----END PGP MESSAGE-----
           fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
     encrypted_regex: ^(data|stringData|channel)$
-    version: 3.7.1
+    version: 3.7.3
