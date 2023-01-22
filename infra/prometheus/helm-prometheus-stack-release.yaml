@@ -22,7 +22,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: "40.x.x"
+      version: "41.x.x"
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
@@ -38,7 +38,8 @@ spec:
         kubeApiserverError: false
         kubeApiserverSlos: false
         network: true
-        kubeScheduler: false
+        kubeSchedulerAlerting: false
+        kubeSchedulerRecording: false
         etcd: false
     grafana:
       enabled: false
