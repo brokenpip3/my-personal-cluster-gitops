@@ -26,14 +26,14 @@ spec:
     values:
       operator:
         replicaCount: 1
-        image: quay.io/brokenpip3/jenkins-operator:7
+        image: virtuslab/jenkins-operator:60b8ee5
       jenkins:
         enabled: true
         namespace: jenkins
         image: docker.io/jenkins/jenkins:lts
         plugins:
         - name: github-branch-source
-          version: 1696.v3a_7603564d04
+          version: 1701.v00cc8184df93
         - name: pipeline-stage-view
           version: "2.28"
         - name: build-name-setter
@@ -43,39 +43,40 @@ spec:
         - name: view-job-filters
           version: "2.3"
         - name: prometheus
-          version: 2.0.11
+          version: 2.1.1
         - name: ansicolor
           version: 1.0.2
         - name: bootstrap5-api
           version: 5.2.0-3
         - name: sidebar-link
-          version: 2.2.0
+          version: 2.2.1
         - name: command-launcher
           version: 90.v669d7ccb_7c31
         - name: sshd
-          version: 3.270.vb_a_e71e64c287
+          version: 3.275.v9e17c10f2571
         - name: jdk-tool
           version: 63.v62d2fd4b_4793
         - name: cloudbees-disk-usage-simple
-          version: "178.v1a_4d2f6359a_8"
+          version: 178.v1a_4d2f6359a_8
         - name: throttle-concurrents
           version: "2.10"
         basePlugins:
         - name: kubernetes
-          version: 3734.v562b_b_a_627ea_c
+          version: 3834.vdc85747145e6
         - name: workflow-job
-          version: 1254.v3f64639b_11dd
+          version: 1268.v6eb_e2ee1a_85a
         - name: workflow-aggregator
           version: 590.v6a_d052e5a_a_b_5
         - name: git
-          version: 4.14.2
+          version: 5.0.0
         - name: job-dsl
           version: "1.81"
         - name: configuration-as-code
           version: 1569.vb_72405b_80249
         - name: kubernetes-credentials-provider
-          version: 1.206.v7ce2cf7b_0c8b
+          version: 1.208.v128ee9800c04
         backup:
+          image: quay.io/brokenpip3/jenkins-kubernetes-operator-backup-pvc:v0.2.1
           enabled: true
           pvc:
             enabled: true
@@ -100,7 +101,6 @@ spec:
           requests:
             cpu: 1
             memory: 4Gi
-        seedJobAgentImage: docker.io/jenkins/inbound-agent:4.10-3
         seedJobs:
           - id: seed-job
             targets: "ci-cd/jenkins-dsl/*.jenkins"
