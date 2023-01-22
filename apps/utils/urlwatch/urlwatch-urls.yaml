@@ -218,4 +218,19 @@ data:
       - css: "#repo-content-pjax-container h1"
       - html2text
     max_tries: 5
+    ---
+    # Nginx-proxy
+    name: "nginx-proxy"
+    url: "https://github.com/nginx-proxy/nginx-proxy/releases"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
+    name: "nginx-proxy-docker-gen"
+    url: "https://github.com/nginx-proxy/docker-gen/releases"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
 ...
