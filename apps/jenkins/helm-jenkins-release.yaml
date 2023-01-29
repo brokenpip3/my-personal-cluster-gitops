@@ -62,7 +62,7 @@ spec:
           version: "2.10"
         basePlugins:
         - name: kubernetes
-          version: 3834.vdc85747145e6
+          version: 3842.v7ff395ed0cf3
         - name: workflow-job
           version: 1268.v6eb_e2ee1a_85a
         - name: workflow-aggregator
@@ -74,7 +74,7 @@ spec:
         - name: configuration-as-code
           version: 1569.vb_72405b_80249
         - name: kubernetes-credentials-provider
-          version: 1.208.v128ee9800c04
+          version: 1.209.v862c6e5fb_1ef
         backup:
           image: quay.io/brokenpip3/jenkins-kubernetes-operator-backup-pvc:v0.2.1
           enabled: true
