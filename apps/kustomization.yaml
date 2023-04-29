@@ -4,6 +4,6 @@ resources:
 - minio
 - gitea
 - jenkins
-- zulip
 - taskd
 - falco
+- wallabag

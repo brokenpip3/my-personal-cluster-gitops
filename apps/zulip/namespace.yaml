@@ -1,9 +1,0 @@
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: zulip
-  labels:
-    apps.gitops: zulip
-    prometheus: scrape
-...
