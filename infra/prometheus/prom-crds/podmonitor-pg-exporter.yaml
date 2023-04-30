@@ -19,26 +19,4 @@ spec:
           - master
   podMetricsEndpoints:
     - port: exporter
----
-apiVersion: monitoring.coreos.com/v1
-kind: PodMonitor
-metadata:
-  name: postgres-exporter-single-zulip
-  namespace: monitoring
-spec:
-  namespaceSelector:
-    matchNames:
-      - zulip
-  selector:
-    matchExpressions:
-      - key: app
-        operator: In
-        values:
-          - zulip
-      - key: component
-        operator: In
-        values:
-          - postgres
-  podMetricsEndpoints:
-    - port: metrics
 ...

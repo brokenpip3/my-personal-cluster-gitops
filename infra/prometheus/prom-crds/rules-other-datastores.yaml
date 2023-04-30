@@ -89,45 +89,4 @@ spec:
       annotations:
         summary: Redis too many connections (instance {{ $labels.instance }})
         description: "Redis instance has too many connections\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
----
-apiVersion: monitoring.coreos.com/v1
-kind: PrometheusRule
-metadata:
-  name: zulip-rabbitmq
-  namespace: monitoring
-spec:
-  groups:
-  - name: rabbitmq
-    rules:
-    - alert: RabbitmqDown
-      annotations:
-        description: RabbitMQ node down
-        summary: Rabbitmq down (instance {{ $labels.instance }})
-      expr: rabbitmq_up{service="zulip-rabbit-rabbitmq"} == 0
-      for: 5m
-      labels:
-        severity: error
-    - alert: OutOfMemory
-      annotations:
-        description: |
-          Memory available for RabbmitMQ is low (< 10%)\n  VALUE = {{ $value }}
-          LABELS: {{ $labels }}
-        summary: Out of memory (instance {{ $labels.instance }})
-      expr: |
-        rabbitmq_node_mem_used{service="zulip-rabbit-rabbitmq"}
-        / rabbitmq_node_mem_limit{service="zulip-rabbit-rabbitmq"}
-        * 100 > 90
-      for: 5m
-      labels:
-        severity: warning
-    - alert: TooManyConnections
-      annotations:
-        description: |
-          RabbitMQ instance has too many connections (> 1000)
-          VALUE = {{ $value }}\n  LABELS: {{ $labels }}
-        summary: Too many connections (instance {{ $labels.instance }})
-      expr: rabbitmq_connectionsTotal{service="zulip-rabbit-rabbitmq"} > 1000
-      for: 5m
-      labels:
-        severity: warning
 ...
