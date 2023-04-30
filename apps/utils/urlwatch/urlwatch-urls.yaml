@@ -219,6 +219,13 @@ data:
       - html2text
     max_tries: 5
     ---
+    name: "falcoctl"
+    url: "https://github.com/falcosecurity/falcoctl/releases"
+    filter:
+      - css: "#repo-content-pjax-container h1"
+      - html2text
+    max_tries: 5
+    ---
     # Nginx-proxy
     name: "nginx-proxy"
     url: "https://github.com/nginx-proxy/nginx-proxy/releases"
