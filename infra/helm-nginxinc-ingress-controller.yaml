@@ -32,7 +32,7 @@ spec:
         name: nginxinc
         namespace: ingress
       interval: 10m
-      version: "16.2.x"
+      version: "0.16.x"
   values:
     controller:
       image:
