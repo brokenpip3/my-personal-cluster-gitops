@@ -16,7 +16,7 @@ jobs:
       name: pull-request
       with:
         destination_branch: "main"
-        pr_title: "Updating ${GITHUB_HEAD_REF##*-} into main"
+        pr_title: "Updating ${{ github.ref }} into main"
         pr_body: "Automated image update PR*"
         pr_reviewer: "brokenpip3"
         pr_label: "auto-image-update"
