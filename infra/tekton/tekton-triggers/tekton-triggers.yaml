@@ -17,6 +17,5 @@ spec:
       namespace: tekton-pipelines
   timeout: 3m0s
   dependsOn:
-    - name: infra
     - name: tekton-pipelines-raw
 ...
