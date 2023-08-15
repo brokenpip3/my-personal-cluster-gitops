@@ -21,3 +21,6 @@ data:
       zerocalorie: https://www.zerocaloriebo.it/feed
       logseqBlog: https://blog.logseq.com/rss/
       hackerstation: https://hackerstations.com/index.xml
+      brendangregg: https://www.brendangregg.com/blog/rss.xml
+      tiagoforte: https://fortelabs.com/feed/
+      simonWillisonTil: https://til.simonwillison.net/tils/feed.atom
