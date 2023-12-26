@@ -52,7 +52,7 @@ spec:
     interval: 10m
     url: https://github.com/baarde/cert-manager-webhook-ovh
     ref:
-        branch: master
+        tag: 0.3.1
     ignore: |
         /*
         !/deploy/cert-manager-webhook-ovh/
