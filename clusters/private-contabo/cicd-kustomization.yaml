@@ -15,6 +15,4 @@ spec:
   path: ./ci-cd
   prune: true
   dependsOn:
-    - name: infra
-    - name: tekton-pipelines-raw
-    - name: tekton-triggers-raw
+    - name: infra-tekton
