@@ -6,13 +6,13 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  url: https://github.com/fluxcd/flux2
+  url: https://github.com/fluxcd/flux2-monitoring-example
   ref:
     branch: main
   ignore: |
     /*
-    !/manifests/monitoring/monitoring-config/podmonitor.yaml
-    /manifests/monitoring/monitoring-config/kustomization.yaml
+    !/monitoring/configs/podmonitor.yaml
+    /monitoring/configs/kustomization.yaml
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -21,7 +21,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./manifests/monitoring/monitoring-config
+  path: ./monitoring/configs
   prune: true
   sourceRef:
     kind: GitRepository
