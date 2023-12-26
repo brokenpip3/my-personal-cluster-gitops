@@ -5,3 +5,4 @@ resources:
 - tekton-pipelines/tekton-pipelines.yaml
 - tekton-triggers/tekton-triggers-source.yaml
 - tekton-triggers/tekton-triggers.yaml
+namespace: tekton-pipelines
