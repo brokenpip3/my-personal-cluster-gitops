@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 # Temporary disable tekton
 #- task/kaniko.yaml
-#- shared-credentials/quay-io-docker-registry-secret.yaml
+- shared-credentials/quay-io-docker-registry-secret.yaml
