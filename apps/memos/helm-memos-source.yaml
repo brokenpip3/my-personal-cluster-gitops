@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: memos
+    labels:
+      prometheus: scrape
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+    name: memos
+    namespace: flux-system
+spec:
+    interval: 10m
+    url: https://github.com/usememos/helm
+    ref:
+      branch: main
+...
