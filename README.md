@@ -41,7 +41,7 @@ This is my "fleet" repo that describe my entire k8s cluster, made with :heart: u
 * [Jenkins](apps/jenkins)
   * [Jenkins-operator](apps/jenkins/helm-jenkins-release.yaml)
   * [Jenkins Groovy and Casc configuration](apps/jenkins/jenkins-configuration.yaml)
-* [Taskd](apps/taskd)
+* [Taskd](apps/taskd) * ARCHIVED
 * [Wallabag](apps/wallabag)
 * [Memos](apps/memos)
 

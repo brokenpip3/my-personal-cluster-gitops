@@ -20,6 +20,7 @@
           packages = [
             pkgs.pre-commit
             pkgs.go-task
+            pkgs.fluxcd
           ];
 
           # Will be executed before entering the shell
