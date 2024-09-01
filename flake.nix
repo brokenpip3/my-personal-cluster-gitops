@@ -21,6 +21,9 @@
             pkgs.pre-commit
             pkgs.go-task
             pkgs.fluxcd
+            pkgs.kubeconform
+            pkgs.kustomize
+            pkgs.yq-go
           ];
 
           # Will be executed before entering the shell
