@@ -1,6 +1,6 @@
 #From: https://github.com/fluxcd/flux2-kustomize-helm-example/blob/main/.github/workflows/test.yaml
 
-name: flux-validate
+name: CI
 
 on:
   workflow_dispatch:
@@ -10,12 +10,22 @@ on:
     tags-ignore: [ '*' ]
 
 jobs:
-  manifests:
+  flux-validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup tools
         uses: ./.github/actions/tools
+      - name: Validate manifests
+        run: ./scripts/github/validate.sh
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup yq
+        uses: fluxcd/pkg/actions/yq@main
+      - name: Setup kubeconform
+        uses: fluxcd/pkg/actions/kubeconform@main
+      - name: Setup kustomize
+        uses: fluxcd/pkg/actions/kustomize@main
       - name: Validate manifests
         run: ./scripts/github/validate.sh
