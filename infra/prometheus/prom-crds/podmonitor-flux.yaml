@@ -26,4 +26,11 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux2-upstream
+  patches:
+    - patch: |-
+        metadata:
+          namespace: flux-system
+      target:
+        kind: PodMonitor
+        name: flux-system
 ...
