@@ -16,4 +16,3 @@ spec:
   prune: true
   dependsOn:
     - name: infra
-    - name: apps

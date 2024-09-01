@@ -22,57 +22,55 @@ spec:
                 name: jenkins-k8s-operator
                 namespace: flux-system
             interval: 10m
-            version: '0.8.0-beta'
+            version: '0.8.1'
     values:
       operator:
         replicaCount: 1
-        image: quay.io/jenkins-kubernetes-operator/operator:v0.8.0-beta
+        image: quay.io/jenkins-kubernetes-operator/operator:v0.8.1
       jenkins:
         enabled: true
         namespace: jenkins
-        image: docker.io/jenkins/jenkins:2.387.2
+        image: docker.io/jenkins/jenkins:2.462.1
         plugins:
         - name: github-branch-source
-          version: 1703.vd5a_2b_29c6cdc
+          version: 1797.v86fdb_4d57d43
         - name: pipeline-stage-view
-          version: "2.32"
+          version: "2.34"
         - name: build-name-setter
-          version: 2.2.0
+          version: 2.4.3
         - name: ws-cleanup
-          version: "0.45"
+          version: "0.46"
         - name: view-job-filters
-          version: 364.v48a_33389553d
+          version: 382.vdf2d5e3f02f0
         - name: prometheus
-          version: 2.2.2
+          version: 784.vea_eca_f6592eb_
         - name: ansicolor
-          version: 1.0.2
+          version: 1.0.4
         - name: sidebar-link
-          version: 2.2.1
+          version: 2.4.1
         - name: command-launcher
-          version: 100.v2f6722292ee8
-        - name: jdk-tool
-          version: 66.vd8fa_64ee91b_d
+          version: 115.vd8b_301cc15d0
         - name: cloudbees-disk-usage-simple
-          version: 178.v1a_4d2f6359a_8
+          version: 203.v3f46a_7462b_1a_
         - name: throttle-concurrents
-          version: "2.13"
+          version: "2.14"
         basePlugins:
         - name: kubernetes
-          version: 3923.v294a_d4250b_91
+          version: 4285.v50ed5f624918
         - name: workflow-job
-          version: 1292.v27d8cc3e2602
+          version: 1436.vfa_244484591f
         - name: workflow-aggregator
-          version: 596.v8c21c963d92d
+          version: 600.vb_57cdd26fdd7
         - name: git
-          version: 5.0.1
+          version: 5.4.1
         - name: job-dsl
-          version: "1.83"
+          version: "1.88"
         - name: configuration-as-code
-          version: 1625.v27444588cc3d
+          version: 1850.va_a_8c31d3158b_
         - name: kubernetes-credentials-provider
-          version: 1.211.vc236a_f5a_2f3c
+          version: 1.262.v2670ef7ea_0c5
         backup:
-          image: quay.io/brokenpip3/jenkins-kubernetes-operator-backup-pvc:v0.2.1
+          image: quay.io/jenkins-kubernetes-operator/backup-pvc:v0.4.1
           enabled: true
           pvc:
             enabled: true

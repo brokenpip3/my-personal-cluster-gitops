@@ -1,0 +1,57 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: memos
+    namespace: memos
+    annotations:
+        kubernetes.io/ingress.class: nginx
+        cert-manager.io/cluster-issuer: letsencrypt-ovh
+    labels:
+        app: memos
+spec:
+    rules:
+        - host: ENC[AES256_GCM,data:Ssg0Mdcsab++ZOHhxPGnDIFOju5Y5sQ=,iv:XgXJxQmgXGDf/mfBsmj9ua8p+Q7D94xNNrCqcBCNHUQ=,tag:z/4wWXUpeabokwGGxcNs7Q==,type:str]
+          http:
+            paths:
+                - backend:
+                    service:
+                        name: memos
+                        port:
+                            number: 5230
+                  path: /
+                  pathType: Prefix
+    tls:
+        - hosts:
+            - ENC[AES256_GCM,data:9hN/YP1wktn3DUP5GPK49OlgnfwoHD4=,iv:/fIzSIXGE0AAc2224BpBFvmmt0voXAROdTTs5JJ+G6c=,tag:J0cy7ahhkMuBsJY4r94uiA==,type:str]
+          secretName: memos-tls
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-01-20T16:33:10Z"
+    mac: ENC[AES256_GCM,data:/edZfREKdgVjoW8QHcDTNYS5dkUSK60fC0f+Fv1/xD+EyIOQ7qFfimC9FAXS/nqBOWFgK4cOzPlJ5WjygbH/nc+0dT4k8tIlIrf6cRvdSNml+h5PPsPo88BII2nBkWg2DJ3iK2YtZDOFbUTFGhGEOg97iXFiZKgdNsmykpw+DIs=,iv:jY4Txuhl4g0vzLrdRcFcayMK/a8yYKJTqJ9V8Qs8irk=,tag:jmbKJdIlZfsfX8GACOKLYw==,type:str]
+    pgp:
+        - created_at: "2024-01-20T16:33:10Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5AQ/+L+qcP+PnthlsC5Fh0fpeSJ7exB6+xHxsjphT1qqNJQSk
+            rYuWofayvoIg8emqYVnOx4I4f1qwtSc8dUtuj2rleaRLDbXH/kKOhygYtWfTiilK
+            fWl0Gtni2y718EZylJ7ygFX6OE5Qm+dUWDrxTWi/RFTX1hfMiaoJDCKlIkNSL5n0
+            d9f0B7quo06ICYmItjt0Pnhm9FYLWEhRZqlkdekgO7l2oli34xV/x9j7SR7vDJia
+            yTxu8UqCB6AJlvWpn8L2fF1ppaaAU+uxLaBYXwahRc0mnYa9MaNR7rX8tlg8soTM
+            /SFufr5kPjbUqqMPuv+z1fYMd4/TUcLEfSa/VewzeZb2Ayd5jUyVJYVaMcTIfXE7
+            JTJZEomN8uiW/kW4JKkowJ1Pzrs9ot4M0lCD6lwApbfPJF/k0V4cA0XmI+WLmqdE
+            PXzKVQU7w2Rte5zSmdG+eDacp+Z5TuEoX2DfiTrwd/cikZTAFMGdqb1CRpw7x4Sm
+            Rnf6ikFcRQkYKX1GUh2B9k0JgY8/xxTdfbiLPY08RiWqpmUqJYFjYUZ2LCQJWb3d
+            ifxEnX2TQL6Wb1mmhy6IQiLxAtrxerKdi6QTXrcUUu6BZ2CeOvVYKuFJ7vBXBiGl
+            DsgKcOrW/84fcLFMyOoUSbimCsC+wwL/ZpBNOzuPuVTDuSolCc0qmPwGq0jAgLvS
+            WAFe/03J0QJRVFU8tWhF7QVdGDQJ8tbgWBdAR4gAZtG2+gunFiNB2dmHs0ElcvQt
+            2HH+09DANNeP8AGb5f6sGud7MJ/FnsI2onL7cdrWCyZ76+QjfTuogUQ=
+            =zoeu
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|dnsNames)$
+    version: 3.8.1
