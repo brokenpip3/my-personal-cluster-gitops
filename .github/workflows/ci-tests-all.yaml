@@ -19,9 +19,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        test: ["tests"]
+        test: ["tests", "validate"]
     steps:
-
     - uses: DeterminateSystems/nix-installer-action@v13
       with:
         diagnostic-endpoint: ""
