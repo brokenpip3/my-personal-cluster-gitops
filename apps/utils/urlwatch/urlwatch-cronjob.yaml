@@ -9,6 +9,7 @@ metadata:
 spec:
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 2
+  suspend: true
   jobTemplate:
     metadata:
       name: urlwatch
