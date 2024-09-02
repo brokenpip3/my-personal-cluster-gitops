@@ -28,6 +28,8 @@ spec:
     name: flux2-upstream
   patches:
     - patch: |-
+        apiVersion: monitoring.coreos.com/v1
+        kind: PodMonitor
         metadata:
           namespace: flux-system
       target:

@@ -50,3 +50,8 @@ tasks:
     desc: "all test"
     cmds:
       - echo 'test'
+
+  validate:
+    desc: "Validate flux and k8s resources"
+    cmds:
+      - validate
