@@ -13,7 +13,7 @@ jobs:
     - uses: DeterminateSystems/nix-installer-action@v10
       with:
         diagnostic-endpoint: ""
-    - uses: DeterminateSystems/magic-nix-cache-action@v4
+    - uses: DeterminateSystems/magic-nix-cache-action@v7
       with:
         diagnostic-endpoint: ""
     - name: Checkout
