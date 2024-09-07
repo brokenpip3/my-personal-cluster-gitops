@@ -11,4 +11,4 @@ resources:
 - rules-pacman.yaml
 - rules-postgres.yaml
 - rules-flux-system.yaml
-- servicemonitor-tekton.yaml
+#- servicemonitor-tekton.yaml
