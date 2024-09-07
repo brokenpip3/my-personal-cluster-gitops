@@ -20,6 +20,7 @@
             pre-commit
             go-task
             fluxcd
+            nova
             validationpkgs
             (writeShellApplication {
               name = "validate";
