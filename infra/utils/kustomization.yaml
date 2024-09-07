@@ -7,5 +7,3 @@ resources:
 - telegram-notification-alerts-image.yaml
 - telegram-notification-provider.yaml
 - fake-smtp.yaml
-#- cronjob-pipelinesrun-cleanup.yaml
-#- cronjob-taskrun-cleanup.yaml

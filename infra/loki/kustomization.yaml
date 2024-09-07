@@ -2,6 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - helm-loki-namespace.yaml
-- helm-loki-source.yaml
 - helm-loki-release.yaml
+- helm-loki-source.yaml
 - helm-promtail-release.yaml
