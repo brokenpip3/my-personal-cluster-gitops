@@ -7,7 +7,6 @@ resources:
 - certmanager/secret-certmanager.yaml
 - storage/helm-nfs-storage-class-source.yaml
 - storage/helm-nfs-storage-class-release.yaml
-- prometheus/
 - datastores/helm-postgres-zalando-operator-release.yaml
 - datastores/helm-postgres-zalando-operator-source.yaml
 - utils/
