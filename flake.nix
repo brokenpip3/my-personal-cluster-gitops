@@ -27,6 +27,13 @@
               runtimeInputs = validationpkgs;
               text = builtins.readFile ./scripts/github/validate.sh;
             })
+            (writeShellApplication {
+              name = "outdated";
+              runtimeInputs = with pkgs; [ nova ];
+              text = ''
+                nova find --helm --format table
+              '';
+            })
           ];
 
           shellHook = ''
