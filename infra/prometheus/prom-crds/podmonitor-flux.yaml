@@ -1,36 +1,25 @@
+#from: https://github.com/fluxcd/flux2-monitoring-example
 ---
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: GitRepository
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
 metadata:
-  name: flux2-upstream
+  name: flux-system
   namespace: flux-system
 spec:
-  interval: 10m
-  url: https://github.com/fluxcd/flux2-monitoring-example
-  ref:
-    branch: main
-  ignore: |
-    /*
-    !/monitoring/configs/podmonitor.yaml
-    /monitoring/configs/kustomization.yaml
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: podmonitor-flux
-  namespace: flux-system
-spec:
-  interval: 10m
-  path: ./monitoring/configs
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux2-upstream
-  patches:
-    - patch: |-
-        metadata:
-          namespace: flux-system
-      target:
-        kind: PodMonitor
-        name: flux-system
+  namespaceSelector:
+    matchNames:
+      - flux-system
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - helm-controller
+          - source-controller
+          - kustomize-controller
+          - notification-controller
+          - image-automation-controller
+          - image-reflector-controller
+  podMetricsEndpoints:
+    - port: http-prom
 ...

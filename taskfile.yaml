@@ -55,3 +55,8 @@ tasks:
     desc: "Validate flux and k8s resources"
     cmds:
       - validate
+
+  outdated:
+    desc: "Check latest helm charts"
+    cmds:
+      - outdated
