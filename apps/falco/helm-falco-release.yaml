@@ -15,42 +15,28 @@ spec:
                 name: falco
                 namespace: flux-system
             interval: 10m
-            version: 2.x.x
+            version: 4.x.x
     values:
       scc:
         create: false
       driver:
-        kind: ebpf
+        kind: kmod
         loader:
-          enabled: true
           initContainer:
             env:
-              DRIVERS_REPO: http://my-repo-svc.jenkins.svc.cluster.local:8080/needrelax
+              - name: DRIVERS_REPO
+                value: http://my-repo-svc.jenkins.svc.cluster.local:8080/needrelax
+      metrics:
+        enabled: true
       collectors:
         docker:
           enabled: false
         containerd:
           enabled: false
+        crio:
+          enabled: true
       customRules:
         except-jenkins.yaml: |-
-          - rule: Launch Ingress Remote File Copy Tools in Container
-            desc: Detect ingress remote file copy tools launched in container
-            condition: >
-              spawned_process and
-              container and
-              (ingress_remote_file_copy_procs or curl_download) and
-              not user_known_ingress_remote_file_copy_activities
-            output: >
-              Ingress remote file copy tool launched in container (user=%user.name user_loginuid=%user.loginuid command=%proc.cmdline parent_process=%proc.pname
-              container_id=%container.id container_name=%container.name image=%container.image.repository:%container.image.tag)
-            priority: NOTICE
-            tags: [network, process, mitre_command_and_control]
-            exceptions:
-            - name: jenkins_pod
-              fields: [container.image.repository]
-              comps: [=]
-              values:
-              - [docker.io/jenkins/jenkins]
           - rule: Contact K8S API Server From Container
             desc: Detect attempts to contact the K8S API Server from a container
             condition: >
@@ -68,53 +54,23 @@ spec:
               fields: [container.image.repository, k8s.ns.name, proc.cmdline]
               comps: [=, =, =]
               values:
-              - [docker.io/virtuslab/jenkins-operator,jenkins,manager]
-        except-sshd.yaml: |-
-          - rule: Write below root
-            desc: an attempt to write to any file directly below / or /root
-            condition: >
-              root_dir and evt.dir = < and open_write
-              and proc_name_exists
-              and not fd.name in (known_root_files)
-              and not fd.directory pmatch (known_root_directories)
-              and not exe_running_docker_save
-              and not gugent_writing_guestagent_log
-              and not dse_writing_tmp
-              and not zap_writing_state
-              and not airflow_writing_state
-              and not rpm_writing_root_rpmdb
-              and not maven_writing_groovy
-              and not chef_writing_conf
-              and not kubectl_writing_state
-              and not cassandra_writing_state
-              and not galley_writing_state
-              and not calico_writing_state
-              and not rancher_writing_root
-              and not runc_writing_exec_fifo
-              and not mysqlsh_writing_state
-              and not known_root_conditions
-              and not user_known_write_root_conditions
-              and not user_known_write_below_root_activities
-            output: "File below / or /root opened for writing (user=%user.name user_loginuid=%user.loginuid command=%proc.cmdline parent=%proc.pname file=%fd.name program=%proc.name container_id=%container.id image=%container.image.repository)"
-            priority: ERROR
-            tags: [filesystem, mitre_persistence]
-            exceptions:
-            - name: sshd
-              fields: [user.name, proc.name, proc.cmdline]
-              comps: [=, =, =]
-              values:
-              - [root, sshd, sshd -D -R]
+              - [quay.io/jenkins-kubernetes-operator/operator,jenkins,manager]
       falcosidekick:
         replicaCount: 1
         enabled: true
-        webui:
+        serviceMonitor:
           enabled: true
-          replicaCount: 1
-          redis:
-            storageEnabled: false
+        prometheusRules:
+          enabled: true
+        config:
+
+          loki:
+            # -- Loki <http://host:port>, if not `empty`, Loki is *enabled*
+            hostport: "http://loki.loki.svc.cluster.local:3100"
+            endpoint: "/loki/api/v1/push"
+            checkcert: false
+      serviceMonitor:
+        create: true
       falco:
         json_output: true
-        grpc:
-          enabled: true
-          grpc_output.enabled: true
 ...

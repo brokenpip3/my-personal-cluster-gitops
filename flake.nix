@@ -24,6 +24,7 @@
             flux
             sops
             nova
+            validationpkgs
             minio-client
             kubectl-view-secret
             grafana-loki

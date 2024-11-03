@@ -14,6 +14,7 @@ This is my "fleet" repo that describe my entire k8s cluster, made with :heart: u
 * [prometheus-alertmanager-telegram-bot](infra/prometheus/telegram)
 * [etcd-backup](infra/utils/etcd-backup)
 * [nfs-storage](infra/storage)
+* [loki](infra/loki)
 
 ### Ci
 
@@ -42,7 +43,6 @@ This is my "fleet" repo that describe my entire k8s cluster, made with :heart: u
   * [Jenkins-operator](apps/jenkins/helm-jenkins-release.yaml)
   * [Jenkins Groovy and Casc configuration](apps/jenkins/jenkins-configuration.yaml)
 * [Taskd](apps/taskd) * ARCHIVED
-* [Wallabag](apps/wallabag)
 * [Memos](apps/memos)
 
 ### Utils
