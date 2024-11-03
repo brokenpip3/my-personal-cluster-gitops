@@ -11,10 +11,10 @@ metadata:
 spec:
     tls:
         - hosts:
-            - ENC[AES256_GCM,data:toYRbCVFK+w864hm4RLJnVuqIfY=,iv:fyWRkSxnOjRDgW5H0QHJ2K0kAlusTNqg8OWAaTkvY40=,tag:IepdQQcf9RqUkMtGzAS13w==,type:str]
+            - ENC[AES256_GCM,data:QLJBmVyVgvMeshNoVSEceB3kDhg=,iv:tujVLFaNqLvkMsVgY4j+KZn5zK6c8RKqiWzF0QcNq0c=,tag:lO+aHgp/I8TJJ2wLnAad2Q==,type:str]
           secretName: minio-tenant-s3-cert
     rules:
-        - host: ENC[AES256_GCM,data:sWubYLR3h2DuwDAWBt6xCSvIsoI=,iv:NUkb/xUvUIEUsRmEH71dHc1poH2WjdWKmLEiizpNfEI=,tag:AI0TSxZYFbdNLyhash3ElA==,type:str]
+        - host: ENC[AES256_GCM,data:ra3D/gpyWGuYb5nOOv3iR+9cvPM=,iv:SVun8b60iGPSyRQ/CeIbK7W6KEHWlBORTW2TzDg68Ao=,tag:0QntI7LAziRZPsIu6T9mRA==,type:str]
           http:
             paths:
                 - path: /
@@ -23,35 +23,35 @@ spec:
                     service:
                         name: minio
                         port:
-                            number: 443
+                            name: https-minio
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-03-01T21:46:08Z"
-    mac: ENC[AES256_GCM,data:yosAykzbF9gPL+V6wIgG3v2oycbbclZ3nIVUBa/ogxUGiFQrlRm34eqGqT17ObnDmmpdCC5IMO+htHqHTHBgWUabuEHabnJnf6QUQxyTKRL+R9rvv1ssjerjcc80I+77Oc9QTVqNX0CbK49jHY3apTvUqpj4ddDOOj3bVvFrHFA=,iv:pr76EQFj+3LG1wGOCBMl97a3uwyOTROrf1fNR/OWvT4=,tag:6Xnwfsr36WgWXB01pWj6Iw==,type:str]
+    lastmodified: "2024-11-03T14:26:09Z"
+    mac: ENC[AES256_GCM,data:b4eFfn3PiFuAo9McV/K2JwjK/cKOi1tWiDIqpyfDdicKuhX0xuUs5y5IgYHBk1UaTlfgqJR96mCUh33fYv7fDv5wrvM4dk4jgU63j/QrXbM63jWMWh6khCm4Kalyg/gEeYDgEPbQt2lJhW3Z0cdVKYiI1OBLhzsBbOrZ0sm3Y9A=,iv:qmdLm0wT4AejCuvyyR/4BAtdxhH2wVzBPlVeevupCYw=,tag:yccVA3SaffrKZyL6PPZSew==,type:str]
     pgp:
-        - created_at: "2021-09-03T20:42:00Z"
-          enc: |
+        - created_at: "2024-11-03T14:26:09Z"
+          enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hQIMAwP8FxNnerN5AQ/9Hu9vl+EGz1DSYU4p8dLXlJ1yDQJSGbZ2/YXJXctl6uQN
-            Gak2/o9dEVG2uyR177TK3QGzxo/dZPu6jMlX9QovuXqFpDdHKjrGj+P7hsL1Bx6P
-            fe3qxmGsxuTu8uE1dV1+42iuBuV7qFBo41aO/oTGL9jXGnw/ejtecULyFrew1xl6
-            fkLIJDreSfS57ijtXlzonw3mbrR2fd+WgUKbC6W9RWmEAhzXC6OqQR+lCzNydmB4
-            G4QTohSbpdFQlG6zSdfIfRqONjNJ6DI1oQTOnd1ewBHGqTH6/4GMvcWXU9mtQe/w
-            JLjnUTullLYOUfAJz/MkHImGtZ4p/aJtBtGt72Sn/dNCR5LXwmjnYoaD/xTQoQkJ
-            JpzGhyZQVf3oG4/+CGjxbL+scl+28cAjYVkLAgJ0XlaUG9utcH80WHpDE9hHdeXT
-            6pUvZRoPIvttLQrhpoNkYnGoVn2RaB9cCUIAh302m0AGf24lAuolfR8JHEmz4R0t
-            pkRetdgZcWNGnJqktDNhom6wyp9q3FAnXVmctn51v6cOqlmlfJtjcpuLYgbk9Qip
-            J7XjUWhv1eJ4ubOt3pc6ohPMRAwf//kVja/rHz2bYTqOPkdi1cCO0PagtVQSTMrH
-            3s8Iv2vb5Xh+j+4zgzgZb+OcXxrjA423eIcRaMOvz/KkhyNRaa/QrpOVYjrmwdjS
-            UAFbLbtPgGCkJs0hTjABhyTR9ltxgHzroeVEYXVTUgUBPuoT/sutocwn25NexpZ8
-            3nReMWJdU1ttPM25nv30i5w9IrocN3WrcHAb+ApgHRFk
-            =8ZG1
+            hQIMAwP8FxNnerN5AQ/+N1JFsRP0i3bi+sjrpUnCITRX9kuY9AAMq7j1f0kAcytk
+            rC9uv3eTvdbvk0qcupK12NwNQ+3FJ4SqoyPiPi43445hyeEDBee6Qp9GfGmXwbuX
+            hgWdwvvQv7VSD31zfn7WvzppUB9cYIBrYIfxFHxguLL0S2EEouJQE38cD9ejfllg
+            i8FN7bZX6wAQOxnajgZ01VUB5W1EUgStg+q6o0Zn+zSCeGBdLJQJQ5eZTINVO117
+            V66O7YfPfh+RIXtb5l5kKXjagBhf7rvTtKp6TTBtm2agwlYmjNaovNWgT2OM1+LO
+            9AAAEwH5TsK6ovtzngaftXsjDJuDobT/LGjJhXXzacHrKe5R5HpaJTJsmwf2K5lP
+            Ybx0hLZPJ9IryR+yyahyi6ULqYLoa4RTsbwBldY4VJtZaC/FSPMkfkEYb+5fLBly
+            udW8Vwgn9XPMbj/GqjGgqDPiI5M+IkPE/QoPNjKlBIJtk9Aygm8VGhDHSdtdHBWh
+            Odvkr7O4djkg/+NSoRhGukEzn8FfT+6KgFZeAAo1/A2T9F3rUm7StotWcjOk8mlV
+            2GTNiDwr4NO+JFg/vuczVY6UnVfPFAbaxo7f83ryAEP40kMHnwFaJaA1VJulQ/ad
+            APJXLBKyIFVLZBwPlpbYK3x461uA54K7M3sFMihnM4hsdu7EaH3BQcxyqnWv3kXS
+            WAGJTv6J9656yKkNcdfdqyKsHWHJrzJFa7A19m8Zy9+C3EDW7KpLT+7NXFmzS89W
+            QP4VeBPKn8sswqKnDcBOPXmfbbfG8RqHYodYNMKzr+gpRzoitX1yWsY=
+            =sHef
             -----END PGP MESSAGE-----
           fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
     encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|dnsNames)$
-    version: 3.7.1
+    version: 3.9.0

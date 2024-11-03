@@ -1,0 +1,23 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-jenkins
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
+  interval: 10m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./apps/jenkins
+  prune: true
+  dependsOn:
+    - name: infra-ingress-controller
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: jenkins-jenkins-operator
+      namespace: jenkins

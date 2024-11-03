@@ -1,7 +1,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: apps
+  name: apps-falco
   namespace: flux-system
 spec:
   decryption:
@@ -12,12 +12,12 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./apps
+  path: ./apps/falco
   prune: true
   dependsOn:
-    - name: infra
+    - name: infra-ingress-controller
   healthChecks:
     - apiVersion: apps/v1
-      kind: Deployment
-      name: gitea
-      namespace: gitea
+      kind: Daemonset
+      name: falco
+      namespace: falco

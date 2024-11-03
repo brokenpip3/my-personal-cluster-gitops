@@ -30,41 +30,41 @@ spec:
       jenkins:
         enabled: true
         namespace: jenkins
-        image: docker.io/jenkins/jenkins:2.462.1
+        image: docker.io/jenkins/jenkins:2.462.3
         plugins:
         - name: github-branch-source
-          version: 1797.v86fdb_4d57d43
+          version: 1803.v98e3d8a_c8169
         - name: pipeline-stage-view
           version: "2.34"
         - name: build-name-setter
           version: 2.4.3
         - name: ws-cleanup
-          version: "0.46"
+          version: "0.47"
         - name: view-job-filters
-          version: 382.vdf2d5e3f02f0
+          version: 392.v2c0a_4dd46909
         - name: prometheus
-          version: 784.vea_eca_f6592eb_
+          version: 787.v52e8f47488fc
         - name: ansicolor
-          version: 1.0.4
+          version: 1.0.5
         - name: sidebar-link
           version: 2.4.1
         - name: command-launcher
           version: 115.vd8b_301cc15d0
         - name: cloudbees-disk-usage-simple
-          version: 203.v3f46a_7462b_1a_
+          version: 205.v47f4ee8803d1
         - name: throttle-concurrents
           version: "2.14"
         basePlugins:
         - name: kubernetes
-          version: 4285.v50ed5f624918
+          version: 4295.v7fa_01b_309c95
         - name: workflow-job
           version: 1436.vfa_244484591f
         - name: workflow-aggregator
           version: 600.vb_57cdd26fdd7
         - name: git
-          version: 5.4.1
+          version: 5.5.2
         - name: job-dsl
-          version: "1.88"
+          version: "1.89"
         - name: configuration-as-code
           version: 1850.va_a_8c31d3158b_
         - name: kubernetes-credentials-provider

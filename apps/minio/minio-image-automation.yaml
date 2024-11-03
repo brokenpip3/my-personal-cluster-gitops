@@ -5,7 +5,7 @@ metadata:
   name: image-repo-minio
   namespace: flux-system
 spec:
-  image: minio/minio
+  image: quay.io/minio/minio
   interval: 100m0s
   accessFrom:
     namespaceSelectors:
@@ -44,26 +44,7 @@ spec:
       author:
         email: fluxbot-brokenpip3@users.noreply.github.com
         name: flux
-      messageTemplate: |
-        Automated image update by Flux
-
-        Automation name: {{ .AutomationObject }}
-
-        Files:
-        {{ range $filename, $_ := .Updated.Files -}}
-        - {{ $filename }}
-        {{ end -}}
-
-        Objects:
-        {{ range $resource, $_ := .Updated.Objects -}}
-        - {{ $resource.Kind }} {{ $resource.Name }}
-        {{ end -}}
-
-        Images:
-        {{ range .Updated.Images -}}
-        - {{.}}
-        {{ end -}}
-
+      messageTemplate: '{{range .Changed.Changes}}{{print .OldValue}} -> {{println .NewValue}}{{end}}'
     push:
       branch: images-update-minio
   update:

@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - podmonitor-flux.yaml
 - podmonitor-pg-exporter.yaml
-- rules-borgbackup.yaml
+#- rules-borgbackup.yaml
 - rules-certmanager.yaml
 - rules-jenkins.yaml
 - rules-loki_promtail.yaml

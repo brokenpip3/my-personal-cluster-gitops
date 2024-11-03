@@ -1,7 +1,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: utils
+  name: apps-memos
   namespace: flux-system
 spec:
   decryption:
@@ -12,7 +12,12 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./apps/utils
+  path: ./apps/memos
   prune: true
   dependsOn:
-    - name: infra
+    - name: infra-ingress-controller
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: memos
+      namespace: memos

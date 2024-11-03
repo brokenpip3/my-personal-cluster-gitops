@@ -9,7 +9,7 @@ spec:
     chart:
         spec:
             chart: promtail
-            version: '>=4.2.0 <5.0.0'
+            version: '>=6.16.6 <7.0.0'
             sourceRef:
                 kind: HelmRepository
                 name: grafana
@@ -17,7 +17,8 @@ spec:
             interval: 10m
     values:
       config:
-        lokiAddress: http://loki:3100/loki/api/v1/push
+        clients:
+          - url: http://loki:3100/loki/api/v1/push
         snippets:
           extraScrapeConfigs: |
             - job_name: pacmanlog

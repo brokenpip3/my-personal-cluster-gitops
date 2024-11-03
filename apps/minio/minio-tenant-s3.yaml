@@ -11,9 +11,8 @@ metadata:
     prometheus.io/port: "9000"
     prometheus.io/scrape: "true"
 spec:
-  image: minio/minio:RELEASE.2024-08-29T01-40-52Z #{"$imagepolicy": "flux-system:image-policy-minio"}
-  imagePullPolicy: IfNotPresent
-  credsSecret:
+  image: quay.io/minio/minio:RELEASE.2024-08-29T01-40-52Z #{"$imagepolicy": "flux-system:image-policy-minio"}
+  configuration:
     name: minio-tenant-s3
   pools:
     - servers: 1
@@ -28,8 +27,6 @@ spec:
           resources:
             requests:
               storage: 10Gi
-      # nodeSelector:
-      #   disktype: ssd
       resources:
         requests:
           cpu: 200m
@@ -40,6 +37,7 @@ spec:
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
+        fsGroupChangePolicy: "OnRootMismatch"
         runAsNonRoot: true
         fsGroup: 1000
   mountPath: /export
@@ -47,40 +45,12 @@ spec:
     - name: minio-tenant-s3-cert
       type: kubernetes.io/tls
   requestAutoCert: false
-  prometheusOperator:
-    labels:
-      prometheus: scrape
-  s3:
-    bucketDNS: false
   certConfig:
     commonName: ""
     organizationName: []
     dnsNames: []
-  podManagementPolicy: Parallel
-  # users:
-  #   - name: minio-user1
-  #   - name: minio-user2
-  serviceMetadata:
-    minioServiceLabels:
-      label: minio-svc
-    minioServiceAnnotations:
-      v2.min.io: minio-svc
-    consoleServiceLabels:
-      label: console-svc
-    consoleServiceAnnotations:
-      v2.min.io: console-svc
-  ## Add environment variables to be set in MinIO container (https://github.com/minio/minio/tree/master/docs/config)
-  # env:
-  # - name: MINIO_BROWSER
-  #   value: "off" # to turn-off browser
-  # - name: MINIO_STORAGE_CLASS_STANDARD
-  #   value: "EC:2"
-  #   ## For secure env vars like passwords, create an opaque Kubernetes secret and specify the secret in
-  #   ## the `valueFrom` field. The `valueFrom` object must contain the following fields:
-  #   ## `name` - the secret from which MinIO extracts the password, `key` - the data field
-  #   ## within secret, whose value will be set to the env variable's value
-  # - name: MINIO_IDENTITY_LDAP_LOOKUP_BIND_PASSWORD
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: ldap-minio-secret
-  #       key: MINIO_IDENTITY_LDAP_LOOKUP_BIND_PASSWORD
+  prometheusOperator: true
+  features:
+    bucketDNS: false
+  buckets:
+    - name: pg-backup

@@ -29,8 +29,8 @@ spec:
       namespace: kube-system
     chart:
         spec:
-            chart: minio-operator
-            version: '>=4.3.2 <4.5.x'
+            chart: operator
+            version: '>=6.x.x <7.x.x'
             sourceRef:
                 kind: HelmRepository
                 name: minio-operator
