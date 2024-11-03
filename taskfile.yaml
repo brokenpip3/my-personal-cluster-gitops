@@ -54,9 +54,9 @@ tasks:
   validate:
     desc: "Validate flux and k8s resources"
     cmds:
-      - validate
+      - util_repo_my_cluster_gitops_validate
 
   outdated:
     desc: "Check latest helm charts"
     cmds:
-      - outdated
+      - util_repo_my_cluster_gitops_outdated
