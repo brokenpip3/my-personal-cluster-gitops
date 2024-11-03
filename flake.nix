@@ -22,18 +22,32 @@
             pre-commit
             go-task
             flux
+            sops
             nova
-            validationpkgs
+            minio-client
+            kubectl-view-secret
+            grafana-loki
             (writeShellApplication {
-              name = "validate";
+              name = "util_repo_my_cluster_gitops_validate";
               runtimeInputs = validationpkgs;
               text = builtins.readFile ./scripts/github/validate.sh;
             })
             (writeShellApplication {
-              name = "outdated";
+              name = "util_repo_my_cluster_gitops_outdated";
               runtimeInputs = with pkgs; [ nova ];
               text = ''
                 nova find --helm --format table
+              '';
+            })
+            (writeShellApplication {
+              name = "util_logcli";
+              runtimeInputs = with pkgs; [ kubectl grafana-loki ];
+              text = ''
+                kubectl port-forward svc/loki -n loki --context brokenpip3 3100:3100 >/dev/null 2>&1 &
+                _PID=$!
+                sleep 1
+                logcli "$1"
+                kill $_PID
               '';
             })
           ];
