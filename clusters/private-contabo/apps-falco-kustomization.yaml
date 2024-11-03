@@ -18,6 +18,6 @@ spec:
     - name: infra-ingress-controller
   healthChecks:
     - apiVersion: apps/v1
-      kind: Daemonset
+      kind: DaemonSet
       name: falco
       namespace: falco

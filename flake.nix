@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    flux_2_3.url = "github:nixos/nixpkgs/3281bec7174f679eabf584591e75979a258d8c40";
+    flux_2_4.url = "github:nixos/nixpkgs/d4f247e89f6e10120f911e2e2d2254a050d0f732";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -11,7 +11,7 @@
     inputs.flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        flux = inputs.flux_2_3.legacyPackages.${system}.fluxcd;
+        flux = inputs.flux_2_4.legacyPackages.${system}.fluxcd;
         validationpkgs = [ pkgs.kubeconform pkgs.kustomize pkgs.yq-go ];
       in
       {
