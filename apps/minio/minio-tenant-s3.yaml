@@ -11,7 +11,7 @@ metadata:
     prometheus.io/port: "9000"
     prometheus.io/scrape: "true"
 spec:
-  image: quay.io/minio/minio:RELEASE.2024-12-18T13-15-44Z #{"$imagepolicy": "flux-system:image-policy-minio"}
+  image: quay.io/minio/minio:RELEASE.2025-01-20T14-49-07Z #{"$imagepolicy": "flux-system:image-policy-minio"}
   configuration:
     name: minio-tenant-s3
   pools:
