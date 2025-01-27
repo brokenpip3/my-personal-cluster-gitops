@@ -21,7 +21,7 @@ jobs:
       matrix:
         test: ["tests", "validate"]
     steps:
-    - uses: DeterminateSystems/nix-installer-action@v14
+    - uses: DeterminateSystems/nix-installer-action@v16
       with:
         diagnostic-endpoint: ""
 
