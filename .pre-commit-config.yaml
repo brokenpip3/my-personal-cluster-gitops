@@ -1,6 +1,6 @@
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v5.0.0
+  rev: cef0300fd0fc4d2a87a85fa2093c6b283ea36f4b  # frozen: v5.0.0
   hooks:
   - id: end-of-file-fixer
   - id: trailing-whitespace
@@ -11,13 +11,13 @@ repos:
      - --unsafe
 
 - repo: https://github.com/python-jsonschema/check-jsonschema
-  rev: 0.30.0
+  rev: a20fe80ebdd4aec6791598c9ff559985580f91ea  # frozen: 0.31.1
   hooks:
     - id: check-github-workflows
     - id: check-github-actions
     - id: check-dependabot
 
 - repo: https://github.com/k8s-at-home/sops-pre-commit
-  rev: v2.1.1
+  rev: bc51435089e5bc665a78cb53136f6403f00773e8  # frozen: v2.1.1
   hooks:
   - id: forbid-secrets
