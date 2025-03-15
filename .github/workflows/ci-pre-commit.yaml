@@ -18,9 +18,7 @@ jobs:
         diagnostic-endpoint: ""
     - name: Checkout
       uses: actions/checkout@v4
-    - id: files
-      uses: tj-actions/changed-files@v45
     - name: nix checks
       run: nix flake check
     - name: nix pre-commit
-      run: nix develop . --command pre-commit run --files ${{ steps.files.outputs.all_changed_files }} --show-diff-on-failure
+      run: nix develop . --command pre-commit run --show-diff-on-failure
