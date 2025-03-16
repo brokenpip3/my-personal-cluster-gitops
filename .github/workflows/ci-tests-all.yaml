@@ -21,16 +21,16 @@ jobs:
       matrix:
         test: ["tests", "validate"]
     steps:
-    - uses: DeterminateSystems/nix-installer-action@v16
+    - uses: DeterminateSystems/nix-installer-action@e50d5f73bfe71c2dd0aa4218de8f4afa59f8f81d # v16
       with:
         diagnostic-endpoint: ""
 
-    - uses: DeterminateSystems/magic-nix-cache-action@v8
+    - uses: DeterminateSystems/magic-nix-cache-action@87b14cf437d03d37989d87f0fa5ce4f5dc1a330b # v8
       with:
         diagnostic-endpoint: ""
 
     - name: Check out code
-      uses: actions/checkout@v4
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
     - name: Test ${{ matrix.test }}
       run: nix develop . --command task ${{ matrix.test }}

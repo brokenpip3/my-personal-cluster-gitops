@@ -21,3 +21,9 @@ repos:
   rev: bc51435089e5bc665a78cb53136f6403f00773e8  # frozen: v2.1.1
   hooks:
   - id: forbid-secrets
+
+- repo: https://github.com/brokenpip3/pre-commit-hooks
+  rev: dd7b3821637ba3c3a8628ad487fd84edec8006f2  # frozen: 0.0.1
+  hooks:
+    - id: github-actions-hash
+      files: ^.github/workflows/.*\.(yml|yaml)$ # limit only to github workflows
