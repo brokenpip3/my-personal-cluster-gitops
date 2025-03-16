@@ -9,10 +9,10 @@ jobs:
     name: Open PR to main
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       name: checkout
 
-    - uses: repo-sync/pull-request@v2
+    - uses: repo-sync/pull-request@7e79a9f5dc3ad0ce53138f01df2fad14a04831c5 # v2
       name: pull-request
       with:
         destination_branch: "main"
