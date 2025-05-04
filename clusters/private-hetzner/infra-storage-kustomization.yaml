@@ -7,7 +7,7 @@ spec:
   decryption:
     provider: sops
     secretRef:
-      name: sops-gpg
+      name: flux-sops
   interval: 10m0s
   sourceRef:
     kind: GitRepository
