@@ -1,0 +1,57 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+    name: local-path-provisioner
+    namespace: kube-system
+spec:
+    interval: 30m
+    chart:
+        spec:
+            chart: deploy/chart/local-path-provisioner
+            sourceRef:
+                kind: GitRepository
+                name: local-path-provisioner
+                namespace: flux-system
+            interval: 10m
+    values:
+        storageClass:
+            create: true
+            defaultClass: true
+            defaultVolumeType: local
+            name: local
+            reclaimPolicy: Retain
+        nodePathMap:
+            - node: DEFAULT_PATH_FOR_NON_LISTED_NODES
+              paths:
+                - ENC[AES256_GCM,data:Ii/AfHkZWY99B2YEx81i5VvYA+4Smb8=,iv:f94VBaS0pKQRvHVJd1Or1f58izR4MTtYlJlQNHJ1EIY=,tag:MRNCPvCEM+GJkSPMsgK9QQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2025-05-04T20:05:09Z"
+    mac: ENC[AES256_GCM,data:dSHVX29wRZXzeHGcPGaKhkKVE8RXicWlq1h/4mzpHTLYjlWUCnoSz21H8/v7nPBTTUJuQnKkOOr4TvBgnTS4ZrHeBvpzQQBSmmy2V1HoYkB3yGl3spkSZEkRJN8p4vS55sBF6z0uwz53hzwxsD3dpX0qJy3A9nbc7/pKc1z4DBI=,iv:N5069i8tgtomPoZ2jU+j+aV/sDk8ciG55nFEYBkoGUQ=,tag:SUhxrjwF9IDy2RBpKEnDWg==,type:str]
+    pgp:
+        - created_at: "2025-05-04T20:04:42Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5AQ/9GLva7gQ9RzFl35Pl8Rn5cKlQEyxTS1bfVJBO9T7TOKGr
+            bd4MA7WOTJL6wV8wzbn4VBNN1snRhcgu7VGjHCBqY6SRnjCPjMpV4qGTqr/kUIWA
+            57VEdRKCl2geZ/2AyPyc6MPswVnFx1odYloKaXg2YkOH3tKu7PsaQi6ZhEiNmIe0
+            8g9Yg+8kYhYGGmjc945YELTvGpASEG/wtuAalKJ1l7C9QJj09bThmZaHDk5J7MgI
+            b03QkKC78fPQ0IlmlK4I8k1T4z9W6lswuruSvSGewq2pJWfe7BM7wpEZW5j3XG9e
+            PxM6BwD+qlxyAX2it8L6FZe+0IgArachIVBo+vFQ9szYBaqksA5NN4dGYRCuT2kK
+            /RYRCfm8ZUGzlPHRBtXDaYM15JFz4parzybG1VuCZSpU+TLZlKSmEANQT3hk/hCI
+            Nie4RZF04O/1E3J+GqskIQSquP5VDGbUdgb5C7bhIoRmjXwKEXioa/A/7WPfn1i0
+            Gp7Z9ctgz9uBiVglqXJuxztGPci3vw9Ku7BhBVpKahol1QMLfMiHf7rug6MNacmN
+            EKNC+eb+gKxa1tfih+gIzNxwsi/WFQtiF9NQUJXHCnZ3m8pcNWgoP5LrR6AvFTOn
+            XKrOrBnq5qTO3tFXlndaaBtUI25qA6NyRhjf79/orQlTaiyWfosbQImYr8e4eFTS
+            VgHpyYi4SbPqSQerxrXuekjeucFnxsp9lN1IDt/AeFmIuyTUYvod1rpRoMnNiIiT
+            5++tyGHOGEMY8pqLDIFN1Ldeywu/gbosTiddyJuLEzsXL9DH2HGn
+            =douu
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|configLogicalBackup|paths)$
+    version: 3.9.0
