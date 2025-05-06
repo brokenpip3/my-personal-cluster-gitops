@@ -5,4 +5,3 @@ resources:
 - helm-prometheus-stack-release.yaml
 - telegram/tg-prom-secret.yaml
 - telegram/tg-prom-bot.yaml
-- prom-crds/
