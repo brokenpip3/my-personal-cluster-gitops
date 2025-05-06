@@ -91,7 +91,6 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: nfs-sc
               accessModes: ["ReadWriteOnce"]
               resources:
                 requests:
@@ -110,9 +109,7 @@ spec:
         storage:
           volumeClaimTemplate:
             spec:
-              storageClassName: nfs-sc
               accessModes: ["ReadWriteOnce"]
               resources:
                 requests:
                   storage: 1Gi
-...
