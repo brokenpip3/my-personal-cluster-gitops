@@ -13,10 +13,16 @@ metadata:
   name: prometheus-stack
   namespace: monitoring
 spec:
+  install:
+    crds: Create
   upgrade:
     crds: CreateReplace
-  install:
-    crds: CreateReplace
+  driftDetection:
+    mode: enabled
+    ignore:
+      - paths: [ "/metadata/annotations/prometheus-operator-validated" ]
+        target:
+          kind: PrometheusRule
   interval: 10m
   releaseName: prom
   chart:
