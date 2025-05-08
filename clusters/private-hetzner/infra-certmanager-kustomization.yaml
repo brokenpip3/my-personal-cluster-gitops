@@ -1,7 +1,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-metric-server
+  name: infra-certmanager
   namespace: flux-system
 spec:
   decryption:
@@ -12,7 +12,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./infra/metric-server
+  path: ./infra/certmanager/
   prune: true
-  dependsOn:
-    - name: infra-prometheus

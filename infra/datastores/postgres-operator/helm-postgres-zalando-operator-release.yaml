@@ -7,7 +7,7 @@ spec:
     interval: 10m
     releaseName: pg
     dependsOn:
-        - name: nfs-sc
+        - name: local-path-provisioner
           namespace: kube-system
     chart:
         spec:
@@ -20,7 +20,7 @@ spec:
             version: 1.7.x
             reconcileStrategy: ChartVersion
     upgrade:
-        crds: CreateReplace
+        crds: Create
     install:
         crds: CreateReplace
     values:
