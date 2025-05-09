@@ -4,7 +4,6 @@ metadata:
   name: etcd-backup
   namespace: kube-system
 spec:
-  storageClassName: nfs-sc
   accessModes:
   - ReadWriteOnce
   resources:

@@ -20,23 +20,23 @@ spec:
         clients:
           - url: http://loki:3100/loki/api/v1/push
         snippets:
-          extraScrapeConfigs: |
-            - job_name: pacmanlog
-              static_configs:
-                - targets:
-                  - localhost
-                  labels:
-                    job: pacman
-                    __path__: /var/log/pacman.log
-              pipeline_stages:
-              - match:
-                  selector: '{job="pacman"}'
-                  stages:
-                  - regex:
-                      expression: '^\[(?P<timestamp>.*?)\]'
-                  - timestamp:
-                      format: RFC3339
-                      source: timestamp
+          #extraScrapeConfigs: |
+          #  - job_name: pacmanlog
+          #    static_configs:
+          #      - targets:
+          #        - localhost
+          #        labels:
+          #          job: pacman
+          #          __path__: /var/log/pacman.log
+          #    pipeline_stages:
+          #    - match:
+          #        selector: '{job="pacman"}'
+          #        stages:
+          #        - regex:
+          #            expression: '^\[(?P<timestamp>.*?)\]'
+          #        - timestamp:
+          #            format: RFC3339
+          #            source: timestamp
       defaultVolumeMounts:
       - mountPath: /var/log/pods
         name: pods
