@@ -57,7 +57,11 @@ spec:
           memory: 256Mi
       service:
         create: false
-      hostNetwork: true
+      hostNetwork: false
+      hostPort:
+        enable: true
+        http: 80
+        https: 443
     prometheus:
       create: true
       serviceMonitor:

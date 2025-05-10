@@ -73,6 +73,7 @@ spec:
           enabled: false
           ipFamilies: ["IPv4"]
           ipFamilyPolicy: "SingleStack"
+      hostNetwork: false
     prometheus:
       prometheusSpec:
         enableRemoteWriteReceiver: true

@@ -4,7 +4,6 @@ metadata:
     name: ingress-minio
     namespace: minio
     annotations:
-        kubernetes.io/ingress.class: nginx
         nginx.org/ssl-services: minio
         nginx.org/client-max-body-size: 0m
         nginx.org/rewrites: serviceName=minio rewrite=/
@@ -13,8 +12,21 @@ spec:
         - hosts:
             - ENC[AES256_GCM,data:QLJBmVyVgvMeshNoVSEceB3kDhg=,iv:tujVLFaNqLvkMsVgY4j+KZn5zK6c8RKqiWzF0QcNq0c=,tag:lO+aHgp/I8TJJ2wLnAad2Q==,type:str]
           secretName: minio-tenant-s3-cert
+        - hosts:
+            - ENC[AES256_GCM,data:u+PqepCiPt2RjU49484vxegkgR93t6MaVYE2,iv:HxLQ+HyOcYWH0C9vBXAjF1nwl9gFvC6ynSnq3bfdeEI=,tag:6E8try0Feg+TL/R2tZRJnA==,type:str]
+          secretName: minio-tenant-s3-cert
     rules:
         - host: ENC[AES256_GCM,data:ra3D/gpyWGuYb5nOOv3iR+9cvPM=,iv:SVun8b60iGPSyRQ/CeIbK7W6KEHWlBORTW2TzDg68Ao=,tag:0QntI7LAziRZPsIu6T9mRA==,type:str]
+          http:
+            paths:
+                - path: /
+                  pathType: Prefix
+                  backend:
+                    service:
+                        name: minio
+                        port:
+                            name: https-minio
+        - host: ENC[AES256_GCM,data:1Uy8R/2mKq+P9ixL0usz/igaC5vT9Chrfsog,iv:CVaF/hwgUr9cLhLJvQhRq0b838jYfejP57KxdMtwX1A=,tag:m0HbyF5/jECALkIJty8ldA==,type:str]
           http:
             paths:
                 - path: /
@@ -30,8 +42,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-11-03T14:26:09Z"
-    mac: ENC[AES256_GCM,data:b4eFfn3PiFuAo9McV/K2JwjK/cKOi1tWiDIqpyfDdicKuhX0xuUs5y5IgYHBk1UaTlfgqJR96mCUh33fYv7fDv5wrvM4dk4jgU63j/QrXbM63jWMWh6khCm4Kalyg/gEeYDgEPbQt2lJhW3Z0cdVKYiI1OBLhzsBbOrZ0sm3Y9A=,iv:qmdLm0wT4AejCuvyyR/4BAtdxhH2wVzBPlVeevupCYw=,tag:yccVA3SaffrKZyL6PPZSew==,type:str]
+    lastmodified: "2025-05-10T16:19:52Z"
+    mac: ENC[AES256_GCM,data:SMkxdSc5+8cIu6CEg/3HHECt5CZQ4+q7PSnPDcW3kw/RmFH1S3z9qtN4tTuHhY6slpXsawHpN/uWmAmv+bGeGhqkf+2V/sZw8LgUhf9CRihDExqLMYVN1bQYeBCNTIypHkWKV/bKP5140YP9JqNYUWUjMRFHuncHqMV1IDY2HdM=,iv:aZX10bVZjzVxSHHiY3ic3sBP/S0Jtrb7tlaGkUz5OT0=,tag:nvLpZD61QrneQR2QUlff3A==,type:str]
     pgp:
         - created_at: "2024-11-03T14:26:09Z"
           enc: |-

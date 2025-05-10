@@ -8,6 +8,9 @@ spec:
         - ENC[AES256_GCM,data:N1N9Fqn+5G2gwLZIvpcSWcAyGSg=,iv:RqXWYm/0pGWt02T/lLZ5c5JztZJKuSqjS9JNFvFnDzE=,tag:rUTwx3HKb/YQlsS4oYit6Q==,type:str]
         - ENC[AES256_GCM,data:vJysQJoqHTPbFcs9lV/qdXUbbf+/sSLfIJtNNvA=,iv:MRyVKOGInuIawSBsuF023Tf3qKY8MBROliw/nLwYvMU=,tag:8H9loYlP7bYTeVYgC3slrg==,type:str]
         - ENC[AES256_GCM,data:sLQvqVq+yYVRATv3rvFHxby8Ggf/UIyhnJuGCg==,iv:Hee+cuNVynDkw+JlCvdML6dnFPoGZGVRnOdV83EGa7s=,tag:00hBCOOabUwX57Q7I34YGQ==,type:str]
+        - ENC[AES256_GCM,data:2V+kRH2SeDCsh1vpc8F15kaeo3XA38nv59zi,iv:8qeOzOyEAJ3UI/d8RYeBoKGWJ8UsdlAq1UwdKJpW+QY=,tag:iEEXlhhok+AJxsw58uNgDA==,type:str]
+        - ENC[AES256_GCM,data:AT1St13wz6Rl5XNdaAt8gMvM44dnsfMH20/wPKj/Kpvib9Q8,iv:q+Gz5PtE8kmGAz5/DRyUwd+z19ck8xBYe7l+kYlZnKg=,tag:otF2TOhaty16DoEOXgFp7g==,type:str]
+        - ENC[AES256_GCM,data:Vc7bTJbVqpGiNOIYkNBM5NjbY01WRSLm8wMoesMAc9h+i2c=,iv:WLGjMFCBZD0KlYiPkLHQ7h8vIgsXUSMmhC6HGW5FtwQ=,tag:qV9DGr/px5NE5NuxZf/gLw==,type:str]
     issuerRef:
         name: letsencrypt-ovh
         kind: ClusterIssuer
@@ -18,8 +21,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2021-09-03T20:41:07Z"
-    mac: ENC[AES256_GCM,data:XwCUEyiZqCukWG53aXfIVqg//tgw+CuapO1RftG0QwH2mlkVSoBHIKX7OoVV0aPpVaJRnnNp01RNTbBkheRlleAk9NQXLrtBGbLqlGu3GWq1KR8tTyXR9q91G1fh1P2SNwDLbBLuffA67p/sKX61lOV4bAdbAIeJoUnh0U+dzcc=,iv:GIzifJ7Of4YiZ7tREtivxTzOBWhOlcYN9+GAyJxQeLw=,tag:wYWus/ttySCDe6y2hLo2dw==,type:str]
+    lastmodified: "2025-05-10T16:16:26Z"
+    mac: ENC[AES256_GCM,data:tQOucT/oaYBvT7CLXBS+L0aEo5X9AzJiUbt61TsAYp9Iy4R4qB/ydJ8Hb86AUQcpYIeS8hhuhg4M34QPQdIIidSc+whLnaWUuubTVxJQYQMPls/uTy5VyLRByPtYiMXGZsEZvoKNHeQ/9JTxVAPVXx43QoLSDqVnCaz9SrA+cYs=,iv:S0pD6T6hjhDNtNln50td9u7M4EwO5pnBD0l9k1VcpYo=,tag:Vx4PgRORX0ysb86bE7aTOg==,type:str]
     pgp:
         - created_at: "2021-09-03T20:41:07Z"
           enc: |
@@ -42,4 +45,4 @@ sops:
             -----END PGP MESSAGE-----
           fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
     encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|dnsNames)$
-    version: 3.7.1
+    version: 3.9.0

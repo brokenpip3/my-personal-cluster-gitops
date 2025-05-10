@@ -25,7 +25,7 @@ spec:
     interval: 10m
     releaseName: s3
     dependsOn:
-    - name: nfs-sc
+    - name: local-path-provisioner
       namespace: kube-system
     chart:
         spec:
