@@ -14,5 +14,3 @@ spec:
     name: flux-system
   path: ./ci-cd
   prune: true
-  dependsOn:
-    - name: infra-tekton

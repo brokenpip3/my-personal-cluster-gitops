@@ -16,7 +16,7 @@ spec:
   prune: true
   dependsOn:
     - name: infra-ingress-controller
-    - name: infra-cert-manager
+    - name: infra-certmanager
     - name: infra-storage
   healthChecks:
     - apiVersion: apps/v1
