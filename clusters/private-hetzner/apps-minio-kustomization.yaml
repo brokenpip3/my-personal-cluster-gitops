@@ -1,3 +1,4 @@
+---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
@@ -23,3 +24,25 @@ spec:
       kind: Deployment
       name: minio-operator
       namespace: minio
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-minio-tenant
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: flux-sops
+  interval: 10m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./apps/minio/tenant
+  prune: true
+  dependsOn:
+    - name: infra-ingress-controller
+    - name: infra-certmanager
+    - name: infra-storage
+    - name: apps-minio

@@ -2,8 +2,4 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - helm-minio-operator.yaml
-- minio-tenant-s3-secrets.yaml
-- minio-tenant-s3-cert.yaml
-- minio-tenant-s3-ingress.yaml
-- minio-tenant-s3.yaml
 - minio-image-automation.yaml
