@@ -12,7 +12,7 @@ spec:
   spiloFSGroup: 103
   numberOfInstances: 1
   postgresql:
-    version: "15"
+    version: "14"
   teamId: gitea
   users:
     gitea:
