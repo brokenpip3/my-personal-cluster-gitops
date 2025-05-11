@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
     annotations:
-        kubernetes.io/ingress.class: nginx
+        kubernetes.io/ingress.class: nginxinc
     name: gitea
     namespace: gitea
 spec:
@@ -40,8 +40,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2021-09-03T22:04:11Z"
-    mac: ENC[AES256_GCM,data:Bma5O2e8Yr6M33FMilIVP2J5v14TJ+dI26/eKdkkn/7eV7WBhIpI/cREfOplQrYg6SNi3T63GBV4N7gvZSqduI20fE7Vx+N6Ycg/YvsGB3uiHi/YBZuGTT5BtvAkWAnwqj+CtEbf4LLD008FKPhRZxeKgDm4ZnVbm28njEuPKkk=,iv:WTiqeN9jHJc+q9iWKX33dYGAtjABzTbbXhT9HCvSu3Y=,tag:qL8dyF9ZE3s7AXmuzUexPA==,type:str]
+    lastmodified: "2025-05-11T16:28:02Z"
+    mac: ENC[AES256_GCM,data:tIrsXa0urvqfRXDYfSLhQrLs+P4jQb9iUVobPgVXtFMYibBG7tSHQMaYpGoCu7d+2bAIJggBU0wOh4r4HqMSsCCOaa6joqRkN7qLXp8ec0OBmCyvO6lFgN1rc49GPGXUpq3HrgYb3bqtqXS7k170HHfR8t77GpiyWqnivRb5jus=,iv:NvAhm0g5Lf10AhxVViRU/KTTzVHM2deGqPI38gD9V3U=,tag:V465AY4MG/eHJkyV9fuJNA==,type:str]
     pgp:
         - created_at: "2021-09-03T22:04:07Z"
           enc: |
@@ -64,4 +64,4 @@ sops:
             -----END PGP MESSAGE-----
           fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
     encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|dnsNames)$
-    version: 3.7.1
+    version: 3.9.0

@@ -4,7 +4,7 @@ metadata:
     name: memos
     namespace: memos
     annotations:
-        kubernetes.io/ingress.class: nginx
+        kubernetes.io/ingress.class: nginxinc
         cert-manager.io/cluster-issuer: letsencrypt-ovh
     labels:
         app: memos
@@ -30,8 +30,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-01-20T16:33:10Z"
-    mac: ENC[AES256_GCM,data:/edZfREKdgVjoW8QHcDTNYS5dkUSK60fC0f+Fv1/xD+EyIOQ7qFfimC9FAXS/nqBOWFgK4cOzPlJ5WjygbH/nc+0dT4k8tIlIrf6cRvdSNml+h5PPsPo88BII2nBkWg2DJ3iK2YtZDOFbUTFGhGEOg97iXFiZKgdNsmykpw+DIs=,iv:jY4Txuhl4g0vzLrdRcFcayMK/a8yYKJTqJ9V8Qs8irk=,tag:jmbKJdIlZfsfX8GACOKLYw==,type:str]
+    lastmodified: "2025-05-11T16:29:03Z"
+    mac: ENC[AES256_GCM,data:ErIMmX9aHmHhpf15qrcB5GbGJ4+Zgiy0X0oiIZg7UGk+nFCrcaNMA3vW7uFfQh1vA7KHXGb1Nr05PP06RDcXRsafWMH4FKXaxNM/QjFxNU/53YZKweGzw6m/GW03IkiPmTU/F56YN0vYOqrG+J8EbXQeNSoqVNFPrO6ZKDXm3U8=,iv:6xqamu08TbPw1vawqxi4nNwfMySalzV3VgPnCSWQn+c=,tag:Fj1hZADc8uC1S0GF1D43nQ==,type:str]
     pgp:
         - created_at: "2024-01-20T16:33:10Z"
           enc: |-
@@ -54,4 +54,4 @@ sops:
             -----END PGP MESSAGE-----
           fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
     encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|dnsNames)$
-    version: 3.8.1
+    version: 3.9.0

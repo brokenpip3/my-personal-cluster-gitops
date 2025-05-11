@@ -4,7 +4,7 @@ metadata:
     name: jenkins
     namespace: jenkins
     annotations:
-        kubernetes.io/ingress.class: nginx
+        kubernetes.io/ingress.class: nginxinc
         nginx.org/websocket-services: jenkins-operator-http-jenkins
         cert-manager.io/cluster-issuer: letsencrypt-ovh
     labels:
@@ -38,8 +38,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2023-05-03T10:33:38Z"
-    mac: ENC[AES256_GCM,data:cYY+lw8p11qPJlN+eY/OOtdeWrmV2PLNiFWtxK64mliO+o/o24PSPrTeYApq9xM9aG0t/slok9nhPsuNFlCeKUZ0OWA5SwQYlRDW34L01xU+/rT+k4uY5jT70UGC8BGCqjfdXMiGNmefjngXzD6jju3xcfcJOtjYE3dL1tNjWnw=,iv:uAvYi0KKooCe4WmQESf/kWytw7TfAPrF01R5CRrqako=,tag:ulXPoG0OPbeTSQSfDl0z2Q==,type:str]
+    lastmodified: "2025-05-11T16:28:29Z"
+    mac: ENC[AES256_GCM,data:bvpgp+8jQoCF4MXLDHRrSbjj4sCPos6Z7NJdbXWirqk5WpUYsarzPVDIUwaYZHeZF16Vi9aNDCQlHGXAqoSqsIlOD1eo84dzyH3TcJea9KkEDo+mJrGCacunTVMvDvi99n3HIEh88nIQ8+hp9EziQcWf3oxH2PUBP/92StnRyi8=,iv:vPZ15395KChmJE1kuLLVq2/keF7YDBNwcKD4MRFQoBY=,tag:cZsPuxzxueOBueUVBa+1yw==,type:str]
     pgp:
         - created_at: "2021-11-21T10:53:29Z"
           enc: |
@@ -62,4 +62,4 @@ sops:
             -----END PGP MESSAGE-----
           fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
     encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|dnsNames)$
-    version: 3.7.3
+    version: 3.9.0
