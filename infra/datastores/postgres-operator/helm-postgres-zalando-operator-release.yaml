@@ -38,6 +38,8 @@ spec:
             default_memory_request: 300Mi
             min_cpu_limit: 250m
             min_memory_limit: 250Mi
+        configKubernetes:
+            enable_pod_disruption_budget: false
         configLogicalBackup:
             logical_backup_s3_access_key_id: ENC[AES256_GCM,data:6xgOy0MMtyP/8P3uguB4,iv:3ByjBjADGBxTtv4u24XNsdgXNntrlo02KZk+Ts/mL2U=,tag:LAF6Igj5v7pYgkBCXXdOmA==,type:str]
             logical_backup_s3_secret_access_key: ENC[AES256_GCM,data:N11LuKEYUCHHAgSQevpH3y99,iv:orCILDSIVyxqGdBgzd0AnmCpk6lj2Z+Z70fJGw6TWRY=,tag:xwxe37BoDZxX8UTZO2xL9A==,type:str]
