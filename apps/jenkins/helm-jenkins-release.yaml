@@ -61,6 +61,8 @@ spec:
           version: 4324.vfec199a_33512
         - name: workflow-aggregator
           version: 608.v67378e9d3db_1
+        - name: workflow-job
+          version: 1498.v33a_0c6f3a_4b_4
         - name: git
           version: 5.5.2
         - name: job-dsl

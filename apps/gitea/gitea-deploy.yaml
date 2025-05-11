@@ -13,7 +13,6 @@ metadata:
   name: gitea-data
   namespace: gitea
 spec:
-  storageClassName: nfs-sc
   accessModes:
   - ReadWriteOnce
   resources:
