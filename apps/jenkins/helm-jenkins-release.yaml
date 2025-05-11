@@ -22,15 +22,15 @@ spec:
                 name: jenkins-k8s-operator
                 namespace: flux-system
             interval: 10m
-            version: '0.8.1'
+            version: '0.9.0-beta1'
     values:
       operator:
         replicaCount: 1
-        image: quay.io/jenkins-kubernetes-operator/operator:v0.8.1
+        image: quay.io/jenkins-kubernetes-operator/operator:v0.9.0-beta1
       jenkins:
         enabled: true
         namespace: jenkins
-        image: docker.io/jenkins/jenkins:2.462.3
+        image: docker.io/jenkins/jenkins:2.492.3
         plugins:
         - name: github-branch-source
           version: 1803.v98e3d8a_c8169
@@ -70,11 +70,10 @@ spec:
         - name: kubernetes-credentials-provider
           version: 1.262.v2670ef7ea_0c5
         backup:
-          image: quay.io/jenkins-kubernetes-operator/backup-pvc:v0.4.1
+          image: quay.io/jenkins-kubernetes-operator/backup-pvc:v0.4.3
           enabled: true
           pvc:
             enabled: true
-            className: nfs-sc
         configuration:
           configurationAsCode:
             - configMapName: jenkins-configuration
