@@ -33,7 +33,9 @@ spec:
         image: docker.io/jenkins/jenkins:2.492.3
         plugins:
         - name: github-branch-source
-          version: 1803.v98e3d8a_c8169
+          version: 1809.v088b_5f22c768
+        - name: github
+          version: 1.40.0
         - name: pipeline-stage-view
           version: "2.34"
         - name: build-name-setter
@@ -43,7 +45,7 @@ spec:
         - name: view-job-filters
           version: 392.v2c0a_4dd46909
         - name: prometheus
-          version: 787.v52e8f47488fc
+          version: 819.v50953a_c560dd
         - name: ansicolor
           version: 1.0.5
         - name: sidebar-link
@@ -56,19 +58,17 @@ spec:
           version: "2.14"
         basePlugins:
         - name: kubernetes
-          version: 4295.v7fa_01b_309c95
-        - name: workflow-job
-          version: 1436.vfa_244484591f
+          version: 4324.vfec199a_33512
         - name: workflow-aggregator
-          version: 600.vb_57cdd26fdd7
+          version: 608.v67378e9d3db_1
         - name: git
           version: 5.5.2
         - name: job-dsl
-          version: "1.89"
+          version: "1.91"
         - name: configuration-as-code
-          version: 1850.va_a_8c31d3158b_
+          version: 1950.v506f96a_69516
         - name: kubernetes-credentials-provider
-          version: 1.262.v2670ef7ea_0c5
+          version: 1.276.v99a_de03cb_076
         backup:
           image: quay.io/jenkins-kubernetes-operator/backup-pvc:v0.4.3
           enabled: true
