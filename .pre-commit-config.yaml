@@ -11,7 +11,7 @@ repos:
      - --unsafe
 
 - repo: https://github.com/python-jsonschema/check-jsonschema
-  rev: 828a213a1dd17aa9862aab706e3162c13281ff93  # frozen: 0.31.2
+  rev: 54da05914997e6b04e4db33ed6757d744984c68b  # frozen: 0.33.2
   hooks:
     - id: check-github-workflows
     - id: check-github-actions
