@@ -20,7 +20,7 @@
         devShells.default = nixpkgs.legacyPackages.${system}.mkShell {
           packages = with pkgs; [
             pre-commit
-            go-task
+            just
             flux
             sops
             nova
