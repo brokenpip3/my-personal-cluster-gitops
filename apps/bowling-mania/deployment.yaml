@@ -24,7 +24,11 @@ spec:
           type: RuntimeDefault
       containers:
       - name: bowling-app
-        image: localhost:5000/bowling-frontend:0.1.0
+        image: localhost:5000/bowlingmania:0.2.3
+        command: ["bowlingmania"]
+        env:
+        - name: DB_PATH
+          value: /home/appuser/data/bowling.db
         ports:
         - containerPort: 8000
           name: http
