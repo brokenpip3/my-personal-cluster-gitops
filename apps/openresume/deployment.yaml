@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    labels:
+        app: open-resume
+    name: open-resume
+    namespace: open-resume
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: open-resume
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                app: open-resume
+        spec:
+            containers:
+                - image: ENC[AES256_GCM,data:Qf6zRjrQtkNeKUo/6k6m13gN+VZ2+9yLyE4NubkHC0ZYNNhscA==,iv:vk0GGRXGX4FwDuMSWkK2TexSB+r7Nw5qweCj47vVvpc=,tag:uHYFLJ2wru1/ApAneeYAfg==,type:str]
+                  imagePullPolicy: IfNotPresent
+                  livenessProbe:
+                    failureThreshold: 3
+                    httpGet:
+                        path: /
+                        port: 3000
+                        scheme: HTTP
+                    initialDelaySeconds: 20
+                    periodSeconds: 5
+                    successThreshold: 1
+                    timeoutSeconds: 1
+                  name: open-resume
+                  ports:
+                    - containerPort: 3000
+                      name: http
+                      protocol: TCP
+                  resources:
+                    limits:
+                        cpu: 400m
+                        memory: 450Mi
+                    requests:
+                        cpu: 100m
+                        memory: 250Mi
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2025-08-02T22:23:26Z"
+    mac: ENC[AES256_GCM,data:VrBU1QqZkPx+fZo+3rXNHSKj27jn5XkIlWUanILrjlQGvcEnOiGjU4BsgctpuRYg+7maa1OFpsyvUNbTnLaunFOey+EJhA2bPPFuFw/I28ikN1xWu3SnCedUE0fp9G8Bvqt6nD37GQvL30d46urZZMbS8O+bwZX5bRLpFAAL5ZM=,iv:9FB5xezOcuJYIhqucx5cHuAtSwCOaYHFtheaDMqkenU=,tag:o2duOlF4/WO4VZTljOgckQ==,type:str]
+    pgp:
+        - created_at: "2025-08-02T22:23:26Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5AQ/+NlKnWjdc8lOjx+fl3w6hwOk72qVsORUxosQ95pEQnMyD
+            NgIeEZbuT0uv3hRJ0SQ9gI9lMncqs5um0ouB+nhVtipRReVATEppcKHA2V7Fng7f
+            /EobGH1fnucoJcqkMSmky9hJlPWSeq5BHTBLzgSraj6rwwHZjtWRW1V19mYP3KSD
+            dbywL0buqs/QkyORNysCiZLZCYaT935BwxSugpXK0RtFC8hn+jWU8ngjyo1urr2l
+            5MkM/Q6+vFyCWh8m1bFNIrapWEjHwyaWJwum1x4FLVf2IAc7hbtWduVFXFFtZa9f
+            usU0K8SnIObEy4St08aM7Of4Iy+qBjUBwEyPcP4xxTLoZr8g7HhJDLc9yYGG4SuI
+            6ZHq89NlGLiSuHDcBwDwWFYk2JVVyvHlTAqtv77sYPBuokwQTCk/SasSr6DlmSIb
+            iQAwWCQLJkW0aKhf23AgXWpIH0XKP++dMG2lKvWNfAS1TdyfrQCzbtEcEAc4R2Dx
+            XyeW4Q4wCX8cAJeRLytGc5TLgelp5LgtrgCpyMVUJF9SKWXV2iQ3rmnnZ0zMC55E
+            +WqO5BoE6QxVCDyUPM88JlawdODe4Iewzq3E1EMVSefQi2YnL9gOOdC5imadShrC
+            MM1UoEQr3eJn1I69EDq1kg6qdnvXvC52ObbI8ULLBj6YyXsZKnASNklUFC/xvKrS
+            WAGuywBS+MTQ9L3oRhsaSfrjhRqf6tFHsAvgbr3g7SbofzE2FgzQUzQ5mULLcySV
+            KYhHOv6zHpOe4CTBUPdD0cW2XBnYIFbgY9bC9Skn8JTmACm66Mpo53M=
+            =BRh0
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|dnsNames|image)$
+    version: 3.9.0

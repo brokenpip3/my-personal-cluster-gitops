@@ -1,0 +1,55 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: bowling-mania
+    namespace: bowling
+    annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-ovh
+spec:
+    ingressClassName: nginxinc
+    rules:
+        - host: ENC[AES256_GCM,data:07LetZi4CNVqD5tFdRPwx+tZKp2R74S0lg==,iv:VcDKzRTGgBiJF2GOLeAOpaAl28g/djRFqELf3RKkV6s=,tag:56lR3B3BntDpGSSaEmibjg==,type:str]
+          http:
+            paths:
+                - path: /
+                  pathType: Prefix
+                  backend:
+                    service:
+                        name: bowling-mania
+                        port:
+                            number: 80
+    tls:
+        - hosts:
+            - ENC[AES256_GCM,data:MbmcvXW2mfZ6IHwKGTPl8HzhFEalTlsxow==,iv:CYDxsD3wrmXS8QzzaI/8atK3LPJkrZFVIkXCqrvwL24=,tag:urq2kb/k+CFAs8OuTEa3gA==,type:str]
+          secretName: bowling-tls
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2025-07-06T16:02:08Z"
+    mac: ENC[AES256_GCM,data:nJ7cKaa9Y9ssLZSi5pNq7t3Wj7/3rsXFIWpsBN0xVjJwlu2+59el8Ml4ueB21vbGjJx1SVBtqYPIBS4TCXmZ6t6Q0m4gIiJ6mlYrhogIr78W3GFm4tEFpV1PZa+tk69EAqRjE0U3JOB6A4EL0rZDQ2AXMjldZTYJT4d7J9WBy4c=,iv:lI/NLLNArZokbYKjJnw/eQq4ibS+KjyORoXdri292C8=,tag:9PpXYWHdUTRVA6Lzja5ybQ==,type:str]
+    pgp:
+        - created_at: "2025-07-06T16:02:08Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5AQ//Se94QGym87GCXcR2huSivuKdYKsq47ydN+yBZILu/ULI
+            VuGM6LBw3NH5u2T6KOdvxfWZ3kJu4vNReFOgx0ZD1z5/ANzZtvxcLHIusF1GNyy3
+            2KpOWCaE4g+kaIKR2msazMXCiJNMqaZ7VH2oV5XYbKlM8M16VKH+4lYD3Ij1bAS5
+            p2kBJ4c5YmkO2ZopMBnt0HkmPvyRj7jVyLsOFLJ9mSb8LGWTI5RSTPLnZK4u4bn9
+            mk33pByQxB9pRpFt/WM5fepSfU+EY9dfgW8nRX7pJWyVcc9UPTrYfJ+J6ii5tq6b
+            vixdNClRfUWt31CMSt+EzKa87eN6f7F7AiLPDv6ifSZjjvQV6ZibgWZZNgXGfjie
+            K3XTC9h+dbRMa3Z9xcug9zoiW6OZOxPvk2XroGiosb7musVeUh3/M+Ii5vMXP30q
+            rUM/t5d3fsawB3DDxzFDmCsur19ftv1PG+KZMTRMSu3bjVSMPcxFdoxNbN626h4K
+            1xoZYkCQMxA/vhNBqNS1kxdz81c8uNLzXfqniDVj2OKTxTuoKYr0MBAtSIiYv937
+            dfoo4zCfK5jTo85pLTPyYrkDoGcIY6MYB/KKgQjXyvKJhw0ITejlL8/EYtXBrWBT
+            qJpJrqNnYDHMt+HBg8MJqOr21J7/1dGw5Pusbm69U4xVtOfe6PEU0mr40IUgeLnS
+            WAH4to5KF20SSVIRl9uVz86ifho4xnTJWH2eg/XMyaseFpvYXRnz91G0j5rPlG48
+            wYS146EUPhQb+DAPPsjS3W/Io19tdocaSEFefkIuehINHyZ/jSEDeNY=
+            =ByUE
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|dnsNames)$
+    version: 3.9.0

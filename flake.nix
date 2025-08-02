@@ -1,5 +1,5 @@
 {
-  description = "Basic flake and files - change me";
+  description = "My cluster gitops";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -20,7 +20,7 @@
         devShells.default = nixpkgs.legacyPackages.${system}.mkShell {
           packages = with pkgs; [
             pre-commit
-            go-task
+            just
             flux
             sops
             nova

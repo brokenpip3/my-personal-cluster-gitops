@@ -44,6 +44,9 @@ This is my "fleet" repo that describe my entire k8s cluster, made with :heart: u
   * [Jenkins Groovy and Casc configuration](apps/jenkins/jenkins-configuration.yaml)
 * [Taskd](apps/taskd) * ARCHIVED
 * [Memos](apps/memos)
+* [bowling-mania](apps/bowling-mania)
+* [lotb](apps/lotb) https://github.com/brokenpip3/lotb
+* [open-resume](apps/open-resume) https://github.com/xitanggg/open-resume
 
 ### Utils
 
