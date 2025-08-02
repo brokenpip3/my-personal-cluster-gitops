@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: lotb
   namespace: lotb
+  labels:
+    app: lotb
 spec:
   replicas: 1
   strategy:
