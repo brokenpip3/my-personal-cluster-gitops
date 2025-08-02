@@ -1,5 +1,5 @@
 {
-  description = "Basic flake and files - change me";
+  description = "My cluster gitops";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
