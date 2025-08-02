@@ -22,4 +22,4 @@ spec:
     - apiVersion: apps/v1
       kind: Deployment
       name: bowling-mania
-      namespace: bowling-mania
+      namespace: bowling
