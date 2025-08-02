@@ -1,0 +1,57 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-ovh
+        kubernetes.io/ingress.class: nginxinc
+    labels:
+        app: open-resume
+    name: open-resume
+    namespace: open-resume
+spec:
+    rules:
+        - host: ENC[AES256_GCM,data:Ja+7xKZv+VPZFf8U8oY1qGrzSoQ=,iv:kVPQijRu6lpd2zwidxd52lE2dRtWDivLaR+QzQa9yR4=,tag:t+EPkrIFxXpIovu9NXUoeQ==,type:str]
+          http:
+            paths:
+                - backend:
+                    service:
+                        name: http
+                        port:
+                            number: 3000
+                  path: /
+                  pathType: Prefix
+    tls:
+        - hosts:
+            - ENC[AES256_GCM,data:pPQSHRzNuCi5AUvrGRxUF0lSnwU=,iv:bkMxob2FKOIt4h55VNxXpopqpKzfBWLh9nOGfvKvch8=,tag:QMBGUwnx5ctguuHjX2lw5Q==,type:str]
+          secretName: open-resume-tls
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2025-08-02T22:22:39Z"
+    mac: ENC[AES256_GCM,data:JUUmZBK6o+Q+1sKkY9/UzQWuSD8Q88gNdPpWx7cTGtiHhfvn/Nb1YNl+p6EZQhOSe8F7Ema1gxbbaFdjuSNBpeEXJIMPFqZ2RgD6hPaEyRDaAIK68YyPwX9al1kuEAVlQ672jOfZcjGxUJM9Vou2O2TTo9fylPGjNjUurjefdrM=,iv:8pVo/gywBAgI5bwOs6k21D3oDcHJ4+AmWYLqVU0D33Y=,tag:3/DcSsLj4ugG2auEhqItzg==,type:str]
+    pgp:
+        - created_at: "2025-08-02T22:22:39Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5AQ//TvCszJ0fT5g3Gkrpcodu70WIwBss3xEVq4sAcyMZp5sj
+            CYHp3shzFhW2oq4RPfB4gEgEAWY0WB66/aZr6jEUm7BcB7MA18Dha9TyRq0/SgOC
+            2/KRenAIr6DoAsctrD9hyc6Ffy1S/k1kC/Rgh4T9HgL0BKwq5t4WCjKefriekqEG
+            YgPI2TALRXnYPI6wyYTNiQNotDLgMu23yE5Nh/lLzziPRcjul658cE1MRWjqtpO4
+            9iqLDK7mAOpjc1OMMraNvwef63Zsy9lDNP58MRiR+biJ/YucA52is7iEptzsrVYv
+            NMaD6nwmM6pGMpaZcEv0mPNDrs6m9B9TwOvfQxX/6SAK0rfN4oTaj9rUhJHPY+BI
+            r0ARLkXzGep37Tb3etMpZ/g4zysdD87IcKCcG5NP7S7wJ/Zl2rR0PEAccBjAPzqA
+            bUYWcwOkTO+fP3iq04DgksmIiCFxqg5WewuVN7OpKsg2IxyGIVOXFmQN/ux18WtI
+            xyJZGfabO/s1X02DMeXsRCriTu3pe02BjanR6oH2gZYzjKzAnyyWpbfkrtMBO5ja
+            m3je5fc7yKPCMnnqO/6IAoD4oWwpDczCEl0+LLeQ8QZ0dM9zP/dEALv0GrJtLEgx
+            sxhOPDk5oeQeZQTe4I/JpNr3B3pOqkCHHWZc+b8Hd8/INtO+935LKeLaCRFQuEnS
+            VgENAEuuOilMuO0JwpIYqSoPggp1di7tzw1cGDerOzR+9NW7IRfK0DNo7qed1WXo
+            Z9kENipsb8LBfvSpKsdGG/Uo/aylZqF1fbPaOPH12Xi9WNHs8S+j
+            =KlTT
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|dnsNames)$
+    version: 3.9.0
