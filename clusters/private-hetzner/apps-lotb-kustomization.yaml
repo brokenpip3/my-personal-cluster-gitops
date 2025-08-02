@@ -1,0 +1,25 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-lotb
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: flux-sops
+  interval: 10m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./apps/lotb
+  prune: true
+  dependsOn:
+    - name: infra-storage
+    - name: infra-ingress-controller
+    - name: infra-certmanager
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: lotb
+      namespace: lotb

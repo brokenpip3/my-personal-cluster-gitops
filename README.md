@@ -45,6 +45,7 @@ This is my "fleet" repo that describe my entire k8s cluster, made with :heart: u
 * [Taskd](apps/taskd) * ARCHIVED
 * [Memos](apps/memos)
 * [bowling-mania](apps/bowling-mania)
+* [lotb](apps/lotb) https://github.com/brokenpip3/lotb
 
 ### Utils
 
