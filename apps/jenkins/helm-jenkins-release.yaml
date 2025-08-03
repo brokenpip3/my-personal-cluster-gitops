@@ -30,7 +30,7 @@ spec:
       jenkins:
         enabled: true
         namespace: jenkins
-        image: docker.io/jenkins/jenkins:2.492.3
+        image: docker.io/jenkins/jenkins:2.516.1
         plugins:
         - name: github-branch-source
           version: 1809.v088b_5f22c768
