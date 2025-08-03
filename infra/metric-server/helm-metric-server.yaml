@@ -1,5 +1,5 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: bitnami
@@ -8,7 +8,7 @@ spec:
   interval: 10m
   url: https://charts.bitnami.com/bitnami
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: kube-sigs-metric-server
