@@ -11,7 +11,7 @@ spec:
     namespaceSelectors:
       - matchLabels: {}
 ---
-apiVersion: image.toolkit.fluxcd.io/v1beta2
+apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImagePolicy
 metadata:
   name: image-policy-etcd
