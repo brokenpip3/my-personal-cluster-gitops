@@ -7,7 +7,7 @@ spec:
   interval: 1h
   url: https://github.com/rancher/local-path-provisioner
   ref:
-    branch: master
+    tag: v0.0.33
   ignore: |
     # exclude everything except the chart directory
     /*
