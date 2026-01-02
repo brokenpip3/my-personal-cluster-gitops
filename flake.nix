@@ -28,6 +28,7 @@
             minio-client
             kubectl-view-secret
             grafana-loki
+            yq-go
             (writeShellApplication {
               name = "util_repo_my_cluster_gitops_validate";
               runtimeInputs = validationpkgs;
