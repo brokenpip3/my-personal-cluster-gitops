@@ -17,38 +17,33 @@ spec:
     values:
         nfs:
             path: /DATA/k8s/storage/gitops-nfs
-            server: ENC[AES256_GCM,data:xZ29tJ8ulSPGxgqNxg==,iv:lQHutoMtUJr1EAEa6MX7Z2wFMtQh5/gp/gcgDVoOMOc=,tag:oUU2IdU9ANcVJvI4YTCgJA==,type:str]
+            server: ENC[AES256_GCM,data:bcnBPvQS6O46uk2Hlg==,iv:QvNnvtSyLNrSnscoVxLtYg/6uABRwzCCnyf8w751Js8=,tag:rsq/rPxvPaW7FYoXTHBdfg==,type:str]
         storageClass:
             defaultClass: true
             name: nfs-sc
 sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age: []
-    lastmodified: "2021-07-17T16:19:07Z"
-    mac: ENC[AES256_GCM,data:R/Na3cZXobOdQJ1SIqxQ82AlvEGYX+hTHYSoxIb9kZZ7Sxv4udSvdjaM1plu5638P/fXHzgI/4EvNxxO91KRerOS/4qOsA9kHLr/8X1SGocc8k1QgLfv/qQfROl/zFMTl7H5BM1qBCxAxOtLBv1RHBsJJK0+7z5flnH1qgsW5mI=,iv:MWGlPIDia1yi3SOTP+dtMvVwwCH5cfbokzdEBa5tQvc=,tag:aTjXTK3BRyeGOuOP1BBHTQ==,type:str]
+    lastmodified: "2026-02-01T19:13:06Z"
+    mac: ENC[AES256_GCM,data:r7qIw01GK5oJY2G+OT7EpSoj4V3ctAHFhsYCE0rLsM93FtSgfYXgeW+RXJ9BfUePflJGWlAOZA83qnrZbXXCaKBneyAhJqElLvoEs5b5Zd/bXbCrSqmVkmgWhBjIAHLBDTBFfGNldQ33xJskylORg+S0v1TAfTsFeWVuogd4jmM=,iv:cHO0U2kDo+7EZTydu0b2amAajHwq+zzCdw29p8ofuZM=,tag:ACdMOK5pk50g5XFEegSwbw==,type:str]
     pgp:
-        - created_at: "2021-07-17T16:19:07Z"
-          enc: |
+        - created_at: "2026-02-01T19:13:06Z"
+          enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hQIMAwP8FxNnerN5AQ//abLisJOmrX+E6yKsbgiskTISIHXIbetJatRZAf67ifEC
-            qGaSq/JIxWDlPGPPdZPxM36AH+wCcpSy0ncPejkHOfpqGQpBqniVkEaspEu9EkM4
-            IWg2tGazl23YmvKIfQG/MPYLpRFES8KeOOWQnHV+1iD56FthlbBHapGlL5g0BMwN
-            FU4Lmz3I8fAOHPNnLxHU08FOHaAmkI/+AawEzv5J+AiY6a3jJq47fW4NDfRjfE9p
-            g38nLWCE63+KNinLM8l3jcpY/Yt6ZkJ6y90tpSzT+4RYWY9crijFsBcU+5NIMyN2
-            HTJattTXA4r0x6TvstVKABW9bHa2VF+VsZaXeDZESKSg+A86YEzfbpVjh9OgkGZG
-            Fv2X8ymH68AoNd9IMQPWn/bjELngQpwrUiHPKLBcNe19zYrsSba1IJfjTCqM5w3f
-            deOzj0WoTD/OYShVygcpAYQXZ1g667JkeUI3xyKKqibtzMFEMrgtMbqHgEARVS3Y
-            1wcf6uuhHcph+wjZu00k+KhOjhNHzKPtUoHReP6ogbXXPwmXZ4Ez41sK79TERU1R
-            47coqWDfb897kHtNsCEsZFmsFr7jsfJWgvwgFK9Rjg3by4MsuHyTmqqgQQyhBrGp
-            theiYqeRKHuU10qFrA4UG3c9XunagXcLNj+g+r9QGJgc5SsTKhE82AJjwgrhdgHS
-            UAHIl49cvyl1tCRtT+G9T05rXtRoFydCZjYYQhkxI/B9UrtWqSo2pZTVT2kD/I/F
-            ljz2XFQ/GdYN5DvlxQ+oAGQMkCSU/Pcg/zQ+TaGmE1q/
-            =qfzB
+            hQIMAwP8FxNnerN5AQ/9HCJ/Iglu5Nr+BT8cVOYvQBsEuiL4MaB5sdAqB843R5Ad
+            sEaOeUKeMSO6vLO4c0EcZPMfssEuwRxas6rErSGyyyOeP3ZxbnqVWyGLtNwpOE6U
+            sPDN5xNKzVMVoQ7RLEospQVNMjDebtIgWrQU/9G30zQIS4QKD7dqBn9yPIdc4y+a
+            xnRnGE4mapQTwB4vhTRtvbN/R2SCun+Kf3fYMKTKdcN18ZZ+viA0LKzMuYh7j/nB
+            o+fXumNSoyot2o4hL6hO/CJWSuW/FHhOaMYKnmlPOWjdz2qQdWXLjbMHQWzAw0Rz
+            V8glpJMTwM/s5TPK+5/3v2jS+O3m8VvAMQVp/v+HiFkyvX+08+xOEbMHlRIXMf8c
+            V9u/dCNXlhQ8zV6RdrlXxqwuHa1NVq/C3KIf7YfXe/hBQMQFyWM3TZj70PRNjqbM
+            rrjl7oDmm2IVhpGufvVvhGN6FLKgDM647/UTQpW5qVutaQN0ClNi43atNmuBYpR1
+            2wMTQYX91yAqH9Mv4K/iXAxtDgR/OeAMQiTXVJrjhalyZts7lG7aNtRoSJwmzytk
+            ZhFhPdqABZCwyjb4xSuiXQ/j4ZS1u8zz15OuOdrLqVTkhwjTpfJ1+Ls28Gx6P2Tr
+            7e4eZtfCXKUDYHHmY3PYdQWLETC0AveQDjtja8CN3KJt0KATpiUKg37qt0kEVEvS
+            WAFPxLHJw2eu4zJY5ufS4J0M30q+x0loS36d2rdfvVx2SjOuF8BBUNbu+wspl700
+            3AEH4HRy/W0PN6XS1ANsue7itVmkankMIjuYB28ha7GSJhX8XvPFqBE=
+            =kA9C
             -----END PGP MESSAGE-----
           fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
-    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server)$
-    version: 3.7.1
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|configLogicalBackup|paths|dnsNames|channel|image)$
+    version: 3.11.0
