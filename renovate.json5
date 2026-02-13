@@ -3,17 +3,17 @@
   extends: [
     'config:recommended',
   ],
-  dependencyDashboardTitle: 'Depenendecies',
+  dependencyDashboardTitle: 'Dependencies',
   flux: {
     managerFilePatterns: [
       '/clusters/.+\\.ya?ml$/',
+      '/apps/.+\\.ya?ml$/',
+      '/infra/.+\\.ya?ml$/',
     ],
   },
   'helm-values': {
     managerFilePatterns: [
       '/clusters/.+\\.ya?ml$/',
-      '/apps/.+\\.ya?ml$/',
-      '/infra/.+\\.ya?ml$/',
     ],
   },
   kubernetes: {
@@ -37,19 +37,7 @@
       ],
       datasourceTemplate: 'docker',
     },
-    {
-      customType: 'regex',
-      description: 'Match Helm Releases for helm charts',
-      managerFilePatterns: [
-        '/apps/.+\\.ya?ml$/',
-        '/infra/.+\\.ya?ml$/',
-      ],
-      matchStringsStrategy: 'any',
-      matchStrings: [
-        'chart:\\s?"?(?<depName>[^\\s"]*)"?\\s*?version:\\s?"?(?<currentValue>[^\\s"]*)"?',
-      ],
-      datasourceTemplate: 'helm',
-    },
+
     {
       customType: 'regex',
       description: [
@@ -72,7 +60,7 @@
         'helm',
       ],
       matchManagers: [
-        'custom.regex',
+        'flux',
       ],
       matchPackageNames: [
         'loki',
@@ -86,27 +74,13 @@
         'helm',
       ],
       matchManagers: [
-        'custom.regex',
+        'flux',
       ],
       matchPackageNames: [
         'prometheus',
       ],
       registryUrls: [
         'https://prometheus-community.github.io/helm-charts',
-      ],
-    },
-    {
-      matchDatasources: [
-        'helm',
-      ],
-      matchManagers: [
-        'custom.regex',
-      ],
-      matchPackageNames: [
-        'storage',
-      ],
-      registryUrls: [
-        'https://github.com/rancher/local-path-provisioner',
       ],
     },
   ],
