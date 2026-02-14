@@ -22,57 +22,57 @@ spec:
                 name: jenkins-k8s-operator
                 namespace: flux-system
             interval: 10m
-            version: '0.9.0-beta1'
+            version: '0.9.0-beta2'
     values:
       operator:
         replicaCount: 1
-        image: quay.io/jenkins-kubernetes-operator/operator:v0.9.0-beta1
+        image: quay.io/jenkins-kubernetes-operator/operator:ce17cbd
       jenkins:
         enabled: true
         namespace: jenkins
-        image: docker.io/jenkins/jenkins:2.516.1
+        image: docker.io/jenkins/jenkins:2.541.1-lts
         plugins:
         - name: github-branch-source
-          version: 1809.v088b_5f22c768
+          version: 1967.vdea_d580c1a_b_a_
         - name: github
-          version: 1.40.0
+          version: 1.46.0
         - name: pipeline-stage-view
-          version: "2.34"
+          version: "2.39"
         - name: build-name-setter
-          version: 2.4.3
+          version: 2.5.1
         - name: ws-cleanup
-          version: "0.47"
+          version: "0.49"
         - name: view-job-filters
-          version: 392.v2c0a_4dd46909
+          version: 406.va_0ec67147ee2
         - name: prometheus
-          version: 819.v50953a_c560dd
+          version: 852.v317db_5d17a_b_0
         - name: ansicolor
-          version: 1.0.5
+          version: 536.v13fa_b_860c267
         - name: sidebar-link
-          version: 2.4.1
+          version: 2.5.0
         - name: command-launcher
-          version: 115.vd8b_301cc15d0
+          version: 123.v37cfdc92ef67
         - name: cloudbees-disk-usage-simple
-          version: 205.v47f4ee8803d1
+          version: 256.v20ec4eb_884f1
         - name: throttle-concurrents
-          version: "2.14"
+          version: 625.vc8b_e469e9a_b_c
         basePlugins:
         - name: kubernetes
-          version: 4324.vfec199a_33512
+          version: 4423.vb_59f230b_ce53
         - name: workflow-aggregator
           version: 608.v67378e9d3db_1
         - name: workflow-job
-          version: 1505.vea_4b_20a_4a_495
+          version: 1571.vb_423c255d6d9
         - name: git
-          version: 5.5.2
+          version: 5.10.0
         - name: job-dsl
-          version: "1.91"
+          version: 3654.vdf58f53e2d15
         - name: configuration-as-code
-          version: 1950.v506f96a_69516
+          version: 2037.v8e5349845172
         - name: kubernetes-credentials-provider
-          version: 1.276.v99a_de03cb_076
+          version: 1.303.vdfcf47fb_b_fef
         backup:
-          image: quay.io/jenkins-kubernetes-operator/backup-pvc:v0.4.3
+          image: quay.io/jenkins-kubernetes-operator/backup-pvc:v0.4.4
           enabled: true
           pvc:
             enabled: true
@@ -91,10 +91,8 @@ spec:
           enabled: true
         resources:
           limits:
-            cpu: 2
             memory: 6Gi
           requests:
-            cpu: 1
             memory: 4Gi
         seedJobs:
           - id: seed-job
