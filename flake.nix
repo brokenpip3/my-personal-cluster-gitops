@@ -7,27 +7,35 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
-    inputs.flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    { self, nixpkgs, ... }@inputs:
+    inputs.flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
         flux = inputs.flux_2_4.legacyPackages.${system}.fluxcd;
-        validationpkgs = [ pkgs.kubeconform pkgs.kustomize pkgs.yq-go ];
+        validationpkgs = [
+          pkgs.kubeconform
+          pkgs.kustomize
+          pkgs.yq-go
+        ];
       in
       {
         formatter = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
 
         devShells.default = nixpkgs.legacyPackages.${system}.mkShell {
           packages = with pkgs; [
-            pre-commit
-            just
             flux
-            sops
-            nova
-            validationpkgs
-            minio-client
-            kubectl-view-secret
             grafana-loki
+            just
+            kubectl-view-secret
+            minio-client
+            nova
+            pre-commit
+            renovate
+            sops
+            validationpkgs
+            yq-go
             (writeShellApplication {
               name = "util_repo_my_cluster_gitops_validate";
               runtimeInputs = validationpkgs;
@@ -42,19 +50,22 @@
             })
             (writeShellApplication {
               name = "util_logcli";
-              runtimeInputs = with pkgs; [ kubectl grafana-loki ];
+              runtimeInputs = with pkgs; [
+                kubectl
+                grafana-loki
+              ];
               text = ''
+                query="$1"
                 kubectl port-forward svc/loki -n loki --context brokenpip3 3100:3100 >/dev/null 2>&1 &
                 _PID=$!
                 sleep 1
-                logcli "$1"
+                ${pkgs.grafana-loki}/bin/logcli "$query"
                 kill $_PID
               '';
             })
           ];
 
-          shellHook = ''
-          '';
+          shellHook = '''';
         };
       }
     );

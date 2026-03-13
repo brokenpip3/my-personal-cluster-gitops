@@ -41,11 +41,11 @@ spec:
         configKubernetes:
             enable_pod_disruption_budget: false
         configLogicalBackup:
-            logical_backup_s3_access_key_id: ENC[AES256_GCM,data:6xgOy0MMtyP/8P3uguB4,iv:3ByjBjADGBxTtv4u24XNsdgXNntrlo02KZk+Ts/mL2U=,tag:LAF6Igj5v7pYgkBCXXdOmA==,type:str]
-            logical_backup_s3_secret_access_key: ENC[AES256_GCM,data:N11LuKEYUCHHAgSQevpH3y99,iv:orCILDSIVyxqGdBgzd0AnmCpk6lj2Z+Z70fJGw6TWRY=,tag:xwxe37BoDZxX8UTZO2xL9A==,type:str]
-            logical_backup_s3_bucket: ENC[AES256_GCM,data:pqbsX/gSpz9/,iv:LIgDtjsW6G4gnlzfGfRmZ71S6WcLkMQhzYwjs4/zAMc=,tag:uH9MHlSPzQfmiuaozzmyEg==,type:str]
-            logical_backup_s3_endpoint: ENC[AES256_GCM,data:3QDL0br9uy7PomMMD0MPrT6ECYw587rahP1blA==,iv:y5hoOzLPXr2Pc4pGyX6Yt0YUmwCUDWOl213bPaXisPQ=,tag:WEv1ZeApoSNTXajAUu/PVg==,type:str]
-            logical_backup_schedule: ENC[AES256_GCM,data:NMRaFQk9Yq6i+/s=,iv:Ol2yiLBc6dvYthD22HoiIvQZKqtdrDa55y0kFU8ZoFI=,tag:LcCldmVrMzAeM7eTWJKbdg==,type:str]
+            logical_backup_s3_access_key_id: ENC[AES256_GCM,data:Zm8/v1O5/9NajfGc7LDE,iv:Br9IQo+kXiCXv3RqrgqrURKn6PIEd2VMYCqtHMv9zOU=,tag:dGlD1GPdFibpdqoVQbny5g==,type:str]
+            logical_backup_s3_secret_access_key: ENC[AES256_GCM,data:KN6oMK1WCE+LnOMNLhypRS9S,iv:qAaMlzM44AXVJGGBL8Mp3clnrfXoIdRS+IDQJjTiZsM=,tag:8bEQBr/hXaORKv/cnpVDGw==,type:str]
+            logical_backup_s3_bucket: ENC[AES256_GCM,data:aEFVfCjlvdAZ,iv:ryxFyD5fTbcvjh2zoUKRmntm71fTU37J77FCEqocEjI=,tag:pO3ttiX03+FgkMFZ/BgqPg==,type:str]
+            logical_backup_s3_endpoint: ENC[AES256_GCM,data:ud5E/2SEn7Hmc440+LVenhemjW41ycWPj8ZoEA==,iv:eyDQnpPWQolJ4GHdiwPC4ao8bsv1L2t9+BECmF0xqCU=,tag:z226+Tm2nmFgS+XEP0xMdQ==,type:str]
+            logical_backup_schedule: ENC[AES256_GCM,data:Q0kf92KlAElH8k4=,iv:sBNzQ96E2VPtyeQWu5uesgjOimokANRafXlhfQl3bWQ=,tag:U256BwQOVZYM50TsGZtbVQ==,type:str]
             logical_backup_s3_sse: ""
 sops:
     kms: []
@@ -53,28 +53,28 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-03-02T13:47:43Z"
-    mac: ENC[AES256_GCM,data:dWw3EfgiAwYxdPC5QXsLU+vC5Gvh/pbroRs+pZ16u2ywbjee+DOq7P8x+x5+CVySBYA2Lv9zIm+Hzq2wleAJHg0Jqk2Nd/gDW/o8Ipnal7glBunAUCCQmp4W84xk+tIgMlS+bX+PNhQYWCAH+QYAYjRIbfl1LPDtWKJK9ggk5t4=,iv:0AZTTSxUmBfTEnWFwiJL7yFbey8LMwsPE8h4DbB76ic=,tag:g4CljGauJpfR9vo8bV/1dg==,type:str]
+    lastmodified: "2025-12-31T17:02:02Z"
+    mac: ENC[AES256_GCM,data:V0+K2/fWTIq5CLC8EssZ25CLoJ/9cuk7yO9E63hcsrjXjBGa3OpL8hQsUdKxg96DZTqqn0bg3+nSkVMtEyXA0Sjah1dNwhitGENy5tDggsh2CdtzGU7xY7u4eC0YZepzYmV1VzLCtQeWMxS0go06SVaS1ySPEdLbPuxz+jbBftQ=,iv:gNfjpWMkPhnhHdP4c6jk6ZytIHcGpQJzsCh4IpuPgnQ=,tag:XSisWg+yafTfu6Xi3If2ig==,type:str]
     pgp:
-        - created_at: "2022-03-02T13:47:42Z"
-          enc: |
+        - created_at: "2025-12-31T17:02:02Z"
+          enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hQIMAwP8FxNnerN5AQ/6AuNtNMLlqC92jEz1hjV2vmQeF3ElG9C1h6+GXgBK1+bW
-            gdGpwLmLJfTg2NoXoPZI9XcoYbnLbxFvqNXeQmIlKccmSB5qdrBQUMp62g7NbK8a
-            SO0+xha2On0DOPbaPEZ/aTb9U5tnyWifElWKyfjbCteIkc5K7IfcZfp/6S0YofNz
-            Wf2aPi3ZigQrpGmgawZsz8jvOvK+n14TH1ES9h+T2jcm202VVnXesSqTxYw6ehfI
-            iS1690rZfU2j8TaTr+7q2TCLEOVtl7BUOEs+4G0tNFBsD8zd87uTHW5pzmskKu9h
-            okzciTtjfnMa9EmyWmo+IyZlKEzu7dHX7IYpcy4QPPPTrxvXbvJ9m3zYTYzpK+xS
-            wDfiGUWUO+ig8JDDHPUOO2iak4MWjcB1X034wrn9j1lmgC9Jb0/4+a2qSUbVq4el
-            xo1mToQYqy6aBttJhTj8LfQNI5nwss9lEn+7EA84fiDzIzwN0szIMyQC/t1L2iGq
-            nguem3DV+KyjkxKw5pOe16uWFEqUhj8oH5+Bk5U8kXfmCD4PYmPL55+dwhqn1gRR
-            kK9UCn6zDpfJEcLyDCDi8sr58rma1h9oL6pbv5fD58WlzrYRIAn3fvte6scTNN5V
-            6i/GhSOam+hQ82pUiRH9ytJrGhmdz/BEV1QlhEugcoiE2vSoy1ijXw1gFbZFAqTS
-            UAFVs+s8SpN6BPRShWuMyTTYQKhY5uMjNLPvRuIh5tsH3nzHMclXEDvzNOSUGg00
-            RBws+aVr6hqasqR+o0oWFQcU/x6wDhkzWgNzF4dA7P7x
-            =EVqp
+            hQIMAwP8FxNnerN5AQ/+P0udFc43wcZlCxXURibX6KW0Xel1LhkwJpHYVewunapo
+            PDMEJSZEMA0cdUOCZW3Qew4kFD6BUhOtgEuXOlLTrVBkj6iAUTZrwl7VumldZavj
+            9+c3PC7py0E1oq6QUGlAUSlREm9FMuWlFI91reANTn73ZGzVmxfpR5pAHSLeNZL+
+            Gol0jC9k97mDN3P9ZiDveLKwFNzGB2AVtbq3QEcAlrJST12JeOkUyO8MPBpNh/td
+            b0u/LOBb2+LGeFNVbD8cZxxuNLPmvCAnbZ+Y7ytILix8w1Fp3sELaMPrD7Cw5dJx
+            d/xRaPQn13xuPenkRekix7K/xjl8536kAux7/gM/J7Ni0s6/nV0jWGLSvz9eHqvS
+            9i+V1ZNKPDZk5QkRmcet63ok7saBh9Nf9/xnlB8ikhGb+WjfY68Lx78tDJsS3DmP
+            c4XkUyB3XLgwdA6iEyXx0n0jDFdjTFf1Z13KQL8j8EmhPFGDjMJKyspuzpJt7MwS
+            ykn5+KuvdNA4hx5Ju/viPMTBkqbl/fu2RsA8+eQ1vDjEL0vCMJ/BiUfO7D3zC8tF
+            DGqDmM34fxXcPK1McnvamSJTA73FDjek5NheztLQqA9gkucp3KsuNSYit1WrTZPe
+            dRR/ObSYpx/TLKiCeONrpJ/U9QyZ97cG3uJK2MjX/GaDgA4K3y0j+blmZc9ENWHS
+            WAH1KvZKeUAkUJ5GESDO7E8Ihzi3SajlGT89PsPd69BSqC1bkyCilO6RhHsXjhGr
+            TcqMQWDPxCNsOsbeHvcg00juX6ZPITzLFoQjY7bCE4j2ty6mnTHzbcU=
+            =oAb9
             -----END PGP MESSAGE-----
           fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
-    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|configLogicalBackup)$
-    version: 3.7.1
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|configLogicalBackup|paths)$
+    version: 3.9.0
