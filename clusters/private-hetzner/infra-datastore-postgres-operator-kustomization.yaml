@@ -16,5 +16,3 @@ spec:
   prune: false
   dependsOn:
     - name: infra-storage
-    - name: local-path-provisioner
-      namespace: kube-system

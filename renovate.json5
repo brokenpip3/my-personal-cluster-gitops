@@ -9,6 +9,7 @@
       '/clusters/.+\\.ya?ml$/',
       '/apps/.+\\.ya?ml$/',
       '/infra/.+\\.ya?ml$/',
+      '/ci-cd/.+\\.ya?ml$/',
     ],
   },
   'helm-values': {
@@ -21,6 +22,7 @@
       '/clusters/.+\\.ya?ml$/',
       '/apps/.+\\.ya?ml$/',
       '/infra/.+\\.ya?ml$/',
+      '/ci-cd/.+\\.ya?ml$/',
     ],
   },
   customManagers: [
@@ -37,7 +39,6 @@
       ],
       datasourceTemplate: 'docker',
     },
-
     {
       customType: 'regex',
       description: [
@@ -46,6 +47,7 @@
       managerFilePatterns: [
         '/apps/.+\\.ya?ml$/',
         '/infra/.+\\.ya?ml$/',
+        '/ci-cd/.+\\.ya?ml$/',
       ],
       matchStrings: [
         'datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( repository=(?<registryUrl>\\S+))?\\n.+: (&\\S+\\s)?(?<currentValue>\\S+)',
@@ -64,6 +66,7 @@
       ],
       matchPackageNames: [
         'loki',
+        'promtail',
       ],
       registryUrls: [
         'https://grafana.github.io/helm-charts',
@@ -77,11 +80,38 @@
         'flux',
       ],
       matchPackageNames: [
+        'kube-prometheus-stack',
         'prometheus',
       ],
       registryUrls: [
         'https://prometheus-community.github.io/helm-charts',
       ],
+    },
+    {
+      description: 'Ignore fluxcd images updated by flux operator',
+      matchDatasources: [
+        'docker',
+      ],
+      matchPackagePrefixes: [
+        'fluxcd/',
+        'ghcr.io/fluxcd/',
+      ],
+      enabled: false,
+    },
+    {
+      description: 'Ignore fluxcd helm chart updates',
+      matchDatasources: [
+        'helm',
+      ],
+      matchManagers: [
+        'flux',
+        'helm-values',
+      ],
+      matchPackageNames: [
+        'fluxcd/flux2',
+        'fluxcd/flux',
+      ],
+      enabled: false,
     },
   ],
 }

@@ -49,23 +49,36 @@
               '';
             })
             (writeShellApplication {
-              name = "util_logcli";
+              name = "util_repo_my_cluster_gitops_logcli";
               runtimeInputs = with pkgs; [
                 kubectl
                 grafana-loki
               ];
               text = ''
                 query="$1"
-                kubectl port-forward svc/loki -n loki --context brokenpip3 3100:3100 >/dev/null 2>&1 &
+                kubectl port-forward svc/loki -n loki 3100:3100 >/dev/null 2>&1 &
                 _PID=$!
                 sleep 1
                 ${pkgs.grafana-loki}/bin/logcli "$query"
                 kill $_PID
               '';
             })
+            (writeShellApplication {
+              name = "util_repo_my_cluster_gitops_prometheus_open";
+              runtimeInputs = with pkgs; [
+                kubectl
+              ];
+              text = ''
+                sleep 2 && xdg-open http://localhost:9090 &
+                kubectl port-forward svc/prom-kube-prometheus-stack-prometheus -n monitoring 9090
+              '';
+            })
           ];
 
-          shellHook = '''';
+          shellHook = ''
+            printf "\nrepo utils:\n\n"
+            compgen -c util_repo_my_cluster_gitops_
+          '';
         };
       }
     );

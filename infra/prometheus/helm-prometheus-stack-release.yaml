@@ -28,13 +28,18 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: "62.x.x"
+      version: "82.x.x"
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
         namespace: flux-system
       interval: 10m
   values:
+    crds:
+      enabled: true
+      upgradeJob:
+        enabled: true
+        forceConflicts: true
     commonLabels:
       infra.gitops: prometheus
     defaultRules:
@@ -77,19 +82,23 @@ spec:
     prometheus:
       prometheusSpec:
         enableRemoteWriteReceiver: true
-        serviceMonitorSelectorNilUsesHelmValues: false
+        serviceMonitorSelector:
+          matchLabels: null
         serviceMonitorNamespaceSelector:
           matchLabels:
             prometheus: scrape
-        ruleSelectorNilUsesHelmValues: false
+        ruleSelector:
+          matchLabels: null
         ruleSelectorNamespaceSelector:
           matchLabels:
             prometheus: scrape
-        podMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelector:
+          matchLabels: null
         podMonitorNamespaceSelector:
           matchLabels:
             prometheus: scrape
-        probeSelectorNilUsesHelmValues: false
+        probeSelector:
+          matchLabels: null
         probeSelectorNamespaceSelector:
           matchLabels:
             prometheus: scrape
