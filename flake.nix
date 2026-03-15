@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    flux_2_4.url = "github:nixos/nixpkgs/d4f247e89f6e10120f911e2e2d2254a050d0f732";
+    flux_2_8.url = "github:nixos/nixpkgs/e607cb5360ff1234862ac9f8839522becb853bb9";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -13,7 +13,8 @@
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        flux = inputs.flux_2_4.legacyPackages.${system}.fluxcd;
+        flux = inputs.flux_2_8.legacyPackages.${system}.fluxcd;
+        flux-operator = inputs.flux_2_8.legacyPackages.${system}.fluxcd-operator;
         validationpkgs = [
           pkgs.kubeconform
           pkgs.kustomize
@@ -26,6 +27,7 @@
         devShells.default = nixpkgs.legacyPackages.${system}.mkShell {
           packages = with pkgs; [
             flux
+            flux-operator
             grafana-loki
             just
             kubectl-view-secret

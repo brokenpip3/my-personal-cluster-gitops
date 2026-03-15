@@ -18,19 +18,19 @@
         "type": "github"
       }
     },
-    "flux_2_4": {
+    "flux_2_8": {
       "locked": {
-        "lastModified": 1728863046,
-        "narHash": "sha256-DZBO2465PL5V89e8hFSJewyH4QbCPpW3ssws7ckT/0A=",
+        "lastModified": 1773110118,
+        "narHash": "sha256-mPAG8phMbCReKSiKAijjjd3v7uVcJOQ75gSjGJjt/Rk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d4f247e89f6e10120f911e2e2d2254a050d0f732",
+        "rev": "e607cb5360ff1234862ac9f8839522becb853bb9",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d4f247e89f6e10120f911e2e2d2254a050d0f732",
+        "rev": "e607cb5360ff1234862ac9f8839522becb853bb9",
         "type": "github"
       }
     },
@@ -53,7 +53,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "flux_2_4": "flux_2_4",
+        "flux_2_8": "flux_2_8",
         "nixpkgs": "nixpkgs"
       }
     },
