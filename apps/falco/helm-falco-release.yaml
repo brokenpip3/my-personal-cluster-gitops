@@ -15,7 +15,7 @@ spec:
                 name: falco
                 namespace: flux-system
             interval: 10m
-            version: 4.x.x
+            version: 8.x
     values:
       scc:
         create: false
