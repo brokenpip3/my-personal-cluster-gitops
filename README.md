@@ -43,6 +43,7 @@ This is my "fleet" repo that describe my entire k8s cluster, made with :heart: u
   * [Jenkins-operator](apps/jenkins/helm-jenkins-release.yaml)
   * [Jenkins Groovy and Casc configuration](apps/jenkins/jenkins-configuration.yaml)
 * [Taskd](apps/taskd) * ARCHIVED
+* [Taskchampion-sync-server](apps/tss)
 * [Memos](apps/memos)
 * [bowling-mania](apps/bowling-mania)
 * [lotb](apps/lotb) https://github.com/brokenpip3/lotb

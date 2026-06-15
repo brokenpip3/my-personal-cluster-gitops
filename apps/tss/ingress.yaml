@@ -1,0 +1,50 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    annotations:
+        kubernetes.io/ingress.class: nginxinc
+        cert-manager.io/cluster-issuer: letsencrypt-ovh
+    name: tss
+    namespace: tss
+spec:
+    rules:
+        - host: ENC[AES256_GCM,data:aIKjGsAUDLy3jM3gLdHwpDqF06wo,iv:sGtri/UYwsUYd9D0AAGCwNT/CqGtHI8hzr75xtSxmOA=,tag:M1eEHBjgp3PWq3GNs7MXxQ==,type:str]
+          http:
+            paths:
+                - backend:
+                    service:
+                        name: ENC[AES256_GCM,data:bamo,iv:2ZHsshSIqJYdIhtLmLeqDu8G9xtHIV/4DDlxe7RfJLE=,tag:t7L4KO/UE5o5KLG8bLAfDw==,type:str]
+                        port:
+                            number: ENC[AES256_GCM,data:i3VlkA==,iv:yHDmLJMhFUuNG7b12U9xvBnM7m8te9eOBAoy4lhpy7I=,tag:e+bu5y3Koa0N1S1K4i6WBg==,type:int]
+                  path: ENC[AES256_GCM,data:4w==,iv:KtMguXyienOK8mlxk6nTpgCP/pISkBKYd9y/S62vrjs=,tag:pQhRiJGEWHvz6Ip+KChI+g==,type:str]
+                  pathType: ENC[AES256_GCM,data:ENHj3+Xl3tL5v+bc4OVDsatJZjgYBg==,iv:TIVpiXex7TFrsMTTEJe8zuy4Xxx2g3sXVeDCCtlZyLc=,tag:ayvNBjMZjH2lN6l8iKcCng==,type:str]
+    tls:
+        - hosts:
+            - ENC[AES256_GCM,data:40H6UXxtZVe5Ga7Hs6U3FBWiWP5M,iv:BAa1YCdJw9V8I3VHqQ2zRVtMbW+nQ77zicCgMeMXD5o=,tag:SliiPj3oLeVscwlxqR4Rcw==,type:str]
+          secretName: tss-ingress-tls-cert
+sops:
+    lastmodified: "2026-06-15T16:15:12Z"
+    mac: ENC[AES256_GCM,data:pLLHpIBG6aGV8X8fp02Os6SbdAKc+N/l6HzSWks+LL3sOb7PbR0rPrAZbEm74TtbhNHzRYYdZuMcFRBTLk8ApurbWX/dcyI19kj2928Pb6AqXsBHBgbh39xxQ3YSAsNx/8vvVFK6r0PeeJF4ziHSj7p5dOecpTu+X6+kt4Eenng=,iv:92Oohpo/bDtkKhuzeS1Y3kHVa0W9Sq9tjSocQd3NMw0=,tag:SWdbTP3jPjl8JwhFIzN+rQ==,type:str]
+    pgp:
+        - created_at: "2026-06-15T16:15:12Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5AQ/+MtVWD00JIUOXQdFdyVKqJksQf8KeItGQHeLdUjhmie8P
+            LhiVbvZSsCyJJU+jmZKs7A14hE42VNViILU862m9UwLX4RgTBnkbDSYqIO44ST0d
+            jdlCsxk43h1GvNOXro9bU2GDRVsds52hSI8Fn1HEvsg19fBTVXO4JVZXaR0M15MT
+            xwjcwqs933mUS20GigWxSJ7490w0hSK048pS06Pi1wfp3NnUK3oJleOoYNoV5Dlx
+            sErI3dlJaIaCdbDybk2eBhTPwuCRof2WGTMKAdm0RQD1MPUXc4io2uj+sVyv1LMp
+            a+EUQt6d/pJY0QFrleGSVwaurQPjuNQl1RZBrc1xdW4cGGVNpO4NDG/hTOxjb3A7
+            MU68PLpIU8A2OHvE8peh5i+2biaFtljXH1aHpnIz/UV39VNvjfmcc5PEDAECIAny
+            gTvfg+XNHGTNZhgSLkA+5QXsruf7Eeb1/Gq0aeiqBCQxJVKa62e3oqDbiSvzsius
+            4R4LxU3AvU0or6mFjAQk59tO2+L39tr0Q285O+7O7qZ5pWPoW6ExcT+4A/mPVO1f
+            D/q9WLysmk+IUKjJ9IeLbZI0KXoRWKVj4C18CawqibiSFpNcwTthe7Ov1wZBbXyE
+            Bu0TYp5oQzQpFF7qePEtzQ2Ez+FCY0KltGThb4hlYoDSlS49f6dr8fChOUFT9evS
+            VgGgQVdRPA5zTRoyA5qiO32f6XNdPBC9XBmMoVmYhNUwjxUzIVMogUkjQF4zLoW1
+            NdhvDlUidM04h0iRVopzGswtvPwqm5snj7z2bvpPufMaFCUGKOde
+            =Pw8g
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|configLogicalBackup|paths|dnsNames|channel|image)$
+    version: 3.11.0
