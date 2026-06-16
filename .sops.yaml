@@ -1,4 +1,7 @@
 creation_rules:
-  - path_regex: .*.yaml
+  - path_regex: apps/.+/ingress.*\.yaml
+    encrypted_regex: ^(host|hosts|dnsNames)$
+    pgp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+  - path_regex: .*\.yaml
     encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|configLogicalBackup|paths|dnsNames|channel|image)$
     pgp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
