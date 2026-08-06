@@ -1,0 +1,52 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    annotations:
+        kubernetes.io/ingress.class: nginxinc
+        cert-manager.io/cluster-issuer: letsencrypt-ovh
+    name: authentik
+    namespace: authentik
+    labels:
+        app: authentik
+spec:
+    rules:
+        - host: ENC[AES256_GCM,data:4Ji0QGqKEHFjnL4Cn6BFJ91BqENeuQ==,iv:5ArnFjNusQl71v+CupPFUycBfEYFfxQtRe+Ex5UJK1U=,tag:WGqvJrV80YO6CKMVtS0VtQ==,type:str]
+          http:
+            paths:
+                - backend:
+                    service:
+                        name: ENC[AES256_GCM,data:/tq7UvzF+fkFmGyLY79a5g==,iv:xuexY6YYQ1iiSorTb5esHBoQd+q4U6U/RmK0rLuLSn0=,tag:m2AEEHwF0dGedgiLJJxEbQ==,type:str]
+                        port:
+                            number: ENC[AES256_GCM,data:obU=,iv:W1qI7Z/mvq7lWtEWNw95GtVzZs+mzjEV+QXhG/4UstQ=,tag:cVuAMQ9C6mxnBWuGsFwWsA==,type:int]
+                  path: ENC[AES256_GCM,data:rw==,iv:thW8MVxFzz2ECKmTSEoLobRvwAdXGWH/b/jmEzGkzqo=,tag:Y4FgVM4X4PQQtrvxZ00tvA==,type:str]
+                  pathType: ENC[AES256_GCM,data:NF/EuZZN,iv:B297jqBq4Dz87XqWJYDHzTd3TEMinxokFi1ptT5+2Bo=,tag:izhhuDUBWhv3HjkEnGV5kw==,type:str]
+    tls:
+        - hosts:
+            - ENC[AES256_GCM,data:oGpMai4fbmVjlOWUnQVPprJXbhXwEQ==,iv:kwlbVWs5Ba7CMXwP4DtWCp8TIjsStOLfAYoAdLPP8wo=,tag:H35KgYDudlXSm+WFkpiGsg==,type:str]
+          secretName: authentik-tls
+sops:
+    lastmodified: "2026-08-03T13:27:35Z"
+    mac: ENC[AES256_GCM,data:IpZws2CPbYdCFnQwlGspp2DCiW3ks5AQzHL6JwdKcmZ8ePh0Oh+VV0XhXUVr4AnM6Eu9Hok3P4nQws0WaJf1kXDH5dEamikX5k3wBtnXgzbfLZaKaDKmvITLn5lTcnvHw+YoYadFKhe0nWJPyTOYdmLD+fQuOBQu9y3QlU7pBXI=,iv:JLZxREY3WfEG+ZTGppx8fMfXOEXU6zCNz/tdZ4Gmofg=,tag:J7royb5S/dbXoFGlKQvw7A==,type:str]
+    pgp:
+        - created_at: "2026-08-03T13:27:35Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5ARAAkYhIUIJ8cuIvdnjVqPqZVt0L8gA+1E//Dpu7KR42RTVj
+            NcymBwJIkHjOzNcPfoJnIQF5gmmxVfpYkbAGqs+OIGHgDT8j0QtbiAMwNcYy+Tkv
+            ETIp2g6Dt1nwfYzuPlh/XTWfYG1AEqCNSfCKXPQ/rQ6jqUggb/gbzZxsf779ogWW
+            Ar/kvL4sdbh5EnEi0u/WYf2kNoYJenAi3QLDZtqbZceKd2cuer1Yi/RhAP1HPged
+            nNW74ywyCoqn/ON9sJ+pdG5ymxKK+KPHu7K8Rggo8ZI24f5htPRlItdMzKJKIgx5
+            0eyu/DXyTYH932b+fyusHyxY5HCVglkU4JCtgi+Bc3lNf+6e3zrHAvv+1u2wWjc4
+            sdEOgS6sLuiiZyh77V4xCeLBofb/jNF5tcce8Q+T9F4YoLlTmH4tuFOZ6V7K3rLj
+            yuBqdcg3Ab3cpjh0QvyBgrtJAJrfFeZzquzkJZjyVyRrK5PvIJrlhCB+FR2OqWgn
+            wQvpN+QVGvAGj6i5WM9f8K/E+A6j6aGqsdv+txikvp7oblE8N3EYVYad7TOk1Nfp
+            kmicg2+OPDZMMgP9elvccb1YsrFwzMowo9UsSqdTxQTBz6izw02keKHqDk/vAIN1
+            nQLJx65KibPbXW395yLzHGfcMRuLOaeuvJ+gwRHFtxGubHHbjk0PQTY3l7Rxpn/S
+            VgEAPDfWayWWPjCYuvQLxeW/DClXv7rDwEQ5ONrKnIYgLVdFUnYXR5L9n+PDnvEs
+            ax3UO/iuuxDwm8a6iALdlffgm/SRfnKPxGO53VhndBYa9WZWKqXy
+            =tuXc
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|configLogicalBackup|paths|dnsNames|channel|image)$
+    version: 3.11.0

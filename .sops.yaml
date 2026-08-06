@@ -1,4 +1,7 @@
 creation_rules:
+  - path_regex: apps/minio/tenant/minio-tenant-s3-ingress\.yaml
+    encrypted_regex: ^(host|hosts|dnsNames|nginx\.org/allowed-sources)$
+    pgp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
   - path_regex: apps/.+/ingress.*\.yaml
     encrypted_regex: ^(host|hosts|dnsNames)$
     pgp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C

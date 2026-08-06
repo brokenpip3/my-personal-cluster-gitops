@@ -1,0 +1,71 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+    name: authentik
+    namespace: authentik
+spec:
+    interval: 15m
+    releaseName: authentik
+    dependsOn:
+    - name: cert-manager
+      namespace: cert-manager
+    chart:
+        spec:
+            chart: authentik
+            sourceRef:
+                kind: HelmRepository
+                name: authentik
+                namespace: flux-system
+            interval: 10m
+            version: "2026.x.x"
+    values:
+      blueprints:
+        secrets:
+          - authentik-blueprints
+      authentik:
+        log_level: info
+        web:
+          path: /
+        existingSecret:
+          secretName: authentik
+        email:
+          host: ""
+          from: ""
+        postgresql:
+          host: authentik-authentik.authentik.svc.cluster.local
+          name: authentik
+          user: authentik
+          port: 5432
+
+      postgresql:
+        enabled: false
+
+      server:
+        replicas: 1
+        ingress:
+          enabled: false
+        resources:
+          limits:
+            memory: 2Gi
+          requests:
+            cpu: 200m
+            memory: 512Mi
+        metrics:
+          enabled: true
+          serviceMonitor:
+            enabled: true
+
+      worker:
+        replicas: 1
+        resources:
+          limits:
+            memory: 2Gi
+          requests:
+            cpu: 200m
+            memory: 512Mi
+
+      prometheus:
+        rules:
+          enabled: false
+...

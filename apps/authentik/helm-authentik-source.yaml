@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: authentik
+    labels:
+      apps.gitops: authentik
+      prometheus: scrape
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+    name: authentik
+    namespace: flux-system
+spec:
+    interval: 10m
+    url: https://charts.goauthentik.io
+...
