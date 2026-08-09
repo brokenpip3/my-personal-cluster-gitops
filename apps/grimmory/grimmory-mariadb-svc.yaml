@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: grimmory-mariadb
+  namespace: grimmory
+  labels:
+    app: grimmory-mariadb
+spec:
+  clusterIP: None
+  selector:
+    app: grimmory-mariadb
+  ports:
+  - name: mysql
+    port: 3306
+    targetPort: mysql
+    protocol: TCP

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: grimmory
+  namespace: grimmory
+  labels:
+    app: grimmory
+spec:
+  selector:
+    app: grimmory
+  ports:
+  - name: http
+    port: 6060
+    targetPort: http
+    protocol: TCP

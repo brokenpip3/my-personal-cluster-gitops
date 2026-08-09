@@ -1,0 +1,78 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: grimmory-mariadb-backup
+  namespace: grimmory
+  labels:
+    apps.gitops: grimmory
+spec:
+  schedule: "40 2 * * 1"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 2
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            fsGroup: 1000
+          containers:
+          - name: dump
+            image: lscr.io/linuxserver/mariadb:11.8.8
+            command: ["/bin/sh", "-c"]
+            args:
+            - |
+              mariadb-dump --single-transaction --quick --lock-tables=false \
+                -h grimmory-mariadb -u grimmory -p"$MYSQL_PASSWORD" \
+                --databases grimmory | gzip > /backup/grimmory-$(date +%Y-%m-%d_%H%M%S).sql.gz
+              ls -la /backup/
+            env:
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: grimmory
+                  key: DATABASE_PASSWORD
+            volumeMounts:
+            - name: backup
+              mountPath: /backup
+          - name: upload
+            image: docker.io/minio/mc:latest
+            command: ["/bin/sh", "-c"]
+            args:
+            - |
+              set -e
+              mc alias set minio "$MINIO_ENDPOINT" "$MINIO_ACCESS_KEY" "$MINIO_SECRET_KEY"
+              mc cp /backup/*.sql.gz minio/"$MINIO_BUCKET"/mariadb/grimmory/
+              mc rm --recursive --force --older-than 14d minio/"$MINIO_BUCKET"/mariadb/grimmory/
+            env:
+            - name: HOME
+              value: /tmp
+            - name: MINIO_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: grimmory-backup
+                  key: MINIO_ENDPOINT
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: grimmory-backup
+                  key: MINIO_ACCESS_KEY
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: grimmory-backup
+                  key: MINIO_SECRET_KEY
+            - name: MINIO_BUCKET
+              valueFrom:
+                secretKeyRef:
+                  name: grimmory-backup
+                  key: MINIO_BUCKET
+            volumeMounts:
+            - name: backup
+              mountPath: /backup
+          volumes:
+          - name: backup
+            emptyDir: {}

@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- grimmory-namespace.yaml
+- grimmory-mariadb-sts.yaml
+- grimmory-mariadb-svc.yaml
+- grimmory-pvc.yaml
+- grimmory-secret.yaml
+- grimmory-config.yaml
+- grimmory-deployment.yaml
+- grimmory-svc.yaml
+- grimmory-ingress.yaml
+- grimmory-mariadb-backup-secret.yaml
+- grimmory-mariadb-backup.yaml

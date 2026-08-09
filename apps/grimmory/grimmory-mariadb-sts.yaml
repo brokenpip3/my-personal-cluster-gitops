@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: grimmory-mariadb
+  namespace: grimmory
+  labels:
+    app: grimmory-mariadb
+spec:
+  serviceName: grimmory-mariadb
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grimmory-mariadb
+  template:
+    metadata:
+      labels:
+        app: grimmory-mariadb
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+      - name: mariadb
+        image: lscr.io/linuxserver/mariadb:11.8.8
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: Etc/UTC
+        - name: MYSQL_DATABASE
+          value: grimmory
+        - name: MYSQL_USER
+          value: grimmory
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: grimmory
+              key: DATABASE_PASSWORD
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: grimmory
+              key: MYSQL_ROOT_PASSWORD
+        ports:
+        - containerPort: 3306
+          name: mysql
+          protocol: TCP
+        livenessProbe:
+          tcpSocket:
+            port: mysql
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          tcpSocket:
+            port: mysql
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: "1"
+            memory: 1Gi
+        volumeMounts:
+        - mountPath: /config
+          name: data
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 10Gi
+      storageClassName: local
+      volumeMode: Filesystem

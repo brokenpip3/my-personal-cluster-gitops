@@ -1,0 +1,53 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: grimmory
+    namespace: grimmory
+    annotations:
+        kubernetes.io/ingress.class: nginxinc
+        nginx.org/client-max-body-size: 100m
+        cert-manager.io/cluster-issuer: letsencrypt-ovh
+    labels:
+        app: grimmory
+spec:
+    rules:
+        - host: ENC[AES256_GCM,data:YmUfhOTufZf2tVpSHtkrIp/OVFEX+Q==,iv:l5asn21mTfmnIXgVO/+qGKG2QZgfXsjYbwlvUtvQPBU=,tag:6CzHpR73KQ5e8BctSp1mqA==,type:str]
+          http:
+            paths:
+                - path: ENC[AES256_GCM,data:Rw==,iv:xjCGhqEZ0P7DIiyhUxdOqDMfUZ/MZIEIhVou6V0fd/E=,tag:uK+AaO1sBYHkv2NlvxQzdg==,type:str]
+                  pathType: ENC[AES256_GCM,data:8F4RATJP,iv:Gtg8GLPftuJtDLWhYxZbGZ7VIe8IjAy1O0dMb2aOxU4=,tag:sJX6iDRwqEcl8OQS9WI7VQ==,type:str]
+                  backend:
+                    service:
+                        name: ENC[AES256_GCM,data:2xAnyxQMbtE=,iv:WqSPABl6Umkjb2ZitTKVOa+IZeGi+mpCD5ifZVFKh2c=,tag:0w02deeZC6i0gXTW19jL/w==,type:str]
+                        port:
+                            number: ENC[AES256_GCM,data:d5d/WQ==,iv:Vs5vVwTXPCTiaBqhcJPxcPmM4tzxRoZr9jHpi0g3wP0=,tag:8nYpCMZQ1mg3KzIdm1Pzvg==,type:int]
+    tls:
+        - hosts:
+            - ENC[AES256_GCM,data:3enKzggv3CJNJPKdLg8eZjNPeKhziw==,iv:tjv9tWZOIQ5aOgKO1hsXXVxb6jG4EdFPdEBaMyd5+tA=,tag:fKSAJ1mGR6Wyq8Y5YtGJXA==,type:str]
+          secretName: grimmory-tls
+sops:
+    lastmodified: "2026-08-08T18:22:11Z"
+    mac: ENC[AES256_GCM,data:jJ8f5+2L43X+54cmZQjKxRoovo77zix4oTgveq8vUuiVE4MdvIsnkurtfsrB+2JE3frO1OEAz0sLJfUXH9ir4h6989iuZ5DVN7Ez6176xFdGw/XFwUYAI0mWkMzP33jXNbwMxJ7FzniK75QuTD9e93AB/48rH8NOW9muOtWMtrs=,iv:WlT2SCJ139s+jr4+pz0H4R//kgTB1PSGikhZdP1aeas=,tag:rhLC57DJIKJixOaMdAzVqw==,type:str]
+    pgp:
+        - created_at: "2026-08-08T18:22:11Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5AQ/8CUaAlsEHO1VUFOSnfuZwnad8Ms2ZcYIaU91eT8IVXjy4
+            8BxPAeoVKbUH4sI8dAACff6zv23/pZG87UtB1uyDPT6ksTTNEI0qZB4zp2GiX45N
+            kMsAHIUjb2cVHaYRn109Nixn4rsbn2Bn5pYj8XHo4WzODqeiKS8BPrB/3JcoGXo7
+            jD3DCdz20v4urQK6bLWfh1GEl65zlEDOtxe7eeygLQ61atsIqTnFIyqpmZ/a3LR8
+            iLLw7oRP5tj0Jx1Vj+LYFJ909WdsJ/aNRn0rXxIuTugITlBsACBxrJbXYypGN5iW
+            KED+ZcwVUdhYJm7qK9Rb/GdSE/YK0XzCumTnokz4nUC324x1K0EzkDlZVQ6yhd2E
+            7M8RA0zAC9EEpNqqUCgdealQXzw3tTJRYyroJdQDcTcwKPA3G7qWD8xpf3NvMfM3
+            v6FmZ2qKfULi7TQ4IY9G9vKYKCVtTMmJxjsr3ij5AMF9+A/+ZvRMVUuuSrCbhCdF
+            EkweqVRYkTfAElRDpgR6OZHr2LE44oFIRxU2CwMg1tT79yp/mJ1lP2gSWLgF5eI9
+            6gUFg7+POr2OBRlzsegYxL7ONsyYSJgxO8FAvVridlC9q9x2XUCJZmDh+lkkSdR+
+            Wxhj8sHrd2RhHqtF8IzfbGWfbnKuPyjD68qzUZEolnPDvlly92gxa1F+T3kvYgfS
+            WAHDbA22iuqCZiK0KLhNHs7hKIhnFmiPD75lAm6NdJ/OilciqBcmI1e02GZRPQx4
+            +dMhqBMvoi8bv1BAucwPjrmRHJa3Hj3Pf3nJuqnNjB/a+SUKtezysns=
+            =ZtWG
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|configLogicalBackup|paths|dnsNames|channel|image)$
+    version: 3.11.0
