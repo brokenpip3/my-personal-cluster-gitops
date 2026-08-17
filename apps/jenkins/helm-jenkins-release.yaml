@@ -30,7 +30,7 @@ spec:
       jenkins:
         enabled: true
         namespace: jenkins
-        image: docker.io/jenkins/jenkins:2.541.2-lts
+        image: docker.io/jenkins/jenkins:2.568.2-lts
         plugins:
         - name: github-branch-source
           version: 1967.vdea_d580c1a_b_a_
