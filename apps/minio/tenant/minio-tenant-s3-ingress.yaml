@@ -7,17 +7,17 @@ metadata:
         nginx.org/ssl-services: minio
         nginx.org/client-max-body-size: 0m
         nginx.org/rewrites: serviceName=minio rewrite=/
-        nginx.org/allowed-sources: ENC[AES256_GCM,data:W8XSx3ZXoQ9qXgr1TXxtzbYdNyMHCbkW5Z3xwh4=,iv:OkGmd1ebq+c8cYinZI0bkUVarVZsId8zUcxl7aDStO0=,tag:D8CraIDiOKLJoHWnAIMqCg==,type:str]
+        nginx.org/allowed-sources: ENC[AES256_GCM,data:oB2Ya1ByUGiQC4b+4n0LuK3+UQ9zmnHSOmyZrbI=,iv:Y7SlOcEdlm0eAoE8glaizk31mmCvj0Y5QzL10UlGv+c=,tag:8VQxcLTIcot7SdpyQisvlw==,type:str]
 spec:
     tls:
         - hosts:
-            - ENC[AES256_GCM,data:qi7INoVE/2U86RUepxr17ZKQyCI=,iv:enoxb/r59efHlDEdtElJ2XQAjZzzVkuM1EGy5vKqbt0=,tag:RflGE+EfjuXLe8HLxNqpig==,type:str]
+            - ENC[AES256_GCM,data:ArU+kjGsBHsWkDMRC+WnHieDrDY=,iv:B2Y5Me8lHKKFbTFU3uv9bvf/Kl+sWjwXqdYb9CWcb9k=,tag:Wk51Vm/9Hctph2tzRCIC8w==,type:str]
           secretName: minio-tenant-s3-cert
         - hosts:
-            - ENC[AES256_GCM,data:6bb776Tpi5C8vuHU0uEy3urgH727oNPSAy3r,iv:fIE3DpNbbd2emQRQcYmVSMiRIVFW6tyvkW2FJXoklRs=,tag:Tz83r/lUPiBeZUJzKk/9Gg==,type:str]
+            - ENC[AES256_GCM,data:6KwCIARroimtWyxHJDAWEsEmYIW/5GE2v+0t,iv:QUAKKhDTcbHXWG+OhB82nQQ/ZZUi29R766Zr67dg+Bw=,tag:tQxG4/R3XuGKFIKJ3YUEgg==,type:str]
           secretName: minio-tenant-s3-cert
     rules:
-        - host: ENC[AES256_GCM,data:jCUSgCDj8cb+vympz0o4B2tRqlM=,iv:e6rLXjWzwS35hddBCyHjngp2DLZwaK9yYRRU9xJGRKk=,tag:6oOV+N+lJT7qkVSk/MkPBQ==,type:str]
+        - host: ENC[AES256_GCM,data:dOhA4jpjx/wylEo49naKa5yUKYQ=,iv:XdF9GhAZS/4cmu6rudRlAT9IhHWdftiU7FMsw5/dTA4=,tag:B8nml3QUZDrUvUGSS4853A==,type:str]
           http:
             paths:
                 - path: /
@@ -27,7 +27,7 @@ spec:
                         name: minio
                         port:
                             name: https-minio
-        - host: ENC[AES256_GCM,data:U715lq81G5Q/5HrDRxfdgVzv0UVR605/f1Xt,iv:S69FXUQJO/yf2RroYknncUtUB/iyrpuQgDosWomN9Cg=,tag:mFnhx8iMmamr4IWMRxn0Qg==,type:str]
+        - host: ENC[AES256_GCM,data:kjzndIrhK2plYPrNSILWPvaiZRsRPsYr4CRe,iv:TbxajTM3sNW2jTiK9o45iK7EPcevkTQbjMVyKsIyER8=,tag:h+3WH7nirMae+ohdceJyeA==,type:str]
           http:
             paths:
                 - path: /
@@ -38,27 +38,27 @@ spec:
                         port:
                             name: https-minio
 sops:
-    lastmodified: "2026-08-04T16:26:10Z"
-    mac: ENC[AES256_GCM,data:396iRRW45p3mmSoZDhKED7hq63co0uKa05WKwZdInLoJLLod2BWsX4z72gS+zbFo4CTs1mL+TIzwcadQL5/XuCbZ6qQhw+LyGgU1snc08GCibW8wvGrAGdFT4wJI8m3YiEd+GcnY3mchVdE+J/2GR+jkWU+Bhh0jl4pXKUGIJ8Y=,iv:5MfbZPq+XTZ3NFgIkXlpsHqmcSb65FZQwv7D45qrXRs=,tag:wvCAGQcbT+qSOs5Aw0eFeA==,type:str]
+    lastmodified: "2026-08-17T21:42:23Z"
+    mac: ENC[AES256_GCM,data:Y+YHMhF8NUHHZvuH2ElNrJ6wdeHWveLcLVTYRDtPJMIUITMHsaQG1Rzo18MxaLRFjvQMuGVXzuVl6mULUfOcZogKS3V9b99vXu/DGr1ZuMR8qx9uYuQ2gTXxGxMMmBP96GgfQ+Vixl/Wni1ps0uSrwrDBeV664t1I8//t+F3pZ0=,iv:yT4pKLcg5rkuL4Uzr9sfRzgEdpoVWuzebuugVyMW+aU=,tag:27le+7P0W9So5BgoleAZBw==,type:str]
     pgp:
-        - created_at: "2026-08-04T16:26:10Z"
+        - created_at: "2026-08-17T21:42:23Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hQIMAwP8FxNnerN5AQ/9Hvyli9xQ6IObggn3de9RnU7kw5/vM0L15Z/iTmbcZY+u
-            3/67bqypwQV41ah3H2S0tCodzpf5YMhL2O7/1ga1WpF6XkWGvoNXoDo8oajHlSoe
-            XCopjwGkDIGaVTedMfEJsQWQbGXijCCcFoDjpyAD38imwJKvM1f4FqALLUws9C0x
-            ec/uK/gVP0S8IlecEhwE024GVy0EpzaQoGxIEqkgPB8jorF2MuAk7TF5zUAwn3bq
-            vkRugiW+f3uyRTdQu4GZE6b84Uqv0Yqw0+XkW+ZhQknBNNwnMJhySdPCsocqexIL
-            MKCdVjJDZT7peKOuOFXnfrdc/6GWTyaDSSTTx/CzQMUEUA9TYTUF1CPMFpM0jD0e
-            jqfhwvUDK9eRPmO7MuYKf9vuULRzVpvK9kb5V/higu4WP0JGnEa7nCzZ+v+sfBth
-            xPMumQ+xfTPuSQlZa3q3FSq8Y7I9ZaB/T7wz3C/WAOXbW/dbO8FWC1UzON9uA0De
-            1q1h5F5kSR2a4CrOrEH4ycR2lC4kxor0PG5JCrRrjusv+SeM0vGiqwE4GeKl+/ja
-            37YM80BvFsgmdiHCZ2CE9hMy89SMO0sWeAVgfAU1Wqa9MYs54ZJeGZDUobUAcnB5
-            GT+8BtHAlAzVBTGHJHBXBAIxcOCi4vHVKpvYqY2LcKZ4j7g+HgqU2d1cRTQTPr/S
-            WAGc99Fu3JSNpb1w3kB4Neys/MoEbd6JlpagPwA9mfET1IWcRa/HnjS5LxnYtDvJ
-            sk8lR2P71qg99XX6G2DavGp8k655UgK/J6v7Odi2dtQ/QnW5hbzDeno=
-            =y/C4
+            hQIMAwP8FxNnerN5AQ/+K2Rc3vECegW1D5UWm5gVIWaaEeFL3LqJgyP/Uy3uwEdu
+            5fxvCLdjVtjTC+7OazB/Z8Jy4fBzN0L/V8wXu/54LdfwOYlfPNHUlhyts+xeUSdU
+            IFBqzzoTCa9isaJGDJ2i0mBRC86X+Q1poJDcan/1NoJqSOszt1ghNk+BLKeditko
+            ojfocqPvw6uh3B61URHQzQAoIP6wn3CFUKFqNiDNOWxfhPbl52GRgn6DivKMDkp6
+            M9yTCN1Qpm/U5YQX0lvxtVlyTbO5Pl1ldeWIAKjijRJrHw6VDhW/4+Bd/a8mlC3S
+            PPhhb33f33v+3wdQSBKD3nFggryOu8FO7t8Gw/bWfPvesyIVt3JsvLYYu0O1NyDi
+            sQTShnrOyX8VPqm7yaHKX1P4FVn/RG+a5G5r87ECP8SDIdfyUs9Up9H2kITTyVKy
+            IFFPKvXjV4P7d1YPVKGNFVr8gBKgkjJtoGHMNBnX9raCFsqa15stIU1zL2iDxXH7
+            gJutkUYbmAhM2j41+mLNoK8dU+Yxgnu0+dsGMjrzWlHvW3hYRj1SgY7nFG04SgGV
+            t1j2CJ1bYKWoAMUe272vyaSweZgCYDMouufJmN63lRQ7PKPXLTayXk6cnDmHwW43
+            SZ4oThYl4fiR7oymiegkkuGKyDo9jB8oPmozV60ejm/t6ot4IbABRHzvCkgPWjrS
+            WAETY+Css+r1Qz3SRuRUqe70JGq/8OONyhQFhXEa/p9kcKNsisCObrOm6B0R06Xb
+            yfjhYAXqA4MdyjR/Ud1VS5UMIsibmZcxiaZd9ptze48qdzUeKMUS4SQ=
+            =UVF8
             -----END PGP MESSAGE-----
           fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
     encrypted_regex: ^(host|hosts|dnsNames|nginx\.org/allowed-sources)$
