@@ -1,11 +1,11 @@
 apiVersion: acid.zalan.do/v1
 kind: postgresql
 metadata:
-  name: gitea-gitea
-  namespace: gitea
+  name: authentik-authentik
+  namespace: authentik
 spec:
   databases:
-    giteadb: gitea
+    authentik: authentik
   enableLogicalBackup: true
   spiloRunAsGroup: 103
   spiloRunAsUser: 101
@@ -13,9 +13,9 @@ spec:
   numberOfInstances: 1
   postgresql:
     version: "14"
-  teamId: gitea
+  teamId: authentik
   users:
-    gitea:
+    authentik:
     - superuser
     - createdb
   volume:
@@ -33,7 +33,7 @@ spec:
   sidecars:
   - env:
     - name: DATA_SOURCE_URI
-      value: localhost:5432/postgres?sslmode=disable
+      value: localhost:5432/authentik?sslmode=disable
     - name: DATA_SOURCE_USER
       value: $(POSTGRES_USER)
     - name: DATA_SOURCE_PASS

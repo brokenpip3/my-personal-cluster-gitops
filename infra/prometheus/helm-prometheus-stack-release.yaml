@@ -83,22 +83,22 @@ spec:
       prometheusSpec:
         enableRemoteWriteReceiver: true
         serviceMonitorSelector:
-          matchLabels: null
+          matchLabels: {}
         serviceMonitorNamespaceSelector:
           matchLabels:
             prometheus: scrape
         ruleSelector:
-          matchLabels: null
+          matchLabels: {}
         ruleSelectorNamespaceSelector:
           matchLabels:
             prometheus: scrape
         podMonitorSelector:
-          matchLabels: null
+          matchLabels: {}
         podMonitorNamespaceSelector:
           matchLabels:
             prometheus: scrape
         probeSelector:
-          matchLabels: null
+          matchLabels: {}
         probeSelectorNamespaceSelector:
           matchLabels:
             prometheus: scrape

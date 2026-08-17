@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grimmory-config
+  namespace: grimmory
+  labels:
+    apps.gitops: grimmory
+data:
+  USER_ID: "1000"
+  GROUP_ID: "1000"
+  TZ: Etc/UTC
+  DATABASE_URL: jdbc:mariadb://grimmory-mariadb:3306/grimmory
+  DATABASE_USERNAME: grimmory
+  BOOKLORE_PORT: "6060"
+  API_DOCS_ENABLED: "false"
+  DISK_TYPE: LOCAL

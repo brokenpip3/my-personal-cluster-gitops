@@ -1,0 +1,52 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    annotations:
+        kubernetes.io/ingress.class: nginxinc
+        cert-manager.io/cluster-issuer: letsencrypt-ovh
+    name: authentik
+    namespace: authentik
+    labels:
+        app: authentik
+spec:
+    rules:
+        - host: ENC[AES256_GCM,data:sSP26iTlEeSm+pSffp/zzkeYmRPb5Q==,iv:Ej4cR2lCLlf6HmyO2c59Ymc395yQsVsGaQu9j98cZUg=,tag:Gy8AiJOBhLNxu2CFTdx2SA==,type:str]
+          http:
+            paths:
+                - backend:
+                    service:
+                        name: authentik-server
+                        port:
+                            number: 80
+                  path: /
+                  pathType: Prefix
+    tls:
+        - hosts:
+            - ENC[AES256_GCM,data:tRjKehCWt9p2j/WLo0uV09cS2cSoYg==,iv:bc+SeAVuBQ9+JBx01K5n47cCJoRpXKa1Xy8UQnzc208=,tag:GW6fK6+jxSWjOicQ2vYhlQ==,type:str]
+          secretName: authentik-tls
+sops:
+    lastmodified: "2026-08-17T21:41:45Z"
+    mac: ENC[AES256_GCM,data:8Q9oB/S6ppAMhbNAb7XkW9qWS80NjsFBkhEx9Yal8sVdnOkHpFrAHstOum9wxXWGl9rvnczt2CiaRIEvA/lgsIUX8XrrldQ4816V942SL1kiLynH5UBw7KUdFfBjgd1hdFjCnoOBbgfL02EFFoxJ34M4ABoiM08CYh5seDrxg/k=,iv:hXq5MunHXkH3z5Q1HhIC/VgLOvCoooXHFf+FhMHIi8k=,tag:OKjV8vLj2f4Sp+4uJ38awQ==,type:str]
+    pgp:
+        - created_at: "2026-08-17T21:41:45Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5AQ//aMzT0qpJV8rBlToI+xteqxLWs902XP+hn8ijHT7LHx+7
+            2eGAWCmKLhOjmw8DRPz9YdIwGREr5Af5hcN0ptKqj7DkG8LhrVgEub0VheuM9jps
+            zfJJGFYVJTqgCLhq6ei33Os57IMxOq4ejo5Q7LmztMgK8IWSa1oHWg+147A/NiyX
+            2Ek3kv6vvZ3WZzHyD+ZBv2TMcp2xyNaj7+J91OfaWVs4I181vpd3gaHTCqUnVwbG
+            IAAoeX9WlIpl3O/3J7d3hQjzkYwK4dOd+B1u68RYowdqV5582lJ6VHq+7ycS6EqX
+            xyzIK41bx/Zcwl3HrjDuLGxniaoGKsmV8B/fl5BdZghmX2PSYiri+NP4W9k8v9MT
+            mZvCE8kUseeIYAjq81GZ93NkvJae8MBEF4JwI3xFNUvfawUtBKY8haE0L0aSWq+Q
+            h4yV9HgTGi9SZRqNihTa41/nlsKd3pbxWH+9Awc9QJ8r+/bWJp/D/vvSqUnvFbs5
+            GnqOW1Zg51TcCZY1nMK2obR7bS8m6buSOagpqwXnCb/wtsGdQUi8TbetLKUuxOrq
+            qaV38JXo3v8KqA5XyqmA4VWRUDg2ghLTXicS8OMcGC8X4QCZ6kkyZHkjC+6FlgtD
+            nG12RnNa21Wee+7u73s30k8c25Pbf2WjsohtWrUhPDI3+kokXGWtx4JdHqoGVAPS
+            WAHmAnuxxRY52m+1vtzfEQpueScwEt2gcbQilppGYHmoLHNxPx9qxLXVPW0jmfRy
+            T1ZXmZp0xeiCBbSmcmghesgUvLvRnCIcSnFP6JG+s4byOUkE2FZiN0w=
+            =AnUo
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(host|hosts|dnsNames|nginx\.org/allowed-sources)$
+    version: 3.11.0

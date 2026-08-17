@@ -19,7 +19,7 @@ spec:
       config:
         clients:
           - url: http://loki:3100/loki/api/v1/push
-        snippets:
+        #snippets:
           #extraScrapeConfigs: |
           #  - job_name: pacmanlog
           #    static_configs:

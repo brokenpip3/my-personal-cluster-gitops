@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grimmory
+  namespace: grimmory
+  labels:
+    app: grimmory
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: grimmory
+  template:
+    metadata:
+      labels:
+        app: grimmory
+    spec:
+      containers:
+      - name: grimmory
+        image: ghcr.io/grimmory-tools/grimmory:v3.3.0
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - configMapRef:
+            name: grimmory-config
+        - secretRef:
+            name: grimmory
+        ports:
+        - containerPort: 6060
+          name: http
+          protocol: TCP
+        livenessProbe:
+          tcpSocket:
+            port: http
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          tcpSocket:
+            port: http
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        resources:
+          requests:
+            memory: 256Mi
+          limits:
+            memory: 2Gi
+        volumeMounts:
+        - mountPath: /app/data
+          name: data
+        - mountPath: /books
+          name: books
+        - mountPath: /bookdrop
+          name: bookdrop
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: grimmory-data
+      - name: books
+        persistentVolumeClaim:
+          claimName: grimmory-books
+      - name: bookdrop
+        persistentVolumeClaim:
+          claimName: grimmory-bookdrop
