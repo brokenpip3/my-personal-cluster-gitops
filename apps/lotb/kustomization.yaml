@@ -4,4 +4,6 @@ resources:
 - namespace.yaml
 - pvc.yaml
 - secrets.yaml
+- lotb-backup-secret.yaml
+- lotb-backup.yaml
 - deployment.yaml

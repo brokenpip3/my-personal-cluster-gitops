@@ -1,0 +1,86 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: bowling-backup
+  namespace: bowling
+  labels:
+    apps.gitops: bowling-mania
+spec:
+  schedule: "0 5 * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 2
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            fsGroup: 1000
+          initContainers:
+          - name: dump
+            image: docker.io/library/alpine:3.20
+            command: ["/bin/sh", "-c"]
+            args:
+            - |
+              set -e
+              SRC=/home/appuser/data
+              TS=bowling-$(date +%Y-%m-%d_%H%M%S)
+              mkdir -p /backup/$TS
+              cp "$SRC"/bowling.db* "$SRC"/backup-*.db /backup/$TS/
+              tar -czf /backup/$TS.tar.gz -C /backup $TS
+              rm -rf /backup/$TS
+              ls -la /backup/
+            securityContext:
+              runAsUser: 0
+              runAsGroup: 0
+            volumeMounts:
+            - name: data
+              mountPath: /home/appuser/data
+              readOnly: true
+            - name: backup
+              mountPath: /backup
+          containers:
+          - name: upload
+            image: docker.io/minio/mc:latest
+            command: ["/bin/sh", "-c"]
+            args:
+            - |
+              set -e
+              mc alias set minio "$MINIO_ENDPOINT" "$MINIO_ACCESS_KEY" "$MINIO_SECRET_KEY"
+              mc cp /backup/*.tar.gz minio/"$MINIO_BUCKET"/
+            env:
+            - name: HOME
+              value: /tmp
+            - name: MINIO_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: bowling-backup
+                  key: MINIO_ENDPOINT
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: bowling-backup
+                  key: MINIO_ACCESS_KEY
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: bowling-backup
+                  key: MINIO_SECRET_KEY
+            - name: MINIO_BUCKET
+              valueFrom:
+                secretKeyRef:
+                  name: bowling-backup
+                  key: MINIO_BUCKET
+            volumeMounts:
+            - name: backup
+              mountPath: /backup
+          volumes:
+          - name: data
+            persistentVolumeClaim:
+              claimName: bowling-data
+              readOnly: true
+          - name: backup
+            emptyDir: {}
