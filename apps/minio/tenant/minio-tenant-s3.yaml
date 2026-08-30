@@ -54,3 +54,4 @@ spec:
     bucketDNS: false
   buckets:
     - name: pg-backup
+    - name: tss-backup

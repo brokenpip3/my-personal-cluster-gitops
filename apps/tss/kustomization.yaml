@@ -4,6 +4,8 @@ resources:
 - namespace.yaml
 - pvc.yaml
 - secrets.yaml
+- tss-backup-secret.yaml
+- tss-backup.yaml
 - svc.yaml
 - deployment.yaml
 - ingress.yaml
