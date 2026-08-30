@@ -3,6 +3,8 @@ kind: Kustomization
 resources:
 - namespace.yaml
 - pvc.yaml
+- bowling-backup-secret.yaml
+- bowling-backup.yaml
 - service.yaml
 - deployment.yaml
 - ingress.yaml
