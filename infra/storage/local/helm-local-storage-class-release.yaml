@@ -16,7 +16,7 @@ spec:
     values:
         image:
             repository: ENC[AES256_GCM,data:i3p6V7/+9AD11DWn4KBK6tD7BA4lPCAtUxEB/SZ3kqtswsmWz8fm1Q==,iv:m0+GqeZm9R3c2ktnRKiRY5Zg4fgS+0EKKcXllVMKoPo=,tag:Bszd5dhmwGipQDNGBaI31A==,type:str]
-            tag: ENC[AES256_GCM,data:2z1QPfdHmQ==,iv:lOZhLPnEZK71rSWndjHVpDAy41lZtWkupccP85ejhgY=,tag:MYrHMf2k1tSTeVK4y79FEQ==,type:str]
+            tag: ENC[AES256_GCM,data:zhaUtcd6LA==,iv:mtiVrhvAQpTufPN8PU7tIB3aHkStHJvvdus96f1eBxU=,tag:Bb1HzHkbGymKFj9TEg03ig==,type:str]
         storageClass:
             create: true
             defaultClass: true
@@ -28,8 +28,8 @@ spec:
               paths:
                 - ENC[AES256_GCM,data:6+f1+w3QNIBt+CP6v2aX5Bfja9kl+wQ=,iv:OyW4EE+sYi3btUrCxq4177py9rk9k3TnY6IbkWqI4Fo=,tag:mwYIdvTNILShmQOc9d+OXg==,type:str]
 sops:
-    lastmodified: "2026-02-01T19:11:05Z"
-    mac: ENC[AES256_GCM,data:atZRqbhXv9uK17+EqslMCQ/QcCqQWef8DbZW/RDXqHI06+7tEUInKuPNTeoJxVRoZ1liUSozgYkjgyJGjB+KpP2NKvtBCOZalqwdGx94tFERKazjtcXu00sB2c3mGDIb5j09+oXCbF70VGuRdW4YTYN8bLojOZWYnGYBJBtto4I=,iv:0PzLzcT2pWUOaYH9tbP3fBvZRhX2z0ffBHDqkk7+tKM=,tag:rN0Ogy1sJuRiIW3JzxkKkg==,type:str]
+    lastmodified: "2026-08-30T09:58:51Z"
+    mac: ENC[AES256_GCM,data:G1/w6G1C6d+TlEN7oPdcYwohapvQgVPZ+2dJmku/CM8dDNW6P7OG3edwMZnsgrfu3dffqP02A+NY+Awd7XCZhOd9+0ufgJy4Rzut5qBuZpsa9/05c4Cr7G+V6obmMaT5ko9U5kdZ7rPk5cMTImpWb8w2jQ/Xv66hPNE4PFhDS64=,iv:trE/c93ojQoctpdRxXeNGuWqtu2aTEe8LRhunXVExnw=,tag:A8lXF4k8ktDbvArEBHHomw==,type:str]
     pgp:
         - created_at: "2026-02-01T19:11:05Z"
           enc: |-
