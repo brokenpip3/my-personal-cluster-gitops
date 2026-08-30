@@ -37,8 +37,10 @@ This is my "fleet" repo that describe my entire k8s cluster, made with :heart: u
 
 ### Apps
 
+* [Authentik](apps/authentik)
 * [Gitea](apps/gitea)
 * [Falco](apps/falco)
+* [Grimmory](apps/grimmory)
 * [Jenkins](apps/jenkins)
   * [Jenkins-operator](apps/jenkins/helm-jenkins-release.yaml)
   * [Jenkins Groovy and Casc configuration](apps/jenkins/jenkins-configuration.yaml)
