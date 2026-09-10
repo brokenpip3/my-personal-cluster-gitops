@@ -18,7 +18,7 @@ spec:
                 name: authentik
                 namespace: flux-system
             interval: 10m
-            version: "2026.5.6"
+            version: "2026.8.2"
     values:
       blueprints:
         secrets:
