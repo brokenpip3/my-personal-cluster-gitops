@@ -21,7 +21,7 @@ spec:
             fsGroup: 1000
           initContainers:
           - name: dump
-            image: docker.io/library/alpine:3.20
+            image: docker.io/library/alpine:3.24
             command: ["/bin/sh", "-c"]
             args:
             - |
