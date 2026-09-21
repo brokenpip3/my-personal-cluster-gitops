@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: grimmory
-        image: ghcr.io/grimmory-tools/grimmory:v3.3.3
+        image: ghcr.io/grimmory-tools/grimmory:v3.5.0
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
