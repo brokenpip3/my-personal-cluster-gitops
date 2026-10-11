@@ -5,7 +5,7 @@ metadata:
     namespace: grimmory
     annotations:
         kubernetes.io/ingress.class: nginxinc
-        nginx.org/client-max-body-size: 100m
+        nginx.org/client-max-body-size: 400m
         cert-manager.io/cluster-issuer: letsencrypt-ovh
     labels:
         app: grimmory
