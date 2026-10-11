@@ -1,0 +1,45 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServerRoute
+metadata:
+    name: foundryvtt-vsroute
+    namespace: foundryvtt
+    labels:
+        app: foundryvtt
+spec:
+    host: ENC[AES256_GCM,data:56G5KfdKTaZxJll4FrZMXka4APAp3CQ+HNjRzg==,iv:HUAGpvXbvR/0nBcPZIj684rV88XOGxLu/4DtNxOwqIk=,tag:QDpUlOLZRbpVPzmqyU3fAA==,type:str]
+    upstreams:
+        - name: foundryvtt
+          service: foundryvtt
+          port: 30000
+    subroutes:
+        - path: /
+          policies:
+            - name: authentik-forward-auth
+          action:
+            pass: foundryvtt
+sops:
+    lastmodified: "2026-10-11T17:19:24Z"
+    mac: ENC[AES256_GCM,data:TEdayVo02a8p1GHDb1nhLDT8jOUwrBZKPmg24m3MMylWxW4KyOz7AgatfaXxZO+ZffOwMiV1RC1+IjGnzSgJH0hHwiiJCtCANQPB2uiLTWgVrZSX1KYOc7IIXlHqsMQ27Y0kTIJeA11ux23c0lQW+i1W45WBl8x9tWT+xXDSn6c=,iv:7/AvRvFuSgCUQRaFNaHw43V3fn1bhLeexBE6KfZNV4Q=,tag:vMJYtGW85kPLXoxVrFOQdg==,type:str]
+    pgp:
+        - created_at: "2026-10-11T17:19:24Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5AQ//Z5lZN63F7kvFBFBlQhHpoUzC/KfAmPGJuZ5yfRROGzBt
+            5LO5N+YrkUvIZ2vSChg8ePjm7rB4EuKq0h7rDgANGCPOoKHpNJbnhrdF7Gkhhg4K
+            ksFv/lrX33b03FtTM0LCMLXuoD190D0Vg1xQWUmObB3iO43GfsiSGOr6n2ZQBBQQ
+            k3lSQ/ggHmoZBgBKSUsNp+rDbo/Q9fQkgRyoln+pc5gHUao+w7C8EDyxh5tNVOzH
+            pOFMVgkNauR7LkkBKflOmdEKyTys6olL7R/tf69Rjk26MKxeIziJGvRrWrwW/Tt7
+            7jq5mK7nTr0MSXwsDEQ2Kq9O4xgbR6OfFXF2r7sSzxhcQYtTWsr1WqfBx8mUf0JU
+            a6NjFqBLomwM31osNLXuJqdqQLgeGTvmql7UE7dQx5FqiQg5OY0blGHBrDhIANo7
+            YK4pDPobDQr5VYbYyZ4+PI0JiNWt0NGfJRdz5etP5y4mM9YY1ixBkZaNdPCU27kG
+            GRFQGrzqiKX4Z9LVQNjhldGzkiQmZ1D9fPk/5UdwWp01+LjwXZQ8ny9eAxGdsfm3
+            YNmzf4jhRCMxLZsZEbMHLkYkHxKr5epbxEX5JYfCMFR0zov1ouolqrUxPIYivwMD
+            Spy1yAE0iOL8HgA9M01lNJNnXQb4ZplfX2hgrutCEceHwgQVLJnu1KUi+B7E+OfS
+            WAF3hZXo2VR0ZY9LvSCsqkCeJ7iDKFC773yJqIfnPsGo0V/0M8R0reH59cK933cS
+            S4QHR4tEjUsQ/9dWMridCL+b35ui92ZXyXRsmxr8JrUJ1e8lw/+yRg4=
+            =9904
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|configLogicalBackup|paths|dnsNames|channel|image)$
+    version: 3.11.0

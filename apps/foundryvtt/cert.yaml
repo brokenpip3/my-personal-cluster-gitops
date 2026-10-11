@@ -1,0 +1,38 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+    name: foundryvtt-tls
+    namespace: foundryvtt
+spec:
+    dnsNames:
+        - ENC[AES256_GCM,data:lw7kF46/xRH3lKlTMeyI4AEcYKNb3Rq2JUYS4g==,iv:WHvhUFM7SbvmEpQG4fIbAfqrp13FUYdpQ60jSUSYo5Y=,tag:h0iOS79t1namQNY4rpOdqQ==,type:str]
+    issuerRef:
+        name: letsencrypt-ovh
+        kind: ClusterIssuer
+    secretName: foundryvtt-tls
+sops:
+    lastmodified: "2026-10-11T17:02:08Z"
+    mac: ENC[AES256_GCM,data:q0ssMSQ41vmvQ5Gq1gB6PAaGDsDvb1cAUloymAkpftxoQ09iVY3XALsdpZbXFkCiNfIAh2z6AjwwQv8Cq5YP/LWOkwuo29OxK2tgCcxMn2IbVwJJKydGXMMZhq29Bl4p0lWGdO/+dRsnpSxnHmyczPAPxLll258IxrA5m+VyfG8=,iv:/3Aurcpo/rsTY13sNAUtGVhpUpq2ZPBYaYZ6Bkrq1ng=,tag:qCiIKVm8o9B6oWYpAo/msw==,type:str]
+    pgp:
+        - created_at: "2026-10-11T17:02:08Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5AQ/9FuEk/ufJHrQkBsEAraih01o8wt6BEy7++MIJZj3el78k
+            d4oDDRN1V4ZSAYV/CzljcLEh+BaSIBtqT6imZDDed46n61Hv21VvYQ5LIn0lnFqb
+            K3e8+8J4Voz9cEcQK4IDz8mMEYQJbmfiN5QTzo1vcp5+pYH+ddI265WbatDSu/JG
+            a0J9DzrsCExf6ZjsAT+dgbfLY2zSiAVjvV2A+HoABqFt2TRNyiQp6TxDQfM49m9P
+            90rek73P+9V8rhGbr6gvJSGa8FEioDhu0NvPZ0bz9I0wRe4jWm07JEhINBcgiDqr
+            KtVyo7kaKCudpAbbYVcb+4T5O55+dGQPi2OaszoQOEoSLvdjqIWGrZlTI8QaCqjn
+            pUln+Sh4UNWq8Z5oP4tMhy3efeSCDpkI63hRBiCzy2xGg3ZoGCpRnX/5IxxiUOIC
+            JjSali5VxQoP4dqDbgYj5fCIqsdU1iGS2DFDWLkNu2RCyS978hmH5WcHyptYAo3C
+            PR43SjkW6zq2c1A/Ov5vsiutR65F0wN/FRfHyvVQblnUByuaRAHVDYfkhIshjtIv
+            bUnrvSEfZAHm7VaS7xaJz/kzJ12ezZuU6cF/AcujhEm5Sl11SpRGCtIZrckBDA0x
+            x0WW9XDQ7w2FckYfBTx+evk8PidHL0nwAOjarsr6hRvGSARE5jde+Z2cryWCuVnS
+            WAFXfQnS3R6w4nSbHrdwM7ZxQ64TDD5CWDweQLsxkFGmlXPtnwsWS/JmM9t1ycDW
+            mGwCvBkowCg4NKjD9qGxLk/18sSjOB6hz3zwN2kJEBU62BrEQ7WHMuM=
+            =dsCx
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|configLogicalBackup|paths|dnsNames|channel|image)$
+    version: 3.11.0

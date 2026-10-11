@@ -40,12 +40,12 @@ spec:
         repository: docker.io/nginx/nginx-ingress
       kind: daemonset
       nginxplus: false
-      enableSnippets: false
+      enableSnippets: true
       ingressClass:
         name: nginxinc
         create: true
         setAsDefaultIngress: true
-      enableCustomResources: false
+      enableCustomResources: true
       appprotect:
         enable: false
       resources:

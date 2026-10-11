@@ -1,0 +1,40 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: nginxinc-crds
+  namespace: flux-system
+spec:
+  interval: 10m
+  url: https://github.com/nginx/kubernetes-ingress
+  ref:
+    # renovate: datasource=github-releases depName=nginx/kubernetes-ingress
+    tag: v5.6.3
+  ignore: |
+    /*
+    !/config/
+    /config/*
+    !/config/crd/
+    /config/crd/*
+    !/config/crd/bases/
+    /config/crd/bases/*
+    !/config/crd/bases/k8s.nginx.org_globalconfigurations.yaml
+    !/config/crd/bases/k8s.nginx.org_policies.yaml
+    !/config/crd/bases/k8s.nginx.org_transportservers.yaml
+    !/config/crd/bases/k8s.nginx.org_virtualserverroutes.yaml
+    !/config/crd/bases/k8s.nginx.org_virtualservers.yaml
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: nginxinc-crds
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./config/crd/bases
+  sourceRef:
+    kind: GitRepository
+    name: nginxinc-crds
+  prune: false
+  wait: true
+  timeout: 3m

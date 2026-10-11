@@ -1,0 +1,47 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+    name: foundryvtt
+    namespace: foundryvtt
+    labels:
+        app: foundryvtt
+spec:
+    host: ENC[AES256_GCM,data:N7DYeXyb03XpieETmRKDqwY2FIKEnj6V1C9TGA==,iv:bx7VEq1CIG+F5aiIFdIdcu/h6OXQObRmyOnK5Rj/dWQ=,tag:r3DIBBWsvfcXAdsYuE86TA==,type:str]
+    tls:
+        secret: foundryvtt-tls
+    upstreams:
+        - name: outpost
+          service: ak-outpost-foundryvtt-outpost
+          port: 9000
+    routes:
+        - path: /outpost.goauthentik.io
+          action:
+            pass: outpost
+        - path: /
+          route: foundryvtt-vsroute
+sops:
+    lastmodified: "2026-10-11T17:06:16Z"
+    mac: ENC[AES256_GCM,data:5wSAMhsFmHR7iuR8/tlmoyb1aJUwN4VU2YNYxSNdOS2YzZ+UxD5X5Suw9KB0+vBqQu0TxWbjbz41x3Cug2AQ/NzfNWL9x6Ei8EtNZgoc/jkrRqhXhpchdmMqRkjR+vt74wxqJuqv0rGbhGW7lDsiwUMWpchW01sZ4eWuFyfIfUA=,iv:zTUqWT5p+52d2X9XETNOzSN27F1OOYDa0K6foXSAlN0=,tag:ac3mk9yCihQyC33Mud2RCg==,type:str]
+    pgp:
+        - created_at: "2026-10-11T17:06:16Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwP8FxNnerN5ARAAkS+klZRGdJ3OR4NR81cCx1DTNZdkne9bT5BPys/QQ7Y7
+            yiECOa4IwWaton3VmvFCKwjzjqvrzo9fm5SEppOC3s8n+korct6WX/hMsV2B9dWP
+            fDfMFyvhXtwN1tV1zSdhr8bVsRvKS8VygO4UDIqZZ8vDvpmE3zTUCJvntmkXoOT8
+            /zluGiMIWaKkpLQ8Fc3P3YTbXrikY2kv/lUexHynGI3uroXFMYgxD8WYXKENwcZt
+            t/vU4OxSSOcGb17sDM9ILdA9kbWZnJ2PFn+js0RAtCIALqyB+0adjJYCvdSPe0wJ
+            4SZEzRdHWfptYL7jNPX1xIyTugrCgDIqHYkVFGluzzC6QVoczNON6hqlm/X+kK2A
+            UXMp49KmZLli1ArEeWii6Sxf+e/nrgEyRuqG656PUpEpw3L1rpQNb/VgkwYcUPco
+            3DKGrIdGBzOyAseeT1KsNEjtsN/+A+sRIt+AgqEkz6KhzFNWjS2ifDuA16CMXWip
+            RCVgx8x/wKWBnY6mfZf94QGRb+utkqd4K5tZtBKJscE1tWMNMWKeM3hEBFe1Mwci
+            BzjFojMAP1iblCC0HjKGK8UlM5B42ddca1wrlQAn/xogP2DhiL+N8KrBbX9HWrSM
+            bnt1yc7Yl7KLYLE4IDUZpPzABetd9NkrFIPKUloPQFc/1Im4kSvo3JIq483iFfLS
+            WAEOkbiUyfz9IHxS/oFPcuWQpBGLWUdPlB4R8Zv1FuNuD1L4qc+6uVnRIApZZgwD
+            7lCLcr0idb45lT0nVsA+3HDy4NThofzyoeiJ/VzPrs7g7XIGUvo5cGI=
+            =YD9x
+            -----END PGP MESSAGE-----
+          fp: FEE43962AC34E28FB078EFA9F6C9CFE02626638C
+    encrypted_regex: ^(data|stringData|consumerKey|email|groupName|applicationKey|host|hosts|server|configLogicalBackup|paths|dnsNames|channel|image)$
+    version: 3.11.0

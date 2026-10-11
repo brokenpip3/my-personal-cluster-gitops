@@ -1,0 +1,15 @@
+apiVersion: k8s.nginx.org/v1
+kind: Policy
+metadata:
+  name: authentik-forward-auth
+  namespace: foundryvtt
+spec:
+  externalAuth:
+    authServiceName: foundryvtt/ak-outpost-foundryvtt-outpost
+    authServicePorts:
+    - 9000
+    authURI: /outpost.goauthentik.io/auth/nginx
+    authSigninURI: /outpost.goauthentik.io/start?rd=$request_uri
+    authSnippets: |
+      proxy_set_header X-Original-URL $scheme://$http_host$request_uri;
+      proxy_set_header X-Forwarded-Proto $scheme;
