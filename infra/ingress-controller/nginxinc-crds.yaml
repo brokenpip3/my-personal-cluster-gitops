@@ -9,7 +9,7 @@ spec:
   url: https://github.com/nginx/kubernetes-ingress
   ref:
     # renovate: datasource=github-releases depName=nginx/kubernetes-ingress
-    tag: v5.6.3
+    tag: v5.7.0
   ignore: |
     /*
     !/config/
